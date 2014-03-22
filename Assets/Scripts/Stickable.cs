@@ -8,7 +8,7 @@ using SquareType = Grid.SquareType;
 public class Stickable : MonoBehaviour {
 	private const float speed = 0.1f;
 
-	private int row, col;
+	public int row, col;
 	private int layer = -2;
 
 	private Grid grid;

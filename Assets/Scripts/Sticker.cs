@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using SquareType = Grid.SquareType;
+
 public class Sticker : MonoBehaviour {
 
 	public Material stuckMat;
@@ -26,6 +28,36 @@ public class Sticker : MonoBehaviour {
 		col = pos.Col;
 	}
 
+	private bool isValidSquare(int newR, int newC) {
+		if (!grid.InBounds(newR, newC)) {
+			return false;
+		}
+
+		SquareType type = grid.GetSquare(newR, newC).type;
+
+		return type != SquareType.Block;
+	}
+
+	private bool isValidMove(int dr, int dc) {
+		int newR = row + dr;
+		int newC = col + dc;
+		if (!isValidSquare(newR, newC)) {
+			return false;
+		}
+
+		foreach (Stickable piece in pieces) {
+			newR = piece.row + dr;
+			newC = piece.col + dc;
+
+			if (!isValidSquare(newR, newC)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	// Returns true if pieces were actually moved
 	public bool movePieces() {
 		int dr = 0;
 		int dc = 0;
@@ -38,6 +70,10 @@ public class Sticker : MonoBehaviour {
 		} else if (Input.GetKey(KeyCode.LeftArrow)) {
 			dc = -1;
 		} else {
+			return false;
+		}
+
+		if (!isValidMove(dr, dc)) {
 			return false;
 		}
 

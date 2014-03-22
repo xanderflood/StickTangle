@@ -10,8 +10,10 @@ public class Grid : MonoBehaviour {
 	// Makes all of the position to coordinate computations work out
 	private const float magicConst = (Dim - 1) / 2;
 
+	List<Position> goals = new List<Position>();
+
 	public enum SquareType {
-		Player, Stickable, Empty, Goal
+		Player, Stickable, Empty, Block
 	}
 
 	public class Square {
@@ -76,11 +78,14 @@ public class Grid : MonoBehaviour {
 				case SquareType.Empty:
 					sb.Append("E");
 					break;
-				case SquareType.Goal:
-					sb.Append("G");
+				case SquareType.Block:
+					sb.Append("B");
 					break;
 				case SquareType.Player:
 					sb.Append("P");
+					break;
+				case SquareType.Stickable:
+					sb.Append("S");
 					break;
 				}
 			}
@@ -142,7 +147,7 @@ public class Grid : MonoBehaviour {
 	}
 
 	public Vector3 PosToCoord(int row, int col, int layer) {
-		BoundsCheck(row, col);
+		//BoundsCheck(row, col); // TODO
 
 		return new Vector3(-1 * magicConst + col, -1 * magicConst + row, layer);
 	}
@@ -167,7 +172,7 @@ public class Grid : MonoBehaviour {
 		}
 	}
 
-	private bool InBounds(int row, int col) {
-		return row < Dim && col < Dim && row >= 0 && col >= 0;
+	public bool InBounds(int row, int col) {
+		return row < Dim - 1 && col < Dim - 1 && row > 0 && col > 0;
 	}
 }
