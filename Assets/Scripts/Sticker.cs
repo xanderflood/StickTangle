@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class Sticker : Stickable {
 
-	const float speed = 0.1f;
-	public int idealX, idealY;
+	private const float speed = 0.1f;
+	private const int layer = -3;
+
+	public int row, col;
 	public bool inMotion;
 
 	public bool[] obs;
@@ -32,18 +34,17 @@ public class Sticker : Stickable {
 	const int moreFramesNUM = 1;
 	public int moreFrames;
 
-	void Start () {
+	void Start() {
 		owner = this;
 		stuck = true;
-		idealX = (int)Mathf.Round (transform.position.x);  
-		idealY = (int)Mathf.Round (transform.position.y);
+		row = (int) Mathf.Round(transform.position.x);  
+		col = (int) Mathf.Round(transform.position.y);
 
 		obs = new bool[4];
 		waitingForGlobally = new bool[4];
 	}
 	
 	void Update () {
-
 		if (inMotion || waitingForSomething)
 			return;
 
@@ -52,26 +53,16 @@ public class Sticker : Stickable {
 			return;
 		}
 
-		if (Input.GetKey (KeyCode.UpArrow) && !obs[(int)Direction.Up]) {
-			idealY += 1;
-			StartCoroutine (moveCoroutine ());
-			return;
+		if (Input.GetKey(KeyCode.UpArrow)) {
+			col += 1;
+		} else if (Input.GetKey(KeyCode.DownArrow)) {
+			col -= 1;
+		} else if (Input.GetKey(KeyCode.RightArrow)) {
+			row += 1;
+		} else if (Input.GetKey(KeyCode.LeftArrow)) {
+			row -= 1;
 		}
-		if (Input.GetKey (KeyCode.DownArrow) && !obs[(int)Direction.Down]) {
-			idealY -= 1;
-			StartCoroutine (moveCoroutine ());
-			return;
-		}
-		if (Input.GetKey (KeyCode.RightArrow) && !obs[(int)Direction.Right]) {
-			idealX += 1;
-			StartCoroutine (moveCoroutine ());
-			return;
-		}
-		if (Input.GetKey (KeyCode.LeftArrow) && !obs[(int)Direction.Left]) {
-			idealX -= 1;
-			StartCoroutine (moveCoroutine ());
-			return;
-		}
+		StartCoroutine(move(new Vector3(row, col, layer)));
 	}
 
 	public void StickTo(Stickable st) {
@@ -82,7 +73,7 @@ public class Sticker : Stickable {
 	IEnumerator moveCoroutine() {
 		inMotion = true;
 
-		Vector3 disp = new Vector3(idealX, idealY, 0) - transform.position;
+		Vector3 disp = new Vector3(row, col, 0) - transform.position;
 		float goal = disp.magnitude;
 		disp = disp * (speed / goal);
 
@@ -94,7 +85,7 @@ public class Sticker : Stickable {
 			yield return true;
 		}
 
-		transform.position = new Vector3 (idealX, idealY, 0);
+		transform.position = new Vector3 (row, col, 0);
 
 		foreach (Stickable stb in toAdd) {
 			stb.transform.parent = this.transform;
@@ -109,9 +100,8 @@ public class Sticker : Stickable {
 		++currentMove;
 	}
 
-	private bool moving = false;
 	private IEnumerator move(Vector3 to) {
-		moving = true;
+		inMotion = true;
 		
 		Vector3 velocity = speed * (to - transform.position).normalized;
 		while (transform.position != to) {
@@ -120,6 +110,6 @@ public class Sticker : Stickable {
 		}
 		transform.position = to;
 		
-		moving = false;
+		inMotion = false;
 	}
 }
