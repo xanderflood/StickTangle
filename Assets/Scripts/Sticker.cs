@@ -14,7 +14,7 @@ public class Sticker : MonoBehaviour {
 
 	public int currentMove = 0;
 
-	public List<MoveableObject> pieces = new List<MoveableObject>();
+	public List<Stickable> pieces = new List<Stickable>();
 
 	private Grid grid;
 
@@ -48,7 +48,7 @@ public class Sticker : MonoBehaviour {
 
 		StartCoroutine(move(grid.PosToCoord(row, col, layer)));
 
-		foreach (MoveableObject piece in pieces) {
+		foreach (Stickable piece in pieces) {
 			StartCoroutine(piece.move(dr, dc));
 		}
 
@@ -67,8 +67,8 @@ public class Sticker : MonoBehaviour {
 
 		List<Position> positions = grid.GetStickables(row, col);
 		for (int i = positions.Count - 1; i >= 0; i--) {
-			MoveableObject piece;
-			MoveableObject.pieces.TryGetValue(positions[i], out piece);
+			Stickable piece;
+			Stickable.pieces.TryGetValue(positions[i], out piece);
 			pieces.Add(piece);
 			piece.renderer.material = stuckMat;
 		}

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
-public class MoveableObject : MonoBehaviour {
+public class Stickable : MonoBehaviour {
 	private const float speed = 0.1f;
 
 	private int row, col;
@@ -13,7 +13,7 @@ public class MoveableObject : MonoBehaviour {
 
 	private Grid grid;
 
-	public static Dictionary<Position, MoveableObject> pieces = new Dictionary<Position, MoveableObject>();
+	public static Dictionary<Position, Stickable> pieces = new Dictionary<Position, Stickable>();
 
 	private void Start() {
 		grid = GameObject.Find("Board").GetComponent<Grid>();
