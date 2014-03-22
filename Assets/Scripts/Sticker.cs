@@ -108,4 +108,18 @@ public class Sticker : Stickable {
 
 		++currentMove;
 	}
+
+	private bool moving = false;
+	private IEnumerator move(Vector3 to) {
+		moving = true;
+		
+		Vector3 velocity = speed * (to - transform.position).normalized;
+		while (transform.position != to) {
+			transform.position += velocity;
+			yield return null;
+		}
+		transform.position = to;
+		
+		moving = false;
+	}
 }
