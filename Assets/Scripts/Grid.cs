@@ -10,7 +10,7 @@ public class Grid : MonoBehaviour {
 	// Makes all of the position to coordinate computations work out
 	private const float magicConst = (Dim - 1) / 2;
 
-	List<Position> goals = new List<Position>();
+	public List<Position> goals = new List<Position>();
 
 	public enum SquareType {
 		Player, Stickable, Empty, Block
@@ -174,5 +174,15 @@ public class Grid : MonoBehaviour {
 
 	public bool InBounds(int row, int col) {
 		return row < Dim - 1 && col < Dim - 1 && row > 0 && col > 0;
+	}
+
+	public bool CheckAllGoals() {
+		foreach (Position p in goals) {
+			if (grid[p.Row, p.Col].type != SquareType.Player) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

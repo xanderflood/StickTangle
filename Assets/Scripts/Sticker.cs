@@ -108,6 +108,8 @@ public class Sticker : MonoBehaviour {
 			pieces.Add(piece);
 			piece.renderer.material = stuckMat;
 		}
+
+		Debug.Log(grid.CheckAllGoals());
 	}
 
 	private IEnumerator move(Vector3 to) {
