@@ -11,7 +11,7 @@ public class Grid : MonoBehaviour {
 	private const float magicConst = (Dim - 1) / 2;
 
 	public enum SquareType {
-		Player, Empty, Goal
+		Player, Stickable, Empty, Goal
 	}
 
 	public class Square {
@@ -122,7 +122,7 @@ public class Grid : MonoBehaviour {
 			int stepR = dr[(int) i]; 
 			int stepC = dc[(int) i];
 		
-			if (grid[row + stepR, col + stepC].type == SquareType.Player) {
+			if (grid[row + stepR, col + stepC].type == SquareType.Stickable) {
 				result.Add(new Position(row + stepR, col + stepC));
 			}
 		}

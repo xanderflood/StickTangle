@@ -24,7 +24,7 @@ public class Pair<T, U> {
 	}
 	
 	public override bool Equals(object o) {
-		if (o.GetType() != typeof(Pair<T, U>)) {
+		if (o.GetType() != GetType()) {
 			return false;
 		}
 

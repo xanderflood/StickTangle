@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Sticker : MonoBehaviour {
 
+	public Material stuckMat;
+
 	private const float speed = 0.1f;
 	private const int layer = -2;
 
@@ -12,15 +14,16 @@ public class Sticker : MonoBehaviour {
 
 	public int currentMove = 0;
 
-	public List<GameObject> pieces = new List<GameObject>();
+	public List<MoveableObject> pieces = new List<MoveableObject>();
 
 	private Grid grid;
 
 	void Start() {
 		grid = GameObject.Find("Board").GetComponent<Grid>();
 		DebugUtils.Assert(grid);
-		row = 3;
-		col = 5;
+		Position pos = grid.CoordToPos(transform.position);
+		row = pos.Row;
+		col = pos.Col;
 	}
 
 	public bool movePieces() {
@@ -38,15 +41,15 @@ public class Sticker : MonoBehaviour {
 			return false;
 		}
 
+		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Empty));
 		row += dr;
 		col += dc;
+		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
 
 		StartCoroutine(move(grid.PosToCoord(row, col, layer)));
 
-		foreach (GameObject piece in pieces) {
-			Debug.Log (pieces.Count);
-			MoveableObject obj = piece.GetComponent<MoveableObject>();
-			obj.move(dr, dc);
+		foreach (MoveableObject piece in pieces) {
+			StartCoroutine(piece.move(dr, dc));
 		}
 
 		return true;
@@ -63,10 +66,11 @@ public class Sticker : MonoBehaviour {
 		}
 
 		List<Position> positions = grid.GetStickables(row, col);
-		for (int i = 0; i < positions.Count; i++) {
-			Debug.Log ("Adding a pieces");
-			// TODO: Set stuck mat
-			pieces.Add(null); // TODO
+		for (int i = positions.Count - 1; i >= 0; i--) {
+			MoveableObject piece;
+			MoveableObject.pieces.TryGetValue(positions[i], out piece);
+			pieces.Add(piece);
+			piece.renderer.material = stuckMat;
 		}
 	}
 
