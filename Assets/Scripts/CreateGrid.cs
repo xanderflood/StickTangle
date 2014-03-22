@@ -13,6 +13,8 @@ public class CreateGrid : MonoBehaviour {
 	private int dim = Grid.Dim;
 	private GameObject board;
 	private Grid g;
+
+	private const int lineLayer = -3;
 	
 	void Start() {
 		board = GameObject.Find("Board");
@@ -58,14 +60,14 @@ public class CreateGrid : MonoBehaviour {
 		
 		// Vertical lines
 		for (int i = 1; i < dim; i++) {
-			GL.Vertex3(i - dimF/2, -1 * dimF/2, -1);
-			GL.Vertex3(i - dimF/2, dimF/2, -1);
+			GL.Vertex3(i - dimF/2, -1 * dimF/2, lineLayer);
+			GL.Vertex3(i - dimF/2, dimF/2, lineLayer);
 		}
 		
 		// Horizontal lines
 		for (int i = 1; i < dim; i++) {
-			GL.Vertex3(-1 * dimF/2, i - dimF/2, -1);
-			GL.Vertex3(dimF/2, i - dimF/2, -1);
+			GL.Vertex3(-1 * dimF/2, i - dimF/2, lineLayer);
+			GL.Vertex3(dimF/2, i - dimF/2, lineLayer);
 		}
 		
 		GL.PopMatrix();
@@ -84,7 +86,7 @@ public class CreateGrid : MonoBehaviour {
 
 	private void CreateBlock(Vector3 position) {
 		GameObject block = Instantiate(blockPrefab) as GameObject;
-		position.z = -3;
+		position.z = -2;
 		block.transform.position = position;
 		block.transform.parent = board.transform;
 	}

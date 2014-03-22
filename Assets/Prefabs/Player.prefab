@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: -3}
+  m_LocalPosition: {x: 0, y: -2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -160,29 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  stuckMat: {fileID: 0}
-  quad: {fileID: 0}
-  childObs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  stuck: 0
-  adding: 0
-  waitingForObstacleAdd: 00000000
-  waitingForObstacleRemove: 00000000
-  neighbors: []
-  idealX: 0
-  idealY: 0
+  row: 0
+  col: 0
   inMotion: 0
-  obs: 00000000
-  waitingForGlobally: 00000000
   currentMove: 0
-  addNew: 0
-  toAdd: []
-  _waitingForSomething: 0
-  moreFrames: 0
+  pieces: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

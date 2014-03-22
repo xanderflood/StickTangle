@@ -37,24 +37,6 @@ public class GoalScript : MonoBehaviour {
 		}
 	}
 
-	public void OnTriggerEnter2D(Collider2D other) {
-
-		Stickable stb = other.gameObject.GetComponent<Stickable> ();
-		if (!stb)
-			return;
-
-		if (mainGoal)
-			StartCoroutine (nextLevelCoroutine(stb.owner));
-		else
-			owner.addActive(stb.owner);
-	}
-
-	public void OnTriggerExit2D(Collider2D other) {
-
-		if (!mainGoal)
-			owner.deActive();
-	}
-
 	IEnumerator nextLevelCoroutine(Sticker st) {
 		int wait = st.currentMove;
 		while (st.currentMove == wait)

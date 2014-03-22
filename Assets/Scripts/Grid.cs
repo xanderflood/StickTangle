@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 
 public class Grid : MonoBehaviour {
@@ -25,9 +26,9 @@ public class Grid : MonoBehaviour {
 		Up, Down, Left, Right
 	}
 
-	private Position[] directionOffsets = { 
-		new Position(0, 1), new Position(0, -1), // Up, Down
-		new Position(-1, 0), new Position(1, 0) }; // Left, Right
+	// Must be in the same order as the Direction enum above
+	private int[] dr = {1, -1, 0, 0};
+	private int[] dc = {0, 0, -1, 1};
 	
 	private Square[,] grid;
 
@@ -46,8 +47,8 @@ public class Grid : MonoBehaviour {
 	 * Otherwise, returns null.
 	 */
 	public Position FindSquareOfType(Direction dir, int row, int col, SquareType type) {
-		int stepC = directionOffsets[(int) dir].First;
-		int stepR = directionOffsets[(int) dir].Second;
+		int stepC = dc[(int) dir];
+		int stepR = dr[(int) dir];
 
 		int i;
 		for (i = 1; grid[row + stepR * i, col + stepC * i].type != type; i++) {}
@@ -106,13 +107,27 @@ public class Grid : MonoBehaviour {
 			return null;
 		}
 
-		int stepC = directionOffsets[(int) dir].First;
-		int stepR = directionOffsets[(int) dir].Second;
+		int stepC = dc[(int) dir];
+		int stepR = dr[(int) dir];
 		int r = row + stepR;
 		int c = col + stepC;
 
 		Position pos = new Position(r, c);
 		return new Pair<SquareType, Position>(grid[r, c].type, pos);
+	}
+
+	public List<Position> GetStickables(int row, int col) {
+		List<Position> result = new List<Position>();
+		for (int i = 0; i < dr.Length; i++) {
+			int stepR = dr[(int) i]; 
+			int stepC = dc[(int) i];
+		
+			if (grid[row + stepR, col + stepC].type == SquareType.Player) {
+				result.Add(new Position(row + stepR, col + stepC));
+			}
+		}
+
+		return result;
 	}
 
 	public bool IsEmpty(int row, int col) {
@@ -123,9 +138,13 @@ public class Grid : MonoBehaviour {
 	}
 
 	public Vector3 PosToCoord(int row, int col) {
+		return PosToCoord(row, col, -1);
+	}
+
+	public Vector3 PosToCoord(int row, int col, int layer) {
 		BoundsCheck(row, col);
 
-		return new Vector3(-1 * magicConst + col, -1 * magicConst + row, -1);
+		return new Vector3(-1 * magicConst + col, -1 * magicConst + row, layer);
 	}
 
 	public Position CoordToPos(Vector3 coord) {
