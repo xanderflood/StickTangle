@@ -16,6 +16,10 @@ public class Sticker : MonoBehaviour {
 
 	private LevelManager lm;
 
+	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
+	// to the next level
+	private bool done = false;
+
 	public List<Stickable> pieces = new List<Stickable>();
 	public Dictionary<Position, Stickable> pieceMap = new Dictionary<Position, Stickable>();
 
@@ -94,7 +98,7 @@ public class Sticker : MonoBehaviour {
 	
 	void Update () {
 		// Return if already moving
-		if (inMotion)
+		if (inMotion || done)
 			return;
 
 		// Return if no arrow key was pressed
@@ -135,8 +139,14 @@ public class Sticker : MonoBehaviour {
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
-			lm.AdvanceLevel();
+			done = true;
+			StartCoroutine(AdvanceLevel());
 		}
+	}
+
+	private IEnumerator AdvanceLevel() {
+		yield return new WaitForSeconds(0.5f);
+		lm.AdvanceLevel();
 	}
 
 	private IEnumerator move(Vector3 to) {
