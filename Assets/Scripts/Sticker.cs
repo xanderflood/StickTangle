@@ -17,6 +17,7 @@ public class Sticker : MonoBehaviour {
 	private LevelManager lm;
 
 	public List<Stickable> pieces = new List<Stickable>();
+	public Dictionary<Position, Stickable> pieceMap = new Dictionary<Position, Stickable>();
 
 	private Grid grid;
 
@@ -108,7 +109,7 @@ public class Sticker : MonoBehaviour {
 		List<Position> positions = grid.GetStickables (row, col);
 		for (int i = positions.Count - 1; i >= 0; i--) {
 			Stickable piece;
-			Stickable.pieces.TryGetValue (positions [i], out piece);
+			pieceMap.TryGetValue (positions [i], out piece);
 			if (!piece.stuck) {
 				pieces.Add (piece);
 				piece.renderer.material = stuckMat;
@@ -121,7 +122,7 @@ public class Sticker : MonoBehaviour {
 			positions = grid.GetStickables (curr.row, curr.col);
 			for (int i = positions.Count - 1; i >= 0; i--) {
 				Stickable piece;
-				Stickable.pieces.TryGetValue (positions [i], out piece);
+				pieceMap.TryGetValue (positions [i], out piece);
 				if (!piece.stuck) {
 					toAdd.Add (piece);
 					piece.renderer.material = stuckMat;

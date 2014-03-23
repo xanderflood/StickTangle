@@ -13,16 +13,16 @@ public class Stickable : MonoBehaviour {
 
 	private Grid grid;
 	public bool stuck = false;
-
-	public static Dictionary<Position, Stickable> pieces = new Dictionary<Position, Stickable>();
-
+	
 	private void Start() {
 		grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position);
 		row = pos.Row;
 		col = pos.Col;
 		grid.SetSquare(row, col, new Square(SquareType.Stickable));
-		pieces.Add(pos, this);
+
+		Sticker s = Utils.FindComponent<Sticker>("Player");
+		s.pieceMap.Add(pos, this);
 	}
 
 	public IEnumerator move(int dr, int dc) {
