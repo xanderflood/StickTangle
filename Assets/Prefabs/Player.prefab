@@ -68,12 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stuckMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
   row: 0
   col: 0
-  inMotion: 0
-  currentMove: 0
-  pieces: []
+  stuck: 0
+  stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

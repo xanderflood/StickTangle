@@ -4,33 +4,22 @@ using System.Collections.Generic;
 
 using SquareType = Grid.SquareType;
 
-public class Sticker : MonoBehaviour {
+public class Sticker : Piece {
 
-	public Material stuckMat;
+	public Material stickerMat;
 
-	private const float speed = 0.1f;
-	private const int layer = -2;
-
-	public int row, col;
-	public bool inMotion;
+	public Dictionary<Position, Piece> pieceMap = new Dictionary<Position, Piece>();
 
 	private LevelManager lm;
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
 	private bool done = false;
-
-	public List<Stickable> pieces = new List<Stickable>();
-	public Dictionary<Position, Stickable> pieceMap = new Dictionary<Position, Stickable>();
-
-	private Grid grid;
-
-	void Start() {
+	private List<Piece> pieces = new List<Piece>();
+	
+	private new void Start() {
+		base.Start();
 		lm = Camera.main.GetComponent<LevelManager>(); // TODO
-		grid = Utils.FindComponent<Grid>("Board");
-		Position pos = grid.CoordToPos(transform.position);
-		row = pos.Row;
-		col = pos.Col;
 	}
 
 	private bool isValidSquare(int newR, int newC) {
@@ -50,7 +39,7 @@ public class Sticker : MonoBehaviour {
 			return false;
 		}
 
-		foreach (Stickable piece in pieces) {
+		foreach (Piece piece in pieces) {
 			newR = piece.row + dr;
 			newC = piece.col + dc;
 
@@ -82,21 +71,16 @@ public class Sticker : MonoBehaviour {
 			return false;
 		}
 
-		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Empty));
-		row += dr;
-		col += dc;
-		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
+		StartCoroutine(move(dr, dc));
 
-		StartCoroutine(move(grid.PosToCoord(row, col, layer)));
-
-		foreach (Stickable piece in pieces) {
+		foreach (Piece piece in pieces) {
 			StartCoroutine(piece.move(dr, dc));
 		}
 
 		return true;
 	}
 	
-	void Update () {
+	private void Update () {
 		// Return if already moving
 		if (inMotion || done)
 			return;
@@ -107,29 +91,29 @@ public class Sticker : MonoBehaviour {
 		}
 		
 		// Check if any new pieces should stick to this one
-		List<Stickable> toAdd = new List<Stickable> (); // Can't add pieces while iterating
+		List<Piece> toAdd = new List<Piece> (); // Can't add pieces while iterating
 
 			//Check for the root
 		List<Position> positions = grid.GetStickables (row, col);
 		for (int i = positions.Count - 1; i >= 0; i--) {
-			Stickable piece;
+			Piece piece;
 			pieceMap.TryGetValue (positions [i], out piece);
 			if (!piece.stuck) {
 				pieces.Add (piece);
-				piece.renderer.material = stuckMat;
+				piece.renderer.material = stickerMat;
 				piece.stuck = true;
 			}
 		}
 
 			// Check for the children
-		foreach (Stickable curr in pieces) {
+		foreach (Piece curr in pieces) {
 			positions = grid.GetStickables (curr.row, curr.col);
 			for (int i = positions.Count - 1; i >= 0; i--) {
-				Stickable piece;
+				Piece piece;
 				pieceMap.TryGetValue (positions [i], out piece);
 				if (!piece.stuck) {
 					toAdd.Add (piece);
-					piece.renderer.material = stuckMat;
+					piece.renderer.material = stickerMat;
 					piece.stuck = true;
 				}
 			}
