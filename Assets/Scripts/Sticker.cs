@@ -100,15 +100,37 @@ public class Sticker : MonoBehaviour {
 		if (!movePieces()) {
 			return;
 		}
-
+		
 		// Check if any new pieces should stick to this one
-		List<Position> positions = grid.GetStickables(row, col);
+		List<Stickable> toAdd = new List<Stickable> (); // Can't add pieces while iterating
+
+			//Check for the root
+		List<Position> positions = grid.GetStickables (row, col);
 		for (int i = positions.Count - 1; i >= 0; i--) {
 			Stickable piece;
-			Stickable.pieces.TryGetValue(positions[i], out piece);
-			pieces.Add(piece);
-			piece.renderer.material = stuckMat;
+			Stickable.pieces.TryGetValue (positions [i], out piece);
+			if (!piece.stuck) {
+				pieces.Add (piece);
+				piece.renderer.material = stuckMat;
+				piece.stuck = true;
+			}
 		}
+
+			// Check for the children
+		foreach (Stickable curr in pieces) {
+			positions = grid.GetStickables (curr.row, curr.col);
+			for (int i = positions.Count - 1; i >= 0; i--) {
+				Stickable piece;
+				Stickable.pieces.TryGetValue (positions [i], out piece);
+				if (!piece.stuck) {
+					toAdd.Add (piece);
+					piece.renderer.material = stuckMat;
+					piece.stuck = true;
+				}
+			}
+		}
+
+		pieces.AddRange (toAdd);
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {

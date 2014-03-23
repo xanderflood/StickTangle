@@ -12,6 +12,7 @@ public class Stickable : MonoBehaviour {
 	private int layer = -2;
 
 	private Grid grid;
+	public bool stuck = false;
 
 	public static Dictionary<Position, Stickable> pieces = new Dictionary<Position, Stickable>();
 
