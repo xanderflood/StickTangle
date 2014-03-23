@@ -21,7 +21,7 @@ public class Sticker : MonoBehaviour {
 	private Grid grid;
 
 	void Start() {
-		lm = Camera.main.GetComponent<LevelManager>();
+		lm = Camera.main.GetComponent<LevelManager>(); // TODO
 		grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position);
 		row = pos.Row;
