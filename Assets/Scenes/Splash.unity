@@ -155,7 +155,7 @@ GameObject:
   - 23: {fileID: 1650735799}
   - 102: {fileID: 1650735798}
   m_Layer: 0
-  m_Name: Press
+  m_Name: PressSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
