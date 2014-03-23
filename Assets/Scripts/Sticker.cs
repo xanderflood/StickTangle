@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,8 +22,7 @@ public class Sticker : MonoBehaviour {
 
 	void Start() {
 		lm = Camera.main.GetComponent<LevelManager>();
-		grid = GameObject.Find("Board").GetComponent<Grid>();
-		DebugUtils.Assert(grid);
+		grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position);
 		row = pos.Row;
 		col = pos.Col;

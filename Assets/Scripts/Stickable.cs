@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,8 +16,7 @@ public class Stickable : MonoBehaviour {
 	public static Dictionary<Position, Stickable> pieces = new Dictionary<Position, Stickable>();
 
 	private void Start() {
-		grid = GameObject.Find("Board").GetComponent<Grid>();
-		DebugUtils.Assert(grid);
+		grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position);
 		row = pos.Row;
 		col = pos.Col;

@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Goal : MonoBehaviour {
 	void Start() {
-		Grid g = GameObject.Find("Board").GetComponent<Grid>();
+		Grid g = Utils.FindComponent<Grid>("Board");
 		g.goals.Add(g.CoordToPos(transform.position));
 	}
 }

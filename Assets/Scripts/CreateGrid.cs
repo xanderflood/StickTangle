@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,11 +17,9 @@ public class CreateGrid : MonoBehaviour {
 	private const int lineLayer = -3;
 	
 	void Start() {
-		board = GameObject.Find("Board");
-		DebugUtils.Assert(board);
+		board = Utils.FindObject("Board");
 		
-		g = board.GetComponent<Grid>();
-		DebugUtils.Assert(g);
+		g = Utils.GetComponent<Grid>(board);
 		
 		lineMaterial = new Material( "Shader \"Lines/Colored Blended\" {" +
 		                            "SubShader { Pass { " +
