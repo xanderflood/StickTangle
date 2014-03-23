@@ -95,6 +95,10 @@ public class Grid : MonoBehaviour {
 		Debug.Log(sb.ToString());
 	}
 
+	public void SetSquare(Position pos, Square square) {
+		SetSquare(pos.Row, pos.Col, square);
+	}
+	
 	public void SetSquare(int row, int col, Square square) {
 		BoundsCheck(row, col);
 
@@ -161,7 +165,7 @@ public class Grid : MonoBehaviour {
 		int row = (int) (coord.y + magicConst + 0.5f);
 		int col = (int) (coord.x + magicConst + 0.5f);
 
-		if (boundsCheck) BoundsCheck(row, col);
+		if (boundsCheck) BoundsCheck(row, col); // TODO
 
 		return new Position(row, col);
 	}
@@ -170,6 +174,10 @@ public class Grid : MonoBehaviour {
 		if (!InBounds(row, col)) {
 			throw new System.ArgumentOutOfRangeException("Out of bounds: (" + row + ", " + col + ")");
 		}
+	}
+
+	public bool InBounds(Position pos) {
+		return InBounds(pos.Row, pos.Col);
 	}
 
 	public bool InBounds(int row, int col) {
