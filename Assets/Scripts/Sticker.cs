@@ -14,13 +14,14 @@ public class Sticker : MonoBehaviour {
 	public int row, col;
 	public bool inMotion;
 
-	public int currentMove = 0;
+	private LevelManager lm;
 
 	public List<Stickable> pieces = new List<Stickable>();
 
 	private Grid grid;
 
 	void Start() {
+		lm = Camera.main.GetComponent<LevelManager>();
 		grid = GameObject.Find("Board").GetComponent<Grid>();
 		DebugUtils.Assert(grid);
 		Position pos = grid.CoordToPos(transform.position);
@@ -101,6 +102,7 @@ public class Sticker : MonoBehaviour {
 			return;
 		}
 
+		// Check if any new pieces should stick to this one
 		List<Position> positions = grid.GetStickables(row, col);
 		for (int i = positions.Count - 1; i >= 0; i--) {
 			Stickable piece;
@@ -109,7 +111,10 @@ public class Sticker : MonoBehaviour {
 			piece.renderer.material = stuckMat;
 		}
 
-		Debug.Log(grid.CheckAllGoals());
+		// Check if all goals are covered
+		if (grid.CheckAllGoals()) {
+			lm.AdvanceLevel();
+		}
 	}
 
 	private IEnumerator move(Vector3 to) {
