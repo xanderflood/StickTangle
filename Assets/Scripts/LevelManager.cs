@@ -11,4 +11,10 @@ public class LevelManager : MonoBehaviour {
 	public void AdvanceLevel() {
 		Application.LoadLevel(++level);
 	}
+
+	private void Update() {
+		if (Input.GetKey(KeyCode.R)) {
+			Application.LoadLevel(level);
+		}
+	}
 }
