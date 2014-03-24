@@ -16,13 +16,13 @@ public class Utils {
 		return obj;
 	}
 
-	public static T FindComponent<T>(string objectName) where T : MonoBehaviour {
+	public static T FindComponent<T>(string objectName) where T : Component {
 		T component = FindObject(objectName).GetComponent<T>();
 		Utils.Assert(component != null);
 		return component;
 	}
 
-	public static T GetComponent<T>(GameObject obj) where T : MonoBehaviour {
+	public static T GetComponent<T>(GameObject obj) where T : Component {
 		T component = obj.GetComponent<T>();
 		Utils.Assert(component != null);
 		return component;

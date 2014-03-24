@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEditor;
+
 public class FindMissingScriptsRecursively : EditorWindow {
 
-	static int go_count = 0, components_count = 0, missing_count = 0;
+	private static int go_count = 0, components_count = 0, missing_count = 0;
 	
-	[MenuItem("Window/FindMissingScriptsRecursively")]
+	[MenuItem("Window/Find Missing Scripts Recursively")]
 	public static void ShowWindow()	{
 		EditorWindow.GetWindow(typeof(FindMissingScriptsRecursively));
 	}
