@@ -8,7 +8,7 @@ public class Grid : MonoBehaviour {
 	public const int Dim = 11;
 
 	// Makes all of the position to coordinate computations work out
-	private const float magicConst = (Dim - 1) / 2;
+	private const float magicConst = (Dim - 1) / 2.0f;
 
 	public List<Position> goals = new List<Position>();
 
