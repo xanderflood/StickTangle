@@ -12,8 +12,7 @@ public class Piece : MonoBehaviour {
 	protected Grid grid;
 
 	public int row, col;
-	public bool stuck = false;
-	
+
 	protected void Start() {
 		grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position);

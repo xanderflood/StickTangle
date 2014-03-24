@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 using Square = Grid.Square;
@@ -10,6 +10,6 @@ public class Stickable : Piece {
 		grid.SetSquare(row, col, new Square(SquareType.Stickable));
 		
 		Sticker s = Utils.FindComponent<Sticker>("Player");
-		s.pieceMap.Add(new Position(row, col), this);
+		s.stickableMap.Add(new Position(row, col), this);
 	}
 }

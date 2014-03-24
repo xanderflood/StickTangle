@@ -8,14 +8,14 @@ public class Sticker : Piece {
 
 	public Material stickerMat;
 
-	public Dictionary<Position, Piece> pieceMap = new Dictionary<Position, Piece>();
-
-	private LevelManager lm;
+	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
 	private bool done = false;
-	private List<Piece> pieces = new List<Piece>();
+
+	private LevelManager lm;
+	private List<Stickable> stickables = new List<Stickable>();
 	
 	private new void Start() {
 		base.Start();
@@ -39,9 +39,9 @@ public class Sticker : Piece {
 			return false;
 		}
 
-		foreach (Piece piece in pieces) {
-			newR = piece.row + dr;
-			newC = piece.col + dc;
+		foreach (Stickable s in stickables) {
+			newR = s.row + dr;
+			newC = s.col + dc;
 
 			if (!isValidSquare(newR, newC)) {
 				return false;
@@ -73,14 +73,14 @@ public class Sticker : Piece {
 
 		StartCoroutine(move(dr, dc));
 
-		foreach (Piece piece in pieces) {
-			StartCoroutine(piece.move(dr, dc));
+		foreach (Stickable s in stickables) {
+			StartCoroutine(s.move(dr, dc));
 		}
 
 		return true;
 	}
 	
-	private void Update () {
+	private void Update() {
 		// Return if already moving
 		if (inMotion || done)
 			return;
@@ -89,43 +89,39 @@ public class Sticker : Piece {
 		if (!movePieces()) {
 			return;
 		}
-		
-		// Check if any new pieces should stick to this one
-		List<Piece> toAdd = new List<Piece> (); // Can't add pieces while iterating
 
-			//Check for the root
-		List<Position> positions = grid.GetStickables (row, col);
-		for (int i = positions.Count - 1; i >= 0; i--) {
-			Piece piece;
-			pieceMap.TryGetValue (positions [i], out piece);
-			if (!piece.stuck) {
-				pieces.Add (piece);
-				piece.renderer.material = stickerMat;
-				piece.stuck = true;
-			}
+		// Check for new stickables next to root piece
+		List<Stickable> toAdd = GetStickables(row, col);
+
+		// Check for new stickables next to other pieces
+		foreach (Stickable s in stickables) {
+			toAdd.AddRange(GetStickables(s.row, s.col));
 		}
 
-			// Check for the children
-		foreach (Piece curr in pieces) {
-			positions = grid.GetStickables (curr.row, curr.col);
-			for (int i = positions.Count - 1; i >= 0; i--) {
-				Piece piece;
-				pieceMap.TryGetValue (positions [i], out piece);
-				if (!piece.stuck) {
-					toAdd.Add (piece);
-					piece.renderer.material = stickerMat;
-					piece.stuck = true;
-				}
-			}
-		}
-
-		pieces.AddRange (toAdd);
+		stickables.AddRange(toAdd);
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
 			done = true;
 			StartCoroutine(AdvanceLevel());
 		}
+	}
+
+	private List<Stickable> GetStickables(int r, int c) {
+		List<Stickable> toAdd = new List<Stickable>();
+		List<Position> positions = grid.GetStickables(r, c);
+		for (int i = 0; i < positions.Count; i++) {
+			Stickable s;
+			stickableMap.TryGetValue(positions[i], out s);
+			Utils.Assert(s);
+
+			toAdd.Add(s);
+			s.renderer.material = stickerMat;
+			stickableMap.Remove(positions[i]);
+			grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
+		}
+
+		return toAdd;
 	}
 
 	private IEnumerator AdvanceLevel() {
