@@ -40,9 +40,6 @@ public class Grid : MonoBehaviour {
 		public int yDisp;
 		public Grid g;
 
-		public bool debug;
-		public bool done;
-
 		public bool justAppeared;
 
 		private Teleporter() { }
@@ -53,11 +50,6 @@ public class Grid : MonoBehaviour {
 			this.parts = parts;
 			this.xDisp = xDisp;
 			this.yDisp = yDisp;
-
-			Debug.Log("Start");
-			foreach (Position pos in parts) {
-				Debug.Log(pos);
-			}
 		}
 
 		public void AppearAt() {
@@ -72,13 +64,6 @@ public class Grid : MonoBehaviour {
 		}
 
 		public bool Fits() {
-
-			if (debug && !done) {
-				foreach (Position pos in parts) {
-					Debug.Log(pos);
-				}
-				done = true;
-			}
 
 			if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col)))
 				return false;
