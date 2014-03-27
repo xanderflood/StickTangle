@@ -38,7 +38,7 @@ public class Grid : MonoBehaviour {
 		public List<Position> parts;
 		public int xDisp;
 		public int yDisp;
-		public Grid g;
+		Grid g;
 
 		public bool justAppeared;
 
