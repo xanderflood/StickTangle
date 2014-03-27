@@ -20,6 +20,8 @@ public class Sticker : Piece {
 	private new void Start() {
 		base.Start();
 		lm = Utils.GetComponent<LevelManager>(Camera.main.gameObject);
+
+		grid.playerBlock = this;
 	}
 
 	private bool isValidSquare(int newR, int newC) {
@@ -85,6 +87,12 @@ public class Sticker : Piece {
 		if (inMotion || done)
 			return;
 
+		// Check for valid teleporters
+		Grid.Teleporter tele;
+		if (grid.CheckReadyToTeleport(out tele)) {
+			Teleport(tele.xDisp, tele.yDisp);
+		}
+
 		// Return if no arrow key was pressed
 		if (!movePieces()) {
 			return;
@@ -107,6 +115,10 @@ public class Sticker : Piece {
 		}
 	}
 
+	public List<Stickable> AttachedPieces() {
+		return stickables;
+	}
+
 	private List<Stickable> GetStickables(int r, int c) {
 		List<Stickable> toAdd = new List<Stickable>();
 		List<Position> positions = grid.GetStickables(r, c);
@@ -127,6 +139,35 @@ public class Sticker : Piece {
 	private IEnumerator AdvanceLevel() {
 		yield return new WaitForSeconds(0.5f);
 		lm.AdvanceLevel();
+	}
+
+	private void Teleport(int xDisp, int yDisp) {
+
+		Vector3 disp = new Vector3(xDisp, yDisp, 0);
+
+		// Move the main block
+		gameObject.transform.position += disp;
+		grid.SetSquare(new Position(row, col), new Grid.Square(SquareType.Empty));
+		row += yDisp;
+		col += xDisp;
+		grid.SetSquare(new Position(row, col), new Grid.Square(SquareType.Player));
+
+		// Move the other blocks
+		foreach (Stickable s in stickables) {
+			
+			s.gameObject.transform.position += disp;
+			grid.SetSquare(new Position(s.row, s.col), new Grid.Square(SquareType.Empty));
+			s.row += yDisp;
+			s.col += xDisp;
+			grid.SetSquare(new Position(s.row, s.col), new Grid.Square(SquareType.Player));
+		}
+
+		// Mark the target teleporter, so we don't get immediately returned
+		try {
+			grid.GetTeleporterAt(grid.CoordToPos(gameObject.transform.position)).AppearAt();
+		} catch {
+			Debug.Log(grid.CoordToPos(gameObject.transform.position));
+		}
 	}
 
 	private IEnumerator move(Vector3 to) {

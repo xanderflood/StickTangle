@@ -7,20 +7,92 @@ public class Grid : MonoBehaviour {
 
 	public const int Dim = 11;
 
+	public Sticker playerBlock;
+
 	// Makes all of the position to coordinate computations work out
 	private const float magicConst = (Dim - 1) / 2.0f;
 
 	public List<Position> goals = new List<Position>();
 
+	// This is a storage place for a teleporter that has just been
+	// used as a target. It'll be reactivated when the user clears
+	private Teleporter deactivated = null;
+
+	public List<Teleporter> teleporters;
+
 	public enum SquareType {
-		Player, Stickable, Empty, Block
+		Player, Stickable, Empty, Block,
 	}
 
 	public class Square {
-		public SquareType type;
+		public SquareType type; 
 
 		public Square(SquareType type) {
 			this.type = type;
+		}
+	}
+
+	[System.Serializable]
+	public class Teleporter {
+
+		public List<Position> parts;
+		public int xDisp;
+		public int yDisp;
+		public Grid g;
+
+		public bool debug;
+		public bool done;
+
+		public bool justAppeared;
+
+		private Teleporter() { }
+
+		public Teleporter(List<Position> parts, int xDisp, int yDisp) {
+			g = Utils.FindComponent<Grid>("Board");
+			g.teleporters.Add(this);
+			this.parts = parts;
+			this.xDisp = xDisp;
+			this.yDisp = yDisp;
+
+			Debug.Log("Start");
+			foreach (Position pos in parts) {
+				Debug.Log(pos);
+			}
+		}
+
+		public void AppearAt() {
+			justAppeared = true;
+			g.deactivated = this;
+		}
+
+		public bool ReadyToTeleport() {
+			if (justAppeared)
+				return false;
+			return Fits();
+		}
+
+		public bool Fits() {
+
+			if (debug && !done) {
+				foreach (Position pos in parts) {
+					Debug.Log(pos);
+				}
+				done = true;
+			}
+
+			if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col)))
+				return false;
+
+			foreach (Stickable s in g.playerBlock.AttachedPieces()) {
+				if (!parts.Contains(g.CoordToPos(s.gameObject.transform.position)))
+					return false;
+			}
+
+			return true;
+		}
+
+		public bool Contains(Position pos) {
+			return parts.Contains(pos);
 		}
 	}
 
@@ -44,6 +116,24 @@ public class Grid : MonoBehaviour {
 		}
 	}
 
+	void Update() {
+
+		if (deactivated == null)
+			return;
+
+		// Otherwise, check if the user is touching any part of that teleporter
+		foreach (Stickable s in playerBlock.AttachedPieces()) {
+			if (deactivated.parts.Contains(CoordToPos(s.gameObject.transform.position)))
+				return;
+		}
+
+		if (deactivated.parts.Contains(new Position(playerBlock.row, playerBlock.col)))
+			return;
+
+		deactivated.justAppeared = false;
+		deactivated = null;
+	}
+
 	/**
 	 * Checks all of the squares in direction dir for a square of type type. If found, returns a the position.
 	 * Otherwise, returns null.
@@ -64,7 +154,7 @@ public class Grid : MonoBehaviour {
 	}
 
 	public Position FindSquareOfType(Direction dir, Position pos, SquareType type) {
-		return FindSquareOfType(dir, pos.First, pos.Second, type);
+		return FindSquareOfType(dir, pos.Row, pos.Col, type);
 	}
 		
 	/**
@@ -137,6 +227,31 @@ public class Grid : MonoBehaviour {
 		}
 
 		return result;
+	}
+
+	public bool CheckReadyToTeleport(out Teleporter tele) {
+		foreach (Teleporter t in teleporters) {
+			if (t.ReadyToTeleport()) {
+				tele = t;
+				return true;
+			}
+		}
+
+		tele = null;
+		return false;
+	}
+
+	/**
+	 * Returns the teleporter whose list of positions contains this one
+	 */
+	public Teleporter GetTeleporterAt(Position pos) {
+		foreach (Teleporter t in teleporters) {
+			if (t.Contains(pos))
+				return t;
+		}
+
+		Utils.Assert(false);
+		return null;		 // C# requires me to return a value :(
 	}
 
 	public bool IsEmpty(int row, int col) {
