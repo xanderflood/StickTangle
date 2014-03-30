@@ -10,7 +10,7 @@ public class Piece : MonoBehaviour {
 	protected const int layer = -2;
 	protected bool inMotion;
 	protected Grid grid;
-
+    private bool hitAcid = false;
 	public int row, col;
 
 	protected void Start() {
@@ -19,6 +19,10 @@ public class Piece : MonoBehaviour {
 		row = pos.Row;
 		col = pos.Col;
 	}
+
+    public void DestroyAtEndOfMove() { 
+        hitAcid = true; 
+    }
 
 	public IEnumerator move(int dr, int dc) {
 		inMotion = true;
@@ -38,5 +42,18 @@ public class Piece : MonoBehaviour {
 		transform.position = to;
 		
 		inMotion = false;
+
+        // if we ran into acid, we need to destroy this piece at the end of the animation
+        if (hitAcid) {
+            if (this is Sticker)
+            {   //if it is the sticker, let the sticker handle swapping itself around
+                hitAcid = false;
+                ((Sticker)this).swapWithStickable();
+            }
+            else
+            {   //otherwise this is safe to destroy
+                Destroy(this.gameObject);
+            }
+        }
 	}
 }

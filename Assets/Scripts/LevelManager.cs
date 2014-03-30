@@ -32,4 +32,6 @@ public class LevelManager : MonoBehaviour {
 			Application.LoadLevel(level);
 		}
 	}
+
+
 }

@@ -304,7 +304,7 @@ public class Grid : MonoBehaviour {
 		return true;
 	}
     // checks to see if given location is acid, if so destroys the acid and returns true
-    public bool HandleAcid(int row, int col) {
+    public bool CheckForAndDestoryAcid(int row, int col) {
 
         foreach (Acid a in acidBlocks)
         {
@@ -312,7 +312,7 @@ public class Grid : MonoBehaviour {
             if (p.Row == row && p.Col == col)
             {
                 acidBlocks.Remove(a);
-                //destory acid object
+                Destroy(a.gameObject);
                 return true;
             }
         }

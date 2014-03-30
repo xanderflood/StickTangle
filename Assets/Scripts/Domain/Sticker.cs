@@ -108,16 +108,9 @@ public class Sticker : Piece {
 		}
 
 		stickables.AddRange(toAdd);
-        /// check for acid
-        foreach (Stickable s in stickables)
-        {
-            if (grid.HandleAcid(s.row, s.col)) {
-                Debug.Log("test");
-            }
-        }
 
+        HandleAcid();
 
-        ///
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
 			done = true;
@@ -125,9 +118,52 @@ public class Sticker : Piece {
 		}
 	}
 
-	public List<Stickable> AttachedPieces() {
-		return stickables;
-	}
+    void HandleAcid()
+    {
+        //first, deal with stickables colliding with the acid
+        List<Stickable> toDestory = new List<Stickable>();
+        foreach (Stickable s in stickables)
+        {
+            if (grid.CheckForAndDestoryAcid(s.row, s.col))
+            {
+                toDestory.Add(s);
+            }
+        }
+
+        foreach (Stickable s in toDestory)
+        {
+            s.DestroyAtEndOfMove();
+            stickables.Remove(s);
+        }
+        
+        //now deal with sticker
+        if (grid.CheckForAndDestoryAcid(row, col)){
+            DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
+        }
+    }
+    //should only be called at the end of handleMove, if the Sticker hit an Acid Block
+    public void swapWithStickable() {
+     
+            //if this is the last block, the player looses
+            if (stickables.Count == 0)
+            {
+                //placeholder functionality
+                Debug.Log("Game Over, all blocks destroyed");
+                Application.LoadLevel(Application.loadedLevel); //reload the level,
+                return;
+            }
+            //swap locations with some stickable, then destroy that stickable
+            row = stickables[0].row;
+            col = stickables[0].col;
+            transform.position = stickables[0].transform.position;
+            Destroy(stickables[0].gameObject);
+            stickables.RemoveAt(0);   
+    }
+
+    public List<Stickable> AttachedPieces()
+    {
+        return stickables;
+    }
 
 	private List<Stickable> GetStickables(int r, int c) {
 		List<Stickable> toAdd = new List<Stickable>();
