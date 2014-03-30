@@ -34,6 +34,7 @@ public class Sticker : Piece {
 		return type != SquareType.Block;
 	}
 
+
 	private bool isValidMove(int dr, int dc) {
 		int newR = row + dr;
 		int newC = col + dc;
@@ -107,7 +108,16 @@ public class Sticker : Piece {
 		}
 
 		stickables.AddRange(toAdd);
+        /// check for acid
+        foreach (Stickable s in stickables)
+        {
+            if (grid.HandleAcid(s.row, s.col)) {
+                Debug.Log("test");
+            }
+        }
 
+
+        ///
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
 			done = true;

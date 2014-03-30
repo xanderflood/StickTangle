@@ -5,6 +5,62 @@ using System.Text;
 
 public class Grid : MonoBehaviour {
 
+    [System.Serializable]
+    public class Teleporter
+    {
+
+        public List<Position> parts;
+        public int xDisp;
+        public int yDisp;
+        Grid g;
+
+        public bool justAppeared;
+
+        private Teleporter() { }
+
+        public Teleporter(List<Position> parts, int xDisp, int yDisp)
+        {
+            g = Utils.FindComponent<Grid>("Board");
+            g.teleporters.Add(this);
+            this.parts = parts;
+            this.xDisp = xDisp;
+            this.yDisp = yDisp;
+        }
+
+        public void AppearAt()
+        {
+            justAppeared = true;
+            g.deactivated = this;
+        }
+
+        public bool ReadyToTeleport()
+        {
+            if (justAppeared)
+                return false;
+            return Fits();
+        }
+
+        public bool Fits()
+        {
+
+            if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col)))
+                return false;
+
+            foreach (Stickable s in g.playerBlock.AttachedPieces())
+            {
+                if (!parts.Contains(g.CoordToPos(s.gameObject.transform.position)))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public bool Contains(Position pos)
+        {
+            return parts.Contains(pos);
+        }
+    }
+
 	public const int Dim = 11;
 
 	public Sticker playerBlock;
@@ -13,6 +69,7 @@ public class Grid : MonoBehaviour {
 	private const float magicConst = (Dim - 1) / 2.0f;
 
 	public List<Position> goals = new List<Position>();
+    public List<Acid> acidBlocks = new List<Acid>();
 
 	// This is a storage place for a teleporter that has just been
 	// used as a target. It'll be reactivated when the user clears
@@ -21,7 +78,7 @@ public class Grid : MonoBehaviour {
 	public List<Teleporter> teleporters;
 
 	public enum SquareType {
-		Player, Stickable, Empty, Block,
+		Player, Stickable, Empty, Block, Acid
 	}
 
 	public class Square {
@@ -32,54 +89,7 @@ public class Grid : MonoBehaviour {
 		}
 	}
 
-	[System.Serializable]
-	public class Teleporter {
-
-		public List<Position> parts;
-		public int xDisp;
-		public int yDisp;
-		Grid g;
-
-		public bool justAppeared;
-
-		private Teleporter() { }
-
-		public Teleporter(List<Position> parts, int xDisp, int yDisp) {
-			g = Utils.FindComponent<Grid>("Board");
-			g.teleporters.Add(this);
-			this.parts = parts;
-			this.xDisp = xDisp;
-			this.yDisp = yDisp;
-		}
-
-		public void AppearAt() {
-			justAppeared = true;
-			g.deactivated = this;
-		}
-
-		public bool ReadyToTeleport() {
-			if (justAppeared)
-				return false;
-			return Fits();
-		}
-
-		public bool Fits() {
-
-			if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col)))
-				return false;
-
-			foreach (Stickable s in g.playerBlock.AttachedPieces()) {
-				if (!parts.Contains(g.CoordToPos(s.gameObject.transform.position)))
-					return false;
-			}
-
-			return true;
-		}
-
-		public bool Contains(Position pos) {
-			return parts.Contains(pos);
-		}
-	}
+	
 
 	public enum Direction {
 		Up, Down, Left, Right
@@ -293,4 +303,20 @@ public class Grid : MonoBehaviour {
 
 		return true;
 	}
+    // checks to see if given location is acid, if so destroys the acid and returns true
+    public bool HandleAcid(int row, int col) {
+
+        foreach (Acid a in acidBlocks)
+        {
+            Position p = CoordToPos(a.transform.position);
+            if (p.Row == row && p.Col == col)
+            {
+                acidBlocks.Remove(a);
+                //destory acid object
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
