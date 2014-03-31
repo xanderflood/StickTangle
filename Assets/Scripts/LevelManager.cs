@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
+	public AudioClip restart;
 	private static string[] messages = {
 		"Level1",
 		"Level2",
@@ -21,6 +22,7 @@ public class LevelManager : MonoBehaviour {
 		level = Application.loadedLevel;
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
 		mesh.text = messages[level - 1];
+
 	}
 
 	public void AdvanceLevel() {
@@ -32,10 +34,14 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Input.GetKey(KeyCode.R)) {
-			Restart();
+		if (Input.GetKeyDown(KeyCode.R)) {
+			StartCoroutine(DelayRestart());
 		}
 	}
 
-
+	private IEnumerator DelayRestart() {
+		audio.PlayOneShot (restart);
+		yield return new WaitForSeconds(0.75f);
+		Restart ();
+	}
 }

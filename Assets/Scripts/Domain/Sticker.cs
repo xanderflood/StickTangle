@@ -8,7 +8,8 @@ using Square = Grid.Square;
 public class Sticker : Piece {
 
 	public Material stickerMat;
-
+	public AudioClip clearGoal;
+	public AudioClip teleportSound;
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
@@ -111,6 +112,7 @@ public class Sticker : Piece {
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
+			audio.PlayOneShot(clearGoal);
 			done = true;
 			StartCoroutine(AdvanceLevel());
 		}
@@ -181,12 +183,15 @@ public class Sticker : Piece {
 	}
 
 	private IEnumerator AdvanceLevel() {
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.75f);
 		lm.AdvanceLevel();
 	}
 
+
 	private void Teleport(int rowDelta, int colDelta) {
 		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
+
+		audio.PlayOneShot (teleportSound);
 
 		// Move the main block
 		gameObject.transform.position += disp;
@@ -204,4 +209,5 @@ public class Sticker : Piece {
 			t.AppearAt();
 		}
 	}
+	
 }
