@@ -183,7 +183,7 @@ public class Sticker : Piece {
 	}
 
 	private void Teleport(int rowDelta, int colDelta) {
-		Vector3 disp = new Vector3(rowDelta, colDelta, 0);
+		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
 
 		// Move the main block
 		gameObject.transform.position += disp;

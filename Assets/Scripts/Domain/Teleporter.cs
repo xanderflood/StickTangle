@@ -52,9 +52,8 @@ public class Teleporter : MonoBehaviour {
 		if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col))) {
 			return false;
 		}
-		
 		foreach (Stickable s in g.playerBlock.AttachedPieces()) {
-			if (!parts.Contains(g.CoordToPos(s.gameObject.transform.position))) {
+			if (!parts.Contains(new Position(s.row, s.col))) {
 				return false;
 			}
 		}

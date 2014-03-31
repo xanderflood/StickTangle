@@ -713,7 +713,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 565709673}
     m_Modifications:
     - target: {fileID: 400002, guid: 9f2bb9b3c01764617bdd7fcab2358ac0, type: 2}
       propertyPath: m_LocalPosition.x
@@ -877,6 +877,47 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!1 &565709672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: bcfec3af7ef2a72458f6f219296f2498, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 565709673}
+  - 114: {fileID: 565709674}
+  m_Layer: 0
+  m_Name: TeleporterPair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &565709673
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: bcfec3af7ef2a72458f6f219296f2498, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565709672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1714086161}
+  - {fileID: 1330034722}
+  m_Father: {fileID: 0}
+--- !u!114 &565709674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: bcfec3af7ef2a72458f6f219296f2498,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565709672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e520fdb646a60c4a947162eefbd3cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &597498803
 Prefab:
   m_ObjectHideFlags: 0
@@ -1091,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   row: 0
-  col: 0
+  col: 4
 --- !u!33 &765538023
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2032,7 +2073,7 @@ Transform:
   m_Children:
   - {fileID: 765538025}
   - {fileID: 530320183}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 565709673}
 --- !u!114 &1330034723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2042,11 +2083,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1330034721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecace6e92feb47ae8618265dfa05bd2, type: 3}
+  m_Script: {fileID: 11500000, guid: a7e7658b43331074eb90817ebf70daa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xJump: -4
-  yJump: -5
+  justAppeared: 0
+  row: 0
+  col: 0
+  rowDelta: 0
+  colDelta: 0
 --- !u!1001 &1416373696
 Prefab:
   m_ObjectHideFlags: 0
@@ -2451,7 +2495,7 @@ Transform:
   m_Children:
   - {fileID: 1463203450}
   - {fileID: 1273216502}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 565709673}
 --- !u!114 &1714086162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,11 +2505,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1714086160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecace6e92feb47ae8618265dfa05bd2, type: 3}
+  m_Script: {fileID: 11500000, guid: a7e7658b43331074eb90817ebf70daa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xJump: 4
-  yJump: 5
+  justAppeared: 0
+  row: 0
+  col: 0
+  rowDelta: 0
+  colDelta: 0
 --- !u!1001 &1786356710
 Prefab:
   m_ObjectHideFlags: 0
@@ -2649,6 +2696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBlock: {fileID: 0}
+  acidBlocks: []
+  deactivated: {fileID: 0}
   teleporters: []
 --- !u!1001 &1911972793
 Prefab:
@@ -2735,7 +2784,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 565709673}
     m_Modifications:
     - target: {fileID: 400002, guid: 9f2bb9b3c01764617bdd7fcab2358ac0, type: 2}
       propertyPath: m_LocalPosition.x
