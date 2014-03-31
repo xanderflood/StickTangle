@@ -5,8 +5,7 @@ using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Stickable : Piece {
-	private new void Start() {
-		base.Start();
+	private void Start() {
 		grid.SetSquare(row, col, new Square(SquareType.Stickable));
 		
 		Sticker s = Utils.FindComponent<Sticker>("Player");

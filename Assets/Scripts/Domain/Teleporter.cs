@@ -4,23 +4,33 @@ using System.Collections.Generic;
 public class Teleporter : MonoBehaviour {
 	// So we can't reteleport until we've completely moved off the teleport squares
 	public bool justAppeared;
-	
+
+	public int row;
+	public int col;
+
 	public int rowOther;
 	public int colOther;
 
 	private Grid g;
 	private List<Position> parts = new List<Position>();
-	
+
+	private void Awake() {
+		g = Utils.FindComponent<Grid>("Board");
+		g.teleporters.Add(this);
+		
+		Position pos = g.CoordToPos(transform.position);
+		row = pos.Row;
+		col = pos.Col;
+	}
+
 	private void Start() {
 		// All child objects are assumed to be Teleporter blocks
 		foreach (Transform child in transform) {
+			Utils.Assert(child.name == "TeleportBlock");
 			Piece piece = Utils.GetComponent<Piece>(child.gameObject);
 			Position p = new Position(piece.row, piece.col);
 			parts.Add(p);
 		}
-
-		g = Utils.FindComponent<Grid>("Board");
-		g.teleporters.Add(this);
 	}
 	
 	public void AppearAt() {

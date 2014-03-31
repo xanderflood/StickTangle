@@ -18,8 +18,7 @@ public class Sticker : Piece {
 	private LevelManager lm;
 	private List<Stickable> stickables = new List<Stickable>();
 	
-	private new void Start() {
-		base.Start();
+	private void Start() {
 		lm = Utils.GetComponent<LevelManager>(Camera.main.gameObject);
 
 		grid.playerBlock = this;

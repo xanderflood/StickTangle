@@ -13,14 +13,14 @@ public class Piece : MonoBehaviour {
     private bool hitAcid = false;
 	public int row, col;
 
-	protected void Start() {
+	protected void Awake() {
 		grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position);
 		row = pos.Row;
 		col = pos.Col;
 	}
 
-    public void DestroyAtEndOfMove() { 
+    public void DestroyAtEndOfMove() {
         hitAcid = true; 
     }
 
