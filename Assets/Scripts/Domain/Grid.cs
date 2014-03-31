@@ -223,7 +223,7 @@ public class Grid : MonoBehaviour {
 		return true;
 	}
 
-    // checks to see if given location is acid, if so destroys the acid and returns true
+    // Checks to see if given location is acid, if so destroys the acid and returns true
     public bool CheckForAndDestoryAcid(int row, int col) {
         foreach (Acid a in acidBlocks) {
             Position p = CoordToPos(a.transform.position);

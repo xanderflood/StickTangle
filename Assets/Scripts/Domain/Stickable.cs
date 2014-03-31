@@ -11,4 +11,9 @@ public class Stickable : Piece {
 		Sticker s = Utils.FindComponent<Sticker>("Player");
 		s.stickableMap.Add(new Position(row, col), this);
 	}
+
+	protected override void DestroyPiece() {
+		grid.SetSquare(row, col, new Square(SquareType.Empty));
+		Destroy(this.gameObject);
+	}
 }

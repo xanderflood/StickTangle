@@ -72,10 +72,10 @@ public class Sticker : Piece {
 			return false;
 		}
 
-		StartCoroutine(move(dr, dc));
+		StartCoroutine(Move(dr, dc));
 
 		foreach (Stickable s in stickables) {
-			StartCoroutine(s.move(dr, dc));
+			StartCoroutine(s.Move(dr, dc));
 		}
 
 		return true;
@@ -117,7 +117,7 @@ public class Sticker : Piece {
 	}
 
     void HandleAcid() {
-        //first, deal with stickables colliding with the acid
+        // First, deal with stickables colliding with the acid
         List<Stickable> toDestory = new List<Stickable>();
         foreach (Stickable s in stickables) {
             if (grid.CheckForAndDestoryAcid(s.row, s.col)) {
@@ -130,28 +130,33 @@ public class Sticker : Piece {
             stickables.Remove(s);
         }
         
-        //now deal with sticker
+        // Now deal with sticker
         if (grid.CheckForAndDestoryAcid(row, col)) {
             DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
         }
     }
 
-    //should only be called at the end of handleMove, if the Sticker hit an Acid Block
-    public void swapWithStickable() {
-            //if this is the last block, the player looses
-            if (stickables.Count == 0) {
-                //placeholder functionality
-                Debug.Log("Game Over, all blocks destroyed");
-                Application.LoadLevel(Application.loadedLevel); //reload the level,
-                return;
-            }
+	protected override void DestroyPiece() {
+		hitAcid = false;
+		SwapWithStickable();
+	}
 
-            //swap locations with some stickable, then destroy that stickable
-            row = stickables[0].row;
-            col = stickables[0].col;
-            transform.position = stickables[0].transform.position;
-            Destroy(stickables[0].gameObject);
-            stickables.RemoveAt(0);   
+    public void SwapWithStickable() {
+	    // If this is the last block, the player looses
+	    if (stickables.Count == 0) {
+	        // Placeholder functionality
+	        Debug.Log("Game Over, all blocks destroyed");
+			lm.Restart();
+	        return;
+	    }
+
+	    // Swap locations with some stickable, then destroy that stickable
+		grid.SetSquare(row, col, new Square(SquareType.Empty));
+	    row = stickables[0].row;
+	    col = stickables[0].col;
+	    transform.position = stickables[0].transform.position;
+	    Destroy(stickables[0].gameObject);
+	    stickables.RemoveAt(0);
     }
 
     public List<Stickable> AttachedPieces() {

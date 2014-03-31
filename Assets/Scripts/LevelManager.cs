@@ -27,9 +27,13 @@ public class LevelManager : MonoBehaviour {
 		Application.LoadLevel(++level);
 	}
 
+	public void Restart() {
+		Application.LoadLevel(level);
+	}
+
 	private void Update() {
 		if (Input.GetKey(KeyCode.R)) {
-			Application.LoadLevel(level);
+			Restart();
 		}
 	}
 

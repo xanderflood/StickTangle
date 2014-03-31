@@ -1453,7 +1453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f153058543e74b2419e74651f4516ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBlock: {fileID: 0}
   acidBlocks: []
   teleporters: []
 --- !u!23 &575532101
