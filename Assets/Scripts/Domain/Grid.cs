@@ -190,7 +190,6 @@ public class Grid : MonoBehaviour {
 			}
 		}
 
-		Utils.Assert(result);
 		return result;
 	}
 

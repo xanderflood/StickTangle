@@ -197,9 +197,10 @@ public class Sticker : Piece {
 			s.ChangePosition(s.row + dr, s.col + dc);
 		}
 
-		// Mark the target teleporter, so we don't get immediately returned
-		try {
-			grid.GetTeleporterAt(new Position(row, col)).AppearAt();
-		} catch { }
+		// If there is a teleporter at the target location, mark it as deactivated so we don't get immediately returned
+		Teleporter t = grid.GetTeleporterAt(new Position(row, col));
+		if (t != null) {
+			t.AppearAt();
+		}
 	}
 }
