@@ -6,17 +6,11 @@ using System.Text;
 public class Grid : MonoBehaviour {
 	public const int Dim = 11;
 
-	public Sticker playerBlock;
-
 	// Makes all of the position to coordinate computations work out
 	private const float magicConst = (Dim - 1) / 2.0f;
 
 	public List<Position> goals = new List<Position>();
     public List<Acid> acidBlocks = new List<Acid>();
-
-	// This is a storage place for a teleporter that has just been
-	// used as a target. It'll be reactivated when the user clears
-	public Teleporter deactivated = null;
 
 	public List<Teleporter> teleporters;
 
@@ -50,25 +44,6 @@ public class Grid : MonoBehaviour {
 				grid[i, j] = new Square(type);
 			}
 		}
-	}
-
-	private void Update() {
-		if (deactivated == null) {
-			return;
-		}
-
-		// Otherwise, check if the user is touching any part of that teleporter
-		foreach (Stickable s in playerBlock.AttachedPieces()) {
-			if (deactivated.Contains(new Position(s.row, s.col))) {
-				return;
-			}
-		}
-
-		if (deactivated.Contains(new Position(playerBlock.row, playerBlock.col)))
-			return;
-
-		deactivated.justAppeared = false;
-		deactivated = null;
 	}
 
 	/**

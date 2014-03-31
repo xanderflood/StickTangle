@@ -12,12 +12,15 @@ public class Teleporter : MonoBehaviour {
 	public int colDelta;
 
 	private Grid g;
+	private Sticker playerBlock;
 	private List<Position> parts = new List<Position>();
 
 	private void Awake() {
 		g = Utils.FindComponent<Grid>("Board");
 		g.teleporters.Add(this);
-		
+
+		playerBlock = Utils.FindComponent<Sticker>("Player");
+
 		Position pos = g.CoordToPos(transform.position);
 		row = pos.Row;
 		col = pos.Col;
@@ -32,10 +35,29 @@ public class Teleporter : MonoBehaviour {
 			parts.Add(p);
 		}
 	}
+
+	private void Update() {
+		if (justAppeared == false) {
+			return;
+		}
+
+		// Check if player block is in the teleporter
+		if (Contains(new Position(playerBlock.row, playerBlock.col))) {
+			return;
+		}
+
+		// Otherwise, check if the user is touching any part the teleporter
+		foreach (Stickable s in playerBlock.AttachedPieces()) {
+			if (Contains(new Position(s.row, s.col))) {
+				return;
+			}
+		}
+		
+		justAppeared = false;
+	}
 	
 	public void AppearAt() {
 		justAppeared = true;
-		g.deactivated = this;
 	}
 	
 	public bool ReadyToTeleport() {
@@ -49,10 +71,10 @@ public class Teleporter : MonoBehaviour {
 	* Check if the entire player and all of the stickables fit on the teleporter squares
 	*/
 	public bool Fits() {
-		if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col))) {
+		if (!parts.Contains(new Position(playerBlock.row, playerBlock.col))) {
 			return false;
 		}
-		foreach (Stickable s in g.playerBlock.AttachedPieces()) {
+		foreach (Stickable s in playerBlock.AttachedPieces()) {
 			if (!parts.Contains(new Position(s.row, s.col))) {
 				return false;
 			}

@@ -20,8 +20,6 @@ public class Sticker : Piece {
 	
 	private void Start() {
 		lm = Utils.GetComponent<LevelManager>(Camera.main.gameObject);
-
-		grid.playerBlock = this;
 	}
 
 	private bool isValidSquare(int newR, int newC) {
