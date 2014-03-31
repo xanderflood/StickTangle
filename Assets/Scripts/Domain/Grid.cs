@@ -15,7 +15,7 @@ public class Grid : MonoBehaviour {
 	public List<Teleporter> teleporters;
 
 	public enum SquareType {
-		Player, Stickable, Empty, Block, Acid
+		Player, Stickable, Empty, Block, Acid, Magnet
 	}
 
 	public class Square {
