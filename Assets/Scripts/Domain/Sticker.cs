@@ -30,7 +30,7 @@ public class Sticker : Piece {
 
 		SquareType type = grid.GetSquare(newR, newC).type;
 
-		return type != SquareType.Block;
+		return type != SquareType.Block && type != SquareType.Magnet;
 	}
 
 
@@ -110,6 +110,8 @@ public class Sticker : Piece {
 
         HandleAcid();
 
+		HandleMagnets();
+
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
 			audio.PlayOneShot(clearGoal);
@@ -118,7 +120,7 @@ public class Sticker : Piece {
 		}
 	}
 
-    void HandleAcid() {
+    private void HandleAcid() {
         // First, deal with stickables colliding with the acid
         List<Stickable> toDestory = new List<Stickable>();
         foreach (Stickable s in stickables) {
@@ -137,6 +139,10 @@ public class Sticker : Piece {
             DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
         }
     }
+
+	private void HandleMagnets() {
+		// TODO
+	}
 
 	protected override void DestroyPiece() {
 		hitAcid = false;
