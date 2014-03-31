@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public struct LevelRecord {
+public class LevelRecord {
 
-	public LevelRecord(int idealMoves, int idealPieces, int pieces = -1,
-	                     int moves = -1,  int stars = 0) {
+	public LevelRecord(int idealMoves, int idealPieces) {
+		Init(idealMoves, idealPieces, -1, -1, 0);
+	}
+
+	public LevelRecord(int idealMoves, int idealPieces, int pieces,
+	                     int moves, int stars) {
+		Init(idealMoves, idealPieces, pieces, moves, stars);
+	}
+
+	private void Init(int idealMoves, int idealPieces, int pieces,
+	                  int moves,  int stars) {
 		Moves = moves;
 		IdealMoves = idealMoves;
 		Pieces = pieces;

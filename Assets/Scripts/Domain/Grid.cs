@@ -6,20 +6,15 @@ using System.Text;
 public class Grid : MonoBehaviour {
 
     [System.Serializable]
-    public class Teleporter
-    {
-
+    public class Teleporter {
         public List<Position> parts;
         public int xDisp;
         public int yDisp;
-        Grid g;
+        private Grid g;
 
         public bool justAppeared;
 
-        private Teleporter() { }
-
-        public Teleporter(List<Position> parts, int xDisp, int yDisp)
-        {
+        public Teleporter(List<Position> parts, int xDisp, int yDisp) {
             g = Utils.FindComponent<Grid>("Board");
             g.teleporters.Add(this);
             this.parts = parts;
@@ -27,22 +22,18 @@ public class Grid : MonoBehaviour {
             this.yDisp = yDisp;
         }
 
-        public void AppearAt()
-        {
+        public void AppearAt() {
             justAppeared = true;
             g.deactivated = this;
         }
 
-        public bool ReadyToTeleport()
-        {
+        public bool ReadyToTeleport() {
             if (justAppeared)
                 return false;
             return Fits();
         }
 
-        public bool Fits()
-        {
-
+        public bool Fits() {
             if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col)))
                 return false;
 
@@ -55,8 +46,7 @@ public class Grid : MonoBehaviour {
             return true;
         }
 
-        public bool Contains(Position pos)
-        {
+        public bool Contains(Position pos) {
             return parts.Contains(pos);
         }
     }

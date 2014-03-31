@@ -7,7 +7,6 @@ public class TeleportScript : MonoBehaviour {
 	public int yJump;
 
 	void Start() {
-
 		// All child objects are assumed to be Teleporter blocks
 		List<Position> pos = new List<Position>();
 		foreach (Transform child in gameObject.transform) {

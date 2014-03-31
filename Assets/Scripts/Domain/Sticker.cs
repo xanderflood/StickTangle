@@ -10,6 +10,8 @@ public class Sticker : Piece {
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
+	public Pair<int, int> p = new Pair<int, int>(3, 3);
+
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
 	private bool done = false;
