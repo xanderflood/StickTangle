@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 using SquareType = Grid.SquareType;
+using Square = Grid.Square;
 
 public class Sticker : Piece {
 
 	public Material stickerMat;
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
-
-	public Pair<int, int> p = new Pair<int, int>(3, 3);
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
@@ -91,9 +90,9 @@ public class Sticker : Piece {
 			return;
 
 		// Check for valid teleporters
-		Grid.Teleporter tele;
-		if (grid.CheckReadyToTeleport(out tele)) {
-			Teleport(tele.xDisp, tele.yDisp);
+		Teleporter t = grid.CheckReadyToTeleport();
+		if (t != null) {
+			Teleport(t.rowOther, t.colOther);
 		}
 
 		// Return if no arrow key was pressed
@@ -120,40 +119,36 @@ public class Sticker : Piece {
 		}
 	}
 
-    void HandleAcid()
-    {
+    void HandleAcid() {
         //first, deal with stickables colliding with the acid
         List<Stickable> toDestory = new List<Stickable>();
-        foreach (Stickable s in stickables)
-        {
-            if (grid.CheckForAndDestoryAcid(s.row, s.col))
-            {
+        foreach (Stickable s in stickables) {
+            if (grid.CheckForAndDestoryAcid(s.row, s.col)) {
                 toDestory.Add(s);
             }
         }
 
-        foreach (Stickable s in toDestory)
-        {
+        foreach (Stickable s in toDestory) {
             s.DestroyAtEndOfMove();
             stickables.Remove(s);
         }
         
         //now deal with sticker
-        if (grid.CheckForAndDestoryAcid(row, col)){
+        if (grid.CheckForAndDestoryAcid(row, col)) {
             DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
         }
     }
+
     //should only be called at the end of handleMove, if the Sticker hit an Acid Block
     public void swapWithStickable() {
-     
             //if this is the last block, the player looses
-            if (stickables.Count == 0)
-            {
+            if (stickables.Count == 0) {
                 //placeholder functionality
                 Debug.Log("Game Over, all blocks destroyed");
                 Application.LoadLevel(Application.loadedLevel); //reload the level,
                 return;
             }
+
             //swap locations with some stickable, then destroy that stickable
             row = stickables[0].row;
             col = stickables[0].col;
@@ -162,8 +157,7 @@ public class Sticker : Piece {
             stickables.RemoveAt(0);   
     }
 
-    public List<Stickable> AttachedPieces()
-    {
+    public List<Stickable> AttachedPieces() {
         return stickables;
     }
 
@@ -189,45 +183,26 @@ public class Sticker : Piece {
 		lm.AdvanceLevel();
 	}
 
-	private void Teleport(int xDisp, int yDisp) {
-
-		Vector3 disp = new Vector3(xDisp, yDisp, 0);
+	private void Teleport(int rowOther, int colOther) {
+		int dr = rowOther - row;
+		int dc = colOther - col;
+		Vector3 disp = new Vector3(dr, dc, 0);
 
 		// Move the main block
 		gameObject.transform.position += disp;
-		grid.SetSquare(new Position(row, col), new Grid.Square(SquareType.Empty));
-		row += yDisp;
-		col += xDisp;
-		grid.SetSquare(new Position(row, col), new Grid.Square(SquareType.Player));
+		ChangePosition(row + dr, col + dc);
 
 		// Move the other blocks
 		foreach (Stickable s in stickables) {
-			
 			s.gameObject.transform.position += disp;
-			grid.SetSquare(new Position(s.row, s.col), new Grid.Square(SquareType.Empty));
-			s.row += yDisp;
-			s.col += xDisp;
-			grid.SetSquare(new Position(s.row, s.col), new Grid.Square(SquareType.Player));
+			s.ChangePosition(s.row + dr, s.col + dc);
 		}
 
 		// Mark the target teleporter, so we don't get immediately returned
 		try {
-			grid.GetTeleporterAt(grid.CoordToPos(gameObject.transform.position)).AppearAt();
+			grid.GetTeleporterAt(new Position(row, col)).AppearAt();
 		} catch {
 			Debug.Log(grid.CoordToPos(gameObject.transform.position));
 		}
-	}
-
-	private IEnumerator move(Vector3 to) {
-		inMotion = true;
-		
-		Vector3 velocity = speed * (to - transform.position).normalized;
-		while (transform.position != to) {
-			transform.position += velocity;
-			yield return null;
-		}
-		transform.position = to;
-		
-		inMotion = false;
 	}
 }

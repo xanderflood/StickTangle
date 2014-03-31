@@ -4,53 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 
 public class Grid : MonoBehaviour {
-
-    [System.Serializable]
-    public class Teleporter {
-        public List<Position> parts;
-        public int xDisp;
-        public int yDisp;
-        private Grid g;
-
-        public bool justAppeared;
-
-        public Teleporter(List<Position> parts, int xDisp, int yDisp) {
-            g = Utils.FindComponent<Grid>("Board");
-            g.teleporters.Add(this);
-            this.parts = parts;
-            this.xDisp = xDisp;
-            this.yDisp = yDisp;
-        }
-
-        public void AppearAt() {
-            justAppeared = true;
-            g.deactivated = this;
-        }
-
-        public bool ReadyToTeleport() {
-            if (justAppeared)
-                return false;
-            return Fits();
-        }
-
-        public bool Fits() {
-            if (!parts.Contains(new Position(g.playerBlock.row, g.playerBlock.col)))
-                return false;
-
-            foreach (Stickable s in g.playerBlock.AttachedPieces())
-            {
-                if (!parts.Contains(g.CoordToPos(s.gameObject.transform.position)))
-                    return false;
-            }
-
-            return true;
-        }
-
-        public bool Contains(Position pos) {
-            return parts.Contains(pos);
-        }
-    }
-
 	public const int Dim = 11;
 
 	public Sticker playerBlock;
@@ -63,7 +16,7 @@ public class Grid : MonoBehaviour {
 
 	// This is a storage place for a teleporter that has just been
 	// used as a target. It'll be reactivated when the user clears
-	private Teleporter deactivated = null;
+	public Teleporter deactivated = null;
 
 	public List<Teleporter> teleporters;
 
@@ -79,8 +32,6 @@ public class Grid : MonoBehaviour {
 		}
 	}
 
-	
-
 	public enum Direction {
 		Up, Down, Left, Right
 	}
@@ -91,7 +42,7 @@ public class Grid : MonoBehaviour {
 	
 	private Square[,] grid;
 
-	void Awake() {
+	private void Awake() {
 		grid = new Square[Dim, Dim];
 		for (int i = 0; i < Dim; i++) {
 			for (int j = 0; j < Dim; j++) {
@@ -101,18 +52,19 @@ public class Grid : MonoBehaviour {
 		}
 	}
 
-	void Update() {
-
-		if (deactivated == null)
+	private void Update() {
+		if (deactivated == null) {
 			return;
+		}
 
 		// Otherwise, check if the user is touching any part of that teleporter
 		foreach (Stickable s in playerBlock.AttachedPieces()) {
-			if (deactivated.parts.Contains(CoordToPos(s.gameObject.transform.position)))
+			if (deactivated.Contains(new Position(s.row, s.col))) {
 				return;
+			}
 		}
 
-		if (deactivated.parts.Contains(new Position(playerBlock.row, playerBlock.col)))
+		if (deactivated.Contains(new Position(playerBlock.row, playerBlock.col)))
 			return;
 
 		deactivated.justAppeared = false;
@@ -214,29 +166,32 @@ public class Grid : MonoBehaviour {
 		return result;
 	}
 
-	public bool CheckReadyToTeleport(out Teleporter tele) {
+	public Teleporter CheckReadyToTeleport() {
+		Teleporter result = null;
 		foreach (Teleporter t in teleporters) {
 			if (t.ReadyToTeleport()) {
-				tele = t;
-				return true;
+				result = t;
+				break;
 			}
 		}
 
-		tele = null;
-		return false;
+		return result;
 	}
 
 	/**
 	 * Returns the teleporter whose list of positions contains this one
 	 */
 	public Teleporter GetTeleporterAt(Position pos) {
+		Teleporter result = null;
 		foreach (Teleporter t in teleporters) {
-			if (t.Contains(pos))
-				return t;
+			if (t.Contains(pos)) {
+				result = t;
+				break;
+			}
 		}
 
-		Utils.Assert(false);
-		return null;		 // C# requires me to return a value :(
+		Utils.Assert(result);
+		return result;
 	}
 
 	public bool IsEmpty(int row, int col) {
@@ -293,14 +248,12 @@ public class Grid : MonoBehaviour {
 
 		return true;
 	}
+
     // checks to see if given location is acid, if so destroys the acid and returns true
     public bool CheckForAndDestoryAcid(int row, int col) {
-
-        foreach (Acid a in acidBlocks)
-        {
+        foreach (Acid a in acidBlocks) {
             Position p = CoordToPos(a.transform.position);
-            if (p.Row == row && p.Col == col)
-            {
+            if (p.Row == row && p.Col == col) {
                 acidBlocks.Remove(a);
                 Destroy(a.gameObject);
                 return true;

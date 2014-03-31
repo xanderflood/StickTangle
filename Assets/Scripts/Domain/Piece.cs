@@ -24,13 +24,17 @@ public class Piece : MonoBehaviour {
         hitAcid = true; 
     }
 
+	public void ChangePosition(int newRow, int newCol) {
+		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Empty));
+		row = newRow;
+		col = newCol;
+		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
+	}
+
 	public IEnumerator move(int dr, int dc) {
 		inMotion = true;
-		
-		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Empty));
-		row += dr;
-		col += dc;
-		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
+
+		ChangePosition(row + dr, col + dc);
 		
 		Vector3 to = grid.PosToCoord(row, col, layer);
 		
