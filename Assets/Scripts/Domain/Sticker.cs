@@ -201,8 +201,6 @@ public class Sticker : Piece {
 		// Mark the target teleporter, so we don't get immediately returned
 		try {
 			grid.GetTeleporterAt(new Position(row, col)).AppearAt();
-		} catch {
-			Debug.Log(grid.CoordToPos(gameObject.transform.position));
-		}
+		} catch { }
 	}
 }
