@@ -91,7 +91,7 @@ public class Sticker : Piece {
 		// Check for valid teleporters
 		Teleporter t = grid.CheckReadyToTeleport();
 		if (t != null) {
-			Teleport(t.rowOther, t.colOther);
+			Teleport(t.rowDelta, t.colDelta);
 		}
 
 		// Return if no arrow key was pressed
@@ -182,19 +182,17 @@ public class Sticker : Piece {
 		lm.AdvanceLevel();
 	}
 
-	private void Teleport(int rowOther, int colOther) {
-		int dr = rowOther - row;
-		int dc = colOther - col;
-		Vector3 disp = new Vector3(dr, dc, 0);
+	private void Teleport(int rowDelta, int colDelta) {
+		Vector3 disp = new Vector3(rowDelta, colDelta, 0);
 
 		// Move the main block
 		gameObject.transform.position += disp;
-		ChangePosition(row + dr, col + dc);
+		ChangePosition(row + rowDelta, col + colDelta);
 
 		// Move the other blocks
 		foreach (Stickable s in stickables) {
 			s.gameObject.transform.position += disp;
-			s.ChangePosition(s.row + dr, s.col + dc);
+			s.ChangePosition(s.row + rowDelta, s.col + colDelta);
 		}
 
 		// If there is a teleporter at the target location, mark it as deactivated so we don't get immediately returned

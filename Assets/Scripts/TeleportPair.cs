@@ -7,10 +7,10 @@ public class TeleportPair : MonoBehaviour {
 		Teleporter first = Utils.GetComponent<Teleporter>(transform.GetChild(0).gameObject);
 		Teleporter second = Utils.GetComponent<Teleporter>(transform.GetChild(1).gameObject);
 
-		first.rowOther = second.row;
-		first.colOther = second.col;
+		first.rowDelta = second.row - first.row;
+		first.colDelta = second.col - first.col;
 
-		second.rowOther = first.row;
-		second.colOther = first.col;
+		second.rowDelta = first.rowDelta * -1;
+		second.colDelta = first.colDelta * -1;
 	}
 }

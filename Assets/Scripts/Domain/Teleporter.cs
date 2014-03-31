@@ -8,8 +8,8 @@ public class Teleporter : MonoBehaviour {
 	public int row;
 	public int col;
 
-	public int rowOther;
-	public int colOther;
+	public int rowDelta;
+	public int colDelta;
 
 	private Grid g;
 	private List<Position> parts = new List<Position>();
