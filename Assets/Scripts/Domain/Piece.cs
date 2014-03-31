@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
-public abstract class Piece : MonoBehaviour {
+public class Piece : MonoBehaviour {
 	public int row, col;
 	
 	protected const float speed = 0.1f;
@@ -32,7 +32,10 @@ public abstract class Piece : MonoBehaviour {
 		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
 	}
 
-	protected abstract void DestroyPiece();
+	protected virtual void DestroyPiece() {
+		Log.error("This function should be abstract but Unity is a piece of shit. Don't use me.");
+		Utils.Assert(false);
+	}
 
 	public IEnumerator Move(int dr, int dc) {
 		inMotion = true;
