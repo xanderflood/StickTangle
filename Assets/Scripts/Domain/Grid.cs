@@ -9,7 +9,7 @@ public class Grid : MonoBehaviour {
 	// Makes all of the position to coordinate computations work out
 	private const float magicConst = (Dim - 1) / 2.0f;
 
-	public AudioClip combine;
+	public AudioClip blop;
 	public List<Position> goals = new List<Position>();
     public List<Acid> acidBlocks = new List<Acid>();
 
@@ -241,6 +241,6 @@ public class Grid : MonoBehaviour {
 
 	private IEnumerator attachStickable() {
 		yield return new WaitForSeconds(0.15f);
-		audio.PlayOneShot (combine);
+		audio.PlayOneShot (blop);
 	}
 }
