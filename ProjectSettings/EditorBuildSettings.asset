@@ -24,13 +24,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Stage1/Level7.unity
   - enabled: 1
-    path: Assets/Scenes/AcidLevels/Level2.1.unity
+    path: Assets/Scenes/Stage2/Level2.1.unity
   - enabled: 1
-    path: Assets/Scenes/AcidLevels/Level2.2.unity
+    path: Assets/Scenes/Stage2/Level2.2.unity
   - enabled: 1
-    path: Assets/Scenes/Level 4.1.unity
+    path: Assets/Scenes/Stage3/Level3.1.unity
   - enabled: 1
-    path: Assets/Scenes/Level 4.2.unity
+    path: Assets/Scenes/Stage3/Level3.2.unity
   - enabled: 0
     path: Assets/Scenes/Level2.1.unity
   - enabled: 1
