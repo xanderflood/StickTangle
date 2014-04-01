@@ -9,6 +9,7 @@ public class Grid : MonoBehaviour {
 	// Makes all of the position to coordinate computations work out
 	private const float magicConst = (Dim - 1) / 2.0f;
 
+	public AudioClip combine;
 	public List<Position> goals = new List<Position>();
     public List<Acid> acidBlocks = new List<Acid>();
 
@@ -134,6 +135,7 @@ public class Grid : MonoBehaviour {
 			int stepC = dc[(int) i];
 		
 			if (grid[row + stepR, col + stepC].type == SquareType.Stickable) {
+				StartCoroutine(attachStickable());
 				result.Add(new Position(row + stepR, col + stepC));
 			}
 		}
@@ -236,4 +238,9 @@ public class Grid : MonoBehaviour {
 
         return false;
     }
+
+	private IEnumerator attachStickable() {
+		yield return new WaitForSeconds(0.15f);
+		audio.PlayOneShot (combine);
+	}
 }

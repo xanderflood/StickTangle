@@ -10,6 +10,8 @@ public class Sticker : Piece {
 	public Material stickerMat;
 	public AudioClip clearGoal;
 	public AudioClip teleportSound;
+	public AudioClip wallBump;
+
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
@@ -70,12 +72,17 @@ public class Sticker : Piece {
 		}
 
 		if (!isValidMove(dr, dc)) {
+			audio.clip = wallBump;
+
+			if (!audio.isPlaying)
+				audio.Play();
 			return false;
 		}
 
 		StartCoroutine(Move(dr, dc));
 
 		foreach (Stickable s in stickables) {
+
 			StartCoroutine(s.Move(dr, dc));
 		}
 
@@ -99,6 +106,7 @@ public class Sticker : Piece {
 		}
 
 		// Check for new stickables next to root piece
+
 		List<Stickable> toAdd = GetStickables(row, col);
 
 		// Check for new stickables next to other pieces
@@ -107,6 +115,7 @@ public class Sticker : Piece {
 		}
 
 		stickables.AddRange(toAdd);
+
 
         HandleAcid();
 
@@ -183,6 +192,7 @@ public class Sticker : Piece {
 			s.renderer.material = stickerMat;
 			stickableMap.Remove(positions[i]);
 			grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
+
 		}
 
 		return toAdd;
@@ -192,8 +202,7 @@ public class Sticker : Piece {
 		yield return new WaitForSeconds(0.75f);
 		lm.AdvanceLevel();
 	}
-
-
+	
 	private void Teleport(int rowDelta, int colDelta) {
 		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
 
