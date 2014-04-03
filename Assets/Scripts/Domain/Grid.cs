@@ -231,13 +231,21 @@ public class Grid : MonoBehaviour {
             Position p = CoordToPos(a.transform.position);
             if (p.Row == row && p.Col == col) {
                 acidBlocks.Remove(a);
-                Destroy(a.gameObject);
+                StartCoroutine(WaitForMoveThenDestoryAcidBlock(a));
                 return true;
             }
         }
 
         return false;
     }
+
+    private IEnumerator WaitForMoveThenDestoryAcidBlock(Acid a)
+    {
+        // amount of time the move animation takes, computed by getting timestamps at the start of the move and when destroyPeice is called
+        yield return new WaitForSeconds(0.165f); 
+        Destroy(a.gameObject);
+    }
+
 
 	private IEnumerator attachStickable() {
 		yield return new WaitForSeconds(0.15f);
