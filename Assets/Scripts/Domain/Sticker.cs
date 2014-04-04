@@ -11,6 +11,7 @@ public class Sticker : Piece {
 	public AudioClip clearGoal;
 	public AudioClip teleportSound;
 	public AudioClip wallBump;
+	public AudioClip acid;
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
@@ -135,6 +136,7 @@ public class Sticker : Piece {
         foreach (Stickable s in stickables) {
             if (grid.CheckForAndDestoryAcid(s.row, s.col)) {
                 toDestory.Add(s);
+					
             }
         }
 
@@ -145,6 +147,7 @@ public class Sticker : Piece {
         
         // Now deal with sticker
         if (grid.CheckForAndDestoryAcid(row, col)) {
+			audio.PlayOneShot(acid);
             DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
         }
     }
@@ -202,7 +205,7 @@ public class Sticker : Piece {
 		yield return new WaitForSeconds(0.75f);
 		lm.AdvanceLevel();
 	}
-	
+
 	private void Teleport(int rowDelta, int colDelta) {
 		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
 
