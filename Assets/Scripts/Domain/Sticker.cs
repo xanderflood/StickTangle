@@ -106,9 +106,15 @@ public class Sticker : Piece {
 			return;
 		}
 
-		// Check for new stickables next to root piece
+        //acid must be handled before attaching stickables, 
+        //because of the case where an acid block is adjacent to a stickable
+        HandleAcid();
 
-		List<Stickable> toAdd = GetStickables(row, col);
+        List<Stickable> toAdd = new List<Stickable>();
+		// Check for new stickables next to root piece
+        if (!hitAcid) { //if the root piece is being destroyed by acid, don't attach anything to it
+		   toAdd.AddRange(GetStickables(row, col));
+        }
 
 		// Check for new stickables next to other pieces
 		foreach (Stickable s in stickables) {
@@ -118,7 +124,7 @@ public class Sticker : Piece {
 		stickables.AddRange(toAdd);
 
 
-        HandleAcid();
+
 
 		HandleMagnets();
 
