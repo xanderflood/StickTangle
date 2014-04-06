@@ -19,10 +19,11 @@ public class LevelManager : MonoBehaviour {
 	private int level;
 	bool restarting = false;
 
-	private void Start() {
+	void Start() {
 		level = Application.loadedLevel;
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
-		mesh.text = messages[level - 1];
+		if (level != 0)
+			mesh.text = messages[level - 1];
 
 		DataLogger.Initialize();
 	}

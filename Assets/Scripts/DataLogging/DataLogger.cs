@@ -54,11 +54,11 @@ public static class DataLogger {
 	public static void Initialize () {
 		if (Initialized)
 			return;
+		
+		Initialized = true;
 
 		currentLevel = new List<Attempt>();
 		currentAttempt = new Attempt();
-
-		Initialized = true;
 		
 		if (!PlayerPrefs.HasKey("numPlayers"))
 			PlayerPrefs.SetInt("numPlayers", 0);
