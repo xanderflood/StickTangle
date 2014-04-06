@@ -79,11 +79,12 @@ public class Sticker : Piece {
 				audio.Play();
 			return false;
 		}
+		
+		DataLogger.Move();
 
 		StartCoroutine(Move(dr, dc));
 
 		foreach (Stickable s in stickables) {
-
 			StartCoroutine(s.Move(dr, dc));
 		}
 
@@ -122,9 +123,7 @@ public class Sticker : Piece {
 		}
 
 		stickables.AddRange(toAdd);
-
-
-
+		DataLogger.Attach(toAdd.Count);
 
 		HandleMagnets();
 
