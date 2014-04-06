@@ -199,8 +199,7 @@ public class Sticker : Piece {
 			toAdd.Add(s);
 			s.renderer.material = stickerMat;
 			stickableMap.Remove(positions[i]);
-			grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
-
+			grid.SetSquare(s.row, s.col, new Square(SquareType.Player));
 		}
 
 		return toAdd;
