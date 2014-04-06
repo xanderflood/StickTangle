@@ -343,8 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052d7123d74e0c94399e98629e03e51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
-  col: 0
 --- !u!23 &141318511
 Renderer:
   m_ObjectHideFlags: 0
@@ -2974,6 +2972,7 @@ GameObject:
   - 114: {fileID: 865777362}
   - 114: {fileID: 865777361}
   - 82: {fileID: 865777368}
+  - 114: {fileID: 865777369}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3131,6 +3130,20 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &865777369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 865777360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e7a870d71f34b419e61e42676d8356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topColor: {r: 0, g: 0, b: .0392156877, a: 1}
+  bottomColor: {r: 0, g: 0, b: .196078435, a: 1}
+  gradientLayer: 10
 --- !u!1 &867464327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,8 +4349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052d7123d74e0c94399e98629e03e51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
-  col: 0
 --- !u!23 &1242100763
 Renderer:
   m_ObjectHideFlags: 0
@@ -5689,8 +5700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
-  col: 0
   stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
   clearGoal: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   teleportSound: {fileID: 8300000, guid: 81ea20ba256d74fabb7f879b12a7b697, type: 3}
