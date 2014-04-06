@@ -14,6 +14,7 @@ public class Grid : MonoBehaviour {
     public List<Acid> acidBlocks = new List<Acid>();
 
 	public List<Teleporter> teleporters;
+	public Dictionary<Position, Magnet> magnetMap = new Dictionary<Position, Magnet>();
 
 	public enum SquareType {
 		Player, Stickable, Empty, Block, Acid, Magnet
@@ -90,6 +91,9 @@ public class Grid : MonoBehaviour {
 				case SquareType.Stickable:
 					sb.Append("S");
 					break;
+				case SquareType.Magnet:
+					sb.Append("M");
+					break;
 				}
 			}
 			sb.AppendLine("");
@@ -140,6 +144,20 @@ public class Grid : MonoBehaviour {
 			}
 		}
 
+		return result;
+	}
+
+	public List<Position> GetMagnets(int row, int col) {
+		List<Position> result = new List<Position>();
+		for (int i = 0; i < dr.Length; i++) {
+			int stepR = dr[(int) i]; 
+			int stepC = dc[(int) i];
+			
+			if (grid[row + stepR, col + stepC].type == SquareType.Magnet) {
+				result.Add(new Position(row + stepR, col + stepC));
+			}
+		}
+		
 		return result;
 	}
 

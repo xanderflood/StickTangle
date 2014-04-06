@@ -82,15 +82,29 @@ public class Sticker : Piece {
 		
 		DataLogger.Move();
 
-		StartCoroutine(Move(dr, dc));
+		if (!IsStuckToManget(dr, dc)) {
+			StartCoroutine(Move(dr, dc));
+		} else {
+			if (stickables.Count > 0) {
+				SwapWithStickable();
+			}
+		}
 
-		foreach (Stickable s in stickables) {
-			StartCoroutine(s.Move(dr, dc));
+		for (int i = stickables.Count - 1; i >= 0; i--) {
+			Stickable s = stickables[i];
+			if (!s.IsStuckToManget(dr, dc)) {
+				StartCoroutine(s.Move(dr, dc));
+			} else {
+				// Detach stickable
+				stickableMap.Add(s.pos, s);
+				stickables.Remove(s);
+				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
+			}
 		}
 
 		return true;
 	}
-	
+
 	private void Update() {
 		// Return if already moving
 		if (inMotion || done)
@@ -125,8 +139,6 @@ public class Sticker : Piece {
 		stickables.AddRange(toAdd);
 		DataLogger.Attach(toAdd.Count);
 
-		HandleMagnets();
-
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
 			audio.PlayOneShot(clearGoal);
@@ -157,31 +169,33 @@ public class Sticker : Piece {
         }
     }
 
-	private void HandleMagnets() {
-		// TODO
-	}
+	public override void DestroyPiece() {
+		// If this is the last block, the player looses
+		if (stickables.Count == 0) {
+			// Placeholder functionality
+			Debug.Log("Game Over, all blocks destroyed");
+			lm.Restart();
+			return;
+		}
 
-	protected override void DestroyPiece() {
 		hitAcid = false;
 		SwapWithStickable();
+		stickables[0].DestroyPiece();
+		stickables.RemoveAt(0);
 	}
 
     public void SwapWithStickable() {
-	    // If this is the last block, the player looses
-	    if (stickables.Count == 0) {
-	        // Placeholder functionality
-	        Debug.Log("Game Over, all blocks destroyed");
-			lm.Restart();
-	        return;
-	    }
+		Utils.Assert(stickables.Count > 0);
 
 	    // Swap locations with some stickable, then destroy that stickable
-		grid.SetSquare(row, col, new Square(SquareType.Empty));
-	    row = stickables[0].row;
-	    col = stickables[0].col;
-	    transform.position = stickables[0].transform.position;
-	    Destroy(stickables[0].gameObject);
-	    stickables.RemoveAt(0);
+		Stickable s = stickables[0];
+		Position tempPos = pos;
+		pos = s.pos;
+		s.pos = tempPos;
+
+		Vector3 tempTransform = transform.position;
+		transform.position = s.transform.position;
+		s.transform.position = tempTransform;
     }
 
     public List<Stickable> AttachedPieces() {

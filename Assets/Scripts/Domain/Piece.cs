@@ -6,7 +6,25 @@ using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Piece : MonoBehaviour {
-	public int row, col;
+	public Position pos = new Position(-1, -1);
+	
+	public int row {
+		get {
+			return pos.Row;
+		}
+		set {
+			pos.Row = value;
+		}
+	}
+
+	public int col {
+		get {
+			return pos.Col;
+		}
+		set {
+			pos.Col = value;
+		}
+	}
 	
 	protected const float speed = 0.1f;
 	protected const int layer = -2;
@@ -26,15 +44,31 @@ public class Piece : MonoBehaviour {
     }
 
 	public void ChangePosition(int newRow, int newCol) {
-		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Empty));
+		grid.SetSquare(row, col, new Square(SquareType.Empty));
 		row = newRow;
 		col = newCol;
-		grid.SetSquare(row, col, new Grid.Square(Grid.SquareType.Player));
+		grid.SetSquare(row, col, new Square(SquareType.Player));
 	}
 
-	protected virtual void DestroyPiece() {
+	public virtual void DestroyPiece() {
 		Log.error("This function should be abstract but Unity is a piece of shit. Don't use me.");
 		Utils.Assert(false);
+	}
+
+	public bool IsStuckToManget(int dr, int dc) {
+		bool stuckToMagnet = false;
+		List<Position> magnets = grid.GetMagnets(row, col);
+		foreach (Position p in magnets) {
+			Magnet m;
+			grid.magnetMap.TryGetValue(p, out m);
+			Utils.Assert(m);
+
+			if (m.IsMovingAway(row, col, dr, dc)) {
+				stuckToMagnet = true;
+				break;
+			}
+		}
+		return stuckToMagnet;
 	}
 
 	public IEnumerator Move(int dr, int dc) {
