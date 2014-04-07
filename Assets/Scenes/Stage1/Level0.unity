@@ -496,6 +496,14 @@ Prefab:
       propertyPath: m_Volume
       value: .200000003
       objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
   m_RootGameObject: {fileID: 1572171752}
@@ -1119,6 +1127,7 @@ GameObject:
   - 4: {fileID: 1572171754}
   - 82: {fileID: 1572171753}
   - 114: {fileID: 1572171755}
+  - 114: {fileID: 1572171757}
   - 114: {fileID: 1572171756}
   m_Layer: 0
   m_Name: Music
@@ -1137,10 +1146,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: .200000003
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 60
   DopplerLevel: 1
@@ -1221,6 +1230,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f577d7fd71a584abb81a37506ed893c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1572171757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 2ccdd170c1cea0e41b4b53dac077cf95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1140265862}
+  m_GameObject: {fileID: 1572171752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585c2cfabbaca4430a56dca645d8da66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  melody1: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
 --- !u!1001 &1786356710
 Prefab:
   m_ObjectHideFlags: 0
