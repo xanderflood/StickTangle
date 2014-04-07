@@ -5,6 +5,7 @@ public class MusicSelector : MonoBehaviour {
 
 	public AudioClip melody1;
 	public AudioClip melody2;
+	public AudioClip melody3;
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +39,18 @@ public class MusicSelector : MonoBehaviour {
 				audio.Play(); 
 		}
 		
+		if ((Application.loadedLevelName == "Level3.1")){
+			if (!audio.isPlaying)
+				audio.clip = melody3;
+			if (!audio.isPlaying)
+				audio.Play(); 
+		}
 
+		if (Application.loadedLevelName == "Level3.2"){
+			audio.clip = melody3;
+			if (!audio.isPlaying)
+				audio.Play(); 
+		}
 	
 	}
 
