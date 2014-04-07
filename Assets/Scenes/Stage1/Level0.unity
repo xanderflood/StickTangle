@@ -149,6 +149,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
+      propertyPath: m_Volume
+      value: .100000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
   m_RootGameObject: {fileID: 893410135}
@@ -350,7 +354,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 5e2612939e6664e279a61799eab21d36, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .349999994
+  m_Volume: .100000001
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -487,6 +491,10 @@ Prefab:
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
+      propertyPath: m_Volume
+      value: .200000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
@@ -645,7 +653,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -704,7 +712,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .605000019
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1111,6 +1119,7 @@ GameObject:
   - 4: {fileID: 1572171754}
   - 82: {fileID: 1572171753}
   - 114: {fileID: 1572171755}
+  - 114: {fileID: 1572171756}
   m_Layer: 0
   m_Name: Music
   m_TagString: music
@@ -1129,7 +1138,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .150999993
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1201,6 +1210,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: music
+--- !u!114 &1572171756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572171752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f577d7fd71a584abb81a37506ed893c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1786356710
 Prefab:
   m_ObjectHideFlags: 0

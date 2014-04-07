@@ -73,7 +73,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -131,7 +131,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .605000019
+  m_Volume: .800000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -422,8 +422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
-  col: 0
   stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
   clearGoal: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   teleportSound: {fileID: 8300000, guid: 81ea20ba256d74fabb7f879b12a7b697, type: 3}
