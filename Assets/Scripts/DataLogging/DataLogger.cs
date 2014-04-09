@@ -12,7 +12,7 @@ public static class DataLogger {
 	//Maintains a record of each attempt to finish the current level
 	static List<Attempt> currentLevel;
 	//Maintains a record of the current attempt
-	static Attempt currentAttempt;
+	static Attempt currentAttempt = new Attempt();
 
 	static float startTime;
 
