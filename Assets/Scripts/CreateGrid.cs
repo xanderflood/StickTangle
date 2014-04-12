@@ -84,7 +84,7 @@ public class CreateGrid : MonoBehaviour {
 
 	private void CreateBlock(Vector3 position) {
 		GameObject block = Instantiate(blockPrefab) as GameObject;
-		position.z = -2;
+		position.z = -1;
 		block.transform.position = position;
 		block.transform.parent = board.transform;
 	}

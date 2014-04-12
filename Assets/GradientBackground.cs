@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GradientBackground : MonoBehaviour {
 	
-	public Color topColor = Color.blue;
+	public Color topColor = Color.green;
 	public Color bottomColor = Color.white;
 	public int gradientLayer = 7;
 	
-	void Awake () {	
+	void Awake() {	
 		gradientLayer = Mathf.Clamp(gradientLayer, 0, 31);
 		if (!camera) {
 			Debug.LogError ("Must attach GradientBackground script to the camera");
@@ -36,5 +36,4 @@ public class GradientBackground : MonoBehaviour {
 		gradientPlane.renderer.material = mat;
 		gradientPlane.layer = gradientLayer;
 	}
-	
 }
