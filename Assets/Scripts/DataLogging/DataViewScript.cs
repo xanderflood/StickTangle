@@ -63,9 +63,8 @@ public class DataViewScript : MonoBehaviour {
 		GUI.Label(new Rect(300, 70, 400, 90), "Plays");
 		
 		int nPlays = PlayerPrefs.GetInt("numPlays" + playerID + "," + realLevelID);
-		Debug.Log(nPlays);
 		
-		scrollViewVector = GUI.BeginScrollView (new Rect (305, 95, 500, 400),
+		scrollViewVector = GUI.BeginScrollView (new Rect (305, 95, 1100, 400),
 		                       scrollViewVector, new Rect (0, 0, 500, 20*nPlays));
 		
 		string[] playIds = new string[(nPlays + 1)*7];
@@ -94,8 +93,23 @@ public class DataViewScript : MonoBehaviour {
 			playIds[7*(i+1) + 6] = att.ResetY.ToString();
 		}
 		
-		playID = GUI.SelectionGrid(new Rect(0, 0, 500, 20*(nPlays + 1)), playID, playIds, 7);
-		
+		GUI.SelectionGrid(new Rect(0, 0, 500, 20*(nPlays + 1)), playID, playIds, 7);
+
+		//Date/time list
+		string[] times = new string[nPlays + 1];
+		times[0] = "Time";
+		for (int i = 0; i < nPlays; ++i) {
+			
+			string str = PlayerPrefs.GetString("play" + playerID + "," + realLevelID + "," + i);
+			Attempt att = new Attempt(str);
+			
+			times[i+1] = (att.StartTime < 0 ? "N/A"
+			         : new System.DateTime(att.StartTime).ToShortDateString() + " "
+			              + new System.DateTime(att.StartTime).ToShortTimeString() + " ");
+		}
+
+		GUI.SelectionGrid(new Rect(505, 0, 150, 20*(nPlays + 1)), playID, times, 1);
+
 		GUI.EndScrollView();
 
 	}

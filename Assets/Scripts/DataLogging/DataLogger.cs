@@ -12,7 +12,7 @@ public static class DataLogger {
 	//Maintains a record of each attempt to finish the current level
 	static List<Attempt> currentLevel;
 	//Maintains a record of the current attempt
-	static Attempt currentAttempt = new Attempt();
+	static Attempt currentAttempt;
 
 	static float startTime;
 
@@ -27,26 +27,27 @@ public static class DataLogger {
 	}
 
 	public static void Restart() {
+		currentAttempt.Time = Time.time - startTime;
+
 		currentAttempt.Success = false;
 		currentLevel.Add(currentAttempt);
 		currentAttempt = new Attempt();
 		
 		currentAttempt.ResetX = Utils.FindComponent<Sticker>("Player").col;
 		currentAttempt.ResetY = Utils.FindComponent<Sticker>("Player").row;
-
-		recordTime();
+		
+		currentAttempt.StartTime = System.DateTime.Now.Ticks;
+		startTime = currentAttempt.Time;
 	}
 
 	public static void Win() {
+		currentAttempt.Time = Time.time - startTime;
+
 		currentAttempt.Success = true;
 		currentLevel.Add(currentAttempt);
 		currentAttempt = new Attempt();
 
-		recordTime();
-	}
-
-	static void recordTime() {
-		currentAttempt.Time = Time.time - startTime;
+		currentAttempt.StartTime = System.DateTime.Now.Ticks;
 		startTime = currentAttempt.Time;
 	}
 
@@ -67,6 +68,9 @@ public static class DataLogger {
 		PlayerPrefs.SetInt("numPlayers", playerID + 1);
 
 		startTime = Time.time;
+		
+		currentAttempt.StartTime = System.DateTime.Now.Ticks;
+		currentAttempt.Time = Time.time - startTime;
 	}
 
 	public static void Save() {
