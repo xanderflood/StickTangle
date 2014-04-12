@@ -10,9 +10,10 @@ public static class DataLogger {
 	static bool Initialized = false;
 
 	//Maintains a record of each attempt to finish the current level
-	static List<Attempt> currentLevel;
+
+	static List<Attempt> currentLevel = new List<Attempt>();
 	//Maintains a record of the current attempt
-	static Attempt currentAttempt;
+	static Attempt currentAttempt = new Attempt();
 
 	static float startTime;
 
@@ -57,9 +58,6 @@ public static class DataLogger {
 			return;
 		
 		Initialized = true;
-
-		currentLevel = new List<Attempt>();
-		currentAttempt = new Attempt();
 		
 		if (!PlayerPrefs.HasKey("numPlayers"))
 			PlayerPrefs.SetInt("numPlayers", 0);

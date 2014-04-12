@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<levels>
+	<stage id="1">
+		<level id="1">
+			<stars>
+				<bronze>15</bronze>
+				<silver>10</silver>
+				<gold>5</gold>
+			</stars>
+			<narration>hello world!</narration>
+		</level>
+		<level id="2">
+			<stars>
+				<bronze>15</bronze>
+				<silver>10</silver>
+				<gold>5</gold>
+			</stars>
+			<narration>hello world2!</narration>
+		</level>
+	</stage>
+	<stage id="2">
+		<level id="1">
+			<stars>
+				<bronze>15</bronze>
+				<silver>10</silver>
+				<gold>5</gold>
+			</stars>
+			<narration>hello world!</narration>
+		</level>
+		<level id="2">
+			<stars>
+				<bronze>15</bronze>
+				<silver>10</silver>
+				<gold>5</gold>
+			</stars>
+			<narration>hello world2!</narration>
+		</level>
+	</stage>
+</levels>
