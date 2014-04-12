@@ -10,8 +10,8 @@ public static class DataLogger {
 	static bool Initialized = false;
 
 	//Maintains a record of each attempt to finish the current level
-
 	static List<Attempt> currentLevel = new List<Attempt>();
+
 	//Maintains a record of the current attempt
 	static Attempt currentAttempt = new Attempt();
 

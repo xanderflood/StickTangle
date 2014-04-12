@@ -14,7 +14,7 @@ public class CreateGrid : MonoBehaviour {
 	private GameObject board;
 	private Grid g;
 
-	private const int lineLayer = -3;
+	private const int lineLayer = -1;
 	
 	void Start() {
 		board = Utils.FindObject("Board");
