@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: 0, g: .380392164, b: 0, a: 0}
   dissolving: 0
 --- !u!1001 &100100000
 Prefab:

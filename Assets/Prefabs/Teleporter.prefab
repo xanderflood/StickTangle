@@ -96,8 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
-  col: 4
+  AcidAnimation: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,8 +111,8 @@ MonoBehaviour:
   justAppeared: 0
   row: 0
   col: 0
-  rowOther: 3
-  colOther: 3
+  rowDelta: 0
+  colDelta: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

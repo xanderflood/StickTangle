@@ -4,10 +4,11 @@ using System.Collections;
 [System.Serializable]
 public class DissolveOneSquare : MonoBehaviour {
 
-	public float rate;
 	public Color target;
 	public bool dissolving;
 	private bool animating;
+
+	public static float rate = 0.1f;
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,13 +40,13 @@ public class DissolveOneSquare : MonoBehaviour {
 
 			if (val > .2 && val < .5) {
 				Vector3 ls = transform.localScale;
-				ls.x *= 0.995f;
-				ls.y *= 0.995f;
+				ls.x *= 0.9f;
+				ls.y *= 0.9f;
 				transform.localScale = ls;
 
-				Quaternion q = transform.rotation;
-				q.z += (randWait - 0.05f) * rate * 4f;
-				transform.rotation = q;
+				//Quaternion q = transform.rotation;
+				//q.z += (randWait - 0.05f) * rate * 4f;
+				//transform.rotation = q;
 			}
 
 			gameObject.GetComponent<MeshRenderer>().material.color = c;

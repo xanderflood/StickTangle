@@ -37,7 +37,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100004
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100008
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100012
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100016
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100020
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100024
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100028
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,8 +1207,8 @@ MonoBehaviour:
   - {fileID: 100022}
   - {fileID: 100008}
   - {fileID: 100006}
-  dir: 0
-  dissolving: 0
+  dr: 0
+  dc: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400004
 MonoBehaviour:
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400006
 MonoBehaviour:
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400008
 MonoBehaviour:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400010
 MonoBehaviour:
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400012
 MonoBehaviour:
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400014
 MonoBehaviour:
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400016
 MonoBehaviour:
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400018
 MonoBehaviour:
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400020
 MonoBehaviour:
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400022
 MonoBehaviour:
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400024
 MonoBehaviour:
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400026
 MonoBehaviour:
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400028
 MonoBehaviour:
@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400030
 MonoBehaviour:
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!114 &11400032
 MonoBehaviour:
@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rate: .100000001
-  target: {r: 1, g: 0, b: 0, a: 0}
+  target: {r: .501960814, g: .501960814, b: .501960814, a: 0}
   dissolving: 1
 --- !u!1001 &100100000
 Prefab:

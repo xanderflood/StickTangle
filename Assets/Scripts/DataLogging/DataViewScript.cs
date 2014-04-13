@@ -11,8 +11,10 @@ public class DataViewScript : MonoBehaviour {
 	public int playerID;
 	public int levelID;
 	public int playID;
-
-	private Vector2 scrollViewVector = Vector2.zero;
+	
+	private Vector2 scrollViewVector1 = Vector2.zero;
+	private Vector2 scrollViewVector2 = Vector2.zero;
+	private Vector2 scrollViewVector3 = Vector2.zero;
 	void OnGUI () {
 
 		//
@@ -29,8 +31,8 @@ public class DataViewScript : MonoBehaviour {
 
 		int nPlayers = PlayerPrefs.GetInt("numPlayers");
 
-		scrollViewVector = GUI.BeginScrollView (new Rect (25, 95, 120, 400),
-		                       scrollViewVector, new Rect (0, 0, 100, 20*nPlayers));
+		scrollViewVector1 = GUI.BeginScrollView (new Rect (25, 95, 120, 400),
+		                       scrollViewVector1, new Rect (0, 0, 100, 20*nPlayers));
 
 		string[] playerIds = new string[nPlayers];
 		for (int i = 0; i < nPlayers; ++i)
@@ -45,15 +47,15 @@ public class DataViewScript : MonoBehaviour {
 		//
 		GUI.Label(new Rect(165, 70, 305, 90), "Levels");
 		
-		scrollViewVector = GUI.BeginScrollView (new Rect (165, 95, 120, 400),
-		                       scrollViewVector, new Rect (0, 0, 100, 20*nLevels));
+		scrollViewVector2 = GUI.BeginScrollView (new Rect (165, 95, 120, 400),
+		                       scrollViewVector2, new Rect (0, 0, 100, 20*nLevels));
 		
 		string[] levelNums = new string[nLevels];
 		for (int i = 0; i < nLevels; ++i)
-			levelNums[i] = (i + 1).ToString();
+			levelNums[i] = i.ToString();
 		
 		levelID = GUI.SelectionGrid(new Rect(0, 0, 100, 20*nLevels), levelID, levelNums, 1);
-		int realLevelID = levelID + 1;
+		int realLevelID = levelID;
 		
 		GUI.EndScrollView();
 
@@ -64,8 +66,8 @@ public class DataViewScript : MonoBehaviour {
 		
 		int nPlays = PlayerPrefs.GetInt("numPlays" + playerID + "," + realLevelID);
 		
-		scrollViewVector = GUI.BeginScrollView (new Rect (305, 95, 1100, 400),
-		                       scrollViewVector, new Rect (0, 0, 500, 20*nPlays));
+		scrollViewVector3 = GUI.BeginScrollView (new Rect (305, 95, 1100, 400),
+		                       scrollViewVector3, new Rect (0, 0, 500, 20*nPlays));
 		
 		string[] playIds = new string[(nPlays + 1)*7];
 

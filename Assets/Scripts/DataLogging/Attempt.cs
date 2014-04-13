@@ -27,7 +27,16 @@ public class Attempt {
 		else
 			StartTime = -1;
 	}
-	
+
+	public void Save(int player, int play) {
+
+		// Save the main record
+		// play{playerID},{level},{play}
+		string key = "play" + player + "," + Application.loadedLevel + "," + play;
+		string record = this.ToString();
+		PlayerPrefs.SetString(key, record);
+	}
+
 	public override string ToString() {
 		return Moves + "," + Attaches + "," + Time + ","+ Success + "," + ResetX + "," + ResetY + "," + StartTime;
 	}

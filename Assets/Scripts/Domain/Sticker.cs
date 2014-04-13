@@ -27,6 +27,8 @@ public class Sticker : Piece {
 	
 	private void Start() {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
+
+		Debug.Log(Application.loadedLevel);
 	}
 
 	private bool isValidSquare(int newR, int newC) {
@@ -88,7 +90,7 @@ public class Sticker : Piece {
 			return false;
 		}
 		
-		DataLogger.Move();
+		DataLogger.Move(stickables, dr, dc);
 
 		if (!IsStuckToManget(dr, dc)) {
 			StartCoroutine(Move(dr, dc));
@@ -163,7 +165,6 @@ public class Sticker : Piece {
         foreach (Stickable s in stickables) {
             if (grid.CheckForAndDestoryAcid(s.row, s.col)) {
                 toDestory.Add(s);
-					
             }
         }
 

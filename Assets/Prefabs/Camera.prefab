@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e7a870d71f34b419e61e42676d8356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topColor: {r: .784178495, g: 1, b: .441176474, a: 1}
-  bottomColor: {r: .858823538, g: 1, b: .823529422, a: 1}
+  topColor: {r: .607843161, g: .733333349, b: .65882355, a: 1}
+  bottomColor: {r: .603921592, g: .858823538, b: .654901981, a: 1}
   gradientLayer: 7
 --- !u!124 &12400000
 Behaviour:

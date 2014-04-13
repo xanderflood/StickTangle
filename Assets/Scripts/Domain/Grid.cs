@@ -257,16 +257,30 @@ public class Grid : MonoBehaviour {
         return false;
     }
 
-    private IEnumerator WaitForMoveThenDestoryAcidBlock(Acid a)
-    {
-        // amount of time the move animation takes, computed by getting timestamps at the start of the move and when destroyPeice is called
-        yield return new WaitForSeconds(0.165f); 
+    private IEnumerator WaitForMoveThenDestoryAcidBlock(Acid a) {
+       
+		// amount of time the move animation takes, computed by getting timestamps at the start of the move and when destroyPeice is called
+
+		Color start = a.GetComponent<MeshRenderer>().material.color;
+		Color target = start; target.a = 0;
+		float val = 0;
+
+		Color c;
+		while (val <= 1) {
+			c = Color.Lerp(start, target, val);
+			
+			a.GetComponent<MeshRenderer>().material.color = c;
+			
+			val += DissolveOneSquare.rate*0.5f;
+			yield return true;
+		}
+
         Destroy(a.gameObject);
     }
 	
 	private IEnumerator attachStickable() {
 		yield return new WaitForSeconds(0.15f);
-		audio.PlayOneShot (blop);
+		audio.PlayOneShot(blop);
 	}
 	
 	public static Vector3 directionToDisplacement(Direction dir) {
