@@ -12,6 +12,7 @@ public class Sticker : Piece {
 	public AudioClip teleportSound;
 	public AudioClip wallBump;
 	public AudioClip acid;
+	public AudioClip magnet;
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
@@ -96,6 +97,7 @@ public class Sticker : Piece {
 				StartCoroutine(s.Move(dr, dc));
 			} else {
 				// Detach stickable
+				audio.PlayOneShot(magnet);
 				stickableMap.Add(s.pos, s);
 				stickables.Remove(s);
 				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
