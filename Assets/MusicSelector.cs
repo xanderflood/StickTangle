@@ -25,41 +25,40 @@ public class MusicSelector : MonoBehaviour {
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-
 		if ((Application.loadedLevelName == "Level2.1")){
 			if (!audio.isPlaying)
 				audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-
 		if ((Application.loadedLevelName == "Level2.2")||(Application.loadedLevelName == "Level2.3")||
 		    (Application.loadedLevelName == "Level2.4")||(Application.loadedLevelName == "Level2.5")){
 			audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
-		}
-		
+		}	
 		if ((Application.loadedLevelName == "Level3.1")){
 			if (!audio.isPlaying)
 				audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-
 		if ((Application.loadedLevelName == "Level3.2")||(Application.loadedLevelName == "Level3.3")){
 			audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-
 		if ((Application.loadedLevelName == "Level4.1")){
 			if (!audio.isPlaying)
 				audio.clip = melody4;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-	
+		if ((Application.loadedLevelName == "Level4.2")){
+			audio.clip = melody4;
+			if (!audio.isPlaying)
+				audio.Play(); 
+		}
 	}
 
 }

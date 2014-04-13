@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class SelectionGUI : MonoBehaviour {
 
+	public AudioClip move;
+	public AudioClip select;
+
 	List<string> _Titles;
 	List<Texture> _Images;
 	public List<string> Titles {
@@ -39,14 +42,18 @@ public class SelectionGUI : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown(KeyCode.RightArrow) && selection != _Titles.Count - 1) {
+			audio.PlayOneShot(move);
 			selection += 1;
 			LoadSelection();
 		}
 		if (Input.GetKeyDown(KeyCode.LeftArrow) && selection != 0) {
+			audio.PlayOneShot(move);
 			selection -= 1;
 			LoadSelection();
 		}
-
+		if (Input.GetKeyDown(KeyCode.DownArrow)){
+		    audio.PlayOneShot(select);
+		}
 		arrows();
 	}
 
