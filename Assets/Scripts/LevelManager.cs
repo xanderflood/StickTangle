@@ -1,41 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+using LevelState = XmlLoader.LevelState;
 
 public class LevelManager : MonoBehaviour {
 	public AudioClip restart;
-	private static string[] messages = {
-		"Level1",
-		"Level2",
-		"Level3",
-		"Level4",
-		"Level5",
-		"Level6",
-		"Level7",
-		"Level8",
-		"Level9",
-        "Level10"
-	};
-	
-	private int level;
+
+	private List<LevelState> levelStates;
+	public int levelIndex = -1;
 	bool restarting = false;
 
-	void Start() {
-		level = Application.loadedLevel;
+	private void Start() {
+		levelStates = XmlLoader.LoadXml("levels.xml");
+
+		for (int i = 0; i < levelStates.Count; i++) {
+			if (levelStates[i].name == Application.loadedLevelName) {
+				levelIndex = i;
+				break;
+			}
+		}
+		Utils.Assert(levelIndex != -1);
+
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
-		if (level != 0)
-			mesh.text = messages[level - 1];
+		mesh.text = levelStates[levelIndex].narrationText;
 
 		DataLogger.Initialize();
 	}
 
 	public void AdvanceLevel() {
 		DataLogger.Win();
-		Application.LoadLevel(++level);
+		levelIndex++;
+		if (levelIndex > levelStates.Count) {
+			Application.LoadLevel("PlayAgain");
+			Destroy(this);
+		}
+		Application.LoadLevel(levelStates[levelIndex].name);
 	}
 
 	public void Restart() {
 		DataLogger.Restart();
-		Application.LoadLevel(level);
+		Application.LoadLevel(Application.loadedLevel);
 		restarting = true;
 	}
 
@@ -46,14 +51,15 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private IEnumerator DelayRestart() {
-		audio.PlayOneShot (restart);
+		Camera.main.audio.PlayOneShot(restart);
 		yield return new WaitForSeconds(0.75f);
-		Restart ();
+		Restart();
 	}
 	
 	// Make sure that data gets saved when the player quits
-	void OnDestroy() {
-		if(!restarting)
+	private void OnDestroy() {
+		if (!restarting) {
 			DataLogger.Save();
+		}
 	}
 }
