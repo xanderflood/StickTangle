@@ -26,7 +26,7 @@ public class Sticker : Piece {
 	private bool teleporting;
 	
 	private void Start() {
-		lm = Utils.GetComponent<LevelManager>(Camera.main.gameObject);
+		lm = Utils.FindComponent<LevelManager>("LevelManager");
 	}
 
 	private bool isValidSquare(int newR, int newC) {
