@@ -26,7 +26,7 @@ public class Sticker : Piece {
 	private bool teleporting;
 	
 	private void Start() {
-		lm = Utils.FindComponent<LevelManager>("LevelManager");
+		lm = Utils.GetComponent<LevelManager>(Camera.main.gameObject);
 	}
 
 	private bool isValidSquare(int newR, int newC) {
@@ -233,11 +233,12 @@ public class Sticker : Piece {
 		yield return new WaitForSeconds(0.75f);
 		lm.AdvanceLevel();
 	}
+
 	private IEnumerator Teleport(int rowDelta, int colDelta) {
-		
+
 		teleporting = true;
 		const float rate = 0.075f;
-		
+
 		// Shrink
 		Vector3 sc = gameObject.transform.localScale;
 		float scale = 1f;
@@ -246,9 +247,9 @@ public class Sticker : Piece {
 			scale -= rate;
 			yield return true;
 		}
-		
+
 		LiteralTeleport(rowDelta, colDelta);
-		
+
 		// Grow
 		while (scale < 1f) {
 			gameObject.transform.localScale = sc*scale;
@@ -256,27 +257,27 @@ public class Sticker : Piece {
 			yield return true;
 		}
 		gameObject.transform.localScale = sc;
-		
+
 		teleporting = false;
-		
+
 		yield return false;
 	}
-	
+
 	private void LiteralTeleport(int rowDelta, int colDelta) {
 		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
-		
+
 		audio.PlayOneShot (teleportSound);
-		
+
 		// Move the main block
 		gameObject.transform.position += disp;
 		ChangePosition(row + rowDelta, col + colDelta);
-		
+
 		// Move the other blocks
 		foreach (Stickable s in stickables) {
 			s.gameObject.transform.position += disp;
 			s.ChangePosition(s.row + rowDelta, s.col + colDelta);
 		}
-		
+
 		// If there is a teleporter at the target location, mark it as deactivated so we don't get immediately returned
 		Teleporter t = grid.GetTeleporterAt(new Position(row, col));
 		if (t != null) {
