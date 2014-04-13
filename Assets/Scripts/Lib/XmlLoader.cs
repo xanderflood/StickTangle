@@ -27,6 +27,7 @@ public class XmlLoader {
 			while (reader.ReadToFollowing("stage")) {
 				Utils.Assert(reader.MoveToFirstAttribute());
 				stage = XmlConvert.ToInt32(reader.Value);
+
 				reader.ReadToFollowing("level");
 				do {
 					LevelState ls = new LevelState();
@@ -49,6 +50,8 @@ public class XmlLoader {
 					ls.name = "Level" + ls.stage + "." + ls.level;
 
 					state.Add(ls);
+
+					reader.ReadEndElement();
 				} while (reader.ReadToNextSibling("level"));
 			}
 		}

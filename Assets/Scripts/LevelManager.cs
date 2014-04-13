@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour {
 	public int levelIndex = -1;
 	bool restarting = false;
 
-	private void Start() {
+	private void Awake() {
 		levelStates = XmlLoader.LoadXml("levels.xml");
 
 		for (int i = 0; i < levelStates.Count; i++) {
@@ -22,16 +22,18 @@ public class LevelManager : MonoBehaviour {
 		}
 		Utils.Assert(levelIndex != -1);
 
+		DataLogger.Initialize();
+	}
+
+	public void SetText() {
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
 		mesh.text = levelStates[levelIndex].narrationText;
-
-		DataLogger.Initialize();
 	}
 
 	public void AdvanceLevel() {
 		DataLogger.Win();
 		levelIndex++;
-		if (levelIndex > levelStates.Count) {
+		if (levelIndex >= levelStates.Count) {
 			Application.LoadLevel("PlayAgain");
 			Destroy(this);
 		}
