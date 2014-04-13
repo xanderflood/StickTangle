@@ -22,6 +22,8 @@ public class Sticker : Piece {
 
 	private LevelManager lm;
 	private List<Stickable> stickables = new List<Stickable>();
+
+	private bool teleporting;
 	
 	private void Start() {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
@@ -114,13 +116,14 @@ public class Sticker : Piece {
 
 	private void Update() {
 		// Return if already moving
-		if (inMotion || done)
+		if (inMotion || done || teleporting)
 			return;
 
 		// Check for valid teleporters
 		Teleporter t = grid.CheckReadyToTeleport();
 		if (t != null) {
-			Teleport(t.rowDelta, t.colDelta);
+			StartCoroutine(Teleport(t.rowDelta, t.colDelta));
+			return;
 		}
 
 		// Return if no arrow key was pressed
@@ -230,22 +233,50 @@ public class Sticker : Piece {
 		yield return new WaitForSeconds(0.75f);
 		lm.AdvanceLevel();
 	}
-
-	private void Teleport(int rowDelta, int colDelta) {
+	private IEnumerator Teleport(int rowDelta, int colDelta) {
+		
+		teleporting = true;
+		const float rate = 0.075f;
+		
+		// Shrink
+		Vector3 sc = gameObject.transform.localScale;
+		float scale = 1f;
+		while (scale > 0) {
+			gameObject.transform.localScale = sc*scale;
+			scale -= rate;
+			yield return true;
+		}
+		
+		LiteralTeleport(rowDelta, colDelta);
+		
+		// Grow
+		while (scale < 1f) {
+			gameObject.transform.localScale = sc*scale;
+			scale += rate;
+			yield return true;
+		}
+		gameObject.transform.localScale = sc;
+		
+		teleporting = false;
+		
+		yield return false;
+	}
+	
+	private void LiteralTeleport(int rowDelta, int colDelta) {
 		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
-
+		
 		audio.PlayOneShot (teleportSound);
-
+		
 		// Move the main block
 		gameObject.transform.position += disp;
 		ChangePosition(row + rowDelta, col + colDelta);
-
+		
 		// Move the other blocks
 		foreach (Stickable s in stickables) {
 			s.gameObject.transform.position += disp;
 			s.ChangePosition(s.row + rowDelta, s.col + colDelta);
 		}
-
+		
 		// If there is a teleporter at the target location, mark it as deactivated so we don't get immediately returned
 		Teleporter t = grid.GetTeleporterAt(new Position(row, col));
 		if (t != null) {
