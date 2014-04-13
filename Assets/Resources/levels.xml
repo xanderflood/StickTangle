@@ -178,5 +178,13 @@
 			</stars>
 			<narration>Level 4.1</narration>
 		</level>
+		<level id="2">
+			<stars>
+				<bronze>15</bronze>
+				<silver>10</silver>
+				<gold>5</gold>
+			</stars>
+			<narration>Level 4.2</narration>
+		</level>
 	</stage>
 </levels>
