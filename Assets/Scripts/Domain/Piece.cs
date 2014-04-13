@@ -26,11 +26,13 @@ public class Piece : MonoBehaviour {
 		}
 	}
 	
-	protected const float speed = 0.1f;
+	public const float speed = 0.1f;
 	protected const int layer = -2;
 	protected bool hitAcid = false;
 	protected bool inMotion = false;
 	protected Grid grid;
+
+	public GameObject AcidAnimation;
 
 	protected void Awake() {
 		grid = Utils.FindComponent<Grid>("Board");
@@ -91,5 +93,30 @@ public class Piece : MonoBehaviour {
         if (hitAcid) {
 			DestroyPiece();
         }
+	}
+
+	// Checks whether this Piece is about to roll over acid;
+	// if so, starts the animation immediately
+	public void StartAnimationIfAboutToBeDestroyed(int dr, int dc) {
+
+		Position dest = new Position(row + dr, col + dc);
+		foreach (Acid a in grid.acidBlocks) {
+
+			Position pos = grid.CoordToPos(a.transform.position);
+
+			if (pos.Row == dest.Row && pos.Col == dest.Col) {
+				StartAcidAnimation(dr, dc);
+				return;
+			}
+		}
+	}
+
+	public void StartAcidAnimation(int dr, int dc) {
+		AcidAnimation = (GameObject)Instantiate(AcidAnimation,
+		                          	gameObject.transform.position,
+		                           	gameObject.transform.rotation);
+
+		AcidAnimation.GetComponent<DissolveAnimation>().dr = dr;
+		AcidAnimation.GetComponent<DissolveAnimation>().dc = dc;
 	}
 }
