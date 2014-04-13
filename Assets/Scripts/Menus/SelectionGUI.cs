@@ -5,6 +5,7 @@ public class SelectionGUI : MonoBehaviour {
 
 	public AudioClip move;
 	public AudioClip select;
+	public AudioClip up;
 
 	List<string> _Titles;
 	List<Texture> _Images;
@@ -53,6 +54,9 @@ public class SelectionGUI : MonoBehaviour {
 		}
 		if (Input.GetKeyDown(KeyCode.DownArrow)){
 		    audio.PlayOneShot(select);
+		}
+		if (Input.GetKeyDown(KeyCode.UpArrow)){
+			audio.PlayOneShot(up);
 		}
 		arrows();
 	}
