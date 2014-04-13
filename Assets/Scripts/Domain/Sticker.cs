@@ -24,7 +24,7 @@ public class Sticker : Piece {
 	private List<Stickable> stickables = new List<Stickable>();
 	
 	private void Start() {
-		lm = Utils.GetComponent<LevelManager>(Camera.main.gameObject);
+		lm = Utils.FindComponent<LevelManager>("LevelManager");
 	}
 
 	private bool isValidSquare(int newR, int newC) {
