@@ -109,6 +109,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 10200000, guid: c057216f2815f4606b9e617ef129e976, type: 2}
+      propertyPath: m_Color.rgba
+      value: 4282861383
+      objectReference: {fileID: 0}
+    - target: {fileID: 10200002, guid: c057216f2815f4606b9e617ef129e976, type: 2}
+      propertyPath: m_Color.rgba
+      value: 4282861383
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c057216f2815f4606b9e617ef129e976, type: 2}
   m_RootGameObject: {fileID: 900009970}
@@ -331,7 +339,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4282861383
 --- !u!23 &756752519
 Renderer:
   m_ObjectHideFlags: 0
@@ -379,6 +387,7 @@ GameObject:
   - 81: {fileID: 893410136}
   - 114: {fileID: 893410141}
   - 82: {fileID: 893410143}
+  - 114: {fileID: 893410142}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -464,6 +473,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 100000, guid: a3265fd0f838d4e168c1173d768d4564, type: 2}
+--- !u!114 &893410142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: acf1814dfe1d0144dbce9b55c8b9a6bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 489642645}
+  m_GameObject: {fileID: 893410135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e7a870d71f34b419e61e42676d8356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topColor: {r: .784178495, g: 1, b: .441176474, a: 1}
+  bottomColor: {r: .858823538, g: 1, b: .823529422, a: 1}
+  gradientLayer: 7
 --- !u!82 &893410143
 AudioSource:
   m_ObjectHideFlags: 0
@@ -779,6 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AcidAnimation: {fileID: 0}
   stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
   clearGoal: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   teleportSound: {fileID: 8300000, guid: 81ea20ba256d74fabb7f879b12a7b697, type: 3}
@@ -1188,7 +1213,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4282861383
 --- !u!23 &1207033029
 Renderer:
   m_ObjectHideFlags: 0
@@ -1266,7 +1291,6 @@ GameObject:
   - 82: {fileID: 1572171760}
   - 82: {fileID: 1572171759}
   - 82: {fileID: 1572171758}
-  - 114: {fileID: 1572171756}
   m_Layer: 0
   m_Name: Music
   m_TagString: music
@@ -1383,7 +1407,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: d2ed1b0c6c7c74720ad1397d7fcd402c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: .100000001
   m_Pitch: 1
   Loop: 0
