@@ -8,24 +8,29 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip melody3;
 	public AudioClip melody4;
 
+	private LevelManager lm;
+
+	private void Start() {
+		lm = Utils.FindComponent<LevelManager>("LevelManager");	
+	}
+
 	private void Update() {
 		string name = Application.loadedLevelName;
 
-		if (name == "Level1.1" || name == "Level1.2" || name == "Level1.3" || name == "Level1.4" ||
-		    name == "Level1.5" || name == "Level1.6" || name == "Level1.7" || name == "Level1.8") {
+		if (lm.CurrentLevelInRange("1.1", "1.8")) {
 			audio.clip = melody1;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
 
-		if (name == "Level2.1"){
+		if (name == "Level2.1") {
 			if (!audio.isPlaying)
 				audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
 
-		if (name == "Level2.2" || name == "Level2.3" || name == "Level2.4" || name == "Level2.5") {
+		if (lm.CurrentLevelInRange("2.2", "2.5")) {
 			audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
@@ -38,7 +43,7 @@ public class MusicSelector : MonoBehaviour {
 				audio.Play(); 
 		}
 
-		if (name == "Level3.2" || name == "Level3.3") {
+		if (lm.CurrentLevelInRange("3.2", "3.3")) {
 			audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 
