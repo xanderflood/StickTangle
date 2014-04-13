@@ -8,7 +8,7 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip melody3;
 	public AudioClip melody4;
 
-	private void Update () {
+	private void Update() {
 		string name = Application.loadedLevelName;
 
 		if (name == "Level1.1" || name == "Level1.2" || name == "Level1.3" || name == "Level1.4" ||
@@ -17,68 +17,44 @@ public class MusicSelector : MonoBehaviour {
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-<<<<<<< HEAD
-		if ((Application.loadedLevelName == "Level2.1")){
-=======
 
 		if (name == "Level2.1"){
->>>>>>> Fixed MusicSelector script
 			if (!audio.isPlaying)
 				audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-<<<<<<< HEAD
-		if ((Application.loadedLevelName == "Level2.2")||(Application.loadedLevelName == "Level2.3")||
-		    (Application.loadedLevelName == "Level2.4")||(Application.loadedLevelName == "Level2.5")){
-			audio.clip = melody2;
-			if (!audio.isPlaying)
-				audio.Play(); 
-		}	
-		if ((Application.loadedLevelName == "Level3.1")){
-=======
 
-		if (name == "Level2.2" || name == "Level2.3" || name == "Level2.4" || name == "Level2.5"){
+		if (name == "Level2.2" || name == "Level2.3" || name == "Level2.4" || name == "Level2.5") {
 			audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
 		
-		if (name == "Level3.1"){
->>>>>>> Fixed MusicSelector script
+		if (name == "Level3.1") {
 			if (!audio.isPlaying)
 				audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-<<<<<<< HEAD
-		if ((Application.loadedLevelName == "Level3.2")||(Application.loadedLevelName == "Level3.3")){
-=======
 
-		if (name == "Level3.2" || name == "Level3.3"){
->>>>>>> Fixed MusicSelector script
+		if (name == "Level3.2" || name == "Level3.3") {
 			audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-<<<<<<< HEAD
-		if ((Application.loadedLevelName == "Level4.1")){
-=======
 
-		if (name == "Level4.1"){
->>>>>>> Fixed MusicSelector script
+		if (name == "Level4.1") {
 			if (!audio.isPlaying)
 				audio.clip = melody4;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-<<<<<<< HEAD
-		if ((Application.loadedLevelName == "Level4.2")){
+
+		if (name == "Level4.2") {
 			audio.clip = melody4;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
-=======
->>>>>>> Fixed MusicSelector script
 	}
 }
