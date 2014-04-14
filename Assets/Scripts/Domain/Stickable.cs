@@ -23,7 +23,7 @@ public class Stickable : Piece {
 	}
 
 	private IEnumerator AdvanceAcid() {
-		yield return new WaitForSeconds(0.35f);
+		yield return new WaitForSeconds(1.0f);
 		grid.SetSquare(row, col, new Square(SquareType.Empty));
 		Destroy(this.gameObject);
 	}
