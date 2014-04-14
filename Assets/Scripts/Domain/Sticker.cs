@@ -90,7 +90,7 @@ public class Sticker : Piece {
 			return false;
 		}
 		
-		DataLogger.Move(stickables, dr, dc);
+		DataLogger.Move(stickables, this, dr, dc);
 
 		if (!IsStuckToManget(dr, dc)) {
 			StartCoroutine(Move(dr, dc));

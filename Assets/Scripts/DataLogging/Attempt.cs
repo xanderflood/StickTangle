@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+using LevelState = XmlLoader.LevelState;
+
 public class Attempt {
 	public int Moves;
 	public int Attaches;
@@ -28,11 +30,11 @@ public class Attempt {
 			StartTime = -1;
 	}
 
-	public void Save(int player, int play) {
+	public void Save(string levelName, int player, int play) {
 
 		// Save the main record
-		// play{playerID},{level},{play}
-		string key = "play" + player + "," + Application.loadedLevel + "," + play;
+		// play{playerID},{stage},{level},{play}
+		string key = "play" + player + "," + levelName + "," + play;
 		string record = this.ToString();
 		PlayerPrefs.SetString(key, record);
 	}

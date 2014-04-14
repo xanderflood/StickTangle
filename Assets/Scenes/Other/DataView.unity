@@ -169,5 +169,6 @@ MonoBehaviour:
   numEntries: {fileID: 0}
   listing: {fileID: 100000, guid: a8ddcd6b6c4784763a4aca4975f270a8, type: 2}
   playerID: 0
+  stageID: 0
   levelID: 0
   playID: 0

@@ -5,10 +5,19 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
+using LevelState = XmlLoader.LevelState;
+
 public static class DataLogger {
+
+	//The -1 is so that zero always remaind open.
+	//This way, play on levels that aren't listed
+	//in build settings can still be found!
 
 	static bool Initialized = false;
 	public static bool Active = true;
+
+	static LevelState ls;
+	static string levelName;
 
 	//Maintains a record of each attempt to finish the current level
 	static List<Attempt> currentLevel = new List<Attempt>();
@@ -21,12 +30,13 @@ public static class DataLogger {
 
 	static int playerID;
 
-	public static void Move(List<Stickable> sts, int dr, int dc) {
+	public static void Move(List<Stickable> sts, Piece sticker, int dr, int dc) {
 
 		// Record that there *was* a move
 		++currentAttempt.Moves;
 
 		// Record all positions now occupied
+		densities[sticker.row + dr, sticker.col + dc] += 1;
 		foreach (Stickable st in sts)
 			densities[st.row + dr, st.col + dc] += 1;
 	}
@@ -36,52 +46,54 @@ public static class DataLogger {
 	}
 
 	public static void Restart() {
-		currentAttempt.Time = Time.time - startTime;
 
 		currentAttempt.Success = false;
-		currentLevel.Add(currentAttempt);
-		currentAttempt = new Attempt();
-		
 		currentAttempt.ResetX = Utils.FindComponent<Sticker>("Player").col;
 		currentAttempt.ResetY = Utils.FindComponent<Sticker>("Player").row;
-		
-		currentAttempt.StartTime = System.DateTime.Now.Ticks;
-		startTime = currentAttempt.Time;
+
+		RecordAttempt();
 	}
 
 	public static void Win() {
-		currentAttempt.Time = Time.time - startTime;
 
 		currentAttempt.Success = true;
+
+		RecordAttempt();
+		Save();
+	}
+
+	public static void RecordAttempt() {
+		currentAttempt.Time = Time.time - startTime;
+
 		currentLevel.Add(currentAttempt);
 		currentAttempt = new Attempt();
-
+		
 		currentAttempt.StartTime = System.DateTime.Now.Ticks;
 		startTime = currentAttempt.Time;
-
-		densities = new int[Grid.Dim, Grid.Dim];
 	}
 
 	// Use this for initialization
-	public static void Initialize() {
+	public static void Initialize(LevelManager lm) {
 
-		currentLevel = new List<Attempt>();
-		LoadDensities();
+		if((ls == null) || (ls.stage != lm.GetLevelState().stage)
+		   		 || (ls.level != lm.GetLevelState().level)) {
+			currentLevel = new List<Attempt>();
+			ls = lm.GetLevelState();
+			levelName = ls.stage + "," + ls.level;
+
+			LoadDensities();
+		}
+
 		if (Initialized)
 			return;
-		
 		Initialized = true;
 		
 		if (!PlayerPrefs.HasKey("numPlayers"))
 			PlayerPrefs.SetInt("numPlayers", 0);
-		
-		playerID = PlayerPrefs.GetInt("numPlayers");
-		PlayerPrefs.SetInt("numPlayers", playerID + 1);
 
 		startTime = Time.time;
 		
 		currentAttempt.StartTime = System.DateTime.Now.Ticks;
-		currentAttempt.Time = Time.time - startTime;
 	}
 
 	public static void Save() {
@@ -89,12 +101,15 @@ public static class DataLogger {
 		if (!Active)
 			return;
 
+		playerID = PlayerPrefs.GetInt("numPlayers");
+		PlayerPrefs.SetInt("numPlayers", playerID + 1);
+
 		int i = 0;
 		foreach (Attempt att in currentLevel)
-			att.Save (playerID, i++);
+			att.Save(levelName, playerID, i++);
 
-		// numPlays{playerID},{level}
-		PlayerPrefs.SetInt("numPlays" + playerID + "," + Application.loadedLevel, i);
+		// numPlays{playerID},{stage},{level}
+		PlayerPrefs.SetInt("numPlays" + playerID + "," + levelName, i);
 		SaveDensities();
 	}
 
@@ -103,7 +118,7 @@ public static class DataLogger {
 		// zeros
 		densities = new int[Grid.Dim, Grid.Dim];
 
-		string key = "dens" + Application.loadedLevel;
+		string key = "dens" + levelName;
 		if (!PlayerPrefs.HasKey(key))
 			return;
 
@@ -120,20 +135,11 @@ public static class DataLogger {
 
 	private static void SaveDensities() {
 
-		string key = "dens" + Application.loadedLevel;
+		string key = "dens" + levelName;
 		string val = Grid.Dim.ToString();
 
-		if (!PlayerPrefs.HasKey(key))
-			return;
-		
-		string[] parts = PlayerPrefs.GetString(key).Split(',');
-		int dim = System.Convert.ToInt32(parts[0]);
-		
-		if (Grid.Dim != dim)
-			return;
-
-		for (int i = 0; i < dim; ++i)
-			for (int j = 0; j < dim; ++j)
+		for (int i = 0; i < Grid.Dim; ++i)
+			for (int j = 0; j < Grid.Dim; ++j)
 				val += "," + densities[i, j];
 
 		PlayerPrefs.SetString(key, val);
