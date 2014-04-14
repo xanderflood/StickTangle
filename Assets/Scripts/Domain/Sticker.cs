@@ -13,8 +13,6 @@ public class Sticker : Piece {
 	public AudioClip acid;
 	public AudioClip magnet;
 
-	public MusicSelector music;
-
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
@@ -25,9 +23,12 @@ public class Sticker : Piece {
 	private List<Stickable> stickables = new List<Stickable>();
 
 	private bool teleporting;
+
+	private MusicSelector music;
 	
 	private void Start() {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
+		music = Utils.FindComponent<MusicSelector>("Music");
 	}
 
 	private bool isValidSquare(int newR, int newC) {

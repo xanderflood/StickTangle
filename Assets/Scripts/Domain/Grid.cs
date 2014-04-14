@@ -14,9 +14,7 @@ public class Grid : MonoBehaviour {
 
 	public List<Teleporter> teleporters;
 	public Dictionary<Position, Magnet> magnetMap = new Dictionary<Position, Magnet>();
-
-	public MusicSelector music;
-
+	
 	public enum SquareType {
 		Player, Stickable, Empty, Block, Acid, Magnet
 	}
@@ -39,6 +37,8 @@ public class Grid : MonoBehaviour {
 	
 	private Square[,] grid;
 
+	private MusicSelector music;
+
 	private void Awake() {
 		grid = new Square[Dim, Dim];
 		for (int i = 0; i < Dim; i++) {
@@ -47,6 +47,10 @@ public class Grid : MonoBehaviour {
 				grid[i, j] = new Square(type);
 			}
 		}
+	}
+
+	private void Start() {
+		music = Utils.FindComponent<MusicSelector>("Music");
 	}
 
 	/**
