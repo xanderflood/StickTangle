@@ -111,7 +111,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4282861383
 --- !u!23 &1302921700
 Renderer:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4282861383
 --- !u!23 &1650735799
 Renderer:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4282861383
 --- !u!23 &1704387423
 Renderer:
   m_ObjectHideFlags: 0
@@ -321,7 +321,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4282861383
 --- !u!23 &2004129133
 Renderer:
   m_ObjectHideFlags: 0
@@ -368,6 +368,7 @@ GameObject:
   - 124: {fileID: 2098419309}
   - 81: {fileID: 2098419308}
   - 114: {fileID: 2098419313}
+  - 114: {fileID: 2098419314}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -447,3 +448,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037f1c43efe3a4e4ba4c0bf64397305e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2098419314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2098419307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e7a870d71f34b419e61e42676d8356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topColor: {r: .607843161, g: .733333349, b: .65882355, a: 1}
+  bottomColor: {r: .603921592, g: .858823538, b: .654901981, a: 1}
+  gradientLayer: 7

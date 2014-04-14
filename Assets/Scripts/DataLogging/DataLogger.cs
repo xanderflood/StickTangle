@@ -21,7 +21,7 @@ public static class DataLogger {
 
 	//Maintains a record of each attempt to finish the current level
 	static List<Attempt> currentLevel = new List<Attempt>();
-	public static int[,] densities;
+	public static int[,] densities = new int[Grid.Dim, Grid.Dim];
 
 	//Maintains a record of the current attempt
 	static Attempt currentAttempt = new Attempt();
@@ -114,10 +114,6 @@ public static class DataLogger {
 	}
 
 	private static void LoadDensities() {
-
-		// zeros
-		densities = new int[Grid.Dim, Grid.Dim];
-
 		string key = "dens" + levelName;
 		if (!PlayerPrefs.HasKey(key))
 			return;
