@@ -278,11 +278,7 @@ public class Grid : MonoBehaviour {
 
         Destroy(a.gameObject);
     }
-	
-	private IEnumerator attachStickable() {
-		yield return new WaitForSeconds(0.15f);
-	}
-	
+
 	public static Vector3 directionToDisplacement(Direction dir) {
 		if (dir == Direction.Up)
 			return new Vector3(0, 1, 0);

@@ -9,6 +9,8 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip melody4;
 
 	public AudioClip blop;
+	public AudioClip clear;
+	public AudioClip teleport;
 
 	private LevelManager lm;
 
@@ -67,5 +69,11 @@ public class MusicSelector : MonoBehaviour {
 
 	public void playBlop(){
 		audio.PlayOneShot(blop);
+	}
+	public void clearLevel(){
+		audio.PlayOneShot(clear);
+	}
+	public void playTeleport(){
+		audio.PlayOneShot(teleport);
 	}
 }

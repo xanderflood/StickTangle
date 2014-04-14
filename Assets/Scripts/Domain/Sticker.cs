@@ -8,11 +8,12 @@ using Square = Grid.Square;
 public class Sticker : Piece {
 
 	public Material stickerMat;
-	public AudioClip clearGoal;
-	public AudioClip teleportSound;
+
 	public AudioClip wallBump;
 	public AudioClip acid;
 	public AudioClip magnet;
+
+	public MusicSelector music;
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
@@ -162,7 +163,7 @@ public class Sticker : Piece {
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
-			audio.PlayOneShot(clearGoal);
+			music.clearLevel();
 			done = true;
 			StartCoroutine(AdvanceLevel());
 		}
@@ -275,7 +276,7 @@ public class Sticker : Piece {
 	private void LiteralTeleport(int rowDelta, int colDelta) {
 		Vector3 disp = new Vector3(colDelta, rowDelta, 0);
 		
-		audio.PlayOneShot (teleportSound);
+		music.playTeleport();
 		
 		// Move the main block
 		gameObject.transform.position += disp;
