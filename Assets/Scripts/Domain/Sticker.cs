@@ -111,7 +111,18 @@ public class Sticker : Piece {
 			}
 		}
 
+		// TODO: Eventually remove this function
+		PutPlayersInGrid();
+
 		return true;
+	}
+
+	// TODO: Eventually remove this function
+	private void PutPlayersInGrid() {
+		grid.SetSquare(pos, new Square(SquareType.Player));
+		foreach (Stickable s in stickables) {
+			grid.SetSquare(s.pos, new Square(SquareType.Player));
+		}
 	}
 
 	private void Update() {
@@ -275,7 +286,10 @@ public class Sticker : Piece {
 			s.gameObject.transform.position += disp;
 			s.ChangePosition(s.row + rowDelta, s.col + colDelta);
 		}
-		
+
+		// TODO: Eventually remove this function
+		PutPlayersInGrid();
+
 		// If there is a teleporter at the target location, mark it as deactivated so we don't get immediately returned
 		Teleporter t = grid.GetTeleporterAt(new Position(row, col));
 		if (t != null) {

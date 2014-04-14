@@ -1066,6 +1066,7 @@ GameObject:
   - 23: {fileID: 1134342206}
   - 114: {fileID: 1134342205}
   - 82: {fileID: 1134342208}
+  - 82: {fileID: 1134342209}
   m_Layer: 0
   m_Name: Stickable
   m_TagString: Untagged
@@ -1097,7 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
-  acid: {fileID: 0}
+  acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
 --- !u!23 &1134342206
 Renderer:
   m_ObjectHideFlags: 0
@@ -1140,6 +1141,65 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &1134342209
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200002, guid: 4ccc2f32ebeab4ba6bfa1c4925f36bcd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1954660401}
+  m_GameObject: {fileID: 1134342203}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1710,6 +1770,7 @@ MonoBehaviour:
   wallBump: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
   acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
   magnet: {fileID: 0}
+  done: 0
 --- !u!23 &1701452328
 Renderer:
   m_ObjectHideFlags: 0
@@ -2273,6 +2334,14 @@ Prefab:
     - target: {fileID: 400002, guid: 4ccc2f32ebeab4ba6bfa1c4925f36bcd, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4ccc2f32ebeab4ba6bfa1c4925f36bcd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4ccc2f32ebeab4ba6bfa1c4925f36bcd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ccc2f32ebeab4ba6bfa1c4925f36bcd, type: 2}

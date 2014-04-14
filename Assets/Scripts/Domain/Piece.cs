@@ -49,7 +49,7 @@ public class Piece : MonoBehaviour {
 		grid.SetSquare(row, col, new Square(SquareType.Empty));
 		row = newRow;
 		col = newCol;
-		grid.SetSquare(row, col, new Square(SquareType.Player));
+		// TODO: grid.SetSquare(row, col, new Square(SquareType.Player));
 	}
 
 	public virtual void DestroyPiece() {
