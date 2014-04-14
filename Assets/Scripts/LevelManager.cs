@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		Utils.Assert(levelIndex != -1);
 
-		DataLogger.Initialize();
+		DataLogger.Initialize(this);
 	}
 
 	public bool CurrentLevelInRange(string l1, string l2) {
@@ -72,6 +72,10 @@ public class LevelManager : MonoBehaviour {
 		DataLogger.Restart();
 		Application.LoadLevel(Application.loadedLevel);
 		restarting = true;
+	}
+
+	public LevelState GetLevelState() {
+		return levelStates[levelIndex];
 	}
 
 	private void Update() {

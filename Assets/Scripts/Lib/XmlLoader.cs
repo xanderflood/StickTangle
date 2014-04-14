@@ -16,13 +16,18 @@ public class XmlLoader {
 		public string name;
 	}
 
+	static int numStages;
+	public static int NumStages { get { return numStages; } }
+	static List<int> numLevels = new List<int>();
+	public static List<int> NumLevels { get { return numLevels; } }
+
 	public static List<LevelState> LoadXml(string filename) {
 		StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + filename);
 		string xmlText = sr.ReadToEnd();
 
 		List<LevelState> state = new List<LevelState>();
 		int id = 1;
-		int stage;
+		int stage = -1;
 		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {
 			while (reader.ReadToFollowing("stage")) {
 				Utils.Assert(reader.MoveToFirstAttribute());
@@ -53,7 +58,11 @@ public class XmlLoader {
 
 					reader.ReadEndElement();
 				} while (reader.ReadToNextSibling("level"));
+
+				numLevels.Add(state[state.Count - 1].level);
 			}
+			
+			numStages = stage;
 		}
 
 		return state;

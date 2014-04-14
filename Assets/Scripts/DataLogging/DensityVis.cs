@@ -3,11 +3,14 @@ using System.Collections;
 
 public class DensityVis : MonoBehaviour {
 
-	public GameObject signal;
-	MeshRenderer[,] mrs;
+	public GameObject Signal;
+	public bool Active;
 
 	// Use this for initialization
 	void Start () {
+
+		if (!Active)
+			return;
 
 		// Make sure the game isn't really being played
 		Utils.FindObject("Player").SetActive(false);
@@ -18,21 +21,28 @@ public class DensityVis : MonoBehaviour {
 
 		//And display it
 		int dim = Grid.Dim;
-		int scale = Max(densities);
-		mrs = new MeshRenderer[dim, dim];
+		float scale = Mathf.Max(Max(densities), 1f);
 		for (int i = 0; i < dim; ++i) {
 			for (int j = 0; j < dim; ++j) {
-				signal = (GameObject)Instantiate(signal, new Vector3(j, i, -2), Quaternion.identity);
-				mrs[i, j] = signal.GetComponent<MeshRenderer>();
-				Color c = mrs[i, j].material.color;
+				Vector3 p = Utils.FindComponent<Grid>("Board").PosToCoord(i, j);
+				p.z = -2;
+				GameObject go = (GameObject)Instantiate(Signal, p, Quaternion.identity);
+				MeshRenderer mr = go.GetComponent<MeshRenderer>();
+				Color c = mr.material.color;
 				c.a *= densities[i, j]/scale;
-				mrs[i, j].material.color = c;
+				mr.material.color = c;
 			}
 		}
 	}
 
 	public static int Max(int[,] arr) {
-		return 0;
 
+		int max = -1;
+		for (int i = 0; i < Grid.Dim; ++i)
+			for (int j = 0; j < Grid.Dim; ++j)
+				if (arr[i,j] > max)
+					max = arr[i,j];
+
+		return max;
 	}
 }
