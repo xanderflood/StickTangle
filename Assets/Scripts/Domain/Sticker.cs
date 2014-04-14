@@ -27,8 +27,6 @@ public class Sticker : Piece {
 	
 	private void Start() {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
-
-		Debug.Log(Application.loadedLevel);
 	}
 
 	private bool isValidSquare(int newR, int newC) {
@@ -286,10 +284,8 @@ public class Sticker : Piece {
 	}
 
 	private void adjustAllScales(Vector3 scale) {
-
 		gameObject.transform.localScale = scale;
 		foreach (Stickable st in stickables)
 			st.transform.localScale = scale;
 	}
-	
 }
