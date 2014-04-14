@@ -825,6 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  acid: {fileID: 0}
 --- !u!23 &307800396
 Renderer:
   m_ObjectHideFlags: 0
@@ -1251,7 +1252,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1882803397}
     m_Modifications:
     - target: {fileID: 400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1259,7 +1260,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.5
+      value: -.0454545468
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1280,6 +1281,14 @@ Prefab:
     - target: {fileID: 400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .0909090936
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .0909090936
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
@@ -1967,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  acid: {fileID: 0}
 --- !u!23 &755275219
 Renderer:
   m_ObjectHideFlags: 0
@@ -2401,10 +2411,10 @@ Transform:
   m_PrefabInternal: {fileID: 489642645}
   m_GameObject: {fileID: 893410135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.5, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -.0454545468, z: -10}
+  m_LocalScale: {x: .0909090936, y: .0909090936, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1882803397}
 --- !u!114 &893410141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,6 +2877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  acid: {fileID: 0}
 --- !u!23 &1090589561
 Renderer:
   m_ObjectHideFlags: 0
@@ -4459,6 +4470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  acid: {fileID: 0}
 --- !u!23 &1649852651
 Renderer:
   m_ObjectHideFlags: 0
@@ -4864,6 +4876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  acid: {fileID: 0}
 --- !u!23 &1875057147
 Renderer:
   m_ObjectHideFlags: 0
@@ -5022,7 +5035,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 11, y: 11, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 893410140}
   m_Father: {fileID: 0}
 --- !u!114 &1882803398
 MonoBehaviour:
