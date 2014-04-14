@@ -42,6 +42,7 @@ public class DissolveAnimation : MonoBehaviour {
 			yield return new WaitForSeconds(0.0025f/Piece.speed);
 		}
 
+		yield return new WaitForSeconds(1f/Piece.speed);
 		DestroyObject(gameObject);
 	}
 
