@@ -41,6 +41,8 @@ public class DissolveAnimation : MonoBehaviour {
 
 			yield return new WaitForSeconds(0.0025f/Piece.speed);
 		}
+
+		DestroyObject(gameObject);
 	}
 
 	void dissolveRow(int rowNum) {

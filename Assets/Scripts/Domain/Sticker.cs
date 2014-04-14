@@ -77,11 +77,6 @@ public class Sticker : Piece {
 			return false;
 		}
 
-		// Start any acid animations
-		StartAnimationIfAboutToBeDestroyed(dr, dc);
-		foreach (Stickable s in stickables)
-			s.StartAnimationIfAboutToBeDestroyed(dr, dc);
-
 		if (!isValidMove(dr, dc)) {
 			audio.clip = wallBump;
 
@@ -89,6 +84,11 @@ public class Sticker : Piece {
 				audio.Play();
 			return false;
 		}
+		
+		// Start any acid animations
+		StartAnimationIfAboutToBeDestroyed(dr, dc);
+		foreach (Stickable s in stickables)
+			s.StartAnimationIfAboutToBeDestroyed(dr, dc);
 		
 		DataLogger.Move(stickables, this, dr, dc);
 

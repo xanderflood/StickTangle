@@ -84,12 +84,17 @@ public static class DataLogger {
 			LoadDensities();
 		}
 
-		if (Initialized)
+		DensityVis dv = Utils.FindComponent<DensityVis> ("Density Visualizer");
+
+		if (Initialized || dv.Active)
 			return;
 		Initialized = true;
 		
 		if (!PlayerPrefs.HasKey("numPlayers"))
 			PlayerPrefs.SetInt("numPlayers", 0);
+
+		playerID = PlayerPrefs.GetInt("numPlayers");
+		PlayerPrefs.SetInt("numPlayers", playerID + 1);
 
 		startTime = Time.time;
 		
@@ -98,11 +103,9 @@ public static class DataLogger {
 
 	public static void Save() {
 
+		Debug.Log (Active);
 		if (!Active)
 			return;
-
-		playerID = PlayerPrefs.GetInt("numPlayers");
-		PlayerPrefs.SetInt("numPlayers", playerID + 1);
 
 		int i = 0;
 		foreach (Attempt att in currentLevel)

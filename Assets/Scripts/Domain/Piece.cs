@@ -112,11 +112,12 @@ public class Piece : MonoBehaviour {
 	}
 
 	public void StartAcidAnimation(int dr, int dc) {
-		AcidAnimation = (GameObject)Instantiate(AcidAnimation,
+		Debug.Log (gameObject);
+		GameObject activeAnim = (GameObject)Instantiate(AcidAnimation,
 		                          	gameObject.transform.position,
 		                           	gameObject.transform.rotation);
 
-		AcidAnimation.GetComponent<DissolveAnimation>().dr = dr;
-		AcidAnimation.GetComponent<DissolveAnimation>().dc = dc;
+		activeAnim.GetComponent<DissolveAnimation>().dr = dr;
+		activeAnim.GetComponent<DissolveAnimation>().dc = dc;
 	}
 }
