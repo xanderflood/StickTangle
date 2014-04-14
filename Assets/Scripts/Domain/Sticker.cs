@@ -18,7 +18,7 @@ public class Sticker : Piece {
 
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
-	private bool done = false;
+	public bool done = false;
 
 	private LevelManager lm;
 	private List<Stickable> stickables = new List<Stickable>();

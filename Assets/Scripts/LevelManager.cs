@@ -85,8 +85,10 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private IEnumerator DelayRestart() {
+		// Disable movement during restart
+		Utils.FindComponent<Sticker>("Player").done = true;
 		Camera.main.audio.PlayOneShot(restart);
-		yield return new WaitForSeconds(0.75f);
+		yield return new WaitForSeconds(0.5f);
 		Restart();
 	}
 	
