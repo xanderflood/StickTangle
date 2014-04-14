@@ -8,6 +8,8 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip melody3;
 	public AudioClip melody4;
 
+	public AudioClip blop;
+
 	private LevelManager lm;
 
 	private void Start() {
@@ -61,5 +63,9 @@ public class MusicSelector : MonoBehaviour {
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
+	}
+
+	public void playBlop(){
+		audio.PlayOneShot(blop);
 	}
 }
