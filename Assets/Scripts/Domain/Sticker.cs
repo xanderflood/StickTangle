@@ -10,7 +10,6 @@ public class Sticker : Piece {
 	public Material stickerMat;
 
 	public AudioClip wallBump;
-	public AudioClip acid;
 	public AudioClip magnet;
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
@@ -186,7 +185,7 @@ public class Sticker : Piece {
         
         // Now deal with sticker
         if (grid.CheckForAndDestoryAcid(row, col)) {
-			audio.PlayOneShot(acid);
+			music.playAcid();
             DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
         }
     }

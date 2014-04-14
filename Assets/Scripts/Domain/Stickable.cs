@@ -6,9 +6,10 @@ using SquareType = Grid.SquareType;
 
 public class Stickable : Piece {
 
-	public AudioClip acid;
-
+	private MusicSelector music;
+	
 	private void Start() {
+		music = Utils.FindComponent<MusicSelector>("Music");
 		grid.SetSquare(row, col, new Square(SquareType.Stickable));
 		
 		Sticker s = Utils.FindComponent<Sticker>("Player");
@@ -16,7 +17,7 @@ public class Stickable : Piece {
 	}
 
 	public override void DestroyPiece() {
-		audio.PlayOneShot(acid);
+		music.playAcid ();
 		gameObject.renderer.enabled = false;
 		StartCoroutine (AdvanceAcid ());
 	}

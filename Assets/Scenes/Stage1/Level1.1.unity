@@ -1097,6 +1097,7 @@ GameObject:
   - 82: {fileID: 1572171756}
   - 82: {fileID: 1572171762}
   - 82: {fileID: 1572171763}
+  - 82: {fileID: 1572171764}
   m_Layer: 0
   m_Name: Music
   m_TagString: music
@@ -1265,6 +1266,7 @@ MonoBehaviour:
   blop: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   clear: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   teleport: {fileID: 8300000, guid: 81ea20ba256d74fabb7f879b12a7b697, type: 3}
+  acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
 --- !u!82 &1572171758
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1619,6 +1621,65 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &1572171764
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200016, guid: 2ccdd170c1cea0e41b4b53dac077cf95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1140265862}
+  m_GameObject: {fileID: 1572171752}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .300000012
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1608699174
 Prefab:
   m_ObjectHideFlags: 0
@@ -1803,4 +1864,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acidBlocks: []
   teleporters: []
-  music: {fileID: 11400002, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
