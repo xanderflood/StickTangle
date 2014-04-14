@@ -1134,7 +1134,6 @@ GameObject:
   - 114: {fileID: 865777362}
   - 82: {fileID: 865777368}
   - 114: {fileID: 865777361}
-  - 114: {fileID: 865777369}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1295,20 +1294,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &865777369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 865777360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e7a870d71f34b419e61e42676d8356, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topColor: {r: 0, g: 0, b: .0392156877, a: 1}
-  bottomColor: {r: 0, g: 0, b: .235294119, a: 1}
-  gradientLayer: 7
 --- !u!1 &872660279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +1994,7 @@ MonoBehaviour:
   wallBump: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
   acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
   magnet: {fileID: 0}
+  done: 0
 --- !u!23 &1577253937
 Renderer:
   m_ObjectHideFlags: 0
