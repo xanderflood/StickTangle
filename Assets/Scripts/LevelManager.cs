@@ -56,6 +56,8 @@ public class LevelManager : MonoBehaviour {
 	public void SetText() {
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
 		mesh.text = levelStates[levelIndex].narrationText;
+		mesh = Utils.FindComponent<TextMesh>("LevelText");
+		mesh.text = "Level " + levelStates[levelIndex].stage + "." + levelStates[levelIndex].level;
 	}
 
 	public void AdvanceLevel() {
