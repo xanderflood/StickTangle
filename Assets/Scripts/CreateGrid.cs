@@ -35,6 +35,7 @@ public class CreateGrid : MonoBehaviour {
 	}
 	
 	private void CreateBorder() {
+		/*
 		// Bottom row
 		CreateRow(dim, i => PlaceBlock(g, dim - 1, i));
 		
@@ -46,9 +47,11 @@ public class CreateGrid : MonoBehaviour {
 		
 		// Left column
 		CreateRow(dim - 2, i => PlaceBlock(g, i + 1, dim - 1));
+		*/
 	}
 	
 	private void OnPostRender() {
+		/*
 		GL.PushMatrix();
 		lineMaterial.SetPass(0);
 		GL.Begin(GL.LINES);
@@ -70,6 +73,7 @@ public class CreateGrid : MonoBehaviour {
 		
 		GL.PopMatrix();
 		GL.End();
+		*/
 	}
 	
 	private Vector3 PlaceBlock(Grid g, int row, int col) {

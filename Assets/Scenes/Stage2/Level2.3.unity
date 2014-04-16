@@ -1481,9 +1481,9 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
   m_PrefabInternal: {fileID: 1066336511}
   m_GameObject: {fileID: 575532099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11, y: 11, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -4.37113883e-08}
+  m_LocalPosition: {x: -1.89534605, y: -.537402213, z: 0}
+  m_LocalScale: {x: 25.0699997, y: 17.4300003, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &605728066
@@ -2151,7 +2151,7 @@ Transform:
   m_PrefabInternal: {fileID: 468510620}
   m_GameObject: {fileID: 863891055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.2286949, y: 6.0116992, z: 0}
+  m_LocalPosition: {x: -63.3046455, y: 22.0261784, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1745561865}
@@ -2745,11 +2745,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.89534605
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -.537402213
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2765,11 +2765,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -4.37113883e-08
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: music
@@ -3678,6 +3678,7 @@ Transform:
   - {fileID: 863891058}
   - {fileID: 2054409555}
   - {fileID: 761862902}
+  - {fileID: 237347911}
   m_Father: {fileID: 0}
 --- !u!114 &1745561866
 MonoBehaviour:
