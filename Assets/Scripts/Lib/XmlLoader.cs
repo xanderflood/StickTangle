@@ -22,13 +22,13 @@ public class XmlLoader {
 	public static List<int> NumLevels { get { return numLevels; } }
 
 	public static List<LevelState> LoadXml(string filename) {
-		StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + filename);
-		string xmlText = sr.ReadToEnd();
+		TextAsset xmlFile = Resources.Load<TextAsset>(filename);
+		string xmlText = xmlFile.text;
 
 		List<LevelState> state = new List<LevelState>();
 		int id = 1;
 		int stage = -1;
-		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {
+		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {			
 			while (reader.ReadToFollowing("stage")) {
 				Utils.Assert(reader.MoveToFirstAttribute());
 				stage = XmlConvert.ToInt32(reader.Value);

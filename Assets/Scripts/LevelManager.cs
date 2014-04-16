@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour {
 	bool restarting = false;
 
 	private void Awake() {
-		levelStates = XmlLoader.LoadXml("levels.xml");
+		levelStates = XmlLoader.LoadXml("levels");
 
 		for (int i = 0; i < levelStates.Count; i++) {
 			if (levelStates[i].name == Application.loadedLevelName) {

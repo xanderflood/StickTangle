@@ -370,7 +370,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
       propertyPath: Active
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
       propertyPath: orthographic size
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Signal: {fileID: 100000, guid: e53b16a3631024e909ddf2e248cb4b80, type: 2}
-  Active: 1
+  Active: 0
 --- !u!4 &1231565882
 Transform:
   m_ObjectHideFlags: 0
