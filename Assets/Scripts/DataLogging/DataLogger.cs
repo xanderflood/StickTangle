@@ -102,8 +102,6 @@ public static class DataLogger {
 	}
 
 	public static void Save() {
-
-		Debug.Log (Active);
 		if (!Active)
 			return;
 
