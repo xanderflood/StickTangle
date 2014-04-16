@@ -3675,11 +3675,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .150000006, y: .150000006, z: 1}
   m_Children:
-<<<<<<< HEAD
   - {fileID: 863891058}
-=======
-  - {fileID: 237347911}
->>>>>>> FETCH_HEAD
   - {fileID: 2054409555}
   - {fileID: 761862902}
   m_Father: {fileID: 0}
