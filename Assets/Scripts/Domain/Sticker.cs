@@ -21,11 +21,8 @@ public class Sticker : Piece {
 
 	private bool teleporting;
 
-	private MusicSelector music;
-	
 	private void Start() {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
-		music = Utils.FindComponent<MusicSelector>("Music");
 	}
 
 	private bool isValidSquare(int newR, int newC) {
@@ -185,7 +182,6 @@ public class Sticker : Piece {
         
         // Now deal with sticker
         if (grid.CheckForAndDestoryAcid(row, col)) {
-			music.playAcid();
             DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
         }
     }

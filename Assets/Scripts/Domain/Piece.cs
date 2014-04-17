@@ -31,7 +31,8 @@ public class Piece : MonoBehaviour {
 	protected bool hitAcid = false;
 	protected bool inMotion = false;
 	protected Grid grid;
-	
+	protected MusicSelector music;
+
 	protected List<Stickable> newStickables = new List<Stickable>();
 
 	public Material stickerMat;
@@ -45,6 +46,7 @@ public class Piece : MonoBehaviour {
 
 	protected void Awake() {
 		grid = Utils.FindComponent<Grid>("Board");
+		music = Utils.FindComponent<MusicSelector>("Music");
 		Position pos = grid.CoordToPos(transform.position);
 		row = pos.Row;
 		col = pos.Col;
@@ -100,6 +102,7 @@ public class Piece : MonoBehaviour {
 
         // If we ran into acid, we need to destroy this piece at the end of the animation
         if (hitAcid) {
+			music.playAcid();
 			DestroyPiece();
         }
 
