@@ -31,8 +31,17 @@ public class Piece : MonoBehaviour {
 	protected bool hitAcid = false;
 	protected bool inMotion = false;
 	protected Grid grid;
+	
+	protected List<Stickable> newStickables = new List<Stickable>();
 
+	public Material stickerMat;
+
+	protected bool glowing;
+	
+	// Animations
 	public GameObject AcidAnimation;
+	public GameObject MagnetGlowModel;
+	GameObject activeGlow;
 
 	protected void Awake() {
 		grid = Utils.FindComponent<Grid>("Board");
@@ -93,6 +102,11 @@ public class Piece : MonoBehaviour {
         if (hitAcid) {
 			DestroyPiece();
         }
+
+		foreach (Stickable s in newStickables) {
+			s.renderer.material = stickerMat;
+		}
+		newStickables.Clear();
 	}
 
 	// Checks whether this Piece is about to roll over acid;
@@ -112,12 +126,29 @@ public class Piece : MonoBehaviour {
 	}
 
 	public void StartAcidAnimation(int dr, int dc) {
-		Debug.Log (gameObject);
 		GameObject activeAnim = (GameObject)Instantiate(AcidAnimation,
 		                          	gameObject.transform.position,
 		                           	gameObject.transform.rotation);
 
 		activeAnim.GetComponent<DissolveAnimation>().dr = dr;
 		activeAnim.GetComponent<DissolveAnimation>().dc = dc;
+	}
+	
+	public void StartMagnetGlow() {
+		activeGlow = (GameObject)Instantiate(MagnetGlowModel, transform.position, Quaternion.identity);
+		
+		Vector3 v = activeGlow.transform.position;
+		v.z = -2.1f;
+		activeGlow.transform.position = v;
+		
+		glowing = true;
+	}
+	
+	public void StopMagnetGlow() {
+		if (!glowing)
+			return;
+		
+		Destroy(activeGlow);
+		glowing = false;
 	}
 }
