@@ -31,6 +31,10 @@ public class Piece : MonoBehaviour {
 	protected bool hitAcid = false;
 	protected bool inMotion = false;
 	protected Grid grid;
+	
+	protected List<Stickable> newStickables = new List<Stickable>();
+
+	public Material stickerMat;
 
 	public GameObject AcidAnimation;
 
@@ -93,6 +97,11 @@ public class Piece : MonoBehaviour {
         if (hitAcid) {
 			DestroyPiece();
         }
+
+		foreach (Stickable s in newStickables) {
+			s.renderer.material = stickerMat;
+		}
+		newStickables.Clear();
 	}
 
 	// Checks whether this Piece is about to roll over acid;
@@ -112,7 +121,6 @@ public class Piece : MonoBehaviour {
 	}
 
 	public void StartAcidAnimation(int dr, int dc) {
-		Debug.Log (gameObject);
 		GameObject activeAnim = (GameObject)Instantiate(AcidAnimation,
 		                          	gameObject.transform.position,
 		                           	gameObject.transform.rotation);

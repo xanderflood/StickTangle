@@ -6,9 +6,7 @@ using SquareType = Grid.SquareType;
 using Square = Grid.Square;
 
 public class Sticker : Piece {
-
-	public Material stickerMat;
-
+	
 	public AudioClip wallBump;
 	public AudioClip magnet;
 
@@ -157,6 +155,7 @@ public class Sticker : Piece {
 		foreach (Stickable s in stickables) {
 			toAdd.AddRange(GetStickables(s.row, s.col));
 		}
+		newStickables = toAdd;
 
 		stickables.AddRange(toAdd);
 		DataLogger.Attach(toAdd.Count);
@@ -232,7 +231,6 @@ public class Sticker : Piece {
 			Utils.Assert(s);
 
 			toAdd.Add(s);
-			s.renderer.material = stickerMat;
 			stickableMap.Remove(positions[i]);
 			grid.SetSquare(s.row, s.col, new Square(SquareType.Player));
 		}
@@ -244,6 +242,7 @@ public class Sticker : Piece {
 		yield return new WaitForSeconds(0.75f);
 		lm.AdvanceLevel();
 	}
+
 	private IEnumerator Teleport(int rowDelta, int colDelta) {
 		
 		teleporting = true;
