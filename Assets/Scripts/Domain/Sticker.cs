@@ -107,6 +107,7 @@ public class Sticker : Piece {
 				stickableMap.Add(s.pos, s);
 				stickables.Remove(s);
 				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
+				s.StartMagnetGlow();
 			}
 		}
 
@@ -233,6 +234,7 @@ public class Sticker : Piece {
 			toAdd.Add(s);
 			stickableMap.Remove(positions[i]);
 			grid.SetSquare(s.row, s.col, new Square(SquareType.Player));
+			s.StopMagnetGlow();
 		}
 
 		return toAdd;

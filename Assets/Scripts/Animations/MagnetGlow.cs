@@ -24,7 +24,7 @@ public class MagnetGlow : MonoBehaviour {
 			float t = 0;
 			while (t < 1) {
 
-				target.intensity = 0.5f*(maxInt - minInt)*Mathf.Sin(2*Mathf.PI*(t+1f)) + minInt;
+				target.intensity = -(maxInt - minInt)*Mathf.Cos(2*Mathf.PI*t) + minInt;
 
 				t += rate * Time.deltaTime;
 

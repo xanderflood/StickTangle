@@ -36,7 +36,12 @@ public class Piece : MonoBehaviour {
 
 	public Material stickerMat;
 
+	protected bool glowing;
+	
+	// Animations
 	public GameObject AcidAnimation;
+	public GameObject MagnetGlowModel;
+	GameObject activeGlow;
 
 	protected void Awake() {
 		grid = Utils.FindComponent<Grid>("Board");
@@ -127,5 +132,23 @@ public class Piece : MonoBehaviour {
 
 		activeAnim.GetComponent<DissolveAnimation>().dr = dr;
 		activeAnim.GetComponent<DissolveAnimation>().dc = dc;
+	}
+	
+	public void StartMagnetGlow() {
+		activeGlow = (GameObject)Instantiate(MagnetGlowModel, transform.position, Quaternion.identity);
+		
+		Vector3 v = activeGlow.transform.position;
+		v.z = -2.1f;
+		activeGlow.transform.position = v;
+		
+		glowing = true;
+	}
+	
+	public void StopMagnetGlow() {
+		if (!glowing)
+			return;
+		
+		Destroy(activeGlow);
+		glowing = false;
 	}
 }
