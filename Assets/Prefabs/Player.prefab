@@ -304,12 +304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AcidAnimation: {fileID: 0}
   stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
+  AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   wallBump: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
-  acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
-  music: {fileID: 11400002, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
   done: 0
 --- !u!1001 &100100000
 Prefab:

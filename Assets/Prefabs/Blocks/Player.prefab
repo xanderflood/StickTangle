@@ -68,7 +68,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: fffacf473371449d6913ade76559c754, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -245,11 +245,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
+  AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   wallBump: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
-  acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
-  magnet: {fileID: 0}
+  magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
   done: 0
 --- !u!1001 &100100000
 Prefab:
