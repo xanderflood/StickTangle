@@ -67,7 +67,7 @@ public class Piece : MonoBehaviour {
 		Log.error("This function should be abstract but Unity is a piece of shit. Don't use me.");
 		Utils.Assert(false);
 	}
-
+	
 	public bool IsStuckToManget(int dr, int dc) {
 		bool stuckToMagnet = false;
 		List<Position> magnets = grid.GetMagnets(row, col);
@@ -75,7 +75,7 @@ public class Piece : MonoBehaviour {
 			Magnet m;
 			grid.magnetMap.TryGetValue(p, out m);
 			Utils.Assert(m);
-
+			
 			if (m.IsMovingAway(row, col, dr, dc)) {
 				stuckToMagnet = true;
 				break;
@@ -110,6 +110,11 @@ public class Piece : MonoBehaviour {
 			s.renderer.material = stickerMat;
 		}
 		newStickables.Clear();
+
+		if (grid.IsNextToMagnet(row, col))
+			StartMagnetGlow();
+		else
+			StopMagnetGlow();
 	}
 
 	// Checks whether this Piece is about to roll over acid;
@@ -138,11 +143,16 @@ public class Piece : MonoBehaviour {
 	}
 	
 	public void StartMagnetGlow() {
+		if (glowing)
+			return;
+
 		activeGlow = (GameObject)Instantiate(MagnetGlowModel, transform.position, Quaternion.identity);
 		
 		Vector3 v = activeGlow.transform.position;
 		v.z = -2.1f;
 		activeGlow.transform.position = v;
+
+		activeGlow.transform.parent = transform;
 		
 		glowing = true;
 	}
