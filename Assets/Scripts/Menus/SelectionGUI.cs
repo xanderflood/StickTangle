@@ -7,22 +7,13 @@ public class SelectionGUI : MonoBehaviour {
 	public AudioClip select;
 	public AudioClip up;
 
-	List<string> _Titles;
-	List<Texture> _Images;
-	public List<string> Titles {
-		get { return _Titles; }
-		set { _Titles = value; }
-	}
-	public List<Texture> Images {
-		get { return _Images; }
-		set { _Images = value; }
-	}
+	List<string> Titles = new List<string>();
+	List<Texture> Images = new List<Texture>();
 	
-	public GUITexture display;
-	public TextMesh title;
+	public LevelSelectDisplayScript disp;
 
-	public GUITexture right;
-	public GUITexture left;
+	public Material right;
+	public Material left;
 
 	int selection = 0;
 	public int Selection {
@@ -36,13 +27,25 @@ public class SelectionGUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		XmlLoader.LoadXml("levels");
+
+		Debug.Log (XmlLoader.NumStages);
+		for (int i = 0; i < XmlLoader.NumStages; ++i) {
+			Texture t = (Texture)Resources.Load("Stage" + (i + 1) + ".png");
+			Images.Add(t);
+		}
+		
+		for (int i = 0; i < XmlLoader.NumStages; ++i) {
+			Titles.Add("Stage " + (i + 1));
+		}
+
 		LoadSelection();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.RightArrow) && selection != _Titles.Count - 1) {
+		if (Input.GetKeyDown(KeyCode.RightArrow) && selection != Titles.Count - 1) {
 			audio.PlayOneShot(move);
 			selection += 1;
 			LoadSelection();
@@ -72,7 +75,7 @@ public class SelectionGUI : MonoBehaviour {
 			left.color = c;
 		}
 
-		if (selection == _Images.Count) {
+		if (selection == Images.Count) {
 			Color c = right.color;
 			c.a = .5f;
 			right.color = c;
@@ -82,11 +85,10 @@ public class SelectionGUI : MonoBehaviour {
 			right.color = c;
 		}
 
-
 	}
 
 	void LoadSelection() {
-		title.text = _Titles[selection];
-		display.texture = _Images[selection];
+		disp.text = Titles[selection];
+		disp.img = Images[selection];
 	}
 }

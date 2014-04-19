@@ -44,7 +44,7 @@ public class DataViewScript : MonoBehaviour {
 		//
 		// Load Level Data
 		//
-		XmlLoader.LoadXml("levels.xml");
+		XmlLoader.LoadXml("levels");
 
 		//
 		// Stages list
