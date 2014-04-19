@@ -25,6 +25,17 @@ public class Sticker : Piece {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
 	}
 
+    protected override void Awake() {
+        base.Awake();
+        Color temp = new Color();
+        temp.r = 0;
+        temp.g = 0;
+        temp.b = 0;
+        temp.a = .7f;
+        this.renderer.material.color = temp;
+    
+    }
+
 	private bool isValidSquare(int newR, int newC) {
 		if (!grid.InBounds(newR, newC)) {
 			return false;

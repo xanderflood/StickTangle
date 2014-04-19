@@ -7,7 +7,7 @@ using SquareType = Grid.SquareType;
 
 public class Piece : MonoBehaviour {
 	public Position pos = new Position(-1, -1);
-	
+    public List<Material> CrayonMats; 
 	public int row {
 		get {
 			return pos.Row;
@@ -44,7 +44,9 @@ public class Piece : MonoBehaviour {
 	public GameObject MagnetGlowModel;
 	GameObject activeGlow;
 
-	protected void Awake() {
+	protected virtual void Awake() {
+        this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
+        this.transform.Rotate(0,0,Random.Range(0, 3) * 90);
 		grid = Utils.FindComponent<Grid>("Board");
 		music = Utils.FindComponent<MusicSelector>("Music");
 		Position pos = grid.CoordToPos(transform.position);
@@ -107,8 +109,10 @@ public class Piece : MonoBehaviour {
         }
 
 		foreach (Stickable s in newStickables) {
-			s.renderer.material = stickerMat;
+            //change the color of the stickable to match sticker color
+            s.renderer.material.color = this.renderer.material.color;
 		}
+
 		newStickables.Clear();
 
 		if (grid.IsNextToMagnet(row, col))

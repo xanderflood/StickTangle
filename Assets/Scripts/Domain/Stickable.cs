@@ -5,6 +5,17 @@ using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Stickable : Piece {
+
+    protected override void Awake() {
+		base.Awake();
+
+        Color temp = new Color();
+        temp.r = 1;
+        temp.g = 0.5f;
+        temp.b = 0.5f;
+        temp.a = 1f;
+        this.renderer.material.color = temp;
+    }
 		
 	private void Start() {
 		grid.SetSquare(row, col, new Square(SquareType.Stickable));

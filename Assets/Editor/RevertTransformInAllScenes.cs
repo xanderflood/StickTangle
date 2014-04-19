@@ -26,13 +26,20 @@ public class RevertTransform : MonoBehaviour {
 							string sceneName = s.path.Substring(s.path.LastIndexOf('/') + 1);
 							Debug.Log("Reverting transform for " + name + " in scene " + sceneName);
 
-							GameObject newObj = Resources.Load<GameObject>(name);
-							newObj = (GameObject) Instantiate(newObj);
-
-							obj.transform.position = newObj.transform.position;
-
-							DestroyImmediate(newObj);
-							EditorApplication.SaveScene();
+                            GameObject parent = GameObject.Find("Goals");
+                            GameObject[] objs = GameObject.FindObjectOfType(typeof(obj));
+                            for (int i = 0; i < objs.Length; i++) {
+                                obj = objs[i];
+							    GameObject newObj = Resources.Load<GameObject>(name);
+							    newObj = (GameObject) Instantiate(newObj);
+                            
+							    newObj.transform.position = obj.transform.position;
+                                newObj.name = obj.name;
+                                newObj.transform.parent = parent.transform;
+                                DestroyImmediate(obj);
+                            }
+						    //EditorApplication.SaveScene();  
+                            return;
 						}
 					}
 				}
