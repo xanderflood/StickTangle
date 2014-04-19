@@ -26,7 +26,7 @@ public class XmlLoader {
 		string xmlText = xmlFile.text;
 
 		List<LevelState> state = new List<LevelState>();
-		int id = 1;
+		int id = 2;
 		int stage = -1;
 		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {			
 			while (reader.ReadToFollowing("stage")) {
@@ -34,7 +34,9 @@ public class XmlLoader {
 				stage = XmlConvert.ToInt32(reader.Value);
 
 				reader.ReadToFollowing("level");
+				numLevels.Add(0);
 				do {
+					++numLevels[numLevels.Count - 1];
 					LevelState ls = new LevelState();
 					ls.id = id++;
 					ls.stage = stage;
@@ -58,8 +60,6 @@ public class XmlLoader {
 
 					reader.ReadEndElement();
 				} while (reader.ReadToNextSibling("level"));
-
-				numLevels.Add(state[state.Count - 1].level);
 			}
 			
 			numStages = stage;
