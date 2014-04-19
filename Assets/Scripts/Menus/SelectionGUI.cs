@@ -12,14 +12,6 @@ public class SelectionGUI : MonoBehaviour {
 
 	public bool StageSelected;
 
-	int length;
-	
-	string[] StageTitles;
-	Texture[] StageImages;
-	
-	string[][] LevelTitles;
-	LevelState[][] LevelStates;
-	
 	public LevelSelectDisplayScript disp;
 	
 	public Material right;
@@ -27,12 +19,18 @@ public class SelectionGUI : MonoBehaviour {
 	public Material up;
 	public Material down;
 
-	int selection = 0;
-	int savedStage;
+	private int length;
+	
+	private string[] StageTitles;
+	private Texture[] StageImages;
+	
+	private string[][] LevelTitles;
+	private LevelState[][] LevelStates;
 
-	// Use this for initialization
-	void Start () {
-
+	private int selection = 0;
+	private int savedStage;
+	
+	private void Start () {
 		// Load stage data
 		Object[] objs = Resources.LoadAll("StageImgs", typeof(Texture));
 		StageImages = System.Array.ConvertAll<Object, Texture>(objs,
@@ -53,9 +51,6 @@ public class SelectionGUI : MonoBehaviour {
 
 		// Load level data
 		foreach (LevelState l in ls) {
-			Debug.Log (l.stage);
-			Debug.Log (l.level);
-			Debug.Log (XmlLoader.NumLevels[l.stage]);
 			LevelStates[l.stage - 1][l.level - 1] = l;
 			LevelTitles[l.stage - 1][l.level - 1] = l.name;
 		}
@@ -64,9 +59,7 @@ public class SelectionGUI : MonoBehaviour {
 		LoadSelection();
 	}
 	
-	// Update is called once per frame
 	void Update () {
-
 		// Invalid inputs get a bump
 		if (Input.GetKeyDown(KeyCode.UpArrow) && !StageSelected ||
 		    Input.GetKeyDown(KeyCode.RightArrow) && selection == length - 1 ||
