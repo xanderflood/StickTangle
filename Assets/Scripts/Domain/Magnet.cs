@@ -7,7 +7,7 @@ using Square = Grid.Square;
 public class Magnet : Piece {
 	private void Start() {
 		grid.SetSquare(row, col, new Square(SquareType.Magnet));
-		grid.magnetMap.Add(new Position(row, col), this);
+		grid.magnetMap.Add(pos, this);
 	}
 
 	public bool IsMovingAway(int r, int c, int dr, int dc) {

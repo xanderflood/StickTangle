@@ -37,7 +37,7 @@ public class Piece : MonoBehaviour {
 
 	public Material stickerMat;
 
-	protected bool glowing;
+	public bool glowing;
 	
 	// Animations
 	public GameObject AcidAnimation;
