@@ -249,7 +249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052d7123d74e0c94399e98629e03e51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
 --- !u!23 &168463180
 Renderer:
   m_ObjectHideFlags: 0
@@ -1023,7 +1025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.537402213
+      value: -.519999981
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 809dda68ce1b6a64e80f3bf785805fa0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1317,7 +1319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &320932016
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1504,7 +1508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &447466384
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1616,7 +1622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &503148015
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1728,7 +1736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &576333327
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1840,7 +1850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &598526586
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2044,7 +2056,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &765538023
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2238,7 +2252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &855239143
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2556,7 +2572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &899108342
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2971,10 +2989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc421648c6b044e78c7ba715761a6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
+  AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   wallBump: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
-  magnet: {fileID: 0}
+  magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
   done: 0
 --- !u!82 &1173291542
 AudioSource:
@@ -3600,7 +3619,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &1578824505
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3672,7 +3693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &1594969453
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3744,7 +3767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &1614292614
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4098,7 +4123,7 @@ Transform:
   m_PrefabInternal: {fileID: 240948836}
   m_GameObject: {fileID: 1882803393}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -4.37113883e-08}
-  m_LocalPosition: {x: -1.89534605, y: -.537402213, z: 0}
+  m_LocalPosition: {x: -1.89534605, y: -.519999981, z: 0}
   m_LocalScale: {x: 25.0699997, y: 17.4300003, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4157,7 +4182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a8f43599c408f4a9bce6d103fd6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickerMat: {fileID: 0}
   AcidAnimation: {fileID: 0}
+  MagnetGlowModel: {fileID: 0}
 --- !u!33 &1898188658
 MeshFilter:
   m_ObjectHideFlags: 0
