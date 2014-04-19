@@ -12,6 +12,9 @@ public class Sticker : Piece {
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
+	private float moveDelay = 0.05f;
+	private float lastMoveTime = 0;
+
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
 	public bool done = false;
@@ -33,7 +36,6 @@ public class Sticker : Piece {
         temp.b = 0;
         temp.a = .7f;
         this.renderer.material.color = temp;
-    
     }
 
 	private bool isValidSquare(int newR, int newC) {
@@ -136,6 +138,13 @@ public class Sticker : Piece {
 		// Return if already moving
 		if (inMotion || done || teleporting)
 			return;
+
+		// 20 millisecond delay after move
+		if (Time.time - lastMoveTime > moveDelay) {
+			lastMoveTime = Time.time;
+		} else {
+			return;
+		}
 
 		// Check for valid teleporters
 		Teleporter t = grid.CheckReadyToTeleport();
