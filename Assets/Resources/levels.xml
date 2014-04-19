@@ -149,6 +149,14 @@ Julie: I can't decide if that's gross or cool.
 			</stars>
 			<narration></narration>
 		</level>
+		<level id="4">
+			<stars>
+				<bronze>15</bronze>
+				<silver>10</silver>
+				<gold>5</gold>
+			</stars>
+			<narration></narration>
+		</level>
 	</stage>
 	<stage id="4">
 		<level id="1">
