@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MusicSelector : MonoBehaviour {
 
+
+	public AudioClip melody0;
 	public AudioClip melody1;
 	public AudioClip melody2;
 	public AudioClip melody3;
@@ -20,9 +22,25 @@ public class MusicSelector : MonoBehaviour {
 	}
 
 	private void Update() {
+		if (LevelManager.modeling)
+			return;
+
 		string name = Application.loadedLevelName;
 
-		if (lm.CurrentLevelInRange("1.1", "1.8")) {
+		if (name == "LevelSelect") {
+			audio.clip = melody0;
+			if (!audio.isPlaying)
+				audio.Play();
+		}
+
+		if ((name == "Level1.1")||(name == "Level1.2")){
+			if (!audio.isPlaying)
+				audio.clip = melody1;
+			if (!audio.isPlaying)
+				audio.Play(); 
+		}
+
+		if (lm.CurrentLevelInRange("1.2", "1.8")) {
 			audio.clip = melody1;
 			if (!audio.isPlaying)
 				audio.Play(); 
@@ -48,7 +66,7 @@ public class MusicSelector : MonoBehaviour {
 				audio.Play(); 
 		}
 
-		if (lm.CurrentLevelInRange("3.2", "3.3")) {
+		if (lm.CurrentLevelInRange("3.2", "3.4")) {
 			audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 

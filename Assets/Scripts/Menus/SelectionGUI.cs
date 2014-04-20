@@ -7,7 +7,6 @@ public class SelectionGUI : MonoBehaviour {
 	public AudioClip move;
 	public AudioClip select;
 	public AudioClip back;
-	public AudioClip bump;
 	public AudioClip loading;
 
 	public bool StageSelected;
@@ -30,7 +29,13 @@ public class SelectionGUI : MonoBehaviour {
 	private int selection = 0;
 	private int savedStage;
 	
+	void Awake() {
+		
+		LevelManager.modeling = true;
+	}
+	
 	private void Start () {
+
 		// Load stage data
 		Object[] objs = Resources.LoadAll("StageImgs", typeof(Texture));
 		StageImages = System.Array.ConvertAll<Object, Texture>(objs,
@@ -64,7 +69,6 @@ public class SelectionGUI : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.UpArrow) && !StageSelected ||
 		    Input.GetKeyDown(KeyCode.RightArrow) && selection == length - 1 ||
 		    Input.GetKeyDown(KeyCode.LeftArrow) && selection == 0) {
-			audio.PlayOneShot(bump);
 			return;
 		}
 
@@ -82,6 +86,7 @@ public class SelectionGUI : MonoBehaviour {
 
 			if (StageSelected) {
 				audio.PlayOneShot(loading);
+				LevelManager.modeling = false;
 				Application.LoadLevel(LevelStates[savedStage][selection].id);
 			} else {
 				StageSelected = true;
@@ -150,11 +155,15 @@ public class SelectionGUI : MonoBehaviour {
 			disp.text = StageTitles[selection];
 			disp.img = StageImages[selection];
 
+			disp.stageNum = selection + 1;
+
 			length = StageTitles.Length;
 		} else {
 			disp.mode = true;
 			disp.text = LevelTitles[savedStage][selection];
 			length = XmlLoader.NumLevels[savedStage];
+			
+			disp.stageNum = selection + 1;
 
 			disp.level = LevelStates[savedStage][selection];
 		}

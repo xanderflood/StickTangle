@@ -25,6 +25,9 @@ public class Sticker : Piece {
 	private bool teleporting;
 
 	private void Start() {
+		if (LevelManager.modeling)
+			return;
+
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
 	}
 
@@ -169,6 +172,9 @@ public class Sticker : Piece {
 	}
 
 	private void Update() {
+		if (LevelManager.modeling)
+			return;
+		
 		// Return if already moving
 		if (inMotion || done || teleporting)
 			return;
@@ -273,6 +279,16 @@ public class Sticker : Piece {
 		Vector3 tempTransform = transform.position;
 		transform.position = s.transform.position;
 		s.transform.position = tempTransform;
+
+		// Make sure the magnet glow animation is appropriately tracked
+		if (glowing) {
+			glowing = false;
+			s.glowing = true;
+			s.activeGlow = activeGlow;
+			activeGlow.transform.position = s.transform.position;
+			activeGlow.transform.parent = s.transform;
+			activeGlow = null;
+		}
 
 		return s;
     }

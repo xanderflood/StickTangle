@@ -12,7 +12,12 @@ public class LevelManager : MonoBehaviour {
 	public int levelIndex = -1;
 	bool restarting = false;
 
+	public static bool modeling = false;
+
 	private void Awake() {
+		if (modeling)
+			return;
+
 		levelStates = XmlLoader.LoadXml("levels");
 
 		for (int i = 0; i < levelStates.Count; i++) {
@@ -55,7 +60,13 @@ public class LevelManager : MonoBehaviour {
 
 	public void SetText() {
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
-		mesh.text = levelStates[levelIndex].narrationText;
+		foreach (string s in levelStates[levelIndex].narrationText1) {
+			Debug.Log(s);
+		}
+		foreach (string s in levelStates[levelIndex].narrationText2) {
+			Debug.Log(s);
+		}
+		//mesh.text = levelStates[levelIndex].narrationText;
 		mesh = Utils.FindComponent<TextMesh>("LevelText");
 		mesh.text = "Level " + levelStates[levelIndex].stage + "." + levelStates[levelIndex].level;
 	}
@@ -81,6 +92,9 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void Update() {
+		if (modeling)
+			return;
+
 		if (Input.GetKeyDown(KeyCode.R)) {
 			StartCoroutine(DelayRestart());
 		}

@@ -42,11 +42,14 @@ public class Piece : MonoBehaviour {
 	// Animations
 	public GameObject AcidAnimation;
 	public GameObject MagnetGlowModel;
-	GameObject activeGlow;
+	public GameObject activeGlow;
 
 	protected virtual void Awake() {
-        this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
+		this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
         this.transform.Rotate(0,0,Random.Range(0, 3) * 90);
+
+		if (LevelManager.modeling)
+			return;
 		grid = Utils.FindComponent<Grid>("Board");
 		music = Utils.FindComponent<MusicSelector>("Music");
 		Position pos = grid.CoordToPos(transform.position);
@@ -94,8 +97,10 @@ public class Piece : MonoBehaviour {
 		Vector3 to = grid.PosToCoord(row, col, layer);
 		
 		Vector3 velocity = speed * (to - transform.position).normalized;
-		while (transform.position != to) {
+		float distanceTravelled = 0;
+		while (distanceTravelled < 1f) {
 			transform.position += velocity;
+			distanceTravelled += velocity.magnitude;
 			yield return null;
 		}
 		transform.position = to;
@@ -157,7 +162,7 @@ public class Piece : MonoBehaviour {
 		activeGlow.transform.position = v;
 
 		activeGlow.transform.parent = transform;
-		
+
 		glowing = true;
 	}
 	
@@ -165,7 +170,7 @@ public class Piece : MonoBehaviour {
 		if (!glowing)
 			return;
 		
-		Destroy(activeGlow);
+		activeGlow.GetComponent<MagnetGlow>().BeginStop();
 		glowing = false;
 	}
 }
