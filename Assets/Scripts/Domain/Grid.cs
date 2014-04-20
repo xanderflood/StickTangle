@@ -11,7 +11,7 @@ public class Grid : MonoBehaviour {
 	
 	public List<Position> goals = new List<Position>();
     public List<Acid> acidBlocks = new List<Acid>();
-
+    public Dictionary<Position, Goal> goalMap = new Dictionary<Position, Goal>();
 	public List<Teleporter> teleporters;
 	public Dictionary<Position, Magnet> magnetMap = new Dictionary<Position, Magnet>();
 	
@@ -252,15 +252,25 @@ public class Grid : MonoBehaviour {
 		return row < Dim - 1 && col < Dim - 1 && row > 0 && col > 0;
 	}
 
-	public bool CheckAllGoals() {
-		foreach (Position p in goals) {
-			if (grid[p.Row, p.Col].type != SquareType.Player) {
-				return false;
-			}
-		}
+    public bool CheckAllGoals()
+    {
+        bool retValue = true;
+        foreach (Position p in goals)
+        {
+            if (grid[p.Row, p.Col].type == SquareType.Player)
+            {
+             //   Color temp = goalMap[p].renderer.material.color;
+              //  temp.a = 0;
+            //    goalMap[p].renderer.material.color = temp;
+            }
+            else
+            {
+                retValue = false;
+            }
+        }
 
-		return true;
-	}
+        return retValue;
+    }
 
     // Checks to see if given location is acid, if so destroys the acid and returns true
     public bool CheckForAndDestoryAcid(int row, int col) {
