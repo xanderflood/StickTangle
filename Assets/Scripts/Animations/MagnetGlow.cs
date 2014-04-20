@@ -47,7 +47,7 @@ public class MagnetGlow : MonoBehaviour {
 		
 		// Cooling down
 		while (alpha > 0) {
-			setAlpha(alpha -= 3*rate*Time.deltaTime);
+			setAlpha(alpha -= 7*rate*Time.deltaTime);
 			yield return true;
 		}
 

@@ -86,6 +86,9 @@ public class LevelManager : MonoBehaviour {
 
     void OnGUI()
     {
+		if (LevelManager.modeling)
+			return;
+
          var DaimenStyle = GUI.skin.GetStyle("Label");
          DaimenStyle.alignment = TextAnchor.UpperLeft;
          DaimenStyle.wordWrap = true;
