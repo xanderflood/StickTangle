@@ -12,8 +12,12 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	public GameObject outline;
 
+	public BlockNumber numberDisplay;
+
 	// false if displaying a stage, true for a level
 	public bool mode;
+
+	public int stageNum;
 
 	int curID = -1;
 	bool staging = true;
@@ -34,7 +38,7 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnGUI() {
-		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-148, 100, 50), text, centering);
+		GUI.Label (new Rect (Screen.width/2-100, Screen.height/2-150, 100, 50), text, centering);
 
 		if (!mode) {
 			GUI.DrawTexture (new Rect (Screen.width / 2 - 100,
@@ -52,6 +56,8 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 			StartCoroutine(loadScreencap());
 		}
+		
+		numberDisplay.num = stageNum;
 	}
 
 	IEnumerator loadScreencap() {

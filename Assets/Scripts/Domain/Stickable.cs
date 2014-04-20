@@ -18,6 +18,9 @@ public class Stickable : Piece {
     }
 		
 	private void Start() {
+		if (LevelManager.modeling)
+			return;
+
 		grid.SetSquare(row, col, new Square(SquareType.Stickable));
 		
 		Sticker s = Utils.FindComponent<Sticker>("Player");

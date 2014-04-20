@@ -30,8 +30,12 @@ public class SelectionGUI : MonoBehaviour {
 	private int selection = 0;
 	private int savedStage;
 	
-	private void Start () {
+	void Awake() {
+		
 		LevelManager.modeling = true;
+	}
+	
+	private void Start () {
 
 		// Load stage data
 		Object[] objs = Resources.LoadAll("StageImgs", typeof(Texture));
@@ -153,11 +157,15 @@ public class SelectionGUI : MonoBehaviour {
 			disp.text = StageTitles[selection];
 			disp.img = StageImages[selection];
 
+			disp.stageNum = selection + 1;
+
 			length = StageTitles.Length;
 		} else {
 			disp.mode = true;
 			disp.text = LevelTitles[savedStage][selection];
 			length = XmlLoader.NumLevels[savedStage];
+			
+			disp.stageNum = selection + 1;
 
 			disp.level = LevelStates[savedStage][selection];
 		}
