@@ -93,6 +93,7 @@ public class Sticker : Piece {
 			StopMagnetGlow();
 		}
 
+		bool stuck = false;
 		for (int i = stickables.Count - 1; i >= 0; i--) {
 			Stickable s = stickables[i];
 			if (s.glowing && s.IsStuckToManget(dr, dc)) {
@@ -100,10 +101,24 @@ public class Sticker : Piece {
 				stickableMap.Add(s.pos, s);
 				stickables.Remove(s);
 				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
+				stuck = true;
 			}
 		}
 
 		if (!isValidMove(dr, dc)) {
+			// If we mistakenly unstuck a piece, just add all adjacent stickables again
+			// TODO: This is copy and pasted from the Update function
+			if (stuck) {
+				List<Stickable> toAdd = new List<Stickable>();
+				toAdd.AddRange(GetStickables(row, col));
+				
+				// Check for new stickables next to other pieces
+				foreach (Stickable s in stickables) {
+					toAdd.AddRange(GetStickables(s.row, s.col));
+				}
+				stickables.AddRange(toAdd);
+			}
+
 			audio.clip = wallBump;
 
 			if (!audio.isPlaying)
