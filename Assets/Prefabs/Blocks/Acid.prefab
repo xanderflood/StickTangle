@@ -11,6 +11,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 33: {fileID: 3300000}
   - 114: {fileID: 11400000}
+  - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -1, z: -2}
+  m_LocalPosition: {x: -963.550049, y: -975.203247, z: 50.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,6 +58,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!111 &11100000
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
