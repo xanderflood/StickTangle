@@ -400,6 +400,7 @@ GameObject:
   - 23: {fileID: 152484741}
   - 33: {fileID: 152484740}
   - 114: {fileID: 152484739}
+  - 114: {fileID: 152484742}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -441,10 +442,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &152484740
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -475,6 +476,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &152484742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 2125510740}
+  m_GameObject: {fileID: 152484737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1 &168463178
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,10 +533,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
 --- !u!23 &168463180
 Renderer:
   m_ObjectHideFlags: 0
@@ -699,8 +714,8 @@ GameObject:
   - 82: {fileID: 211584371}
   - 82: {fileID: 211584372}
   - 82: {fileID: 211584373}
-  - 82: {fileID: 211584374}
   - 82: {fileID: 211584375}
+  - 82: {fileID: 211584374}
   m_Layer: 0
   m_Name: Music
   m_TagString: music
@@ -838,6 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585c2cfabbaca4430a56dca645d8da66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melody0: {fileID: 8300000, guid: abf0822557f52443487c3741b8cf457a, type: 3}
   melody1: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   melody2: {fileID: 8300000, guid: 6b2665ca22a2c4bf9a94216bf37587e8, type: 3}
   melody3: {fileID: 8300000, guid: 9042dfdb7347a4a92b36dd4aaa9bf367, type: 3}
@@ -845,7 +861,7 @@ MonoBehaviour:
   blop: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   clear: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   teleport: {fileID: 8300000, guid: 81ea20ba256d74fabb7f879b12a7b697, type: 3}
-  acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  acid: {fileID: 8300000, guid: 0af2d0ec9d71142a9a27e9f85981b565, type: 3}
 --- !u!114 &211584367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,9 +884,9 @@ AudioSource:
   m_GameObject: {fileID: 211584363}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .200000003
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1168,13 +1184,13 @@ AudioSource:
 --- !u!82 &211584374
 AudioSource:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 8200014, guid: 2ccdd170c1cea0e41b4b53dac077cf95,
+  m_PrefabParentObject: {fileID: 8200018, guid: 2ccdd170c1cea0e41b4b53dac077cf95,
     type: 2}
   m_PrefabInternal: {fileID: 773701132}
   m_GameObject: {fileID: 211584363}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: abf0822557f52443487c3741b8cf457a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
@@ -1233,7 +1249,7 @@ AudioSource:
   m_GameObject: {fileID: 211584363}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0af2d0ec9d71142a9a27e9f85981b565, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
@@ -1378,6 +1394,7 @@ GameObject:
   - 23: {fileID: 258155052}
   - 33: {fileID: 258155051}
   - 114: {fileID: 258155050}
+  - 114: {fileID: 258155053}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -1419,10 +1436,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &258155051
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1453,6 +1470,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &258155053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 809907766}
+  m_GameObject: {fileID: 258155048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &275200535
 Prefab:
   m_ObjectHideFlags: 0
@@ -2177,6 +2208,7 @@ GameObject:
   - 23: {fileID: 773781787}
   - 33: {fileID: 773781786}
   - 114: {fileID: 773781785}
+  - 114: {fileID: 773781788}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -2218,10 +2250,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &773781786
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2252,6 +2284,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &773781788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 454312183}
+  m_GameObject: {fileID: 773781783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &809907766
 Prefab:
   m_ObjectHideFlags: 0
@@ -2835,12 +2881,12 @@ Transform:
   m_LocalPosition: {x: -3, y: -3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1520558719}
-  - {fileID: 258155049}
   - {fileID: 1411934108}
   - {fileID: 2088057935}
-  - {fileID: 1344291637}
   - {fileID: 152484738}
+  - {fileID: 1520558719}
+  - {fileID: 258155049}
+  - {fileID: 1344291637}
   m_Father: {fileID: 953287925}
 --- !u!1 &993766581
 GameObject:
@@ -3124,10 +3170,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 2100000, guid: da2bf831e84384f37afb5c03825b41a7, type: 2}
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
   wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
   done: 0
@@ -3494,6 +3540,7 @@ GameObject:
   - 23: {fileID: 1251283215}
   - 33: {fileID: 1251283214}
   - 114: {fileID: 1251283213}
+  - 114: {fileID: 1251283216}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -3535,10 +3582,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1251283214
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3569,6 +3616,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1251283216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 53092765}
+  m_GameObject: {fileID: 1251283211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &1271874819
 Prefab:
   m_ObjectHideFlags: 0
@@ -3676,11 +3737,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1251283212}
-  - {fileID: 773781784}
-  - {fileID: 1550916304}
   - {fileID: 2045699328}
-  - {fileID: 1458349203}
   - {fileID: 1317383002}
+  - {fileID: 1550916304}
+  - {fileID: 773781784}
+  - {fileID: 1458349203}
   m_Father: {fileID: 953287925}
 --- !u!114 &1302483184
 MonoBehaviour:
@@ -3710,6 +3771,7 @@ GameObject:
   - 23: {fileID: 1317383005}
   - 33: {fileID: 1317383004}
   - 114: {fileID: 1317383003}
+  - 114: {fileID: 1317383006}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -3751,10 +3813,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1317383004
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3785,6 +3847,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1317383006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 1513146231}
+  m_GameObject: {fileID: 1317383001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1 &1344291636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3796,6 +3872,7 @@ GameObject:
   - 23: {fileID: 1344291640}
   - 33: {fileID: 1344291639}
   - 114: {fileID: 1344291638}
+  - 114: {fileID: 1344291641}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -3837,10 +3914,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1344291639
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3871,6 +3948,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1344291641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 1578963571}
+  m_GameObject: {fileID: 1344291636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &1403611859
 Prefab:
   m_ObjectHideFlags: 0
@@ -3922,6 +4013,7 @@ GameObject:
   - 23: {fileID: 1411934111}
   - 33: {fileID: 1411934110}
   - 114: {fileID: 1411934109}
+  - 114: {fileID: 1411934112}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -3963,10 +4055,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1411934110
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3997,6 +4089,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1411934112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 1045092864}
+  m_GameObject: {fileID: 1411934107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &1444909103
 Prefab:
   m_ObjectHideFlags: 0
@@ -4049,6 +4155,7 @@ GameObject:
   - 23: {fileID: 1458349206}
   - 33: {fileID: 1458349205}
   - 114: {fileID: 1458349204}
+  - 114: {fileID: 1458349207}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -4090,10 +4197,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1458349205
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4124,6 +4231,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1458349207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 1403611859}
+  m_GameObject: {fileID: 1458349202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &1488003841
 Prefab:
   m_ObjectHideFlags: 0
@@ -4215,6 +4336,7 @@ GameObject:
   - 23: {fileID: 1520558722}
   - 33: {fileID: 1520558721}
   - 114: {fileID: 1520558720}
+  - 114: {fileID: 1520558723}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -4256,10 +4378,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1520558721
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4290,6 +4412,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1520558723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 751065302}
+  m_GameObject: {fileID: 1520558718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &1527377763
 Prefab:
   m_ObjectHideFlags: 0
@@ -4423,6 +4559,7 @@ GameObject:
   - 23: {fileID: 1550916307}
   - 33: {fileID: 1550916306}
   - 114: {fileID: 1550916305}
+  - 114: {fileID: 1550916308}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -4464,10 +4601,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &1550916306
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4498,6 +4635,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &1550916308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 466431193}
+  m_GameObject: {fileID: 1550916303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &1578963571
 Prefab:
   m_ObjectHideFlags: 0
@@ -4980,7 +5131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restart: {fileID: 8300000, guid: 5e2612939e6664e279a61799eab21d36, type: 3}
+  restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
+  sounds: []
   levelIndex: -1
 --- !u!4 &1907807683
 Transform:
@@ -5084,6 +5236,7 @@ GameObject:
   - 23: {fileID: 2045699331}
   - 33: {fileID: 2045699330}
   - 114: {fileID: 2045699329}
+  - 114: {fileID: 2045699332}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -5125,10 +5278,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &2045699330
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5159,6 +5312,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &2045699332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 1201298344}
+  m_GameObject: {fileID: 2045699327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1 &2069115757
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,6 +5378,7 @@ GameObject:
   - 23: {fileID: 2088057938}
   - 33: {fileID: 2088057937}
   - 114: {fileID: 2088057936}
+  - 114: {fileID: 2088057939}
   m_Layer: 0
   m_Name: TeleportBlock
   m_TagString: Untagged
@@ -5252,10 +5420,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
-  stickerMat: {fileID: 0}
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
+  activeGlow: {fileID: 0}
 --- !u!33 &2088057937
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5286,6 +5454,20 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
+--- !u!114 &2088057939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 36173b660596c46ac9ff52178159b593,
+    type: 2}
+  m_PrefabInternal: {fileID: 1271874819}
+  m_GameObject: {fileID: 2088057934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da9c6d6a8e46401dad65b74a85199a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rippleModel: {fileID: 100000, guid: 0f0bde9f4bfef44bcbea4799fa04a8ce, type: 2}
+  rate: 1
 --- !u!1001 &2125510740
 Prefab:
   m_ObjectHideFlags: 0
