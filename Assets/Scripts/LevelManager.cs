@@ -11,29 +11,46 @@ public class LevelManager : MonoBehaviour {
 	public AudioClip[] sounds;
 
 	private List<LevelState> levelStates;
+	private List<string> scenes;
 	public int levelIndex = -1;
 	bool restarting = false;
 
 	public static bool modeling = false;
 
+	private bool InScene() {
+		return scenes.Contains(Application.loadedLevelName);
+	}
+
 	private void Awake() {
-		if (modeling)
+		Pair<List<LevelState>, List<string>> result = XmlLoader.LoadXml("levels");
+		levelStates = result.First;
+		scenes = result.Second;
+				
+		if (InScene()) {
 			return;
+		}
 
-		levelStates = XmlLoader.LoadXml("levels");
+		SetIndex(Application.loadedLevelName);
 
+		DataLogger.Initialize(this);
+	}
+
+	public void SetIndex(string name) {
+		levelIndex = -1;
 		for (int i = 0; i < levelStates.Count; i++) {
-			if (levelStates[i].name == Application.loadedLevelName) {
+			if (levelStates[i].name == name) {
 				levelIndex = i;
 				break;
 			}
 		}
 		Utils.Assert(levelIndex != -1);
-
-		DataLogger.Initialize(this);
 	}
 
 	public bool CurrentLevelInRange(string l1, string l2) {
+		if (InScene()) {
+			return false;
+		}
+
 		string[] parts1 = l1.Split('.');
 		string[] parts2 = l2.Split('.');
 		

@@ -25,7 +25,7 @@ public class XmlLoader {
 	public static int NumStages { get { return numStages; } }
 	static List<int> numLevels = new List<int>();
 	public static List<int> NumLevels { get { return numLevels; } }
-	public static List<LevelState> LoadXml(string filename) {
+	public static Pair<List<LevelState>, List<string>> LoadXml(string filename) {
 		TextAsset xmlFile = Resources.Load<TextAsset>(filename);
 		string xmlText = xmlFile.text;
 
@@ -115,6 +115,6 @@ public class XmlLoader {
 			numStages = stage;
 		}
 
-		return state;
+		return new Pair<List<LevelState>, List<string>>(state, scenes);
 	}
 }
