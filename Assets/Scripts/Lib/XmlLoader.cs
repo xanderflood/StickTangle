@@ -12,7 +12,8 @@ public class XmlLoader {
 		public int bronzeMoves;
 		public int silverMoves;
 		public int goldMoves;
-		public string narrationText;
+		public List<string> narrationText1 = new List<string>();
+		public List<string> narrationText2 = new List<string>();
 		public string name;
 	}
 
@@ -44,6 +45,8 @@ public class XmlLoader {
 					Utils.Assert(reader.MoveToAttribute("id"));
 					ls.level = XmlConvert.ToInt32(reader.Value);
 
+					ls.name = "Level" + ls.stage + "." + ls.level;
+					
 					Utils.Assert(reader.ReadToFollowing("bronze"));
 					ls.bronzeMoves = reader.ReadElementContentAsInt();
 					Utils.Assert(reader.ReadToFollowing("silver"));
@@ -51,14 +54,33 @@ public class XmlLoader {
 					Utils.Assert(reader.ReadToFollowing("gold"));
 					ls.goldMoves = reader.ReadElementContentAsInt();
 
-					Utils.Assert(reader.ReadToFollowing("narration"));
-					ls.narrationText = reader.ReadElementContentAsString();
+					reader.ReadEndElement(); // Read </stars> (</gold>?) tag
 
-					ls.name = "Level" + ls.stage + "." + ls.level;
+					bool done = false;
+					while (reader.Read()) {
+						switch (reader.NodeType) {
+						case XmlNodeType.Element:
+							if (reader.Name == "narration1") {
+								ls.narrationText1.Add(reader.ReadElementContentAsString());
+							} else if (reader.Name == "narration2") {
+								ls.narrationText2.Add(reader.ReadElementContentAsString());
+							} else {
+								Debug.Log(reader.Name);
+								Utils.Assert(false);
+							}
+							break;
+						case XmlNodeType.EndElement:
+							if (reader.Name == "level") {
+								done = true;
+							}
+							break;
+						}
+						if (done == true) {
+							break;
+						}
+					}
 
 					state.Add(ls);
-
-					reader.ReadEndElement();
 				} while (reader.ReadToNextSibling("level"));
 			}
 			

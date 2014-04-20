@@ -7,7 +7,6 @@ public class SelectionGUI : MonoBehaviour {
 	public AudioClip move;
 	public AudioClip select;
 	public AudioClip back;
-	public AudioClip bump;
 	public AudioClip loading;
 
 	public bool StageSelected;
@@ -70,7 +69,6 @@ public class SelectionGUI : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.UpArrow) && !StageSelected ||
 		    Input.GetKeyDown(KeyCode.RightArrow) && selection == length - 1 ||
 		    Input.GetKeyDown(KeyCode.LeftArrow) && selection == 0) {
-			audio.PlayOneShot(bump);
 			return;
 		}
 
