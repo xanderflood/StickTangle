@@ -51,7 +51,7 @@ public class MusicSelector : MonoBehaviour {
 				audio.Play(); 
 		}
 
-		if (lm.CurrentLevelInRange("3.2", "3.3")) {
+		if (lm.CurrentLevelInRange("3.2", "3.4")) {
 			audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 

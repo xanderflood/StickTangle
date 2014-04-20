@@ -399,10 +399,10 @@ Transform:
   m_PrefabInternal: {fileID: 281347277}
   m_GameObject: {fileID: 121424113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -964.61499, y: -978.235657, z: 41.8728333}
+  m_LocalPosition: {x: -.0649414062, y: -.032409668, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1815976896}
+  m_Father: {fileID: 0}
 --- !u!82 &121424119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1122,19 +1122,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1815976896}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -964.61499
+      value: -.0649414062
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -978.235657
+      value: -.032409668
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 41.8728333
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1551,6 +1551,7 @@ GameObject:
   - 81: {fileID: 1134271964}
   - 114: {fileID: 1134271963}
   - 82: {fileID: 1134271969}
+  - 114: {fileID: 1134271962}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1558,6 +1559,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1134271962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: acf1814dfe1d0144dbce9b55c8b9a6bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 424299111}
+  m_GameObject: {fileID: 1134271961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7bedb171323459dbb94398c6b45f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1134271963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2246,7 +2259,6 @@ Transform:
   - {fileID: 70315192}
   - {fileID: 2139400792}
   - {fileID: 601863055}
-  - {fileID: 121424118}
   - {fileID: 1674678415}
   - {fileID: 311697375}
   m_Father: {fileID: 0}
