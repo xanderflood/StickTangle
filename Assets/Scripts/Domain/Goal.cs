@@ -12,7 +12,7 @@ public class Goal : MonoBehaviour {
         this.transform.Rotate(0, 0, Random.Range(0, 3) * 90);
         Color temp = new Color();
         temp.r = 0;
-        temp.g = .5f;
+        temp.g = 1;
         temp.b = 0;
         temp.a = 1;
         this.renderer.material.color = temp;
