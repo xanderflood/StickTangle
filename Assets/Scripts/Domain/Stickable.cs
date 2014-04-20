@@ -26,6 +26,9 @@ public class Stickable : Piece {
 
 	public override void DestroyPiece() {
 		gameObject.renderer.enabled = false;
+        foreach (Transform child in transform) {
+            child.gameObject.renderer.enabled = false;
+        }
 		StartCoroutine(AdvanceAcid());
 	}
 
