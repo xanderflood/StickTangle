@@ -12,6 +12,9 @@ public class Sticker : Piece {
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
+	private float moveDelay = 0.05f;
+	private float lastMoveTime = 0;
+
 	// When all the goals are covered, we set done to true which disables movement, allowing us time to transition
 	// to the next level
 	public bool done = false;
@@ -33,7 +36,6 @@ public class Sticker : Piece {
         temp.b = 0;
         temp.a = .7f;
         this.renderer.material.color = temp;
-    
     }
 
 	private bool isValidSquare(int newR, int newC) {
@@ -43,9 +45,8 @@ public class Sticker : Piece {
 
 		SquareType type = grid.GetSquare(newR, newC).type;
 
-		return type != SquareType.Block && type != SquareType.Magnet;
+		return type != SquareType.Block && type != SquareType.Magnet && type != SquareType.Stickable;
 	}
-
 
 	private bool isValidMove(int dr, int dc) {
 		int newR = row + dr;
@@ -82,6 +83,26 @@ public class Sticker : Piece {
 			return false;
 		}
 
+		if (glowing && stickables.Count > 0) {
+			Stickable s = SwapWithStickable();
+			if (s.glowing) {
+				// TODO: We'll get in an infinite loop
+			} else {
+				s.StartMagnetGlow();
+			}
+			StopMagnetGlow();
+		}
+
+		for (int i = stickables.Count - 1; i >= 0; i--) {
+			Stickable s = stickables[i];
+			if (s.glowing && s.IsStuckToManget(dr, dc)) {
+				audio.PlayOneShot(magnet);
+				stickableMap.Add(s.pos, s);
+				stickables.Remove(s);
+				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
+			}
+		}
+
 		if (!isValidMove(dr, dc)) {
 			audio.clip = wallBump;
 
@@ -111,10 +132,10 @@ public class Sticker : Piece {
 				StartCoroutine(s.Move(dr, dc));
 			} else {
 				// Detach stickable
-				audio.PlayOneShot(magnet);
-				stickableMap.Add(s.pos, s);
-				stickables.Remove(s);
-				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
+//				audio.PlayOneShot(magnet);
+//				stickableMap.Add(s.pos, s);
+//				stickables.Remove(s);
+//				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
 			}
 		}
 
@@ -136,6 +157,13 @@ public class Sticker : Piece {
 		// Return if already moving
 		if (inMotion || done || teleporting)
 			return;
+
+		// 20 millisecond delay after move
+		if (Time.time - lastMoveTime > moveDelay) {
+			lastMoveTime = Time.time;
+		} else {
+			return;
+		}
 
 		// Check for valid teleporters
 		Teleporter t = grid.CheckReadyToTeleport();
@@ -206,16 +234,20 @@ public class Sticker : Piece {
 		}
 
 		hitAcid = false;
-		SwapWithStickable();
-		stickables[0].DestroyPiece();
-		stickables.RemoveAt(0);
+		Stickable s = SwapWithStickable();
+		stickables.Remove(s);
+		s.DestroyPiece();
 	}
 
-    public void SwapWithStickable() {
-		Utils.Assert(stickables.Count > 0);
+	private Stickable SwapWithStickable() {
+		return SwapWithStickable(0);
+	}
+
+    private Stickable SwapWithStickable(int index) {
+		Utils.Assert(stickables.Count > index);
 
 	    // Swap locations with some stickable, then destroy that stickable
-		Stickable s = stickables[0];
+		Stickable s = stickables[index];
 		Position tempPos = pos;
 		pos = s.pos;
 		s.pos = tempPos;
@@ -223,6 +255,8 @@ public class Sticker : Piece {
 		Vector3 tempTransform = transform.position;
 		transform.position = s.transform.position;
 		s.transform.position = tempTransform;
+
+		return s;
     }
 
     public List<Stickable> AttachedPieces() {
