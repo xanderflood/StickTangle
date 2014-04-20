@@ -12,7 +12,12 @@ public class LevelManager : MonoBehaviour {
 	public int levelIndex = -1;
 	bool restarting = false;
 
+	public static bool modeling = false;
+
 	private void Awake() {
+		if (modeling)
+			return;
+
 		levelStates = XmlLoader.LoadXml("levels");
 
 		for (int i = 0; i < levelStates.Count; i++) {
@@ -81,6 +86,9 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void Update() {
+		if (modeling)
+			return;
+
 		if (Input.GetKeyDown(KeyCode.R)) {
 			StartCoroutine(DelayRestart());
 		}

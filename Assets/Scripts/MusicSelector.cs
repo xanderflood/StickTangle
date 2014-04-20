@@ -20,6 +20,9 @@ public class MusicSelector : MonoBehaviour {
 	}
 
 	private void Update() {
+		if (LevelManager.modeling)
+			return;
+
 		string name = Application.loadedLevelName;
 
 		if (lm.CurrentLevelInRange("1.1", "1.8")) {

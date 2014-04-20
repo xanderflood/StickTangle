@@ -31,6 +31,8 @@ public class SelectionGUI : MonoBehaviour {
 	private int savedStage;
 	
 	private void Start () {
+		LevelManager.modeling = true;
+
 		// Load stage data
 		Object[] objs = Resources.LoadAll("StageImgs", typeof(Texture));
 		StageImages = System.Array.ConvertAll<Object, Texture>(objs,
@@ -82,6 +84,7 @@ public class SelectionGUI : MonoBehaviour {
 
 			if (StageSelected) {
 				audio.PlayOneShot(loading);
+				LevelManager.modeling = true;
 				Application.LoadLevel(LevelStates[savedStage][selection].id);
 			} else {
 				StageSelected = true;

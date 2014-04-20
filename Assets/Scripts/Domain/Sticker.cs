@@ -169,6 +169,9 @@ public class Sticker : Piece {
 	}
 
 	private void Update() {
+		if (LevelManager.modeling)
+			return;
+		
 		// Return if already moving
 		if (inMotion || done || teleporting)
 			return;
