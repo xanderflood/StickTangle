@@ -32,6 +32,7 @@ public class DissolveOneSquare : MonoBehaviour {
 
 		float val = 0f;
 		Color start = gameObject.GetComponent<MeshRenderer>().material.color;
+        
 
 		Color c;
 		while (val <= 1) {

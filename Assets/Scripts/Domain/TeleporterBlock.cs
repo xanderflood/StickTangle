@@ -14,8 +14,6 @@ public class TeleporterBlock : Piece {
         temp.b = 0f;
         temp.a = 1;
         this.renderer.material.color = temp;
-        Debug.Log("WHATHTEFUCK");
-
     }
 
 	// Use this for initialization
