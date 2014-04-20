@@ -9,10 +9,12 @@ using SquareType = Grid.SquareType;
 public class CreateGrid : MonoBehaviour {
 	public GameObject blockPrefab;
 	private Material lineMaterial;
-	
-	private int dim = Grid.Dim;
+
 	private GameObject board;
 	private Grid g;
+	public Grid Grid {
+		get { return g; }
+	}
 
 	private const int lineLayer = -1;
 	

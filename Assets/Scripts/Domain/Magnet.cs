@@ -21,6 +21,9 @@ public class Magnet : Piece {
 
 
 	private void Start() {
+		if (LevelManager.modeling)
+			return;
+
 		grid.SetSquare(row, col, new Square(SquareType.Magnet));
 		grid.magnetMap.Add(pos, this);
 	}
