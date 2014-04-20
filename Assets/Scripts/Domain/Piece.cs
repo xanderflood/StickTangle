@@ -45,7 +45,7 @@ public class Piece : MonoBehaviour {
 	GameObject activeGlow;
 
 	protected virtual void Awake() {
-        this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
+		this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
         this.transform.Rotate(0,0,Random.Range(0, 3) * 90);
 		grid = Utils.FindComponent<Grid>("Board");
 		music = Utils.FindComponent<MusicSelector>("Music");
@@ -159,7 +159,7 @@ public class Piece : MonoBehaviour {
 		activeGlow.transform.position = v;
 
 		activeGlow.transform.parent = transform;
-		
+
 		glowing = true;
 	}
 	
