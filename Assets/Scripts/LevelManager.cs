@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
 using LevelState = XmlLoader.LevelState;
 
 public class LevelManager : MonoBehaviour {
+    public Font JulieFont;
+    public Font DamienFont;
 	public AudioClip restart;
 
 	public AudioClip[] sounds;
@@ -17,9 +20,13 @@ public class LevelManager : MonoBehaviour {
 
 	public static bool modeling = false;
 
+    float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
+    float virtualHeight = 600.0f;
+
 	private bool InScene() {
 		return scenes.Contains(Application.loadedLevelName);
 	}
+
 
 	private void Awake() {
 		Pair<List<LevelState>, List<string>> result = XmlLoader.LoadXml("levels");
@@ -77,16 +84,76 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+    void OnGUI()
+    {
+         var DaimenStyle = GUI.skin.GetStyle("Label");
+         DaimenStyle.alignment = TextAnchor.UpperLeft;
+         DaimenStyle.wordWrap = true;
+         DaimenStyle.fontSize = 25;
+         DaimenStyle.font = DamienFont;
+         DaimenStyle.normal.textColor = Color.black;
+         DaimenStyle.fontStyle = FontStyle.Bold;
+
+         //scale the gui stuff with screen size
+         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
+
+
+         string[] text = new string[20]; // longer than we will need
+         for (int i = 0; i < text.Length; i++) {
+             text[i] = "";   
+         }
+
+         int offset = 0;
+        // hcorner, vcorner, width, height
+         foreach (string s in levelStates[levelIndex].narrationText1)
+         {
+             text[2 * offset] = s;
+
+             offset++;
+         }
+         offset = 0;
+         foreach (string s in levelStates[levelIndex].narrationText2)
+         {
+
+             text[2 * offset + 1] = s;
+             offset++;
+         }
+         var JulieStyle = DaimenStyle;
+         JulieStyle.font = JulieFont;
+            //plot text;
+         offset = 0;
+         for (int i = 0; i < text.Length; i++)
+         {
+             if (text[i].Length > 1)
+             {
+                 if (i % 2 == 0)
+                 {
+                     GUI.Label(new Rect(20, 50 + 120 * offset, 220, 500), text[i], JulieStyle);
+                 }
+                 else {
+                     GUI.Label(new Rect(20, 50 + 120 * offset, 220, 500), text[i], DaimenStyle);
+                 }
+                 offset++;
+             }
+         }
+    }
+
 	public void SetText() {
+        /*
 		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
 		foreach (string s in levelStates[levelIndex].narrationText1) {
-			Debug.Log(s);
+            Debug.Log(s);
+            mesh.text += s;
+            mesh.text += "\n\n";
 		}
 		foreach (string s in levelStates[levelIndex].narrationText2) {
+            mesh.text += s;
+            mesh.text += "\n\n";
 			Debug.Log(s);
 		}
 		//mesh.text = levelStates[levelIndex].narrationText;
-		mesh = Utils.FindComponent<TextMesh>("LevelText");
+         * */
+        TextMesh mesh = Utils.FindComponent<TextMesh>("LevelText");
 		mesh.text = "Level " + levelStates[levelIndex].stage + "." + levelStates[levelIndex].level;
 	}
 
