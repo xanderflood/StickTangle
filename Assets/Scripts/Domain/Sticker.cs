@@ -29,6 +29,7 @@ public class Sticker : Piece {
 			return;
 
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
+		DataLogger.Initialize(lm);
 	}
 
     protected override void Awake() {
