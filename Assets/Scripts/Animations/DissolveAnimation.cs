@@ -63,6 +63,8 @@ public class DissolveAnimation : MonoBehaviour {
 		}
 
 		for (int i = 0; i < 4; ++i) {
+			if (squares[pos] == null)
+				continue;
 			DissolveOneSquare dos = squares[pos].GetComponent<DissolveOneSquare>();
 			dos.dissolving = true;
 			pos += jump;
