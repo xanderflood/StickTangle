@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restart: {fileID: 8300000, guid: 5e2612939e6664e279a61799eab21d36, type: 3}
+  restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
   levelIndex: -1
 --- !u!4 &428460217
 Transform:
@@ -393,6 +393,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 377d6c1e06be4264fbac2888316b5848, type: 2}
+      propertyPath: restart
+      value: 
+      objectReference: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 377d6c1e06be4264fbac2888316b5848, type: 2}
   m_RootGameObject: {fileID: 428460214}
