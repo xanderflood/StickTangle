@@ -42,7 +42,7 @@ public class SelectionGUI : MonoBehaviour {
 								return (Texture)obj;
 							});
 
-		List<LevelState> ls = XmlLoader.LoadXml("levels");
+		List<LevelState> ls = XmlLoader.LoadXml("levels").First;
 
 		StageTitles = new string[XmlLoader.NumStages];
 		LevelTitles = new string[XmlLoader.NumStages][];
@@ -86,7 +86,9 @@ public class SelectionGUI : MonoBehaviour {
 			if (StageSelected) {
 				audio.PlayOneShot(loading);
 				LevelManager.modeling = false;
-				Application.LoadLevel(LevelStates[savedStage][selection].name);
+				string levelName = LevelStates[savedStage][selection].name;
+				Utils.FindComponent<LevelManager>("LevelManager").SetIndex(levelName);
+				Application.LoadLevel(levelName);
 			} else {
 				StageSelected = true;
 				savedStage = selection;

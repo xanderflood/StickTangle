@@ -515,6 +515,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
 --- !u!23 &329572744
 Renderer:
   m_ObjectHideFlags: 0
@@ -804,6 +805,7 @@ GameObject:
   - 82: {fileID: 380864138}
   - 82: {fileID: 380864139}
   - 82: {fileID: 380864140}
+  - 82: {fileID: 380864141}
   m_Layer: 0
   m_Name: Music
   m_TagString: music
@@ -882,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585c2cfabbaca4430a56dca645d8da66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melody0: {fileID: 8300000, guid: abf0822557f52443487c3741b8cf457a, type: 3}
   melody1: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   melody2: {fileID: 8300000, guid: 6b2665ca22a2c4bf9a94216bf37587e8, type: 3}
   melody3: {fileID: 8300000, guid: 9042dfdb7347a4a92b36dd4aaa9bf367, type: 3}
@@ -889,7 +892,7 @@ MonoBehaviour:
   blop: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   clear: {fileID: 8300000, guid: 200567129d5154610884acea200457e3, type: 3}
   teleport: {fileID: 8300000, guid: 81ea20ba256d74fabb7f879b12a7b697, type: 3}
-  acid: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  acid: {fileID: 8300000, guid: 0af2d0ec9d71142a9a27e9f85981b565, type: 3}
 --- !u!114 &380864131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,9 +915,9 @@ AudioSource:
   m_GameObject: {fileID: 380864128}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .200000003
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1336,7 +1339,66 @@ AudioSource:
   m_GameObject: {fileID: 380864128}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0af2d0ec9d71142a9a27e9f85981b565, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .300000012
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &380864141
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200018, guid: 2ccdd170c1cea0e41b4b53dac077cf95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1072720107}
+  m_GameObject: {fileID: 380864128}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: abf0822557f52443487c3741b8cf457a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
@@ -1937,6 +1999,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
 --- !u!23 &751534099
 Renderer:
   m_ObjectHideFlags: 0
@@ -2269,7 +2332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restart: {fileID: 8300000, guid: 5e2612939e6664e279a61799eab21d36, type: 3}
+  restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
+  sounds: []
   levelIndex: -1
 --- !u!4 &762201203
 Transform:
@@ -2574,6 +2638,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
 --- !u!23 &897038086
 Renderer:
   m_ObjectHideFlags: 0
@@ -3281,6 +3346,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
 --- !u!23 &1242100763
 Renderer:
   m_ObjectHideFlags: 0
@@ -3823,6 +3889,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
   wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
   done: 0
@@ -4024,6 +4091,7 @@ GameObject:
   - 23: {fileID: 1597164103}
   - 33: {fileID: 1597164102}
   - 114: {fileID: 1597164101}
+  - 111: {fileID: 1597164105}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -4043,6 +4111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
@@ -4095,6 +4164,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 520579046}
+--- !u!111 &1597164105
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11100000, guid: e3e6a609252f85547a72b259473bed44,
+    type: 2}
+  m_PrefabInternal: {fileID: 1951970222}
+  m_GameObject: {fileID: 1597164100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1597334056
 GameObject:
   m_ObjectHideFlags: 0
@@ -4192,6 +4276,7 @@ GameObject:
   - 23: {fileID: 1756316320}
   - 33: {fileID: 1756316319}
   - 114: {fileID: 1756316318}
+  - 111: {fileID: 1756316322}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -4211,6 +4296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
@@ -4263,6 +4349,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 520579046}
+--- !u!111 &1756316322
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11100000, guid: e3e6a609252f85547a72b259473bed44,
+    type: 2}
+  m_PrefabInternal: {fileID: 935604240}
+  m_GameObject: {fileID: 1756316317}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1771059431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,6 +4412,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
+  activeGlow: {fileID: 0}
 --- !u!23 &1771059433
 Renderer:
   m_ObjectHideFlags: 0
@@ -5058,6 +5160,7 @@ GameObject:
   - 23: {fileID: 1992364595}
   - 33: {fileID: 1992364594}
   - 114: {fileID: 1992364593}
+  - 111: {fileID: 1992364597}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -5077,6 +5180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
@@ -5129,6 +5233,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 520579046}
+--- !u!111 &1992364597
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11100000, guid: e3e6a609252f85547a72b259473bed44,
+    type: 2}
+  m_PrefabInternal: {fileID: 192502075}
+  m_GameObject: {fileID: 1992364592}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &2034218572
 Prefab:
   m_ObjectHideFlags: 0
@@ -5252,6 +5371,7 @@ GameObject:
   - 23: {fileID: 2054483824}
   - 33: {fileID: 2054483823}
   - 114: {fileID: 2054483822}
+  - 111: {fileID: 2054483826}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -5271,6 +5391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
@@ -5323,6 +5444,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 520579046}
+--- !u!111 &2054483826
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11100000, guid: e3e6a609252f85547a72b259473bed44,
+    type: 2}
+  m_PrefabInternal: {fileID: 2136130141}
+  m_GameObject: {fileID: 2054483821}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2057472996
 GameObject:
   m_ObjectHideFlags: 0
@@ -5334,6 +5470,7 @@ GameObject:
   - 23: {fileID: 2057472999}
   - 33: {fileID: 2057472998}
   - 114: {fileID: 2057472997}
+  - 111: {fileID: 2057473001}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -5353,6 +5490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
@@ -5405,6 +5543,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 520579046}
+--- !u!111 &2057473001
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11100000, guid: e3e6a609252f85547a72b259473bed44,
+    type: 2}
+  m_PrefabInternal: {fileID: 1273309892}
+  m_GameObject: {fileID: 2057472996}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &2111314162
 Prefab:
   m_ObjectHideFlags: 0
@@ -5523,6 +5676,7 @@ GameObject:
   - 23: {fileID: 2130553643}
   - 33: {fileID: 2130553642}
   - 114: {fileID: 2130553641}
+  - 111: {fileID: 2130553645}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Untagged
@@ -5542,6 +5696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344354667890f3a458984573132e3034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleModel: {fileID: 100000, guid: e2821763822b14e868a408f0d7bc74ea, type: 2}
   CrayonMats:
   - {fileID: 2100000, guid: 75ecd591684309945847cf225b4f6102, type: 2}
   - {fileID: 2100000, guid: c5c136954c945f54cb6d6c57eb81f015, type: 2}
@@ -5594,6 +5749,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 520579046}
+--- !u!111 &2130553645
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11100000, guid: e3e6a609252f85547a72b259473bed44,
+    type: 2}
+  m_PrefabInternal: {fileID: 2034218572}
+  m_GameObject: {fileID: 2130553640}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &2136130141
 Prefab:
   m_ObjectHideFlags: 0

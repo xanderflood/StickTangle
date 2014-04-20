@@ -22,9 +22,6 @@ public class MusicSelector : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (LevelManager.modeling)
-			return;
-
 		string name = Application.loadedLevelName;
 
 		if (name == "LevelSelect") {

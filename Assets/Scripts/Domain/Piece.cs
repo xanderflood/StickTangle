@@ -35,8 +35,6 @@ public class Piece : MonoBehaviour {
 
 	protected List<Stickable> newStickables = new List<Stickable>();
 
-	public Material stickerMat;
-
 	public bool glowing;
 	
 	// Animations
