@@ -41,9 +41,9 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Julie: Awww the blocks get to be friends!  This is so cute!
-				 Damien: …"cute" isn't really the adjective I would use.
-				Julie: Oh hush, you're the one who made them pink.</narration1>
+				<narration1>Julie: Awww the blocks get to be friends!  This is so cute!</narration1>
+				<narration2>Damien: …"cute" isn't really the adjective I would use.</narration2>
+				<narration1>Julie: Oh hush, you're the one who made them pink.</narration1>
 			</level>
 			<level id="5">
 				<stars>
@@ -51,10 +51,12 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Damien: Noooooo don't touch that
-	Julie: But it's pretty
-	 Damien: But you'll be trapped here foreveeeeer
-	Julie: Okay jeez I hear you.</narration1>
+				<narration1></narration1>
+				<narration2>Damien: Noooooo don't touch that</narration2>
+				<narration1>Julie: But it's pretty</narration1>
+				<narration2>Damien: But you'll be trapped here foreveeeeer</narration2>
+				<narration1>Julie: Okay jeez I hear you.</narration1>
+
 			</level>
 			<level id="6">
 				<stars>
@@ -62,10 +64,11 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Julie: So what if I have too many blocks?
-	 Damien: Well, so long as some of them cover the goal, you're fine.
-	Julie: So they can all be friends!  Cute!
-	 Damien: Can we at least call them "fierce allies" instead of "friends."</narration1>
+				
+				<narration1>Julie: So what if I have too many blocks?</narration1>
+				<narration2>Damien: Well, so long as some of them cover the goal, you're fine.</narration2>
+				<narration1>Julie: So they can all be friends!  Cute!</narration1>
+				<narration2>Damien: Can we at least call them "fierce allies" instead of "friends."</narration2>
 			</level>
 			<level id="7">
 				<stars>
@@ -73,9 +76,11 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Damien: OMG are you slacking off again? 
-				 Shouldn't you be paying attention to class?  
-	Julie: Oh hush, this is all your fault anyway.</narration1>
+				
+				<narration1></narration1>
+				<narration2>Damien: OMG are you slacking off again? Shouldn't you be paying attention to class?  </narration2>
+				<narration1>Julie: Oh hush, this is all your fault anyway</narration1>
+
 			</level>
 		</stage>
 		<stage id="2">
@@ -85,8 +90,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Julie: Whoa, dissolving acid?  
-				Do you think we could pour that junk on Ms. Hall's hair?  
+				<narration1>Julie: Whoa, dissolving acid? Do you think we could pour that junk on Ms. Hall's hair?  
 				You know it's hideous.</narration1>
 			</level>
 			<level id="2">
@@ -96,10 +100,10 @@
 					<gold>5</gold>
 				</stars>
 				<narration1>Julie: Wait, so you said the way this acid works, 
-				I pour it on my arm and then I'd have my hand just floating beside me?
-	 Damien: Yeah, I saw it in a comic book.
-	Julie: I can't decide if that's gross or cool.
-	 Damien: Definitely cool.</narration1>
+				I pour it on my arm and then I'd have my hand just floating beside me?</narration1>
+				<narration2>Damien: Yeah, I saw it in a comic book.</narration2>
+				<narration1>Julie: I can't decide if that's gross or cool.</narration1>
+				<narration2>Damien: Definitely cool.</narration2>
 			</level>
 			<level id="3">
 				<stars>
@@ -123,8 +127,9 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Damien: Haha are you ready to give up yet?
-				Julie: Oh shush</narration1>
+				<narration1></narration1>
+				<narration2>Damien: Haha are you ready to give up yet?</narration2>
+				<narration1>Julie: Oh shush</narration1>
 			</level>
 		</stage>
 		<stage id="3">
@@ -135,9 +140,9 @@
 					<gold>5</gold>
 				</stars>
 				<narration1>Julie: Wait, first acid, now teleportation?  
-				What's the next superpower gonna be, dragons???
-				 Damien: What. "Dragons" is not a superpower.
-				 Damien: Also I would need to upgrade from graph paper for that...</narration1>
+				What's the next superpower gonna be, dragons???</narration1>
+				 <narration2>Damien: What. "Dragons" is not a superpower.</narration2>
+				 <narration2>Damien: Also I would need to upgrade from graph paper for that...</narration2>
 			</level>
 			<level id="2">
 				<stars>
