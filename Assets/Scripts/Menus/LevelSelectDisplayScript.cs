@@ -7,7 +7,9 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 	public string text = "";
 	public GUIStyle centering;
 	public GUIStyle smallCentering;
-	public Texture img;
+	public GameObject img;
+	GameObject current;
+	GameObject last;
 
 	public LevelState level;
 
@@ -19,6 +21,8 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 	public bool mode;
 
 	public int stageNum;
+
+	private bool waitAFrame;
 
 	int curID = -1;
 	bool staging = true;
@@ -37,17 +41,13 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 		outline.SetActive(false);
 	}
 
-	// Update is called once per frame
 	void OnGUI() {
+
 		GUI.Label (new Rect (Screen.width/2-100, Screen.height/2-150, 100, 50), text, centering);
 
-		if (!mode) {
-			GUI.DrawTexture (new Rect (Screen.width / 2 - 100,
-			                           Screen.height / 2 - 100, 200, 200), img);
-			staging = true;
-			GameObject.Destroy(levelGO);
-			outline.SetActive(false);
-		} else {
+		if (waitAFrame) {
+			waitAFrame = false;
+
 			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 90, 200, 200),
 			           "Bronze: " + level.bronzeMoves, centering);
 			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 50, 200, 200),
@@ -57,8 +57,30 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 			
 			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 200),
 			           "[ Down ] to play", smallCentering);
-
+			
 			StartCoroutine(loadScreencap());
+		}
+
+
+		if (!mode) {
+
+			if (img != last) {
+				GameObject.Destroy(current);
+				last = img;
+
+				current = (GameObject)Instantiate(img);
+				current.transform.position = new Vector3(-1f, -1f, -13f);
+
+				staging = true;
+				GameObject.Destroy(levelGO);
+				outline.SetActive(false);
+			}
+		} else {
+
+			current.SetActive(false);
+			last = null;
+
+			waitAFrame = true;
 		}
 		
 		numberDisplay.num = stageNum;

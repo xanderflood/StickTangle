@@ -17,11 +17,12 @@ public class SelectionGUI : MonoBehaviour {
 	public Material left;
 	public Material up;
 	public Material down;
+	
+	public List<GameObject> StageAvatars;
 
 	private int length;
 	
 	private string[] StageTitles;
-	private Texture[] StageImages;
 	
 	private string[][] LevelTitles;
 	private LevelState[][] LevelStates;
@@ -36,12 +37,6 @@ public class SelectionGUI : MonoBehaviour {
 	private void Start () {
 
 		// Load stage data
-		Object[] objs = Resources.LoadAll("StageImgs", typeof(Texture));
-		StageImages = System.Array.ConvertAll<Object, Texture>(objs,
-							delegate(Object obj) {
-								return (Texture)obj;
-							});
-
 		List<LevelState> ls = XmlLoader.LoadXml("levels").First;
 
 		StageTitles = new string[XmlLoader.NumStages];
@@ -154,7 +149,7 @@ public class SelectionGUI : MonoBehaviour {
 		if (!StageSelected) {
 			disp.mode = false;
 			disp.text = StageTitles[selection];
-			disp.img = StageImages[selection];
+			disp.img = StageAvatars[selection];
 
 			disp.stageNum = selection + 1;
 

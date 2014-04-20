@@ -13,12 +13,12 @@ SceneSettings:
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
-  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+  m_AmbientLight: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
@@ -133,6 +133,11 @@ MonoBehaviour:
   left: {fileID: 2100000, guid: 17b0e1db483474c9eb91cebb905c75ff, type: 2}
   up: {fileID: 2100000, guid: f94acd16b5ae24a5683a6758df08ac1e, type: 2}
   down: {fileID: 2100000, guid: faf0f344b92e34e7694c55c5d6e44d61, type: 2}
+  StageAvatars:
+  - {fileID: 100000, guid: 260f3af3285194583be09cee8f2af2d0, type: 2}
+  - {fileID: 100000, guid: b5e057320cf7d4c44812571084dd924c, type: 2}
+  - {fileID: 100000, guid: 50acc0bb923e548199ebf6ba4581dadd, type: 2}
+  - {fileID: 100000, guid: 39e5142cd2bc845b3a86e7ee5894eb7d, type: 2}
 --- !u!82 &5403892
 AudioSource:
   m_ObjectHideFlags: 0
