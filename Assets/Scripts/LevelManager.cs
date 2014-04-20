@@ -37,9 +37,7 @@ public class LevelManager : MonoBehaviour {
 
 	public void SetIndex(string name) {
 		levelIndex = -1;
-		Debug.Log(name);
 		for (int i = 0; i < levelStates.Count; i++) {
-			Debug.Log(levelStates[i].name);
 			if (levelStates[i].name == name) {
 				levelIndex = i;
 				break;
