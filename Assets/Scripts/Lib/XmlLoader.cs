@@ -15,6 +15,10 @@ public class XmlLoader {
 		public List<string> narrationText1 = new List<string>();
 		public List<string> narrationText2 = new List<string>();
 		public string name;
+
+		public override string ToString() {
+			return string.Format("id: {0}, stage: {1}, level: {2}, name: {3}", id, stage, level, name); 
+		}
 	}
 
 	static int numStages;
@@ -27,7 +31,7 @@ public class XmlLoader {
 		string xmlText = xmlFile.text;
 
 		List<LevelState> state = new List<LevelState>();
-		int id = 2;
+		int id = 1;
 		int stage = -1;
 		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {			
 			while (reader.ReadToFollowing("stage")) {
