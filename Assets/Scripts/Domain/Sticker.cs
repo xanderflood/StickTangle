@@ -277,6 +277,16 @@ public class Sticker : Piece {
 		transform.position = s.transform.position;
 		s.transform.position = tempTransform;
 
+		// Make sure the magnet glow animation is appropriately tracked
+		if (glowing) {
+			glowing = false;
+			s.glowing = true;
+			s.activeGlow = activeGlow;
+			activeGlow.transform.position = s.transform.position;
+			activeGlow.transform.parent = s.transform;
+			activeGlow = null;
+		}
+
 		return s;
     }
 

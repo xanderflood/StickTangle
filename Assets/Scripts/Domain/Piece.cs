@@ -42,7 +42,7 @@ public class Piece : MonoBehaviour {
 	// Animations
 	public GameObject AcidAnimation;
 	public GameObject MagnetGlowModel;
-	GameObject activeGlow;
+	public GameObject activeGlow;
 
 	protected virtual void Awake() {
 		this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
