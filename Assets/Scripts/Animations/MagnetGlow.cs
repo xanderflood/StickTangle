@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MagnetGlow : MonoBehaviour {
 	
-	public float rate = 0.1f;
-	public float maxInt = 2.5f;
-	public float minInt = 1.5f;
+	public float rate = 10f;
+	public float maxInt = 0.8f;
+	public float minInt = 0.6f;
 
-	public Light target;
+	public MeshRenderer target;
+
+	bool animating = true;
 
 	//public Light light;
 
@@ -15,19 +18,46 @@ public class MagnetGlow : MonoBehaviour {
 	void Start () {
 		StartCoroutine(lightOscillate());
 	}
-	
 
+	public void BeginStop () {
+		animating = false;
+	}
+	
 	IEnumerator lightOscillate() {
 
-		while (true) {
-
-			float t = 0;
-			while (t < 1) {
-
-				target.intensity = -(maxInt - minInt)*Mathf.Cos(2*Mathf.PI*t) + minInt;
-				t += rate * Time.deltaTime;
-				yield return true;
-			}
+		// Warming up
+		float alpha = 0f;
+		while (alpha < maxInt) {
+			setAlpha(alpha += rate*Time.deltaTime);
+			yield return true;
 		}
+
+		// Oscillating
+		float t = 0;
+		while (animating) {
+			if (t >= 1)
+				t = 0;
+				
+			setAlpha(0.5f*(maxInt - minInt)*Mathf.Cos(2*Mathf.PI*t) + minInt);
+				
+			t += rate * Time.deltaTime;
+				
+			yield return true;
+		}
+		
+		// Cooling down
+		while (alpha > 0) {
+			setAlpha(alpha -= 3*rate*Time.deltaTime);
+			yield return true;
+		}
+
+		Destroy(gameObject);
+	}
+
+	void setAlpha(float alpha) {
+		Color c = target.material.color;
+		c.a = alpha;
+		target.material.color = c;
+		
 	}
 }

@@ -167,7 +167,7 @@ public class Piece : MonoBehaviour {
 		if (!glowing)
 			return;
 		
-		Destroy(activeGlow);
+		activeGlow.GetComponent<MagnetGlow>().BeginStop();
 		glowing = false;
 	}
 }
