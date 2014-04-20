@@ -94,8 +94,10 @@ public class Piece : MonoBehaviour {
 		Vector3 to = grid.PosToCoord(row, col, layer);
 		
 		Vector3 velocity = speed * (to - transform.position).normalized;
-		while (transform.position != to) {
+		float distanceTravelled = 0;
+		while (distanceTravelled < 1f) {
 			transform.position += velocity;
+			distanceTravelled += velocity.magnitude;
 			yield return null;
 		}
 		transform.position = to;

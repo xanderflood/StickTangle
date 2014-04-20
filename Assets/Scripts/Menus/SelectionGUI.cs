@@ -84,7 +84,7 @@ public class SelectionGUI : MonoBehaviour {
 
 			if (StageSelected) {
 				audio.PlayOneShot(loading);
-				LevelManager.modeling = true;
+				LevelManager.modeling = false;
 				Application.LoadLevel(LevelStates[savedStage][selection].id);
 			} else {
 				StageSelected = true;
