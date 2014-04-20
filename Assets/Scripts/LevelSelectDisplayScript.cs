@@ -71,7 +71,7 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 			curID = level.id;
 			GameObject.Destroy(levelGO);
 			
-			Application.LoadLevelAdditive(level.id);
+			Application.LoadLevelAdditive(level.name);
 
 			yield return true;
 
