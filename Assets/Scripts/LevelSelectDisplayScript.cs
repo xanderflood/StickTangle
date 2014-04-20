@@ -10,8 +10,14 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	public LevelState level;
 
+	public GameObject outline;
+
+	public BlockNumber numberDisplay;
+
 	// false if displaying a stage, true for a level
 	public bool mode;
+
+	public int stageNum;
 
 	int curID = -1;
 	bool staging = true;
@@ -26,17 +32,20 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 		viewport.y = 0.1f;
 		viewport.width = 0.25f;
 		viewport.height = 0.25f;
+
+		outline.SetActive(false);
 	}
 
 	// Update is called once per frame
 	void OnGUI() {
-		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-148, 100, 50), text, centering);
+		GUI.Label (new Rect (Screen.width/2-100, Screen.height/2-150, 100, 50), text, centering);
 
 		if (!mode) {
 			GUI.DrawTexture (new Rect (Screen.width / 2 - 100,
 			                           Screen.height / 2 - 100, 200, 200), img);
 			staging = true;
 			GameObject.Destroy(levelGO);
+			outline.SetActive(false);
 		} else {
 			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 90, 200, 200),
 			           "Bronze: " + level.bronzeMoves, centering);
@@ -47,6 +56,8 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 			StartCoroutine(loadScreencap());
 		}
+		
+		numberDisplay.num = stageNum;
 	}
 
 	IEnumerator loadScreencap() {
@@ -68,6 +79,8 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 			levelGO.transform.position = new Vector3(1000, 1000, 0);
 
 			cam.rect = viewport;
+			
+			outline.SetActive(true);
 		}
 	}
 }

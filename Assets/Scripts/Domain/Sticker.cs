@@ -25,6 +25,9 @@ public class Sticker : Piece {
 	private bool teleporting;
 
 	private void Start() {
+		if (LevelManager.modeling)
+			return;
+
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
 	}
 

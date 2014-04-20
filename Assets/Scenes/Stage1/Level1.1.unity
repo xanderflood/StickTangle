@@ -1852,6 +1852,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 0af2d0ec9d71142a9a27e9f85981b565, type: 3}
+<<<<<<< HEAD
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1
@@ -1911,6 +1912,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: abf0822557f52443487c3741b8cf457a, type: 3}
+=======
+>>>>>>> FETCH_HEAD
   m_PlayOnAwake: 0
   m_Volume: .300000012
   m_Pitch: 1

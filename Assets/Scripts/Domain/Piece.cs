@@ -47,6 +47,9 @@ public class Piece : MonoBehaviour {
 	protected virtual void Awake() {
 		this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
         this.transform.Rotate(0,0,Random.Range(0, 3) * 90);
+
+		if (LevelManager.modeling)
+			return;
 		grid = Utils.FindComponent<Grid>("Board");
 		music = Utils.FindComponent<MusicSelector>("Music");
 		Position pos = grid.CoordToPos(transform.position);

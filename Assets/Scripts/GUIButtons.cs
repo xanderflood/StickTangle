@@ -10,6 +10,9 @@ public class GUIButtons : MonoBehaviour {
 	}
 	
 	private void OnGUI() {
+		if (LevelManager.modeling)
+			return;
+
 		if (GUI.Button(new Rect(650, 30, 50, 20), "Menu")) {
 			Application.LoadLevel("LevelSelect");
 		}
