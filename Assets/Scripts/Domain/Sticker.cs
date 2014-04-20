@@ -202,26 +202,38 @@ public class Sticker : Piece {
         //because of the case where an acid block is adjacent to a stickable
         HandleAcid();
 
-        List<Stickable> toAdd = new List<Stickable>();
-		// Check for new stickables next to root piece
-        if (!hitAcid) { //if the root piece is being destroyed by acid, don't attach anything to it
-		   toAdd.AddRange(GetStickables(row, col));
-        }
-
-		// Check for new stickables next to other pieces
-		foreach (Stickable s in stickables) {
-			toAdd.AddRange(GetStickables(s.row, s.col));
-		}
-		newStickables = toAdd;
-
-		stickables.AddRange(toAdd);
-		DataLogger.Attach(toAdd.Count);
+		CheckForAndAddStickables(false);
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
 			music.clearLevel();
 			done = true;
 			StartCoroutine(AdvanceLevel());
+		}
+	}
+
+	private void CheckForAndAddStickables(bool changeColorNow) {
+
+		List<Stickable> toAdd = new List<Stickable>();
+		// Check for new stickables next to root piece
+		if (!hitAcid) { //if the root piece is being destroyed by acid, don't attach anything to it
+			toAdd.AddRange(GetStickables(row, col));
+		}
+		
+		// Check for new stickables next to other pieces
+		foreach (Stickable s in stickables) {
+			toAdd.AddRange(GetStickables(s.row, s.col));
+		}
+		newStickables = toAdd;
+		
+		stickables.AddRange(toAdd);
+		DataLogger.Attach(toAdd.Count);
+
+		if (changeColorNow) {
+			foreach (Stickable s in newStickables)
+				s.renderer.material.color = this.renderer.material.color;
+
+			newStickables.Clear();
 		}
 	}
 
@@ -341,6 +353,8 @@ public class Sticker : Piece {
 			yield return true;
 		}
 		adjustAllScales(sc);
+		
+		CheckForAndAddStickables(true);
 		
 		teleporting = false;
 		
