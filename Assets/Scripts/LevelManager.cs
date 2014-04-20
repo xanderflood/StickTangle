@@ -192,7 +192,7 @@ public class LevelManager : MonoBehaviour {
 	private IEnumerator DelayRestart() {
 		// Disable movement during restart
 		Utils.FindComponent<Sticker>("Player").done = true;
-		audio.clip = sounds[UnityEngine.Random.Range(0, 3)];
+		audio.clip = sounds[UnityEngine.Random.Range(0,sounds.Length)];
 		audio.Play ();
 		//Camera.main.audio.PlayOneShot(restart);
 		yield return new WaitForSeconds(0.5f);
