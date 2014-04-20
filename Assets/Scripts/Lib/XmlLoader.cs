@@ -15,21 +15,49 @@ public class XmlLoader {
 		public List<string> narrationText1 = new List<string>();
 		public List<string> narrationText2 = new List<string>();
 		public string name;
+
+		public override string ToString() {
+			return string.Format("id: {0}, stage: {1}, level: {2}, name: {3}", id, stage, level, name); 
+		}
 	}
 
 	static int numStages;
 	public static int NumStages { get { return numStages; } }
 	static List<int> numLevels = new List<int>();
 	public static List<int> NumLevels { get { return numLevels; } }
-
 	public static List<LevelState> LoadXml(string filename) {
 		TextAsset xmlFile = Resources.Load<TextAsset>(filename);
 		string xmlText = xmlFile.text;
 
+		List<string> scenes = new List<string>();
 		List<LevelState> state = new List<LevelState>();
-		int id = 2;
+		int id = 1;
 		int stage = -1;
-		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {			
+		using (XmlReader reader = XmlReader.Create(new StringReader(xmlText))) {
+			reader.ReadToFollowing("sticktangle");
+			while (reader.Read()) {
+				bool done = false;
+				switch (reader.NodeType) {
+				case XmlNodeType.Element:
+					if (reader.Name == "scene") {
+						scenes.Add(reader.ReadElementContentAsString());
+					} else if (reader.Name == "scenes") {
+						continue;
+					} else {
+						Debug.Log(reader.Name);
+						Utils.Assert(false);
+					}
+					break;
+				case XmlNodeType.EndElement:
+					if (reader.Name == "scenes") {
+						done = true;
+					}
+					break;
+				}
+				if (done == true) {
+					break;
+				}
+			}
 			while (reader.ReadToFollowing("stage")) {
 				Utils.Assert(reader.MoveToFirstAttribute());
 				stage = XmlConvert.ToInt32(reader.Value);

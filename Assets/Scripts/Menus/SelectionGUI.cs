@@ -30,7 +30,6 @@ public class SelectionGUI : MonoBehaviour {
 	private int savedStage;
 	
 	void Awake() {
-		
 		LevelManager.modeling = true;
 	}
 	
@@ -87,7 +86,7 @@ public class SelectionGUI : MonoBehaviour {
 			if (StageSelected) {
 				audio.PlayOneShot(loading);
 				LevelManager.modeling = false;
-				Application.LoadLevel(LevelStates[savedStage][selection].id);
+				Application.LoadLevel(LevelStates[savedStage][selection].name);
 			} else {
 				StageSelected = true;
 				savedStage = selection;

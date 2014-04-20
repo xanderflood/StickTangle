@@ -8,6 +8,8 @@ using LevelState = XmlLoader.LevelState;
 public class LevelManager : MonoBehaviour {
 	public AudioClip restart;
 
+	public AudioClip[] sounds;
+
 	private List<LevelState> levelStates;
 	public int levelIndex = -1;
 	bool restarting = false;
@@ -103,7 +105,9 @@ public class LevelManager : MonoBehaviour {
 	private IEnumerator DelayRestart() {
 		// Disable movement during restart
 		Utils.FindComponent<Sticker>("Player").done = true;
-		Camera.main.audio.PlayOneShot(restart);
+		audio.clip = sounds[UnityEngine.Random.Range(0, 3)];
+		audio.Play ();
+		//Camera.main.audio.PlayOneShot(restart);
 		yield return new WaitForSeconds(0.5f);
 		Restart();
 	}
