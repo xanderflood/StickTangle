@@ -8,7 +8,7 @@
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: OMG Damien are you slacking off again???</narration>
+			<narration1>Julie: OMG Damien are you slacking off again???</narration1>
 		</level>
 		<level id="2">
 			<stars>
@@ -16,8 +16,8 @@
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: You know graph paper is for graphing things, right? 
-			This is algebra class?</narration>
+			<narration1>Julie: You know graph paper is for graphing things, right? 
+			This is algebra class?</narration1>
 		</level>
 		<level id="3">
 			<stars>
@@ -25,9 +25,9 @@
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: Ooh you have pink crayons?!  I love pink :3
-			 Damien: What? No it's totally red.
-			Julie: Colorblind much?</narration>
+			<narration1>Julie: Ooh you have pink crayons?!  I love pink :3</narration1>
+			<narration1>Julie: Colorblind much?</narration1>
+			<narration2>Damien: What? No it's totally red.</narration2>
 		</level>
 		<level id="4">
 			<stars>
@@ -35,9 +35,9 @@
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: Awww the blocks get to be friends!  This is so cute!
+			<narration1>Julie: Awww the blocks get to be friends!  This is so cute!
 			 Damien: …"cute" isn't really the adjective I would use.
-			Julie: Oh hush, you're the one who made them pink.</narration>
+			Julie: Oh hush, you're the one who made them pink.</narration1>
 		</level>
 		<level id="5">
 			<stars>
@@ -45,10 +45,10 @@
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Damien: Noooooo don't touch that
+			<narration1>Damien: Noooooo don't touch that
 Julie: But it's pretty
  Damien: But you'll be trapped here foreveeeeer
-Julie: Okay jeez I hear you.</narration>
+Julie: Okay jeez I hear you.</narration1>
 		</level>
 		<level id="6">
 			<stars>
@@ -56,10 +56,10 @@ Julie: Okay jeez I hear you.</narration>
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: So what if I have too many blocks?
+			<narration1>Julie: So what if I have too many blocks?
  Damien: Well, so long as some of them cover the goal, you're fine.
 Julie: So they can all be friends!  Cute!
- Damien: Can we at least call them "fierce allies" instead of "friends."</narration>
+ Damien: Can we at least call them "fierce allies" instead of "friends."</narration1>
 		</level>
 		<level id="7">
 			<stars>
@@ -67,9 +67,9 @@ Julie: So they can all be friends!  Cute!
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Damien: OMG are you slacking off again? 
+			<narration1>Damien: OMG are you slacking off again? 
 			 Shouldn't you be paying attention to class?  
-Julie: Oh hush, this is all your fault anyway.</narration>
+Julie: Oh hush, this is all your fault anyway.</narration1>
 		</level>
 	</stage>
 	<stage id="2">
@@ -79,9 +79,9 @@ Julie: Oh hush, this is all your fault anyway.</narration>
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: Whoa, dissolving acid?  
+			<narration1>Julie: Whoa, dissolving acid?  
 			Do you think we could pour that junk on Ms. Hall's hair?  
-			You know it's hideous.</narration>
+			You know it's hideous.</narration1>
 		</level>
 		<level id="2">
 			<stars>
@@ -89,11 +89,11 @@ Julie: Oh hush, this is all your fault anyway.</narration>
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: Wait, so you said the way this acid works, 
+			<narration1>Julie: Wait, so you said the way this acid works, 
 			I pour it on my arm and then I'd have my hand just floating beside me?
  Damien: Yeah, I saw it in a comic book.
 Julie: I can't decide if that's gross or cool.
- Damien: Definitely cool.</narration>
+ Damien: Definitely cool.</narration1>
 		</level>
 		<level id="3">
 			<stars>
@@ -101,7 +101,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration></narration>
+			<narration1></narration1>
 		</level>
 		<level id="4">
 			<stars>
@@ -109,7 +109,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: DAMIEN.  Now you're just being mean!</narration>
+			<narration1>Julie: DAMIEN.  Now you're just being mean!</narration1>
 		</level>
 		<level id="5">
 			<stars>
@@ -117,8 +117,8 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Damien: Haha are you ready to give up yet?
-			Julie: Oh shush</narration>
+			<narration1>Damien: Haha are you ready to give up yet?
+			Julie: Oh shush</narration1>
 		</level>
 	</stage>
 	<stage id="3">
@@ -128,10 +128,10 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration>Julie: Wait, first acid, now teleportation?  
+			<narration1>Julie: Wait, first acid, now teleportation?  
 			What's the next superpower gonna be, dragons???
 			 Damien: What. "Dragons" is not a superpower.
-			 Damien: Also I would need to upgrade from graph paper for that...</narration>
+			 Damien: Also I would need to upgrade from graph paper for that...</narration1>
 		</level>
 		<level id="2">
 			<stars>
@@ -139,7 +139,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration></narration>
+			<narration1></narration1>
 		</level>
 		<level id="3">
 			<stars>
@@ -147,7 +147,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration></narration>
+			<narration1></narration1>
 		</level>
 		<level id="4">
 			<stars>
@@ -155,7 +155,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration></narration>
+			<narration1></narration1>
 		</level>
 	</stage>
 	<stage id="4">
@@ -165,7 +165,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration></narration>
+			<narration1></narration1>
 		</level>
 		<level id="2">
 			<stars>
@@ -173,7 +173,7 @@ Julie: I can't decide if that's gross or cool.
 				<silver>10</silver>
 				<gold>5</gold>
 			</stars>
-			<narration></narration>
+			<narration1></narration1>
 		</level>
 	</stage>
 </levels>
