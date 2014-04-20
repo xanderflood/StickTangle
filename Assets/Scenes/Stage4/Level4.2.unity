@@ -1292,6 +1292,7 @@ GameObject:
   - 114: {fileID: 841702552}
   - 82: {fileID: 841702547}
   - 82: {fileID: 841702546}
+  - 82: {fileID: 841702548}
   - 82: {fileID: 841702545}
   m_Layer: 0
   m_Name: Player
@@ -1367,7 +1368,7 @@ AudioSource:
   m_GameObject: {fileID: 841702544}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .702000022
   m_Pitch: 1
@@ -1476,6 +1477,65 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &841702548
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200002, guid: 8d2779e3a36d740c6b6d3536587634f2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1248843276}
+  m_GameObject: {fileID: 841702544}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &841702552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,7 +1563,7 @@ MonoBehaviour:
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
-  wallBump: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
+  wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
   done: 0
 --- !u!23 &841702553
@@ -2131,9 +2191,13 @@ Prefab:
     - target: {fileID: 11400000, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
       propertyPath: wallBump
       value: 
-      objectReference: {fileID: 8300000, guid: 1b9069f86b06240c098c0c75a3f776c8, type: 3}
+      objectReference: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
+    - target: {fileID: 8200010, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
     m_RemovedComponents:
-    - {fileID: 8200002, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
+    - {fileID: 0}
     - {fileID: 8200000, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
     - {fileID: 8200004, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
