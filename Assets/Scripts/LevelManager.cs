@@ -161,6 +161,12 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void AdvanceLevel() {
+		if (Application.loadedLevelName == "PlayAgain") {
+			levelIndex = 0;
+			Application.LoadLevel(levelStates[levelIndex].name);
+			return;
+		}
+
 		DataLogger.Win();
 		levelIndex++;
 		if (levelIndex >= levelStates.Count) {
