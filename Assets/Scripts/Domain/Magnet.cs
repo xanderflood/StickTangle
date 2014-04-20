@@ -5,6 +5,21 @@ using SquareType = Grid.SquareType;
 using Square = Grid.Square;
 
 public class Magnet : Piece {
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        Color temp = new Color();
+        temp.r = 1;
+        temp.g = 165f/255;
+        temp.b = 0;
+        temp.a = 1;
+        this.renderer.material.color = temp;
+    }
+
+
 	private void Start() {
 		grid.SetSquare(row, col, new Square(SquareType.Magnet));
 		grid.magnetMap.Add(pos, this);
