@@ -6,6 +6,7 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	public string text = "";
 	public GUIStyle centering;
+	public GUIStyle smallCentering;
 	public Texture img;
 
 	public LevelState level;
@@ -53,6 +54,9 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 			           "Silver: " + level.bronzeMoves, centering);
 			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 10, 200, 200),
 			           "Gold: " + level.bronzeMoves, centering);
+			
+			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 200),
+			           "[ Down ] to play", smallCentering);
 
 			StartCoroutine(loadScreencap());
 		}
