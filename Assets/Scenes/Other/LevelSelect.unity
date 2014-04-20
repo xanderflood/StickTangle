@@ -742,6 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
+  sounds: []
   levelIndex: -1
 --- !u!4 &759755161
 Transform:
@@ -903,7 +904,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1247073940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2997d79ee56584c82a8a9ef5b885c965, type: 3}
+  m_Script: {fileID: 11500000, guid: 265130b5c0dc846cea6cd6a8378a3226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
