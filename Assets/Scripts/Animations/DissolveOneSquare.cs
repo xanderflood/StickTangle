@@ -20,9 +20,9 @@ public class DissolveOneSquare : MonoBehaviour {
 		animating = true;
 
 		// A bunch of System.Random's all get initialized at around the same
-		// time, and the default seed is timestamp. Without some nonsense seed
+		// time, and the default seed is timestamp. Without some nonsense
 		// depending on position, no actual randomness will take place.
-		// 11 is prime, so there's no preiodicity
+		// 13 is prime, so there's no preiodicity
 		float randWait = ((100000 * transform.position.x * transform.position.x
 		                   + 2000 * transform.position.y + System.DateTime.Now.Second) % 13)*(0.1f/11.0f);
 		//System.Random rand = new System.Random(seed);

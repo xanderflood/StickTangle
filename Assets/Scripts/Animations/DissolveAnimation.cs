@@ -43,7 +43,7 @@ public class DissolveAnimation : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds(1f/Piece.speed);
-		DestroyObject(gameObject);
+		GameObject.Destroy(gameObject);
 	}
 
 	void dissolveRow(int rowNum) {
@@ -63,10 +63,10 @@ public class DissolveAnimation : MonoBehaviour {
 		}
 
 		for (int i = 0; i < 4; ++i) {
-			if (squares[pos] == null)
-				continue;
-			DissolveOneSquare dos = squares[pos].GetComponent<DissolveOneSquare>();
-			dos.dissolving = true;
+			if (squares[pos] != null) {
+				DissolveOneSquare dos = squares[pos].GetComponent<DissolveOneSquare>();
+				dos.dissolving = true;
+			}
 			pos += jump;
 		}
 	}

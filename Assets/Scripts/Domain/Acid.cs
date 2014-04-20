@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using System.Security.Cryptography;
+
 using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
@@ -32,22 +34,20 @@ public class Acid : MonoBehaviour {
 	IEnumerator createBubbles() {
 
 		while (true) {
-			System.Random rand = new System.Random();
-			// Select a random wait interval between 0.2 and 1.2 seconds
-			float time = (float)((rand.NextDouble() % 1f) + 0.2f);
 
-			// Select a random position
-			float x = (float)((rand.NextDouble() % 0.6f) - 0.3f);
-			float y = (float)((rand.NextDouble() % 0.6f) - 0.3f);
+			// Select a random wait interval between 1 and 4
+			float time = (Random.value % 3f) + 1f;
 
 			// Wait
 			yield return new WaitForSeconds(time);
 
 			// Produce a bubble
+			Vector3 pos = Random.insideUnitSphere;
+			pos.z = -1.1f;
+
 			GameObject bubble = (GameObject)Instantiate(bubbleModel);
 			bubble.transform.parent = transform;
-			bubble.transform.position = new Vector3(transform.position.x + x,
-			                                        transform.position.y + y, -1.1f);
+			bubble.transform.position = 0.4f*pos + transform.position;
 		}
 	}
 }
