@@ -25,61 +25,38 @@ public class MusicSelector : MonoBehaviour {
 		string name = Application.loadedLevelName;
 
 		if (name == "LevelSelect") {
-			audio.clip = melody0;
 			if (!audio.isPlaying)
-				audio.Play();
+				audio.clip = melody0;
+			if (!audio.isPlaying)
+				audio.Play(); 
 		}
 
-		if ((name == "Level1.1")||(name == "Level1.2")){
+		if (lm.CurrentLevelInRange("1.1", "1.8")) {
 			if (!audio.isPlaying)
 				audio.clip = melody1;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
 
-		if (lm.CurrentLevelInRange("1.2", "1.8")) {
-			audio.clip = melody1;
-			if (!audio.isPlaying)
-				audio.Play(); 
-		}
-
-		if (name == "Level2.1") {
+		if (lm.CurrentLevelInRange("2.1", "2.5")) {
 			if (!audio.isPlaying)
 				audio.clip = melody2;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
 
-		if (lm.CurrentLevelInRange("2.2", "2.5")) {
-			audio.clip = melody2;
-			if (!audio.isPlaying)
-				audio.Play(); 
-		}
-		
-		if (name == "Level3.1") {
+		if (lm.CurrentLevelInRange("3.1", "3.4")) {
 			if (!audio.isPlaying)
 				audio.clip = melody3;
 			if (!audio.isPlaying)
 				audio.Play(); 
 		}
 
-		if (lm.CurrentLevelInRange("3.2", "3.4")) {
-			audio.clip = melody3;
-			if (!audio.isPlaying)
-				audio.Play(); 
-		}
-
-		if (name == "Level4.1") {
+		if (lm.CurrentLevelInRange("4.1", "4.3")) {
 			if (!audio.isPlaying)
 				audio.clip = melody4;
 			if (!audio.isPlaying)
-				audio.Play(); 
-		}
-
-		if (name == "Level4.2") {
-			audio.clip = melody4;
-			if (!audio.isPlaying)
-				audio.Play(); 
+				audio.Play();
 		}
 	}
 
