@@ -286,8 +286,13 @@ public class Sticker : Piece {
 		pos = s.pos;
 		s.pos = tempPos;
 
-        this.renderer.material = s.renderer.material;
-        this.transform.rotation = s.transform.rotation;
+		Material tempMaterial = renderer.material;
+		renderer.material = s.renderer.material;
+		s.renderer.material = tempMaterial;
+
+		Quaternion tempRotation = transform.rotation;
+		transform.rotation = s.transform.rotation;
+		s.transform.rotation = tempRotation;
 
 		Vector3 tempTransform = transform.position;
 		transform.position = s.transform.position;
