@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
   - {fileID: 8300000, guid: 6f0f3146f8e0f4eedb6c52f5d6d3b666, type: 3}
   - {fileID: 8300000, guid: 6e8565af5abd84a52a1b111fbc47a840, type: 3}
-  levelIndex: 0
+  levelIndex: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
