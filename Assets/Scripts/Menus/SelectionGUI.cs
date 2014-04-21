@@ -86,6 +86,7 @@ public class SelectionGUI : MonoBehaviour {
 				Application.LoadLevel(levelName);
 			} else {
 				StageSelected = true;
+				disp.Current.SetActive(false);
 				savedStage = selection;
 				selection = 0;
 			}
@@ -100,7 +101,7 @@ public class SelectionGUI : MonoBehaviour {
 		arrows();
 
 		// Finally, load the appropriate data
-		LoadSelection ();
+		LoadSelection();
 	}
 
 	void arrows() {

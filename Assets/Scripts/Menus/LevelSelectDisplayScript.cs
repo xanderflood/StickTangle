@@ -9,6 +9,7 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 	public GUIStyle smallCentering;
 	public GameObject img;
 	GameObject current;
+	public GameObject Current { get { return current; } }
 	GameObject last;
 
 	public LevelState level;
