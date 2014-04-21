@@ -12,7 +12,7 @@ public class SelectionGUI : MonoBehaviour {
 
 	public LevelSelectDisplayScript disp;
 
-	public MusicSelector music;
+	private MusicSelector music;
 
 	public Material right;
 	public Material left;
@@ -39,6 +39,8 @@ public class SelectionGUI : MonoBehaviour {
 
 		// Load stage data
 		List<LevelState> ls = XmlLoader.LoadXml("levels").First;
+
+		music = Utils.FindComponent<MusicSelector> ("Music");
 
 		StageTitles = new string[XmlLoader.NumStages];
 		LevelTitles = new string[XmlLoader.NumStages][];
@@ -81,6 +83,7 @@ public class SelectionGUI : MonoBehaviour {
 
 			if (StageSelected) {
 				music.playSchoolBell();
+
 				LevelManager.modeling = false;
 				string levelName = LevelStates[savedStage][selection].name;
 				Utils.FindComponent<LevelManager>("LevelManager").SetIndex(levelName);
@@ -166,5 +169,9 @@ public class SelectionGUI : MonoBehaviour {
 			disp.level = LevelStates[savedStage][selection];
 		}
 	}
-	
+
+	private IEnumerator playBell() {
+		music.playSchoolBell();
+		yield return new WaitForSeconds(1.5f);
+	}
 }
