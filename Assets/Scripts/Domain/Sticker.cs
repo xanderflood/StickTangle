@@ -139,11 +139,12 @@ public class Sticker : Piece {
 
 		if (!IsStuckToManget(dr, dc)) {
 			StartCoroutine(Move(dr, dc));
-		} else {
-			if (stickables.Count > 0) {
-				SwapWithStickable();
-			}
 		}
+//		} else {
+//			if (stickables.Count > 0) {
+//				SwapWithStickable();
+//			}
+//		}
 
 		for (int i = stickables.Count - 1; i >= 0; i--) {
 			Stickable s = stickables[i];
