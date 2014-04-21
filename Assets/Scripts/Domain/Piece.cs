@@ -91,6 +91,12 @@ public class Piece : MonoBehaviour {
 		inMotion = true;
 
 		ChangePosition(row + dr, col + dc);
+
+		// If we won't be next to a magnet next time, then stop the glow animation
+		if (grid.IsNextToMagnet(row, col))
+			StartMagnetGlow();
+		else
+			StopMagnetGlow();
 		
 		Vector3 to = grid.PosToCoord(row, col, layer);
 		
@@ -117,11 +123,6 @@ public class Piece : MonoBehaviour {
 		}
 
 		newStickables.Clear();
-
-		if (grid.IsNextToMagnet(row, col))
-			StartMagnetGlow();
-		else
-			StopMagnetGlow();
 	}
 
 	// Checks whether this Piece is about to roll over acid;

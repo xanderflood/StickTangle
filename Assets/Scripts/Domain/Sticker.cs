@@ -298,8 +298,11 @@ public class Sticker : Piece {
 			glowing = false;
 			s.glowing = true;
 			s.activeGlow = activeGlow;
-			activeGlow.transform.position = s.transform.position;
 			activeGlow.transform.parent = s.transform;
+			Vector3 p = activeGlow.transform.position;
+			p.x = s.transform.position.x;
+			p.y = s.transform.position.y;
+			activeGlow.transform.position = p;
 			activeGlow = null;
 		}
 
