@@ -14,6 +14,7 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip clear;
 	public AudioClip teleport;
 	public AudioClip acid;
+	public AudioClip schoolBell;
 
 	private LevelManager lm;
 
@@ -71,5 +72,8 @@ public class MusicSelector : MonoBehaviour {
 	}
 	public void playAcid(){
 		audio.PlayOneShot(acid);
+	}
+	public void playSchoolBell(){
+		audio.PlayOneShot (schoolBell);
 	}
 }

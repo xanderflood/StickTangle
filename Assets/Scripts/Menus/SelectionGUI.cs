@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using LevelState = XmlLoader.LevelState;
 
@@ -7,12 +8,12 @@ public class SelectionGUI : MonoBehaviour {
 	public AudioClip move;
 	public AudioClip select;
 	public AudioClip back;
-	public AudioClip loading;
-
 	public bool StageSelected;
 
 	public LevelSelectDisplayScript disp;
-	
+
+	public MusicSelector music;
+
 	public Material right;
 	public Material left;
 	public Material up;
@@ -79,7 +80,7 @@ public class SelectionGUI : MonoBehaviour {
 		    audio.PlayOneShot(select);
 
 			if (StageSelected) {
-				audio.PlayOneShot(loading);
+				music.playSchoolBell();
 				LevelManager.modeling = false;
 				string levelName = LevelStates[savedStage][selection].name;
 				Utils.FindComponent<LevelManager>("LevelManager").SetIndex(levelName);
@@ -165,4 +166,5 @@ public class SelectionGUI : MonoBehaviour {
 			disp.level = LevelStates[savedStage][selection];
 		}
 	}
+	
 }
