@@ -89,13 +89,13 @@ public class LevelManager : MonoBehaviour {
 		if (LevelManager.modeling)
 			return;
 
-         var DaimenStyle = GUI.skin.GetStyle("Label");
-         DaimenStyle.alignment = TextAnchor.UpperLeft;
-         DaimenStyle.wordWrap = true;
-         DaimenStyle.fontSize = 25;
-         DaimenStyle.font = DamienFont;
-         DaimenStyle.normal.textColor = Color.black;
-         DaimenStyle.fontStyle = FontStyle.Bold;
+         var TextStyle = GUI.skin.GetStyle("Label");
+         TextStyle.alignment = TextAnchor.UpperLeft;
+         TextStyle.wordWrap = true;
+         TextStyle.fontSize = 30;
+         TextStyle.font = DamienFont;
+         TextStyle.normal.textColor = Color.black;
+         TextStyle.fontStyle = FontStyle.Bold;
 
          //scale the gui stuff with screen size
          GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
@@ -121,8 +121,6 @@ public class LevelManager : MonoBehaviour {
              text[2 * offset + 1] = s;
              offset++;
          }
-         var JulieStyle = DaimenStyle;
-         JulieStyle.font = JulieFont;
             //plot text;
          offset = 0;
          for (int i = 0; i < text.Length; i++)
@@ -131,10 +129,12 @@ public class LevelManager : MonoBehaviour {
              {
                  if (i % 2 == 0)
                  {
-                     GUI.Label(new Rect(20, 50 + 120 * offset, 220, 500), text[i], JulieStyle);
+                     TextStyle.font = JulieFont;
+                     GUI.Label(new Rect(20, 50 + 130 * offset, 220, 500), text[i], TextStyle);
                  }
                  else {
-                     GUI.Label(new Rect(20, 50 + 120 * offset, 220, 500), text[i], DaimenStyle);
+                     TextStyle.font = DamienFont;
+                     GUI.Label(new Rect(20, 50 + 130 * offset, 220, 500), text[i], TextStyle);
                  }
                  offset++;
              }
