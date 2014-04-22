@@ -154,6 +154,14 @@
 				</stars>
 				<narration1></narration1>
 			</level>
+			<level id="6">
+				<stars>
+					<bronze>15</bronze>
+					<silver>10</silver>
+					<gold>5</gold>
+				</stars>
+				<narration1></narration1>
+			</level>
 		</stage>
 		<stage id="4">
 			<level id="1">
