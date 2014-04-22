@@ -32,8 +32,8 @@ public class Grid : MonoBehaviour {
 	}
 
 	// Must be in the same order as the Direction enum above
-	private int[] dr = {1, -1, 0, 0};
-	private int[] dc = {0, 0, -1, 1};
+	private static int[] dr = {1, -1, 0, 0};
+	private static int[] dc = {0, 0, -1, 1};
 	
 	private Square[,] grid;
 
@@ -259,9 +259,9 @@ public class Grid : MonoBehaviour {
         {
             if (grid[p.Row, p.Col].type == SquareType.Player)
             {
-             //   Color temp = goalMap[p].renderer.material.color;
-              //  temp.a = 0;
-            //    goalMap[p].renderer.material.color = temp;
+            	//   Color temp = goalMap[p].renderer.material.color;
+            	//  temp.a = 0;
+            	//    goalMap[p].renderer.material.color = temp;
             }
             else
             {
@@ -272,51 +272,55 @@ public class Grid : MonoBehaviour {
         return retValue;
     }
 
-    // Checks to see if given location is acid, if so destroys the acid and returns true
-    public bool CheckForAndDestoryAcid(int row, int col) {
-        foreach (Acid a in acidBlocks) {
-            Position p = CoordToPos(a.transform.position);
-            if (p.Row == row && p.Col == col) {
-                acidBlocks.Remove(a);
-                StartCoroutine(WaitForMoveThenDestoryAcidBlock(a));
-                return true;
-            }
-        }
+//    // Checks to see if given location is acid, if so destroys the acid and returns true
+//    public bool CheckForAndDestoryAcid(int row, int col) {
+//        foreach (Acid a in acidBlocks) {
+//            Position p = CoordToPos(a.transform.position);
+//            if (p.Row == row && p.Col == col) {
+//                acidBlocks.Remove(a);
+//                StartCoroutine(WaitForMoveThenDestoryAcidBlock(a));
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 
-        return false;
-    }
-
-    private IEnumerator WaitForMoveThenDestoryAcidBlock(Acid a) {
-       
-		// amount of time the move animation takes, computed by getting timestamps at the start of the move and when destroyPeice is called
-
-		Color start = a.GetComponent<MeshRenderer>().material.color;
-		Color target = start; target.a = 0;
-		float val = 0;
-
-		Color c;
-		while (val <= 1) {
-			c = Color.Lerp(start, target, val);
-			
-			a.GetComponent<MeshRenderer>().material.color = c;
-			
-			val += DissolveOneSquare.rate*0.5f;
-			yield return true;
-		}
-
-        Destroy(a.gameObject);
-    }
+//    private IEnumerator WaitForMoveThenDestoryAcidBlock(Acid a) {
+//       
+//		// amount of time the move animation takes, computed by getting timestamps at the start of the move and when destroyPeice is called
+//
+//		Color start = a.GetComponent<MeshRenderer>().material.color;
+//		Color target = start; target.a = 0;
+//		float val = 0;
+//
+//		Color c;
+//		while (val <= 1) {
+//			c = Color.Lerp(start, target, val);
+//			
+//			a.GetComponent<MeshRenderer>().material.color = c;
+//			
+//			val += DissolveOneSquare.rate*0.5f;
+//			yield return true;
+//		}
+//
+//        Destroy(a.gameObject);
+//    }
 
 	public static Vector3 directionToDisplacement(Direction dir) {
-		if (dir == Direction.Up)
-			return new Vector3(0, 1, 0);
-		if (dir == Direction.Down)
-			return new Vector3(0, -1, 0);
-		if (dir == Direction.Left)
-			return new Vector3(-1, 0, 0);
-		if (dir == Direction.Right)
-			return new Vector3(1, 0, 0);
-		
-		return Vector3.zero;
+		return new Vector3(dc [(int)dir], dr [(int)dir], 0);
+	}
+
+	public static Direction displacementToDirection(int dr, int dc) {
+		if (dr == 1)
+			return Direction.Up;
+		if (dr == -1)
+			return Direction.Down;
+		if (dc == 1)
+			return Direction.Right;
+		if (dc == -1)
+			return Direction.Left;
+
+		return (Direction)(-1);
 	}
 }

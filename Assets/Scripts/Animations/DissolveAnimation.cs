@@ -8,6 +8,10 @@ public class DissolveAnimation : MonoBehaviour {
 	public int dr;
 	public int dc;
 
+	public Piece owner;
+
+	public Acid target;
+
 	bool animating;
 	
 	// Update is called once per frame
@@ -15,23 +19,23 @@ public class DissolveAnimation : MonoBehaviour {
 
 		if (!animating) {
 			StartCoroutine(Dissolve());
-			StartCoroutine(Move());
+			//StartCoroutine(Move());
 		}
 	}
 
-	IEnumerator Move() {
-
-		Vector3 disp = new Vector3(dc, dr, 0);
-
-		Vector3 pos;
-		for (int i = 0; i < 1.0f/Piece.speed; ++i) {
-			pos = gameObject.transform.position;
-			pos += disp * Piece.speed;
-			gameObject.transform.position = pos;
-
-			yield return true;
-		}
-	}
+//	IEnumerator Move() {
+//
+//		Vector3 disp = new Vector3(dc, dr, 0);
+//
+//		Vector3 pos;
+//		for (int i = 0; i < 1.0f/Piece.speed; ++i) {
+//			pos = gameObject.transform.position;
+//			pos += disp * Piece.speed;
+//			gameObject.transform.position = pos;
+//
+//			yield return true;
+//		}
+//	}
 
 	IEnumerator Dissolve() {
 		animating = true;
@@ -42,7 +46,13 @@ public class DissolveAnimation : MonoBehaviour {
 			yield return new WaitForSeconds(0.0025f/Piece.speed);
 		}
 
-		yield return new WaitForSeconds(1f/Piece.speed);
+		owner.DestroyPiece();
+
+		GameObject.Destroy(target.gameObject);
+		
+		yield return new WaitForSeconds(0.1f/Piece.speed);
+
+		//gameObject.transform.parent.gameObject.GetComponent<Stickable>().DestroyPiece();
 		GameObject.Destroy(gameObject);
 	}
 

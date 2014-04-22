@@ -12,6 +12,9 @@ public class Acid : MonoBehaviour {
 	public GameObject bubbleModel;
     public List<Material> CrayonMats;
 
+	int row;
+	int col;
+
     void Awake()
     {
         this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
@@ -26,9 +29,15 @@ public class Acid : MonoBehaviour {
 
     private void Start() {
 		Grid grid = Utils.FindComponent<Grid>("Board");
+		Position pos = grid.CoordToPos(transform.position);
+		grid.SetSquare(pos, new Square(SquareType.Acid));
     	grid.acidBlocks.Add(this);
 
 		StartCoroutine(createBubbles());
+
+		row = pos.Row;
+		col = pos.Col;
+		name = "Acid," + row + "," + col;
     }
 
 	IEnumerator createBubbles() {

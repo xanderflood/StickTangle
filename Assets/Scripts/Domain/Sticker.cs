@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using SquareType = Grid.SquareType;
 using Square = Grid.Square;
 
-public class Sticker : Piece {
+public class Sticker : MonoBehaviour {
 	
 	public AudioClip wallBump;
 	public AudioClip magnet;
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
+
+	//public GameObject stickableModel;
 
 	private float moveDelay = 0.05f;
 	private float lastMoveTime = 0;
@@ -19,10 +21,17 @@ public class Sticker : Piece {
 	// to the next level
 	public bool done = false;
 
+	public bool inMotion;
+
+	Grid grid;
+
 	private LevelManager lm;
 	private List<Stickable> stickables = new List<Stickable>();
+	public List<Stickable> Stickables { get { return stickables; } }
 
 	private bool teleporting;
+
+	private MusicSelector music;
 
 	private void Start() {
 		if (LevelManager.modeling)
@@ -30,16 +39,21 @@ public class Sticker : Piece {
 
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
 		DataLogger.Initialize(lm);
+		grid = Utils.FindComponent<Grid>("Board");
+
+		music = Utils.FindComponent<MusicSelector>("Music");
 	}
 
-    protected override void Awake() {
-        base.Awake();
+    protected void Awake() {
         Color temp = new Color();
         temp.r = 0;
         temp.g = 0;
         temp.b = 0;
         temp.a = .7f;
-        this.renderer.material.color = temp;
+        //this.renderer.material.color = temp;
+
+		Stickable s = Utils.FindComponent<Stickable>("BaseStickable");
+		stickables.Add(s);
     }
 
 	private bool isValidSquare(int newR, int newC) {
@@ -52,14 +66,10 @@ public class Sticker : Piece {
 		return type != SquareType.Block && type != SquareType.Magnet && type != SquareType.Stickable;
 	}
 
-	private bool isValidMove(int dr, int dc) {
-		int newR = row + dr;
-		int newC = col + dc;
-		if (!isValidSquare(newR, newC)) {
-			return false;
-		}
+	private bool isValidMoveForPieces(int dr, int dc, List<Stickable> ss) {
 
-		foreach (Stickable s in stickables) {
+		int newR, newC;
+		foreach (Stickable s in ss) {
 			newR = s.row + dr;
 			newC = s.col + dc;
 
@@ -87,87 +97,140 @@ public class Sticker : Piece {
 			return false;
 		}
 
-		if (glowing && stickables.Count > 0) {
-			Stickable s = SwapWithStickable();
-			if (s.glowing) {
-				// TODO: We'll get in an infinite loop
-			} else {
-				s.StartMagnetGlow();
-			}
-			StopMagnetGlow();
+		List<Stickable> tempStbles = new List<Stickable>();
+		tempStbles.AddRange(stickables);
+		//Stickable temp = ((GameObject)Instantiate(stickableModel, transform.position, transform.rotation))
+		//	.GetComponent<Stickable>();
+		//gameObject.GetComponent<MeshRenderer>().enabled = false;
+		//tempStbles.Add(temp);
+		//Debug.Log(temp.row);
+		//Debug.Log(temp.col);
+		
+		List<Stickable> notLeftBehind = new List<Stickable>();
+		List<Stickable> leftBehind = new List<Stickable>();
+		foreach (Stickable s in tempStbles) {
+			if (!s.IsStuckToManget(dr, dc))
+				notLeftBehind.Add(s);
+			else
+				leftBehind.Add(s);
 		}
+		
+		if (notLeftBehind.Count == 0)
+			return false;
+		
+		if (notLeftBehind.Count < tempStbles.Count)
+			audio.PlayOneShot(magnet);
 
-		bool stuck = false;
-		for (int i = stickables.Count - 1; i >= 0; i--) {
-			Stickable s = stickables[i];
-			if (s.glowing && s.IsStuckToManget(dr, dc)) {
-				audio.PlayOneShot(magnet);
-				stickableMap.Add(s.pos, s);
-				stickables.Remove(s);
-				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
-				stuck = true;
-			}
-		}
-
-		if (!isValidMove(dr, dc)) {
-			// If we mistakenly unstuck a piece, just add all adjacent stickables again
-			// TODO: This is copy and pasted from the Update function
-			if (stuck) {
-				List<Stickable> toAdd = new List<Stickable>();
-				toAdd.AddRange(GetStickables(row, col));
-				
-				// Check for new stickables next to other pieces
-				foreach (Stickable s in stickables) {
-					toAdd.AddRange(GetStickables(s.row, s.col));
-				}
-				stickables.AddRange(toAdd);
-			}
-
+		if (!isValidMoveForPieces(dr, dc, notLeftBehind)) {
 			audio.clip = wallBump;
-
+			
 			if (!audio.isPlaying)
 				audio.Play();
 			return false;
 		}
-		
-		// Start any acid animations
-		StartAnimationIfAboutToBeDestroyed(dr, dc);
-		foreach (Stickable s in stickables)
-			s.StartAnimationIfAboutToBeDestroyed(dr, dc);
-		
+
+		// Check who needs to be dissolved, and start their animations
+		List<Stickable> notAcided = new List<Stickable>();
+		foreach (Stickable s in notLeftBehind)
+			//if (grid.SquareTypeAt(Grid.displacementToDirection(dr, dc), s.row, s.col).First == SquareType.Acid)
+				if (!s.StartAnimationIfAboutToBeDestroyed(dr, dc))
+					notAcided.Add(s);
+
+		// TODO: restart if everyone dies
+		// This is what keeping track of toBeDestroyed is for.
+
+		// Make sure we keep adequate track of the glow
+		foreach (Stickable s in notLeftBehind) {
+			if (grid.IsNextToMagnet(s.row + dr, s.col + dc))
+				s.StartMagnetGlow();
+			else
+				s.StopMagnetGlow();
+		}
+
+		// Start actual movement
 		DataLogger.Move(stickables, this, dr, dc);
+		StartCoroutine(moveThesePieces(dr, dc, notLeftBehind, notAcided));
+		
+		// Update positions
+		foreach (Stickable s in stickables)
+			s.ChangePosition(s.row + dr, s.col + dc);
 
-		if (!IsStuckToManget(dr, dc)) {
-			StartCoroutine(Move(dr, dc));
+		// Disown other pieces
+		foreach (Stickable s in leftBehind) {
+			stickableMap.Add(s.pos, s);
+			grid.SetSquare(s.pos, new Square(SquareType.Stickable));
 		}
-//		} else {
-//			if (stickables.Count > 0) {
-//				SwapWithStickable();
-//			}
-//		}
-
-		for (int i = stickables.Count - 1; i >= 0; i--) {
-			Stickable s = stickables[i];
-			if (!s.IsStuckToManget(dr, dc)) {
-				StartCoroutine(s.Move(dr, dc));
-			} else {
-				// Detach stickable
-//				audio.PlayOneShot(magnet);
-//				stickableMap.Add(s.pos, s);
-//				stickables.Remove(s);
-//				grid.SetSquare(s.pos, new Square(SquareType.Stickable));
-			}
-		}
-
-		// TODO: Eventually remove this function
-		PutPlayersInGrid();
 
 		return true;
 	}
 
+	IEnumerator moveThesePieces(int dr, int dc, List<Stickable> toBeMoved, List<Stickable> notAcided) {
+
+		// By the time tie coroutine is called, ALL
+		// necessary animations (glow, acid) have been
+		// dealt with, and any stickables that haven't
+
+		// Add them as children
+		foreach (Stickable s in toBeMoved)
+			if (s != null)
+				s.transform.parent = transform;
+
+		// Move
+		inMotion = true;
+		
+		//ChangePosition(row + dr, col + dc);
+
+		Vector3 to = gameObject.transform.position + new Vector3(dc, dr, 0);
+		
+		Vector3 velocity = Piece.speed * (to - transform.position).normalized;
+		float distanceTravelled = 0;
+		while (distanceTravelled < 1f) {
+			transform.position += velocity;
+			distanceTravelled += velocity.magnitude;
+			yield return null;
+		}
+		transform.position = to;
+		
+		inMotion = false;
+
+		// TODO: Do I need to destroy things after acid, or does acid animation handle that?
+
+		// Remove them as children
+		foreach (Stickable s in notAcided)
+			s.transform.parent = null;
+
+		// New list!
+		stickables = notAcided;
+
+		// Attach any new Stickables
+		CheckForAndAddStickables(true, false);
+
+		//foreach (Stickable s in stickables) {
+		//	Debug.Log(s.row + ", " + s.col);
+		//}
+
+		// Put the Sticker back where it belongs
+		// Need to figure out what this means
+//		ReinstateSticker();
+
+	}
+
+//	private void ReinstateSticker() {
+//		if(stickables.Count == 0)
+//			lm.Restart();
+//
+//		Stickable s = stickables[0];
+//		transform.position = s.transform.position;
+//		//Debug.Log(s.name);
+//		GameObject.Destroy(s.gameObject);
+//		s.gameObject.GetComponent<MeshRenderer>().enabled = false;
+//		//gameObject.GetComponent<MeshRenderer>().enabled = true;
+//		stickables.RemoveAt(0);
+//	}
+
 	// TODO: Eventually remove this function
 	private void PutPlayersInGrid() {
-		grid.SetSquare(pos, new Square(SquareType.Player));
+		//grid.SetSquare(pos, new Square(SquareType.Player));
 		foreach (Stickable s in stickables) {
 			grid.SetSquare(s.pos, new Square(SquareType.Player));
 		}
@@ -200,120 +263,117 @@ public class Sticker : Piece {
 			return;
 		}
 
-        //acid must be handled before attaching stickables, 
-        //because of the case where an acid block is adjacent to a stickable
-        HandleAcid();
-
-		CheckForAndAddStickables(false);
+        // acid must be handled before attaching stickables,
+        // because of the case where an acid block is adjacent to a stickable
 
 		// Check if all goals are covered
 		if (grid.CheckAllGoals()) {
+
 			music.clearLevel();
 			done = true;
 			StartCoroutine(AdvanceLevel());
 		}
 	}
 
-	private void CheckForAndAddStickables(bool changeColorNow) {
+	private void CheckForAndAddStickables(bool changeColorNow, bool checkRoot) {
 
 		List<Stickable> toAdd = new List<Stickable>();
 		// Check for new stickables next to root piece
-		if (!hitAcid) { //if the root piece is being destroyed by acid, don't attach anything to it
-			toAdd.AddRange(GetStickables(row, col));
-		}
+		//if (checkRoot) {
+		//	toAdd.AddRange(GetStickables(row, col));
+		//}
 		
 		// Check for new stickables next to other pieces
 		foreach (Stickable s in stickables) {
 			toAdd.AddRange(GetStickables(s.row, s.col));
 		}
-		newStickables = toAdd;
 		
 		stickables.AddRange(toAdd);
 		DataLogger.Attach(toAdd.Count);
 
 		if (changeColorNow) {
-			foreach (Stickable s in newStickables)
-				s.renderer.material.color = this.renderer.material.color;
+			foreach (Stickable s in toAdd)
+				s.renderer.material.color = Color.black;
 
-			newStickables.Clear();
+			toAdd.Clear();
 		}
 	}
 
-    private void HandleAcid() {
-        // First, deal with stickables colliding with the acid
-        List<Stickable> toDestory = new List<Stickable>();
-        foreach (Stickable s in stickables) {
-            if (grid.CheckForAndDestoryAcid(s.row, s.col)) {
-                toDestory.Add(s);
-            }
-        }
+//    private void HandleAcid() {
+//        // First, deal with stickables colliding with the acid
+//        List<Stickable> toDestory = new List<Stickable>();
+//        foreach (Stickable s in stickables) {
+//            if (grid.CheckForAndDestoryAcid(s.row, s.col)) {
+//                toDestory.Add(s);
+//            }
+//        }
+//
+//        foreach (Stickable s in toDestory) {
+//            s.DestroyAtEndOfMove();
+//            stickables.Remove(s);
+//        }
+//        
+//        // Now deal with sticker
+////        if (grid.CheckForAndDestoryAcid(row, col)) {
+////            DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
+////        }
+//    }
 
-        foreach (Stickable s in toDestory) {
-            s.DestroyAtEndOfMove();
-            stickables.Remove(s);
-        }
-        
-        // Now deal with sticker
-        if (grid.CheckForAndDestoryAcid(row, col)) {
-            DestroyAtEndOfMove();// at end of animation, swapWithStickable will be called
-        }
-    }
+//	public override void DestroyPiece() {
+//		// If this is the last block, the player looses
+//		if (stickables.Count == 0) {
+//			// Placeholder functionality
+//			Debug.Log("Game Over, all blocks destroyed");
+//			lm.Restart();
+//			return;
+//		}
+//
+//		hitAcid = false;
+//		Stickable s = SwapWithStickable();
+//		stickables.Remove(s);
+//		s.DestroyPiece();
+//	}
 
-	public override void DestroyPiece() {
-		// If this is the last block, the player looses
-		if (stickables.Count == 0) {
-			// Placeholder functionality
-			Debug.Log("Game Over, all blocks destroyed");
-			lm.Restart();
-			return;
-		}
+//	private Stickable SwapWithStickable() {
+//		return SwapWithStickable(0);
+//	}
 
-		hitAcid = false;
-		Stickable s = SwapWithStickable();
-		stickables.Remove(s);
-		s.DestroyPiece();
-	}
-
-	private Stickable SwapWithStickable() {
-		return SwapWithStickable(0);
-	}
-
-    private Stickable SwapWithStickable(int index) {
-		Utils.Assert(stickables.Count > index);
-
-	    // Swap locations with some stickable, then destroy that stickable
-		Stickable s = stickables[index];
-		Position tempPos = pos;
-		pos = s.pos;
-		s.pos = tempPos;
-
-		Material tempMaterial = renderer.material;
-		renderer.material = s.renderer.material;
-		s.renderer.material = tempMaterial;
-
-		Quaternion tempRotation = transform.rotation;
-		transform.rotation = s.transform.rotation;
-		s.transform.rotation = tempRotation;
-
-		Vector3 tempTransform = transform.position;
-		transform.position = s.transform.position;
-		s.transform.position = tempTransform;
-
-		// Make sure the magnet glow animation is appropriately tracked
-		if (glowing) {
-			glowing = false;
-			s.glowing = true;
-			s.activeGlow = activeGlow;
-			activeGlow.transform.parent = s.transform;
-			Vector3 p = activeGlow.transform.position;
-			p.x = s.transform.position.x;
-			p.y = s.transform.position.y;
-			activeGlow.transform.position = p;
-			activeGlow = null;
-		}
-
-		return s;
-    }
+//    private Stickable SwapWithStickable(int index) {
+//		Utils.Assert(stickables.Count > index);
+//
+//	    // Swap locations with some stickable, then destroy that stickable
+//		Stickable s = stickables[index];
+//		Position tempPos = pos;
+//		pos = s.pos;
+//		s.pos = tempPos;
+//
+//		Material tempMaterial = renderer.material;
+//		renderer.material = s.renderer.material;
+//		s.renderer.material = tempMaterial;
+//
+//		Quaternion tempRotation = transform.rotation;
+//		transform.rotation = s.transform.rotation;
+//		s.transform.rotation = tempRotation;
+//
+//		Vector3 tempTransform = transform.position;
+//		transform.position = s.transform.position;
+//		s.transform.position = tempTransform;
+//
+//		// Make sure the magnet glow animation is appropriately tracked
+//		if (glowing) {
+//			glowing = false;
+//			s.glowing = true;
+//			s.activeGlow = activeGlow;
+//			activeGlow.transform.parent = s.transform;
+//			Vector3 p = activeGlow.transform.position;
+//			p.x = s.transform.position.x;
+//			p.y = s.transform.position.y;
+//			activeGlow.transform.position = p;
+//			activeGlow = null;
+//		}
+//
+//		return s;
+//    }
 
     public List<Stickable> AttachedPieces() {
         return stickables;
@@ -364,7 +424,7 @@ public class Sticker : Piece {
 		}
 		adjustAllScales(sc);
 		
-		CheckForAndAddStickables(true);
+		CheckForAndAddStickables(true, true);
 		
 		teleporting = false;
 		
@@ -378,11 +438,11 @@ public class Sticker : Piece {
 		
 		// Move the main block
 		gameObject.transform.position += disp;
-		ChangePosition(row + rowDelta, col + colDelta);
+		//ChangePosition(row + rowDelta, col + colDelta);
 		
 		// Move the other blocks
 		foreach (Stickable s in stickables) {
-			s.gameObject.transform.position += disp;
+			//s.gameObject.transform.position += disp;
 			s.ChangePosition(s.row + rowDelta, s.col + colDelta);
 		}
 
@@ -390,7 +450,7 @@ public class Sticker : Piece {
 		PutPlayersInGrid();
 
 		// If there is a teleporter at the target location, mark it as deactivated so we don't get immediately returned
-		Teleporter t = grid.GetTeleporterAt(new Position(row, col));
+		Teleporter t = grid.GetTeleporterAt(new Position(stickables[0].row, stickables[0].col));
 		if (t != null) {
 			t.AppearAt();
 		}

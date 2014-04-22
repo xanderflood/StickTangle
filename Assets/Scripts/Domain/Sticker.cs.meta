@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: 1bc421648c6b044e78c7ba715761a6aa
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - AcidAnimation: {instanceID: 0}
+  - MagnetGlowModel: {instanceID: 0}
+  - activeGlow: {instanceID: 0}
+  - wallBump: {instanceID: 0}
+  - magnet: {instanceID: 0}
+  - sitckableModel: {fileID: 100000, guid: 4ccc2f32ebeab4ba6bfa1c4925f36bcd, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

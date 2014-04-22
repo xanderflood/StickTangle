@@ -42,11 +42,11 @@ public class Teleporter : MonoBehaviour {
 		}
 
 		// Check if player block is in the teleporter
-		if (Contains(new Position(playerBlock.row, playerBlock.col))) {
-			return;
-		}
+//		if (Contains(new Position(playerBlock.row, playerBlock.col))) {
+//			return;
+//		}
 
-		// Otherwise, check if the user is touching any part the teleporter
+		// Otherwise, check if the user is touching any part of the teleporter
 		foreach (Stickable s in playerBlock.AttachedPieces()) {
 			if (Contains(new Position(s.row, s.col))) {
 				return;
@@ -71,9 +71,9 @@ public class Teleporter : MonoBehaviour {
 	* Check if the entire player and all of the stickables fit on the teleporter squares
 	*/
 	public bool Fits() {
-		if (!parts.Contains(new Position(playerBlock.row, playerBlock.col))) {
-			return false;
-		}
+		//if (!parts.Contains(new Position(playerBlock.row, playerBlock.col))) {
+		//	return false;
+		//}
 		foreach (Stickable s in playerBlock.AttachedPieces()) {
 			if (!parts.Contains(new Position(s.row, s.col))) {
 				return false;

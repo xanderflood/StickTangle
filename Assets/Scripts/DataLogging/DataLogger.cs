@@ -30,13 +30,12 @@ public static class DataLogger {
 
 	static int playerID;
 
-	public static void Move(List<Stickable> sts, Piece sticker, int dr, int dc) {
+	public static void Move(List<Stickable> sts, Sticker sticker, int dr, int dc) {
 
 		// Record that there *was* a move
 		++currentAttempt.Moves;
 
 		// Record all positions now occupied
-		densities[sticker.row + dr, sticker.col + dc] += 1;
 		foreach (Stickable st in sts)
 			densities[st.row + dr, st.col + dc] += 1;
 	}
@@ -48,8 +47,8 @@ public static class DataLogger {
 	public static void Restart() {
 
 		currentAttempt.Success = false;
-		currentAttempt.ResetX = Utils.FindComponent<Sticker>("Player").col;
-		currentAttempt.ResetY = Utils.FindComponent<Sticker>("Player").row;
+		currentAttempt.ResetX = 0;//Utils.FindComponent<Sticker>("Player").col;
+		currentAttempt.ResetY = 0;//Utils.FindComponent<Sticker>("Player").row;
 
 		RecordAttempt();
 	}
