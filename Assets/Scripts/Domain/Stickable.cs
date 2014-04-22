@@ -12,10 +12,18 @@ public class Stickable : Piece {
 		base.Awake();
 
         Color temp = new Color();
-        temp.r = 1;
-        temp.g = 0.5f;
-        temp.b = 0.5f;
-        temp.a = 1f;
+
+		if (original) {
+			temp.r = 0f;
+			temp.g = 0f;
+			temp.b = 0f;
+		} else {
+			temp.r = 0.5f;
+			temp.g = 0.5f;
+			temp.b = 0.5f;
+		}
+
+		temp.a = 1f;
         this.renderer.material.color = temp;
     }
 		
