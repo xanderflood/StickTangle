@@ -66,16 +66,19 @@ public class Sticker : MonoBehaviour {
 		return type != SquareType.Block && type != SquareType.Magnet && type != SquareType.Stickable;
 	}
 
-	private bool isValidMoveForPieces(int dr, int dc, List<Stickable> ss) {
+	private bool isValidMoveForPieces(int dr, int dc, List<Stickable> ss, List<Stickable> leftBehind) {
 
 		int newR, newC;
 		foreach (Stickable s in ss) {
 			newR = s.row + dr;
 			newC = s.col + dc;
 
-			if (!isValidSquare(newR, newC)) {
+			if (!isValidSquare(newR, newC))
 				return false;
-			}
+
+			foreach (Stickable obs in leftBehind)
+				if (newR == obs.row && newC == obs.col)
+					return false;
 		}
 
 		return true;
@@ -121,7 +124,7 @@ public class Sticker : MonoBehaviour {
 		if (notLeftBehind.Count < tempStbles.Count)
 			audio.PlayOneShot(magnet);
 
-		if (!isValidMoveForPieces(dr, dc, notLeftBehind)) {
+		if (!isValidMoveForPieces(dr, dc, notLeftBehind, leftBehind)) {
 			audio.clip = wallBump;
 			
 			if (!audio.isPlaying)
