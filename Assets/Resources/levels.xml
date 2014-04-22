@@ -14,7 +14,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>OMG Damien are you slacking off again???</narration1>
+				<narration1>Cover up the green goal square to beat the level.</narration1>
 			</level>
 			<level id="2">
 				<stars>
@@ -22,8 +22,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>You know graph paper is for graphing things, right? 
-				This is algebra class?</narration1>
+				<narration1>Blue squares are obstacles that you have to go around.</narration1>
 			</level>
 			<level id="3">
 				<stars>
@@ -31,9 +30,8 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Ooh Damien, you have pink crayons?!  I love pink :3</narration1>
-				<narration1>Colorblind much?</narration1>
-				<narration2>What Julie? No it's totally red.</narration2>
+				<narration1>Pink squares stick to you.
+				You must cover up all goal squares to beat the level.</narration1>
 			</level>
 			<level id="4">
 				<stars>
@@ -41,9 +39,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Awww the blocks get to be friends!  This is so cute!</narration1>
-				<narration2>…"cute" isn't really the adjective I would use.</narration2>
-				<narration1>Oh hush, you're the one who made them pink.</narration1>
+				<narration1></narration1>
 			</level>
 			<level id="5">
 				<stars>
@@ -52,10 +48,7 @@
 					<gold>5</gold>
 				</stars>
 				<narration1></narration1>
-				<narration2>Noooooo Julie, don't touch that</narration2>
-				<narration1>But it's pretty</narration1>
-				<narration2>But you'll be trapped here foreveeeeer</narration2>
-				<narration1>Okay jeez Damien I hear you.</narration1>
+				<narration2></narration2>
 
 			</level>
 			<level id="6">
@@ -64,11 +57,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				
-				<narration1>So what if I have too many blocks?</narration1>
-				<narration2>As long as you cover the goal, you're fine.</narration2>
-				<narration1>So they can all be friends!  Cute!</narration1>
-				<narration2>Can we at least call them "fierce allies" instead of "friends."</narration2>
+				<narration1>You can have as many extra squares as you want, as long as you cover up every goal square.</narration1>
 			</level>
 			<level id="7">
 				<stars>
@@ -78,8 +67,7 @@
 				</stars>
 				
 				<narration1></narration1>
-				<narration2>OMG Julie are you slacking off again?</narration2>
-				<narration1>Oh hush, this is all your fault anyway</narration1>
+				<narration2></narration2>
 
 			</level>
 		</stage>
@@ -90,8 +78,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Whoa, dissolving acid? Do you think we could pour that junk on Ms. Hall's hair?  
-				You know it's hideous.</narration1>
+				<narration1>Dark green squares are Acid, they dissolve blocks that touch them.</narration1>
 			</level>
 			<level id="2">
 				<stars>
@@ -99,10 +86,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>If I poured the acid on my arm, would my hand be floating beside me?</narration1>
-				<narration2>Yeah, that's how I saw it work in a comic book.</narration2>
-				<narration1>I can't decide if that's gross or cool.</narration1>
-				<narration2>Julie, it's definitely cool.</narration2>
+				<narration1></narration1>
 			</level>
 			<level id="3">
 				<stars>
@@ -118,7 +102,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>DAMIEN.  Now you're just being mean!</narration1>
+				<narration1></narration1>
 			</level>
 			<level id="5">
 				<stars>
@@ -127,8 +111,6 @@
 					<gold>5</gold>
 				</stars>
 				<narration1></narration1>
-				<narration2>Haha are you ready to give up yet?</narration2>
-				<narration1>Oh shush</narration1>
 			</level>
 		</stage>
 		<stage id="3">
@@ -138,10 +120,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Wait, first acid, now teleportation?</narration1>
-				<narration2></narration2>
-				<narration1>What's the next superpower gonna be, dragons???</narration1>
-				 <narration2>What. "Dragons" is not a superpower. Also I would need to upgrade from graph paper for that...</narration2>
+				<narration1>Yellow squares are teleporters.</narration1>
 			</level>
 			<level id="2">
 				<stars>
@@ -149,7 +128,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1></narration1>
+				<narration1> All player squares have to be within the teleporters to teleport.</narration1>
 			</level>
 			<level id="3">
 				<stars>

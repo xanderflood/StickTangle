@@ -130,11 +130,11 @@ public class LevelManager : MonoBehaviour {
                  if (i % 2 == 0)
                  {
                      TextStyle.font = JulieFont;
-                     GUI.Label(new Rect(20, 50 + 130 * offset, 220, 500), text[i], TextStyle);
+                     GUI.Label(new Rect(20, 120 + 130 * offset, 220, 500), text[i], TextStyle);
                  }
                  else {
                      TextStyle.font = DamienFont;
-                     GUI.Label(new Rect(20, 50 + 130 * offset, 220, 500), text[i], TextStyle);
+                     GUI.Label(new Rect(20, 120 + 130 * offset, 220, 500), text[i], TextStyle);
                  }
                  offset++;
              }
