@@ -152,7 +152,7 @@ public class Sticker : MonoBehaviour {
 		StartCoroutine(moveThesePieces(dr, dc, notLeftBehind, notAcided));
 		
 		// Update positions
-		foreach (Stickable s in stickables)
+		foreach (Stickable s in notLeftBehind)
 			s.ChangePosition(s.row + dr, s.col + dc);
 
 		// Disown other pieces
