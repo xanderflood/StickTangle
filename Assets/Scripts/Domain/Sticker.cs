@@ -445,7 +445,7 @@ public class Sticker : MonoBehaviour {
 		
 		// Move the other blocks
 		foreach (Stickable s in stickables) {
-			//s.gameObject.transform.position += disp;
+			s.gameObject.transform.position += disp;
 			s.ChangePosition(s.row + rowDelta, s.col + colDelta);
 		}
 
