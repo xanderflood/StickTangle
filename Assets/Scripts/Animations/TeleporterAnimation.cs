@@ -35,7 +35,7 @@ public class TeleporterAnimation : MonoBehaviour {
 
 		ripple.transform.parent = transform;
 		Vector3 pos = transform.position;
-		pos.z = transform.position.z - 1.1f;
+		pos.z = transform.position.z - .1f;
 		ripple.transform.position = pos;
 
 
