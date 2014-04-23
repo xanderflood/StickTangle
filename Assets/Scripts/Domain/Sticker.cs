@@ -30,7 +30,6 @@ public class Sticker : MonoBehaviour {
 	public List<Stickable> Stickables { get { return stickables; } }
 
 	private bool teleporting;
-
 	private MusicSelector music;
 
 	private void Start() {
@@ -50,7 +49,6 @@ public class Sticker : MonoBehaviour {
         temp.g = 0;
         temp.b = 0;
         temp.a = .7f;
-        //this.renderer.material.color = temp;
 
 		if (LevelManager.modeling)
 			return;

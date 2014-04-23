@@ -13,7 +13,6 @@ public class MainMenuAnimation : MonoBehaviour {
 	public GUIStyle style;
 
 	bool gui = false;
-	float guiAlpha = 0;
 
 	void Awake () {
 		LevelManager.modeling = true;
@@ -32,7 +31,11 @@ public class MainMenuAnimation : MonoBehaviour {
 	}
 	
 	void Update() {
-		
+
+		if (!gui)
+			return;
+
+
 	}
 
 	IEnumerator InitialWait() {
