@@ -52,6 +52,9 @@ public class Sticker : MonoBehaviour {
         temp.a = .7f;
         //this.renderer.material.color = temp;
 
+		if (LevelManager.modeling)
+			return;
+
 		Stickable s = Utils.FindComponent<Stickable>("BaseStickable");
 		stickables.Add(s);
     }

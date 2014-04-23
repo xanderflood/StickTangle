@@ -26,6 +26,7 @@ public class TeleporterAnimation : MonoBehaviour {
 	IEnumerator AnimateOneRipple () {
 		
 		GameObject ripple = (GameObject)Instantiate(rippleModel);
+		ripple.transform.parent = transform;
 
 		SpriteRenderer sr = ripple.GetComponent<SpriteRenderer>();
 		Color c = sr.color;
@@ -34,12 +35,12 @@ public class TeleporterAnimation : MonoBehaviour {
 
 		ripple.transform.parent = transform;
 		Vector3 pos = transform.position;
-		pos.z = -1.1f;
+		pos.z = transform.position.z - 1.1f;
 		ripple.transform.position = pos;
 
 
 		float sc = 0f;
-		Vector3 scale = ripple.transform.localScale;
+		Vector3 scale = ripple.transform.localScale*transform.localScale.x;
 		while (sc < 1f) {
 			sc += rate*Time.deltaTime;
 			ripple.transform.localScale = sc*scale;

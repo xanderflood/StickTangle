@@ -51,12 +51,13 @@ public class Acid : MonoBehaviour {
 			yield return new WaitForSeconds(time);
 
 			// Produce a bubble
-			Vector3 pos = Random.insideUnitSphere;
+			Vector3 pos = Random.insideUnitSphere*gameObject.transform.localScale.x;
 			pos.z = -1.1f;
 
 			GameObject bubble = (GameObject)Instantiate(bubbleModel);
 			bubble.transform.parent = transform;
 			bubble.transform.position = 0.4f*pos + transform.position;
+			bubble.transform.localScale *= Mathf.Sqrt(gameObject.transform.localScale.x);
 		}
 	}
 }

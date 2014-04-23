@@ -128,7 +128,6 @@ MonoBehaviour:
   back: {fileID: 8300000, guid: 7f49e40e4edd94bcdb2790f7be82d18b, type: 3}
   StageSelected: 0
   disp: {fileID: 1247073942}
-  music: {fileID: 11400002, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
   right: {fileID: 2100000, guid: b91cd93d620214faca22ebb37bd97a39, type: 2}
   left: {fileID: 2100000, guid: 17b0e1db483474c9eb91cebb905c75ff, type: 2}
   up: {fileID: 2100000, guid: f94acd16b5ae24a5683a6758df08ac1e, type: 2}
