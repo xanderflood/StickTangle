@@ -8,21 +8,25 @@ using SquareType = Grid.SquareType;
 public class Piece : MonoBehaviour {
 	public Position pos = new Position(-1, -1);
     public List<Material> CrayonMats;
+	public int R;
 	public int row {
 		get {
 			return pos.Row;
 		}
 		set {
 			pos.Row = value;
+			R = value;
 		}
 	}
 
+	public int C;
 	public int col {
 		get {
 			return pos.Col;
 		}
 		set {
 			pos.Col = value;
+			C = value;
 		}
 	}
 	

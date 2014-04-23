@@ -252,25 +252,23 @@ public class Grid : MonoBehaviour {
 		return row < Dim - 1 && col < Dim - 1 && row > 0 && col > 0;
 	}
 
-    public bool CheckAllGoals()
-    {
-        bool retValue = true;
-        foreach (Position p in goals)
-        {
-            if (grid[p.Row, p.Col].type == SquareType.Player)
-            {
-            	//   Color temp = goalMap[p].renderer.material.color;
-            	//  temp.a = 0;
-            	//    goalMap[p].renderer.material.color = temp;
-            }
-            else
-            {
-                retValue = false;
-            }
-        }
+    public bool CheckAllGoals() {
 
-        return retValue;
+        foreach (Position p in goals)
+			if (!CheckOneGoal(p))
+				return false;
+
+        return true;
     }
+
+	bool CheckOneGoal(Position p) {
+
+		foreach (Stickable s in Utils.FindComponent<Sticker>("Player").Stickables)
+			if (s.row == p.Row && s.col == p.Col)
+				return true;
+
+		return false;
+	}
 
 //    // Checks to see if given location is acid, if so destroys the acid and returns true
 //    public bool CheckForAndDestoryAcid(int row, int col) {
