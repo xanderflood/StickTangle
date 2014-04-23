@@ -5,8 +5,12 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	public GameObject RectWord;
 	public GameObject StickyWord;
+	public GameObject Holder;
+	public Acid acid;
 
 	public float rate;
+
+	bool gui = false;
 
 	void Awake () {
 		LevelManager.modeling = true;
@@ -14,6 +18,14 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	void Start () {
 		StartCoroutine(InitialWait());
+	}
+	
+	void OnGui() {
+		
+	}
+	
+	void Update() {
+		
 	}
 
 	IEnumerator InitialWait() {
@@ -43,11 +55,44 @@ public class MainMenuAnimation : MonoBehaviour {
 			yield return true;
 		}
 
-		// Leave those behind and start fading them out, with the magnets
+		//transform.position = new Vector3(-4, 0, -1);
 
-		// Change the letter 't' to a capital, and move back, but one space further up
+		// Leave those behind and start fading them out, with the magnets
+		RectWord.GetComponent<WordPiece>().SeverFirstLetter().transform.parent.parent = Holder.transform;
+		RectWord.GetComponent<WordPiece>().SeverFirstLetter().transform.parent.parent = Holder.transform;
+		RectWord.GetComponent<WordPiece>().SeverFirstLetter().transform.parent.parent = Holder.transform;
+
+		StartCoroutine(fadeChildren(Holder, 1f));
+
+		// Change the letter 't' to a capital
+		RectWord.GetComponent<WordPiece>().Letters[0].letter = "T";
+
+		// Move back, but one space further up
+		Vector3 disp = new Vector3 (-3f, 5f, 0f);
+		float total = disp.magnitude;
+		Vector3 dir = disp/disp.magnitude;
+		Vector3 start = RectWord.transform.position;
+
+		float traversed = 0f;
+		while (traversed < total) {
+			Vector3 step = dir*rate*Time.deltaTime;
+
+			RectWord.transform.position += step;
+
+			traversed += step.magnitude;
+
+			yield return true;
+		}
+		RectWord.transform.position = start + disp;
 
 		// Initialize the actual GUI
+		gui = true;
+		StartCoroutine(GuiFade());
+	}
+
+	IEnumerator GuiFade() {
+		
+
 	}
 
 	IEnumerator MoveSticky() {
@@ -55,23 +100,63 @@ public class MainMenuAnimation : MonoBehaviour {
 		Vector3 tmp;
 		bool dissolving = false;
 
-		//First, move downwards to the magnet
+		//First, move towards the acid and burn up the y
 		while(StickyWord.transform.position.x < -4) {
 			tmp = StickyWord.transform.position;
 			tmp.x += rate*Time.deltaTime;
 			StickyWord.transform.position = tmp;
 			
 			if (tmp.x > -6 && !dissolving) {
-				StickyWord.GetComponent<WordPiece>().Letters[5].StartAcidAnimation(0, 1);
+				StickyWord.GetComponent<WordPiece>().Letters[5].StartAcidAnimation(0, 1, acid);
+				StartCoroutine(FadeLetter(StickyWord.GetComponent<WordPiece>().Letters[5], rate));
 				
 				dissolving = true;
 			}
 			
 			yield return true;
 		}
-		// More right towards the acid
-		// Burn up the y
-		// Move back
+
 		yield return true;
+	}
+
+	IEnumerator FadeLetter(LetterPiece lp, float r) {
+
+		while (lp.fontColor.a > 0) {
+			lp.fontColor.a -= 10*r*Time.deltaTime;
+			yield return true;
+		}
+
+		StickyWord.GetComponent<WordPiece>().DeleteLastLetter();
+	}
+
+	IEnumerator fadeChildren(GameObject go, float rate) {
+
+		int total = go.transform.childCount;
+
+		for (int i = 0; i < total; ++i) {
+			Transform sub = go.transform.GetChild(i).FindChild("Block");
+			if (sub != null)
+				GameObject.Destroy(sub.FindChild("Quad").gameObject);
+		}
+
+		for (int i = 0; i < total; ++i) {
+			
+			GameObject cur = go.transform.GetChild(i).gameObject;
+
+			if (cur.name == "PieceWithLetter(Clone)")
+				StartCoroutine(FadeLetter(cur.transform.FindChild("Block").GetComponent<LetterPiece>(), rate/3));
+			else
+				StartCoroutine(DissolveAnimation.fadeObject(cur, rate));
+		}
+
+		yield return new WaitForSeconds(.5f);
+		for (int i = 0; i < total; ++i) {
+			
+			GameObject cur = go.transform.GetChild(i).gameObject;
+			
+			if (cur.name == "PieceWithLetter(Clone)")
+				GameObject.Destroy(cur);
+		}
+
 	}
 }

@@ -11,8 +11,8 @@ public class LetterPiece : Piece {
 
 	// Use this for initialization
 	protected override void Awake () {
-		base.Awake();
 
+		base.Awake();
 
 		Update();
 	}

@@ -40,8 +40,15 @@ public class DissolveAnimation : MonoBehaviour {
 	IEnumerator Dissolve() {
 		animating = true;
 
-		owner.renderer.enabled = false;
+		foreach (GameObject sq in squares)
+			if (sq != null)
+				sq.renderer.material.color = owner.renderer.material.color;
+
+		//owner.renderer.enabled = false;
 		owner.transform.FindChild("Quad").renderer.enabled = false;
+
+		StartCoroutine (fadeObject (target.gameObject, 1f));
+		StartCoroutine (fadeObject (owner.gameObject, 3f));
 
 		for (int i = 0; i < 4; ++i) {
 			dissolveRow(i);
@@ -60,6 +67,19 @@ public class DissolveAnimation : MonoBehaviour {
 
 		//gameObject.transform.parent.gameObject.GetComponent<Stickable>().DestroyPiece();
 		GameObject.Destroy(gameObject);
+	}
+
+	public static IEnumerator fadeObject(GameObject go, float rate) {
+
+		Color col = go.renderer.material.color;
+		while (col.a > -1) {
+			col.a -= rate*Time.deltaTime;
+			go.renderer.material.color = col;
+
+			yield return true;
+		}
+
+		GameObject.Destroy(go);
 	}
 
 	void dissolveRow(int rowNum) {

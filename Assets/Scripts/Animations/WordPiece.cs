@@ -30,6 +30,24 @@ public class WordPiece : MonoBehaviour {
 			++i;
 		}
 	}
+	
+	public void DeleteLastLetter() {
+		word = word.Remove(word.Length - 1);
+	}
+	
+	public LetterPiece SeverFirstLetter() {
+		word = word.Remove(0, 1);
+
+		LetterPiece lp = gos[0];
+		LetterPiece[] temp = new LetterPiece[word.Length];
+
+		for (int i = 0; i < word.Length; ++i)
+			temp[i] = gos[i + 1];
+		//lp.transform.parent = null;
+
+		gos = temp;
+		return lp;
+	}
 
 	public static Color RandomColor(float a = 1f) {
 		Color c;
