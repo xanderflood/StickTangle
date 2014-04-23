@@ -10,7 +10,10 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	public float rate;
 
+	public GUIStyle style;
+
 	bool gui = false;
+	float guiAlpha = 0;
 
 	void Awake () {
 		LevelManager.modeling = true;
@@ -21,7 +24,7 @@ public class MainMenuAnimation : MonoBehaviour {
 	}
 	
 	void OnGui() {
-		
+		GUI.Label(new Rect(0.5f*Screen.width, 0.5f*Screen.height, 0.1f*Screen.width, 0.1f*Screen.height), "Test", style);
 	}
 	
 	void Update() {
@@ -91,8 +94,14 @@ public class MainMenuAnimation : MonoBehaviour {
 	}
 
 	IEnumerator GuiFade() {
-		
 
+		Color c = style.normal.textColor;
+		c.a = 0;
+		while (c.a < 0)	{
+			c.a += rate*Time.deltaTime;
+			style.normal.textColor = c;
+			yield return true;
+		}
 	}
 
 	IEnumerator MoveSticky() {

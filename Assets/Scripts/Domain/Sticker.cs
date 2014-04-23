@@ -34,6 +34,7 @@ public class Sticker : MonoBehaviour {
 	private MusicSelector music;
 
 	private void Start() {
+		Debug.Log("hey!");
 		if (LevelManager.modeling)
 			return;
 
