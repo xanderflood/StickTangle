@@ -133,8 +133,8 @@ public class Sticker : MonoBehaviour {
 		}
 
 		// Only play the magnet sound if the move is valid!
-		if (notLeftBehind.Count < tempStbles.Count)
-			audio.PlayOneShot(magnet);
+//		if (notLeftBehind.Count < tempStbles.Count)
+//			audio.PlayOneShot(magnet);
 
 		// Check who needs to be dissolved, and start their animations
 		List<Stickable> notAcided = new List<Stickable>();
@@ -142,7 +142,7 @@ public class Sticker : MonoBehaviour {
 			if (!s.StartAnimationIfAboutToBeDestroyed(dr, dc))
 				notAcided.Add(s);
 			else 
-			music.playAcid();
+				music.playAcid();
 
 		// TODO: restart if everyone dies
 		// This is what keeping track of toBeDestroyed is for.

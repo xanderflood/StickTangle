@@ -6,6 +6,7 @@ using Square = Grid.Square;
 
 public class Magnet : Piece {
 
+	public AudioClip magnet;
 
     protected override void Awake()
     {
@@ -34,13 +35,19 @@ public class Magnet : Piece {
 	}
 
 	public bool IsMovingAway(int r, int c, int dr, int dc) {
+		audio.clip = magnet;
+
 		if (row == r) {
 			if (dr == 0) {
+				if (!audio.isPlaying)
+					audio.Play();
 				return true;
 			}
 		} else {
 			Utils.Assert(col == c);
 			if (dc == 0) {
+				if (!audio.isPlaying)
+					audio.Play();
 				return true;
 			}
 		}
