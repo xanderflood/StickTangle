@@ -23,8 +23,12 @@ public class MainMenuAnimation : MonoBehaviour {
 		StartCoroutine(InitialWait());
 	}
 	
-	void OnGui() {
-		GUI.Label(new Rect(0.5f*Screen.width, 0.5f*Screen.height, 0.1f*Screen.width, 0.1f*Screen.height), "Test", style);
+	void OnGUI() {
+		GUI.Label(new Rect(0.3f*Screen.width, 0.55f*Screen.height, 0.4f*Screen.width, 0.2f*Screen.height),
+		          "Press up to begin", style);
+		
+		GUI.Label(new Rect(0.3f*Screen.width, 0.65f*Screen.height, 0.4f*Screen.width, 0.2f*Screen.height),
+		          "Press down for level select", style);
 	}
 	
 	void Update() {
@@ -97,7 +101,7 @@ public class MainMenuAnimation : MonoBehaviour {
 
 		Color c = style.normal.textColor;
 		c.a = 0;
-		while (c.a < 0)	{
+		while (c.a < 1)	{
 			c.a += rate*Time.deltaTime;
 			style.normal.textColor = c;
 			yield return true;

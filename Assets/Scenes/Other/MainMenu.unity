@@ -110,7 +110,7 @@ MonoBehaviour:
     m_Name: 
     m_Normal:
       m_Background: {fileID: 0}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 0}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -152,10 +152,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_Font: {fileID: 12800000, guid: 7e78b5c2b1fdb45ed82d7475be20b66b, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 1
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
   activeGlow: {fileID: 0}
-  magnet: {fileID: 0}
+  magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
 --- !u!33 &436949512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
   activeGlow: {fileID: 0}
-  magnet: {fileID: 0}
+  magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
 --- !u!33 &1163468737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
   activeGlow: {fileID: 0}
-  magnet: {fileID: 0}
+  magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
 --- !u!33 &1357521089
 MeshFilter:
   m_ObjectHideFlags: 0
