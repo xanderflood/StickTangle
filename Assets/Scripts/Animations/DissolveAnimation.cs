@@ -46,8 +46,7 @@ public class DissolveAnimation : MonoBehaviour {
 			yield return new WaitForSeconds(0.0025f/Piece.speed);
 		}
 
-		owner.DestroyPiece();
-
+		GameObject.Destroy(owner.gameObject);
 		GameObject.Destroy(target.gameObject);
 		
 		yield return new WaitForSeconds(0.1f/Piece.speed);

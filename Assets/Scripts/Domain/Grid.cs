@@ -270,41 +270,6 @@ public class Grid : MonoBehaviour {
 		return false;
 	}
 
-//    // Checks to see if given location is acid, if so destroys the acid and returns true
-//    public bool CheckForAndDestoryAcid(int row, int col) {
-//        foreach (Acid a in acidBlocks) {
-//            Position p = CoordToPos(a.transform.position);
-//            if (p.Row == row && p.Col == col) {
-//                acidBlocks.Remove(a);
-//                StartCoroutine(WaitForMoveThenDestoryAcidBlock(a));
-//                return true;
-//            }
-//        }
-//
-//        return false;
-//    }
-
-//    private IEnumerator WaitForMoveThenDestoryAcidBlock(Acid a) {
-//       
-//		// amount of time the move animation takes, computed by getting timestamps at the start of the move and when destroyPeice is called
-//
-//		Color start = a.GetComponent<MeshRenderer>().material.color;
-//		Color target = start; target.a = 0;
-//		float val = 0;
-//
-//		Color c;
-//		while (val <= 1) {
-//			c = Color.Lerp(start, target, val);
-//			
-//			a.GetComponent<MeshRenderer>().material.color = c;
-//			
-//			val += DissolveOneSquare.rate*0.5f;
-//			yield return true;
-//		}
-//
-//        Destroy(a.gameObject);
-//    }
-
 	public static Vector3 directionToDisplacement(Direction dir) {
 		return new Vector3(dc [(int)dir], dr [(int)dir], 0);
 	}

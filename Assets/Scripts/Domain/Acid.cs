@@ -19,6 +19,7 @@ public class Acid : MonoBehaviour {
     {
         this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
         this.transform.Rotate(0, 0, Random.Range(0, 3) * 90);
+
         Color temp = new Color();
         temp.r = 0;
         temp.g = .5f;

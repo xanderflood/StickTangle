@@ -26,7 +26,7 @@ public class Stickable : Piece {
 		temp.a = 1f;
         this.renderer.material.color = temp;
     }
-		
+
 	private void Start() {
 		if (LevelManager.modeling || original)
 			return;
@@ -40,17 +40,4 @@ public class Stickable : Piece {
 			grid.SetSquare(row, col, new Square(SquareType.Player));
 
 	}
-
-//	private void Update() {
-//		//if (fake && !MeshRenderer.enabled)
-//		//	DestroyPiece();
-//	}
-
-
-//	private IEnumerator AdvanceAcid() {
-//		yield return new WaitForSeconds(1.0f);
-//		grid.SetSquare(row, col, new Square(SquareType.Empty));
-//		Destroy(this.gameObject);
-//	}
-	
 }

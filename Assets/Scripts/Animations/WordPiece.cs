@@ -29,11 +29,6 @@ public class WordPiece : MonoBehaviour {
 			++i;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public static Color RandomColor(float a = 1f) {
 		Color c;

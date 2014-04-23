@@ -64,30 +64,11 @@ public class Piece : MonoBehaviour {
 
 	}
 
-//    public void DestroyAtEndOfMove() {
-//        hitAcid = true;
-//    }
-
 	public void ChangePosition(int newRow, int newCol) {
 		grid.SetSquare(row, col, new Square(SquareType.Empty));
 		row = newRow;
 		col = newCol;
 		grid.SetSquare(row, col, new Square(SquareType.Player));
-		// TODO: grid.SetSquare(row, col, new Square(SquareType.Player));
-	}
-
-	public void DestroyPiece() {
-		
-		//owner.Stickables.Remove((Stickable)this);
-		
-		//		gameObject.renderer.enabled = false;
-		//        foreach (Transform child in transform) {
-		//            child.gameObject.renderer.enabled = false;
-		//        }
-		
-		Destroy(this.gameObject);
-		
-		//StartCoroutine(AdvanceAcid());
 	}
 
 	public bool IsStuckToManget(int dr, int dc) {
@@ -105,44 +86,6 @@ public class Piece : MonoBehaviour {
 		}
 		return stuckToMagnet;
 	}
-
-//	public IEnumerator Move(int dr, int dc) {
-//		inMotion = true;
-//
-//		ChangePosition(row + dr, col + dc);
-//
-//		// If we won't be next to a magnet next time, then stop the glow animation
-//		if (grid.IsNextToMagnet(row, col))
-//			StartMagnetGlow();
-//		else
-//			StopMagnetGlow();
-//		
-//		Vector3 to = grid.PosToCoord(row, col, layer);
-//		
-//		Vector3 velocity = speed * (to - transform.position).normalized;
-//		float distanceTravelled = 0;
-//		while (distanceTravelled < 1f) {
-//			transform.position += velocity;
-//			distanceTravelled += velocity.magnitude;
-//			yield return null;
-//		}
-//		transform.position = to;
-//		
-//		inMotion = false;
-//
-//        // If we ran into acid, we need to destroy this piece at the end of the animation
-//        if (hitAcid) {
-//			music.playAcid();
-//			DestroyPiece();
-//        }
-//
-//		foreach (Stickable s in newStickables) {
-//            //change the color of the stickable to match sticker color
-//            s.renderer.material.color = this.renderer.material.color;
-//		}
-//
-//		newStickables.Clear();
-//	}
 
 	// Checks whether this Piece is about to roll over acid;
 	// if so, starts the animation immediately
