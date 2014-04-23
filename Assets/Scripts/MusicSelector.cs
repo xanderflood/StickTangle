@@ -25,7 +25,7 @@ public class MusicSelector : MonoBehaviour {
 	private void Update() {
 		string name = Application.loadedLevelName;
 
-		if (name == "LevelSelect") {
+		if ((name == "LevelSelect") || (name == "MainMenu")) {
 			if (!audio.isPlaying)
 				audio.clip = melody0;
 			if (!audio.isPlaying)

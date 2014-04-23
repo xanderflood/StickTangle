@@ -42,10 +42,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage3/Level3.4.unity
   - enabled: 1
+    path: Assets/Scenes/Stage3/Level3.5.unity
+  - enabled: 1
+    path: Assets/Scenes/Stage3/Level3.6.unity
+  - enabled: 1
     path: Assets/Scenes/Stage4/Level4.1.unity
   - enabled: 1
     path: Assets/Scenes/Stage4/Level4.2.unity
   - enabled: 1
     path: Assets/Scenes/Stage4/Level4.3.unity
+  - enabled: 1
+    path: Assets/Scenes/Stage4/Level4.4.unity
   - enabled: 1
     path: Assets/Scenes/Other/PlayAgain.unity

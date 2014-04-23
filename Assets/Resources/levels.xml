@@ -89,7 +89,7 @@ Any block that occupies the same space as an acid block is dissolved.</narration
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1></narration1>
+				<narration1>Acid can cause the player to become disconnected</narration1>
 			</level>
 			<level id="3">
 				<stars>
@@ -188,6 +188,14 @@ You can slide pieces off of a magnet.</narration1>
 				<narration1></narration1>
 			</level>
 				<level id="3">
+				<stars>
+					<bronze>15</bronze>
+					<silver>10</silver>
+					<gold>5</gold>
+				</stars>
+				<narration1></narration1>
+			</level>
+			<level id="4">
 				<stars>
 					<bronze>15</bronze>
 					<silver>10</silver>

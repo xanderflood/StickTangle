@@ -97,7 +97,6 @@ public class LevelManager : MonoBehaviour {
          textStyle.wordWrap = true;
          textStyle.fontSize = 28;
          textStyle.font = JulieFont;
-         textStyle.normal.textColor = Color.black;
          textStyle.fontStyle = FontStyle.Normal;
          Color gray = new Color();
          gray.r = 71f / 255f;
