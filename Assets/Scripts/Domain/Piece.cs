@@ -126,6 +126,7 @@ public class Piece : MonoBehaviour {
 		activeGlow.transform.position = v;
 
 		activeGlow.transform.parent = transform;
+		activeGlow.transform.localScale = transform.localScale;
 
 		glowing = true;
 	}

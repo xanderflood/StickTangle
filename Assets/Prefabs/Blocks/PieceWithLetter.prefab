@@ -251,8 +251,8 @@ MonoBehaviour:
   R: 0
   C: 0
   glowing: 0
-  AcidAnimation: {fileID: 0}
-  MagnetGlowModel: {fileID: 0}
+  AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
+  MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   activeGlow: {fileID: 0}
   BGcolor: {r: .0315743946, g: .536764741, b: .265007079, a: .486274511}
   fontColor: {r: .253287345, g: .140138403, b: .705882311, a: 1}

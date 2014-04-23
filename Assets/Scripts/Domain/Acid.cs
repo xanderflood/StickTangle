@@ -29,16 +29,20 @@ public class Acid : MonoBehaviour {
     }
 
     private void Start() {
-		Grid grid = Utils.FindComponent<Grid>("Board");
-		Position pos = grid.CoordToPos(transform.position);
-		grid.SetSquare(pos, new Square(SquareType.Acid));
-    	grid.acidBlocks.Add(this);
+
+		if (!LevelManager.modeling) {
+			Grid grid = Utils.FindComponent<Grid>("Board");
+			Position pos = grid.CoordToPos(transform.position);
+			grid.SetSquare(pos, new Square(SquareType.Acid));
+    		grid.acidBlocks.Add(this);
+			
+			row = pos.Row;
+			col = pos.Col;
+			name = "Acid," + row + "," + col;
+		}
 
 		StartCoroutine(createBubbles());
 
-		row = pos.Row;
-		col = pos.Col;
-		name = "Acid," + row + "," + col;
     }
 
 	IEnumerator createBubbles() {

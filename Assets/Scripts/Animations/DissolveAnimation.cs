@@ -40,16 +40,23 @@ public class DissolveAnimation : MonoBehaviour {
 	IEnumerator Dissolve() {
 		animating = true;
 
+		owner.renderer.enabled = false;
+		owner.transform.FindChild("Quad").renderer.enabled = false;
+
 		for (int i = 0; i < 4; ++i) {
 			dissolveRow(i);
 
 			yield return new WaitForSeconds(0.0025f/Piece.speed);
+
+			Color c = target.renderer.material.color;
+			c.a -= 0.25f;
+			target.renderer.material.color = c;
 		}
+
+		yield return new WaitForSeconds(.3f);
 
 		GameObject.Destroy(owner.gameObject);
 		GameObject.Destroy(target.gameObject);
-		
-		yield return new WaitForSeconds(0.1f/Piece.speed);
 
 		//gameObject.transform.parent.gameObject.GetComponent<Stickable>().DestroyPiece();
 		GameObject.Destroy(gameObject);

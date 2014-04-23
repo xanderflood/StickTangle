@@ -25,14 +25,11 @@ public class DissolveOneSquare : MonoBehaviour {
 		// 13 is prime, so there's no preiodicity
 		float randWait = ((100000 * transform.position.x * transform.position.x
 		                   + 2000 * transform.position.y + System.DateTime.Now.Second) % 13)*(0.1f/11.0f);
-		//System.Random rand = new System.Random(seed);
 
-		//float randWait = rand.Next(1, 100) * 0.001f;
 		yield return new WaitForSeconds(randWait);
 
 		float val = 0f;
 		Color start = gameObject.GetComponent<MeshRenderer>().material.color;
-        
 
 		Color c;
 		while (val <= 1) {

@@ -7,6 +7,7 @@ public class WordPiece : MonoBehaviour {
 	public string word;
 
 	LetterPiece[] gos;
+	public LetterPiece[] Letters { get { return gos; } }
 
 	// Use this for initialization
 	void Start () {
