@@ -84,6 +84,7 @@ public class SelectionGUI : MonoBehaviour {
 			if (StageSelected) {
 				music.playSchoolBell();
 
+				GameObject.Destroy(Utils.FindObject("Level"));
 				LevelManager.modeling = false;
 				string levelName = LevelStates[savedStage][selection].name;
 				Utils.FindComponent<LevelManager>("LevelManager").SetIndex(levelName);

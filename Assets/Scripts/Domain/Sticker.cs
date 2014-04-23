@@ -34,7 +34,6 @@ public class Sticker : MonoBehaviour {
 	private MusicSelector music;
 
 	private void Start() {
-		Debug.Log("hey!");
 		if (LevelManager.modeling)
 			return;
 
@@ -244,10 +243,12 @@ public class Sticker : MonoBehaviour {
 		}
 
 		// Check for valid teleporters
-		Teleporter t = grid.CheckReadyToTeleport();
-		if (t != null) {
-			StartCoroutine(Teleport(t.rowDelta, t.colDelta));
-			return;
+		if (grid != null) {
+			Teleporter t = grid.CheckReadyToTeleport();
+			if (t != null) {
+				StartCoroutine(Teleport(t.rowDelta, t.colDelta));
+				return;
+			}
 		}
 
 		// Return if no arrow key was pressed

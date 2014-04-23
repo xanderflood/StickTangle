@@ -49,6 +49,10 @@ public class WordPiece : MonoBehaviour {
 		return lp;
 	}
 
+	public static Color RandomColor() {
+		return RandomColor(1f);
+	}
+
 	public static Color RandomColor(float a = 1f) {
 		Color c;
 		c.r = Random.Range(0f, 1f);
