@@ -141,6 +141,8 @@ public class Sticker : MonoBehaviour {
 		foreach (Stickable s in notLeftBehind)
 			if (!s.StartAnimationIfAboutToBeDestroyed(dr, dc))
 				notAcided.Add(s);
+			else 
+			music.playAcid();
 
 		// TODO: restart if everyone dies
 		// This is what keeping track of toBeDestroyed is for.
