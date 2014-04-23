@@ -10,7 +10,7 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	public float rate;
 
-	public GUIStyle style;
+	public GUIStyle textStyle;
 
 	bool gui = false;
 	float guiAlpha = 0;
@@ -24,7 +24,20 @@ public class MainMenuAnimation : MonoBehaviour {
 	}
 	
 	void OnGui() {
-		GUI.Label(new Rect(0.5f*Screen.width, 0.5f*Screen.height, 0.1f*Screen.width, 0.1f*Screen.height), "Test", style);
+/*
+        var textStyle = GUI.skin.GetStyle("Label");
+        textStyle.alignment = TextAnchor.UpperLeft;
+        textStyle.wordWrap = true;
+        textStyle.fontSize = 28;
+        textStyle.fontStyle = FontStyle.Normal;
+        Color gray = new Color();
+        gray.r = 71f / 255f;
+        gray.g = 71f / 255f;
+        gray.b = 71f / 255f;
+        gray.a = 1;
+        textStyle.normal.textColor = gray;
+*/
+        GUI.Label(new Rect(0.5f * Screen.width, 0.5f * Screen.height, 0.1f * Screen.width, 0.1f * Screen.height), "Test", textStyle);
 	}
 	
 	void Update() {
@@ -95,11 +108,11 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	IEnumerator GuiFade() {
 
-		Color c = style.normal.textColor;
+        Color c = textStyle.normal.textColor;
 		c.a = 0;
 		while (c.a < 0)	{
 			c.a += rate*Time.deltaTime;
-			style.normal.textColor = c;
+            textStyle.normal.textColor = c;
 			yield return true;
 		}
 	}

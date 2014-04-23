@@ -195,6 +195,14 @@ You can slide pieces off of a magnet.</narration1>
 				</stars>
 				<narration1></narration1>
 			</level>
+			<level id="4">
+				<stars>
+					<bronze>15</bronze>
+					<silver>10</silver>
+					<gold>5</gold>
+				</stars>
+				<narration1></narration1>
+			</level>
 		</stage>
 	</levels>
 </sticktangle>
