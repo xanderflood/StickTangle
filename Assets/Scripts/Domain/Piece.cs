@@ -100,8 +100,13 @@ public class Piece : MonoBehaviour {
 
 		return false;
 	}
+	
+	public void StartAcidAnimation(int dr, int dc) {
+	
+		StartAcidAnimation(dr, dc, Utils.FindComponent<Acid>("Acid," + (row + dr) + "," + (col + dc)));
+	}
 
-	public void StartAcidAnimation(int dr, int dc, Acid acid = null) {
+	public void StartAcidAnimation(int dr, int dc, Acid acid) {
 		GameObject activeAnim = (GameObject)Instantiate(AcidAnimation,
 		                          	gameObject.transform.position,
 		                           	gameObject.transform.rotation);
@@ -112,8 +117,6 @@ public class Piece : MonoBehaviour {
 		activeAnim.GetComponent<DissolveAnimation>().dr = dr;
 		activeAnim.GetComponent<DissolveAnimation>().dc = dc;
 
-		if (acid == null)
-			acid = Utils.FindComponent<Acid> ("Acid," + (row + dr) + "," + (col + dc));
 		activeAnim.GetComponent<DissolveAnimation>().target = acid;
 	}
 	
