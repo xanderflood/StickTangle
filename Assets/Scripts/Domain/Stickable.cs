@@ -11,20 +11,11 @@ public class Stickable : Piece {
     protected override void Awake() {
 		base.Awake();
 
-        Color temp = new Color();
-
 		if (original) {
-			temp.r = 0f;
-			temp.g = 0f;
-			temp.b = 0f;
+			Stick(true);
 		} else {
-			temp.r = 0.5f;
-			temp.g = 0.5f;
-			temp.b = 0.5f;
+			Unstick(true);
 		}
-
-		temp.a = 1f;
-        this.renderer.material.color = temp;
     }
 
 	private void Start() {
@@ -39,5 +30,59 @@ public class Stickable : Piece {
 		} else
 			grid.SetSquare(row, col, new Square(SquareType.Player));
 
+	}
+	
+	public void Unstick(bool now) {
+		
+		Color temp = new Color();
+		
+		temp.r = 0.5f;
+		temp.g = 0.5f;
+		temp.b = 0.5f;
+		temp.a = 1f;
+
+		if (now)
+			renderer.material.color = temp;
+		else
+			StartCoroutine(ColorFade(temp));
+	}
+
+	public void Stick(bool now) {
+		
+		Color temp = new Color();
+		
+		temp.r = 0f;
+		temp.g = 0f;
+		temp.b = 0f;
+		temp.a = 1f;
+		
+		if (now)
+			renderer.material.color = temp;
+		else
+			StartCoroutine(ColorFade(temp));
+	}
+
+	IEnumerator ColorFade(Color dest) {
+
+		float t = 0f;
+		Color init = renderer.material.color;
+		while (t < 1f) {
+
+			t += 3f*Time.deltaTime;
+			renderer.material.color = ColorInterp(dest, init, t);
+
+			yield return true;
+		}
+
+		renderer.material.color = dest;
+	}
+
+	Color ColorInterp(Color a, Color b, float t) {
+		Color c = new Color();
+		c.r = t * a.r + (1f - t) * b.r;
+		c.g = t * a.g + (1f - t) * b.g;
+		c.b = t * a.b + (1f - t) * b.b;
+		c.a = t * a.a + (1f - t) * b.a;
+		return c;
 	}
 }

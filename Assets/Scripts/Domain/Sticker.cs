@@ -131,8 +131,10 @@ public class Sticker : MonoBehaviour {
 		}
 
 		// Only play the magnet sound if the move is valid!
-//		if (notLeftBehind.Count < tempStbles.Count)
-//			audio.PlayOneShot(magnet);
+		if (notLeftBehind.Count < tempStbles.Count)
+			audio.PlayOneShot(magnet);
+		foreach (Stickable s in leftBehind)
+			s.Unstick(false);
 
 		// Check who needs to be dissolved, and start their animations
 		List<Stickable> notAcided = new List<Stickable>();
@@ -141,9 +143,6 @@ public class Sticker : MonoBehaviour {
 				notAcided.Add(s);
 			else 
 				music.playAcid();
-
-		// TODO: restart if everyone dies
-		// This is what keeping track of toBeDestroyed is for.
 
 		// Make sure we keep adequate track of the glow
 		foreach (Stickable s in notLeftBehind) {
@@ -183,8 +182,6 @@ public class Sticker : MonoBehaviour {
 
 		// Move
 		inMotion = true;
-		
-		//ChangePosition(row + dr, col + dc);
 
 		Vector3 to = gameObject.transform.position + new Vector3(dc, dr, 0);
 		
@@ -280,7 +277,7 @@ public class Sticker : MonoBehaviour {
 
 		if (changeColorNow) {
 			foreach (Stickable s in toAdd)
-				s.renderer.material.color = Color.black;
+				s.Stick(false);
 
 			toAdd.Clear();
 		}

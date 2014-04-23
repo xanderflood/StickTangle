@@ -22,29 +22,27 @@ public class MainMenuAnimation : MonoBehaviour {
 		StartCoroutine(InitialWait());
 	}
 	
-	void OnGui() {
-/*
-        var textStyle = GUI.skin.GetStyle("Label");
-        textStyle.alignment = TextAnchor.UpperLeft;
-        textStyle.wordWrap = true;
-        textStyle.fontSize = 28;
-        textStyle.fontStyle = FontStyle.Normal;
-        Color gray = new Color();
-        gray.r = 71f / 255f;
-        gray.g = 71f / 255f;
-        gray.b = 71f / 255f;
-        gray.a = 1;
-        textStyle.normal.textColor = gray;
-*/
-        GUI.Label(new Rect(0.5f * Screen.width, 0.5f * Screen.height, 0.1f * Screen.width, 0.1f * Screen.height), "Test", textStyle);
+	void OnGUI() {
+		
+		GUI.Label(new Rect(0.4f * Screen.width, 0.6f * Screen.height,
+		                   0.1f * Screen.width, 0.4f * Screen.height),
+		          		   "Press down to begin", textStyle);
+		
+		GUI.Label(new Rect(0.38f * Screen.width, 0.5f * Screen.height,
+		                   0.1f * Screen.width, 0.4f * Screen.height),
+		          		   "Press up for level select", textStyle);
+
 	}
 	
 	void Update() {
 
 		if (!gui)
 			return;
-
-
+		
+		if (Input.GetKey(KeyCode.DownArrow))
+			Application.LoadLevel("LevelSelect");
+		if (Input.GetKey(KeyCode.UpArrow))
+			Application.LoadLevel("LevelSelect");
 	}
 
 	IEnumerator InitialWait() {
@@ -113,7 +111,7 @@ public class MainMenuAnimation : MonoBehaviour {
 
         Color c = textStyle.normal.textColor;
 		c.a = 0;
-		while (c.a < 0)	{
+		while (c.a < 1f)	{
 			c.a += rate*Time.deltaTime;
             textStyle.normal.textColor = c;
 			yield return true;
@@ -132,8 +130,11 @@ public class MainMenuAnimation : MonoBehaviour {
 			StickyWord.transform.position = tmp;
 			
 			if (tmp.x > -6 && !dissolving) {
-				StickyWord.GetComponent<WordPiece>().Letters[5].StartAcidAnimation(0, 1, acid);
-				StartCoroutine(FadeLetter(StickyWord.GetComponent<WordPiece>().Letters[5], rate));
+
+				StickyWord.GetComponent<WordPiece>().Letters[5].
+					StartAcidAnimation(0, 1, acid);
+				StartCoroutine(FadeLetter(StickyWord.GetComponent<WordPiece>().
+				                          Letters[5], rate));
 				
 				dissolving = true;
 			}
@@ -169,7 +170,8 @@ public class MainMenuAnimation : MonoBehaviour {
 			GameObject cur = go.transform.GetChild(i).gameObject;
 
 			if (cur.name == "PieceWithLetter(Clone)")
-				StartCoroutine(FadeLetter(cur.transform.FindChild("Block").GetComponent<LetterPiece>(), rate/3));
+				StartCoroutine(FadeLetter(cur.transform.FindChild("Block").
+				                          GetComponent<LetterPiece>(),rate/3));
 			else
 				StartCoroutine(DissolveAnimation.fadeObject(cur, rate));
 		}
