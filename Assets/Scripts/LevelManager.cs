@@ -207,7 +207,7 @@ if (levelStates[levelIndex].narrationText1.Count > 0)
 		if (modeling)
 			return;
 
-		if (Input.GetKeyDown(KeyCode.R)) {
+		if ((Input.GetKeyDown(KeyCode.R)) || (Input.GetKey(KeyCode.Joystick1Button17))) {
 			StartCoroutine(DelayRestart());
 		}
 	}

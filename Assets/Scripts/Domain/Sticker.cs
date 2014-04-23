@@ -91,13 +91,13 @@ public class Sticker : MonoBehaviour {
 	public bool movePieces() {
 		int dr = 0;
 		int dc = 0;
-		if (Input.GetKey(KeyCode.UpArrow)) {
+		if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.Joystick1Button5))) {
 			dr = 1;
-		} else if (Input.GetKey(KeyCode.DownArrow)) {
+		} else if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.Joystick1Button6))) {
 			dr = -1;
-		} else if (Input.GetKey(KeyCode.RightArrow)) {
+		} else if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.Joystick1Button8))) {
 			dc = 1;
-		} else if (Input.GetKey(KeyCode.LeftArrow)) {
+		} else if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.Joystick1Button7))){
 			dc = -1;
 		} else {
 			return false;
