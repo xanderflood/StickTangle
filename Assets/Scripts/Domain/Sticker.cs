@@ -91,13 +91,13 @@ public class Sticker : MonoBehaviour {
 	public bool movePieces() {
 		int dr = 0;
 		int dc = 0;
-		if (Input.GetKey(KeyCode.UpArrow)) {
+		if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.Joystick1Button5))) {
 			dr = 1;
-		} else if (Input.GetKey(KeyCode.DownArrow)) {
+		} else if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.Joystick1Button6))) {
 			dr = -1;
-		} else if (Input.GetKey(KeyCode.RightArrow)) {
+		} else if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.Joystick1Button8))) {
 			dc = 1;
-		} else if (Input.GetKey(KeyCode.LeftArrow)) {
+		} else if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.Joystick1Button7))){
 			dc = -1;
 		} else {
 			return false;
@@ -133,8 +133,8 @@ public class Sticker : MonoBehaviour {
 		}
 
 		// Only play the magnet sound if the move is valid!
-		if (notLeftBehind.Count < tempStbles.Count)
-			audio.PlayOneShot(magnet);
+//		if (notLeftBehind.Count < tempStbles.Count)
+//			audio.PlayOneShot(magnet);
 
 		// Check who needs to be dissolved, and start their animations
 		List<Stickable> notAcided = new List<Stickable>();
@@ -142,7 +142,7 @@ public class Sticker : MonoBehaviour {
 			if (!s.StartAnimationIfAboutToBeDestroyed(dr, dc))
 				notAcided.Add(s);
 			else 
-			music.playAcid();
+				music.playAcid();
 
 		// TODO: restart if everyone dies
 		// This is what keeping track of toBeDestroyed is for.
