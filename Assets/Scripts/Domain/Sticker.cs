@@ -123,9 +123,6 @@ public class Sticker : MonoBehaviour {
 		
 		if (notLeftBehind.Count == 0)
 			return false;
-		
-		if (notLeftBehind.Count < tempStbles.Count)
-			audio.PlayOneShot(magnet);
 
 		if (!isValidMoveForPieces(dr, dc, notLeftBehind, leftBehind)) {
 			audio.clip = wallBump;
@@ -135,12 +132,15 @@ public class Sticker : MonoBehaviour {
 			return false;
 		}
 
+		// Only play the magnet sound if the move is valid!
+		if (notLeftBehind.Count < tempStbles.Count)
+			audio.PlayOneShot(magnet);
+
 		// Check who needs to be dissolved, and start their animations
 		List<Stickable> notAcided = new List<Stickable>();
 		foreach (Stickable s in notLeftBehind)
-			//if (grid.SquareTypeAt(Grid.displacementToDirection(dr, dc), s.row, s.col).First == SquareType.Acid)
-				if (!s.StartAnimationIfAboutToBeDestroyed(dr, dc))
-					notAcided.Add(s);
+			if (!s.StartAnimationIfAboutToBeDestroyed(dr, dc))
+				notAcided.Add(s);
 
 		// TODO: restart if everyone dies
 		// This is what keeping track of toBeDestroyed is for.
@@ -207,6 +207,10 @@ public class Sticker : MonoBehaviour {
 
 		// New list!
 		stickables = notAcided;
+
+		// Restart if everyone died
+		if (stickables.Count == 0)
+			lm.Restart();
 
 		// Attach any new Stickables
 		CheckForAndAddStickables(true, false);

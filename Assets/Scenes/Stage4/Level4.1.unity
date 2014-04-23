@@ -1442,7 +1442,7 @@ GameObject:
   m_PrefabInternal: {fileID: 1020817311}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 621094653}
+  - 4: {fileID: 914572185}
   - 33: {fileID: 835979278}
   - 64: {fileID: 621094655}
   - 23: {fileID: 835979277}
@@ -1458,12 +1458,13 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_PrefabInternal: {fileID: 1020817311}
-  m_GameObject: {fileID: 621094652}
+  m_GameObject: {fileID: 914572184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .100000024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 914572185}
+  m_Children:
+  - {fileID: 914572185}
+  m_Father: {fileID: 835979279}
 --- !u!23 &621094654
 Renderer:
   m_ObjectHideFlags: 0
@@ -2116,7 +2117,7 @@ Transform:
   m_LocalPosition: {x: -964.550049, y: -980.203247, z: 49.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 914572185}
+  - {fileID: 621094653}
   m_Father: {fileID: 645948206}
 --- !u!82 &835979280
 AudioSource:
@@ -2529,12 +2530,12 @@ GameObject:
   m_PrefabInternal: {fileID: 1020817311}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 914572185}
+  - 4: {fileID: 621094653}
   - 33: {fileID: 621094656}
   - 23: {fileID: 621094654}
   - 114: {fileID: 914572188}
-  - 82: {fileID: 914572187}
   - 82: {fileID: 914572186}
+  - 82: {fileID: 914572187}
   m_Layer: 0
   m_Name: BaseStickable
   m_TagString: Untagged
@@ -2547,13 +2548,12 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400004, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_PrefabInternal: {fileID: 1020817311}
-  m_GameObject: {fileID: 914572184}
+  m_GameObject: {fileID: 621094652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: .100000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 621094653}
-  m_Father: {fileID: 835979279}
+  m_Children: []
+  m_Father: {fileID: 621094653}
 --- !u!82 &914572186
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2563,9 +2563,9 @@ AudioSource:
   m_GameObject: {fileID: 914572184}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .300000012
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2622,9 +2622,9 @@ AudioSource:
   m_GameObject: {fileID: 914572184}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JulieFont: {fileID: 12800000, guid: 50b69bd798a2ba14baf82ccff68456b8, type: 3}
+  JulieFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   DamienFont: {fileID: 12800000, guid: 95bcf8f91c1cb424bbc37d78bf5ffbe3, type: 3}
   restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
   sounds:
