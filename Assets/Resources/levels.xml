@@ -30,8 +30,9 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Pink squares stick to you.
-				You must cover up all goal squares to beat the level.</narration1>
+				<narration1>Light gray squares stick to you.
+				
+You must cover up all goal squares to beat the level.</narration1>
 			</level>
 			<level id="4">
 				<stars>
@@ -78,7 +79,9 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Dark green squares are Acid, they dissolve blocks that touch them.</narration1>
+				<narration1>Dark green squares are Acid.
+
+Any block that occupies the same space as an acid block is dissolved.</narration1>
 			</level>
 			<level id="2">
 				<stars>
@@ -128,7 +131,7 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1> All player squares have to be within the teleporters to teleport.</narration1>
+				<narration1>All player squares have to be within the teleporters to teleport.</narration1>
 			</level>
 			<level id="3">
 				<stars>
@@ -170,7 +173,11 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1></narration1>
+				<narration1>Red squares are magnets.
+				
+Magnets can pull pieces off of the player.
+
+You can slide pieces off of a magnet.</narration1>
 			</level>
 			<level id="2">
 				<stars>

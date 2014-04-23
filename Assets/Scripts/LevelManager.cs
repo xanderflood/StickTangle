@@ -83,23 +83,33 @@ public class LevelManager : MonoBehaviour {
 			return false;
 		}
 	}
-
+    /* the nicer way I did text before. Sticking with textmesh to look consistent with press R to restart
+    it is increadibly overbuilt what what I'm doing now, if we wind up keeping text in this format I'll clean it up
+     */
     void OnGUI()
     {
+        
 		if (LevelManager.modeling)
 			return;
 
-         var TextStyle = GUI.skin.GetStyle("Label");
-         TextStyle.alignment = TextAnchor.UpperLeft;
-         TextStyle.wordWrap = true;
-         TextStyle.fontSize = 30;
-         TextStyle.font = DamienFont;
-         TextStyle.normal.textColor = Color.black;
-         TextStyle.fontStyle = FontStyle.Bold;
+         var textStyle = GUI.skin.GetStyle("Label");
+         textStyle.alignment = TextAnchor.UpperLeft;
+         textStyle.wordWrap = true;
+         textStyle.fontSize = 28;
+         textStyle.font = JulieFont;
+         textStyle.normal.textColor = Color.black;
+         textStyle.fontStyle = FontStyle.Normal;
+         Color gray = new Color();
+         gray.r = 71f / 255f;
+         gray.g = 71f / 255f;
+         gray.b = 71f / 255f;
+         gray.a = 1;
+         textStyle.normal.textColor = gray;
 
          //scale the gui stuff with screen size
          GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
 
+       
 
          string[] text = new string[20]; // longer than we will need
          for (int i = 0; i < text.Length; i++) {
@@ -129,35 +139,42 @@ public class LevelManager : MonoBehaviour {
              {
                  if (i % 2 == 0)
                  {
-                     TextStyle.font = JulieFont;
-                     GUI.Label(new Rect(20, 120 + 130 * offset, 220, 500), text[i], TextStyle);
+                     textStyle.font = JulieFont;
+                     textStyle.fontStyle = FontStyle.Normal;
+
+                     GUI.Label(new Rect(20, 120 + 130 * offset, 220, 500), text[i], textStyle);
                  }
                  else {
-                     TextStyle.font = DamienFont;
-                     GUI.Label(new Rect(20, 120 + 130 * offset, 220, 500), text[i], TextStyle);
+                     textStyle.font = DamienFont;
+                     GUI.Label(new Rect(20, 120 + 130 * offset, 220, 500), text[i], textStyle);
                  }
                  offset++;
              }
          }
     }
-
+    
 	public void SetText() {
-        /*
-		TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
-		foreach (string s in levelStates[levelIndex].narrationText1) {
-            Debug.Log(s);
-            mesh.text += s;
-            mesh.text += "\n\n";
-		}
-		foreach (string s in levelStates[levelIndex].narrationText2) {
-            mesh.text += s;
-            mesh.text += "\n\n";
-			Debug.Log(s);
-		}
-		//mesh.text = levelStates[levelIndex].narrationText;
-         * */
-        TextMesh mesh = Utils.FindComponent<TextMesh>("LevelText");
-		mesh.text = "Level " + levelStates[levelIndex].stage + "." + levelStates[levelIndex].level;
+        /* useing textmesh for narrator. Might look nicer, but cant word wrap by default
+TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
+foreach (string s in levelStates[levelIndex].narrationText1) {
+    Debug.Log(s);
+    mesh.text += s;
+    mesh.text += "\n\n";
+}
+foreach (string s in levelStates[levelIndex].narrationText2) {
+    mesh.text += s;
+    mesh.text += "\n\n";
+    Debug.Log(s);
+}
+
+if (levelStates[levelIndex].narrationText1.Count > 0)
+{
+    mesh.text = levelStates[levelIndex].narrationText1[1];
+}
+*/
+
+        TextMesh mesh2 = Utils.FindComponent<TextMesh>("LevelText");
+		mesh2.text = "Level " + levelStates[levelIndex].stage + "." + levelStates[levelIndex].level;
 	}
 
 	public void AdvanceLevel() {

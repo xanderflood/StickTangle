@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JulieFont: {fileID: 12800000, guid: 50b69bd798a2ba14baf82ccff68456b8, type: 3}
+  JulieFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   DamienFont: {fileID: 12800000, guid: 95bcf8f91c1cb424bbc37d78bf5ffbe3, type: 3}
   restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
   sounds:
