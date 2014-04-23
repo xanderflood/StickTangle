@@ -11,11 +11,16 @@ public class Magnet : Piece {
     {
         base.Awake();
 
-        Color temp = new Color();
-        temp.r = 1;
-        temp.g = 165f/255;
-        temp.b = 0;
-        temp.a = 1;
+		Color temp = new Color();
+//        temp.r = 1;
+//        temp.g = 165f/255;
+//        temp.b = 0;
+//        temp.a = 1;
+		
+		temp.r = 1f;
+		temp.g = 0f;
+		temp.b = 0f;
+		temp.a = 1f;
         this.renderer.material.color = temp;
     }
 
