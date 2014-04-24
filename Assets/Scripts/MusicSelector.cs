@@ -8,6 +8,7 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip melody2;
 	public AudioClip melody3;
 	public AudioClip melody4;
+	public AudioClip button_select;
 
 	public AudioClip blop;
 	public AudioClip clear;
@@ -74,5 +75,8 @@ public class MusicSelector : MonoBehaviour {
 	}
 	public void playSchoolBell(){
 		audio.PlayOneShot (schoolBell);
+	}
+	public void playSelect(){
+		audio.PlayOneShot (button_select);
 	}
 }

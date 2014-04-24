@@ -48,8 +48,10 @@ public class MainMenuAnimation : MonoBehaviour {
 			Utils.FindComponent<LevelManager>("LevelManager").SetIndex("Level1.1");
 			Application.LoadLevel("Level1.1");
 		}
-		if (Input.GetKey(KeyCode.UpArrow))
+		if (Input.GetKey (KeyCode.UpArrow)){
+			music.playSelect ();
 			Application.LoadLevel("LevelSelect");
+		}
 	}
 
 	IEnumerator InitialWait() {
