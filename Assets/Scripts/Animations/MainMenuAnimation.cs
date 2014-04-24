@@ -16,6 +16,9 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	bool gui = false;
 
+	float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
+	float virtualHeight = 600.0f;
+
 	void Awake () {
 		LevelManager.modeling = true;
 	}
@@ -26,13 +29,17 @@ public class MainMenuAnimation : MonoBehaviour {
 	}
 	
 	void OnGUI() {
+
 		
-		GUI.Label(new Rect(0.33f * Screen.width, 0.62f * Screen.height,
-		                   0.1f * Screen.width, 0.4f * Screen.height),
+		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
+		                           new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
+
+		GUI.Label(new Rect(0, 0.62f * virtualHeight,
+		                   virtualWidth, 0.4f * virtualHeight),
 		          		   "[Down] to begin", textStyle);
 		
-		GUI.Label(new Rect(0.3f * Screen.width, 0.52f * Screen.height,
-		                   0.1f * Screen.width, 0.4f * Screen.height),
+		GUI.Label(new Rect(0, 0.52f * virtualHeight,
+		                   virtualWidth, 0.4f * virtualHeight),
 		          		   "[Up] for level select", textStyle);
 
 	}
