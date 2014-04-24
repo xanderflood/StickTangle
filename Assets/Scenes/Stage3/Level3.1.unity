@@ -895,7 +895,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .300000012
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1475,19 +1475,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1117360358}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 400000, guid: 377d6c1e06be4264fbac2888316b5848, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -964.550049
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 377d6c1e06be4264fbac2888316b5848, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -978.203247
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 377d6c1e06be4264fbac2888316b5848, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 51.8728333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 377d6c1e06be4264fbac2888316b5848, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3183,7 +3183,6 @@ Transform:
   - {fileID: 893410140}
   - {fileID: 916454950}
   - {fileID: 900009971}
-  - {fileID: 1907807683}
   - {fileID: 346210224}
   - {fileID: 1173291538}
   - {fileID: 1632697950}
@@ -5297,6 +5296,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f0f3146f8e0f4eedb6c52f5d6d3b666, type: 3}
   - {fileID: 8300000, guid: 6e8565af5abd84a52a1b111fbc47a840, type: 3}
   levelIndex: -1
+  colorblindMode: 0
 --- !u!4 &1907807683
 Transform:
   m_ObjectHideFlags: 0
@@ -5304,10 +5304,10 @@ Transform:
   m_PrefabInternal: {fileID: 252217572}
   m_GameObject: {fileID: 1907807680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1117360358}
+  m_Father: {fileID: 0}
 --- !u!82 &1907807684
 AudioSource:
   m_ObjectHideFlags: 0
