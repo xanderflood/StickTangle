@@ -73,6 +73,9 @@ public static class DataLogger {
 
 	// Use this for initialization
 	public static void Initialize(LevelManager lm) {
+		if (lm.InScene()) {
+			return;
+		}
 
 		if((ls == null) || (ls.stage != lm.GetLevelState().stage)
 		   		 || (ls.level != lm.GetLevelState().level)) {
