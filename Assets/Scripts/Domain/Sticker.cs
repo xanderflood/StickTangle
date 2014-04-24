@@ -203,7 +203,7 @@ public class Sticker : MonoBehaviour {
 		// TODO: Do I need to destroy things after acid, or does acid animation handle that?
 
 		// Remove them as children
-		foreach (Stickable s in notAcided)
+		foreach (Stickable s in toBeMoved)
 			s.transform.parent = null;
 
 		// New list!
