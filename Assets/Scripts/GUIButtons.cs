@@ -20,7 +20,7 @@ public class GUIButtons : MonoBehaviour {
 			Application.LoadLevel("LevelSelect");
 		}
 		
-		if ((GUI.Button(new Rect(825, 40, 45, 20), "Skip")) || (Input.GetKey(KeyCode.Joystick1Button17))) {
+		if ((GUI.Button(new Rect(823, 40, 45, 20), "Skip")) || (Input.GetKey(KeyCode.Joystick1Button17))) {
 			lm.AdvanceLevel();
 		}
 	}
