@@ -8,6 +8,7 @@ public class Magnet : Piece {
 
 	public AudioClip magnet;
 
+
     protected override void Awake()
     {
         base.Awake();

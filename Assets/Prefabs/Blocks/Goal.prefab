@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  CBMat: {fileID: 2100000, guid: 5da4691e7bb082f48a628655e8f3c2e7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

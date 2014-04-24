@@ -11,14 +11,19 @@ public class Acid : MonoBehaviour {
 
 	public GameObject bubbleModel;
     public List<Material> CrayonMats;
+	public Material CBMat;
 
 	int row;
 	int col;
 
     void Awake()
     {
-        this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
-        this.transform.Rotate(0, 0, Random.Range(0, 3) * 90);
+		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
+			renderer.material = CBMat;
+		} else {
+	        this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
+	        this.transform.Rotate(0, 0, Random.Range(0, 3) * 90);
+		}
 
         Color temp = new Color();
         temp.r = 0;
