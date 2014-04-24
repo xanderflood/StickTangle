@@ -31,12 +31,12 @@ public class MagnetGlow : MonoBehaviour {
 		}
 
 		// Oscillating
-		float t = 0.5f;
+		float t = .75f;
 		while (true) {
 			if (t >= 1)
 				t = 0;
 				
-			setAlpha((0.5f*(maxInt - minInt)*Mathf.Cos(2*Mathf.PI*t) + minInt)
+			setAlpha((0.5f*(maxInt - minInt)*Mathf.Cos(2*Mathf.PI*t) + 0.5f*(maxInt + minInt))
 			         *gameObject.transform.parent.gameObject.renderer.material.color.a);
 				
 			t += rate * Time.deltaTime;
