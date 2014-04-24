@@ -23,5 +23,9 @@ public class GUIButtons : MonoBehaviour {
 		if ((GUI.Button(new Rect(823, 40, 45, 20), "Skip")) || (Input.GetKey(KeyCode.Joystick1Button17))) {
 			lm.AdvanceLevel();
 		}
+
+		if ((GUI.Button(new Rect(732, 70, 45, 20), "Options"))) {
+			lm.LoadOptionsMenu();
+		}
 	}
 }

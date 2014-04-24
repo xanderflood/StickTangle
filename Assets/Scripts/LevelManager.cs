@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour {
 	public int levelIndex = -1;
 	bool restarting = false;
 
+	private string previousScene;
+
 	public static bool modeling = false;
 
     float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
@@ -197,6 +199,18 @@ if (levelStates[levelIndex].narrationText1.Count > 0)
 		DataLogger.Restart();
 		Application.LoadLevel(Application.loadedLevel);
 		restarting = true;
+	}
+
+	public void LoadOptionsMenu() {
+		Utils.Assert(previousScene == null);
+		previousScene = Application.loadedLevelName;
+		Application.LoadLevel("Options");
+	}
+
+	public void ReturnFromOptionsMenu() {
+		Utils.Assert(previousScene != null);
+		Application.LoadLevel(previousScene);
+		previousScene = null;
 	}
 
 	public LevelState GetLevelState() {
