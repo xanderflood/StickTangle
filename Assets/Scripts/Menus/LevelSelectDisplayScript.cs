@@ -54,15 +54,15 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 		if (waitAFrame) {
 			waitAFrame = false;
-
-			GUI.Label (new Rect (375, 130, 200, 200),
-			           "[ Down ] to play", smallCentering);
 			
 			StartCoroutine(loadScreencap());
 		}
 
 
 		if (!mode) {
+			
+			GUI.Label (new Rect (375, 130, 200, 200),
+			           "[ Down ] to  play", smallCentering);
 
 			if (img != last) {
 				GameObject.Destroy(current);
