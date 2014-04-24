@@ -6,6 +6,8 @@ using SquareType = Grid.SquareType;
 
 public class Stickable : Piece {
 
+	public GameObject bg;
+
 	public bool original;
 	public Material CBMatStuck;
 	public Material CBMatUnstuck;
@@ -22,6 +24,14 @@ public class Stickable : Piece {
 			Unstick(true);
 		}
     }
+
+	void Update() {
+
+		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode)
+			bg.SetActive(false);
+		else
+			bg.SetActive(true);
+	}
 
 	// TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
