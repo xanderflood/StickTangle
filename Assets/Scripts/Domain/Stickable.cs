@@ -7,6 +7,7 @@ using SquareType = Grid.SquareType;
 public class Stickable : Piece {
 
 	public bool original;
+	public Material CBMat;
 
     protected override void Awake() {
 		base.Awake();
@@ -18,6 +19,11 @@ public class Stickable : Piece {
 		}
     }
 
+	// TODO: This is duplicated across all subclasses of Piece
+	protected override void SetColorBlindMaterial() {
+		renderer.material = CBMat;
+	}
+	
 	private void Start() {
 		if (LevelManager.modeling || original)
 			return;
