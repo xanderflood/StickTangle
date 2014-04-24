@@ -270,6 +270,14 @@ public class Grid : MonoBehaviour {
 		return false;
 	}
 
+	public static bool isAdjacent(int row1, int col1, int row2, int col2) {
+		if (row1 == row2 && Mathf.Abs(col1 - col2) == 1)
+			return true;
+		if (col1 == col2 && Mathf.Abs(row1 - row2) == 1)
+			return true;
+		return false;
+	}
+
 	public static Vector3 directionToDisplacement(Direction dir) {
 		return new Vector3(dc [(int)dir], dr [(int)dir], 0);
 	}

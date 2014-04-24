@@ -127,8 +127,18 @@ public class Sticker : MonoBehaviour {
 			if (isPLaying == false)
 				StartCoroutine(playMagnet());
 		}
-		foreach (Stickable s in leftBehind)
-			s.Unstick(false);
+		foreach (Stickable s in leftBehind) {
+			bool willBeAddedBack = false;
+			foreach (Stickable s2 in notLeftBehind) {
+				if (Grid.isAdjacent(s.row, s.col, s2.row + dr, s2.col + dc)) {
+					willBeAddedBack = true;
+					break;
+				}
+			}
+
+			if (!willBeAddedBack)
+				s.Unstick(false);
+		}
 
 		// Check who needs to be dissolved, and start their animations
 		List<Stickable> notAcided = new List<Stickable>();
