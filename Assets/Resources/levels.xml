@@ -2,6 +2,7 @@
 
 <sticktangle>
 	<scenes>
+		<scene>MainMenu</scene>
 		<scene>Splash</scene>
 		<scene>LevelSelect</scene>
 		<scene>PlayAgain</scene>

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MusicSelector : MonoBehaviour {
 
-
 	public AudioClip melody0;
 	public AudioClip melody1;
 	public AudioClip melody2;
@@ -25,7 +24,7 @@ public class MusicSelector : MonoBehaviour {
 	private void Update() {
 		string name = Application.loadedLevelName;
 
-		if ((name == "LevelSelect") || (name == "MainMenu")) {
+		if (name == "LevelSelect" || name == "MainMenu") {
 			if (!audio.isPlaying)
 				audio.clip = melody0;
 			if (!audio.isPlaying)
