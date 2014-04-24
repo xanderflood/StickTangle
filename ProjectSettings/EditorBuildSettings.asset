@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Other/Splash.unity
+    path: Assets/Scenes/Other/MainMenu.unity
   - enabled: 1
     path: Assets/Scenes/Other/LevelSelect.unity
   - enabled: 1
