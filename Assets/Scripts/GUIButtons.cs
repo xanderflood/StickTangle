@@ -12,7 +12,7 @@ public class GUIButtons : MonoBehaviour {
 	}
 	
 	private void OnGUI() {
-		if (LevelManager.modeling)
+		if (LevelManager.modeling || LevelManager.optionsScreen)
 			return;
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
 

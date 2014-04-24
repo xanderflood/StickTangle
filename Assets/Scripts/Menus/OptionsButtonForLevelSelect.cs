@@ -13,6 +13,9 @@ public class OptionsButtonForLevelSelect : MonoBehaviour {
 	
 	private void OnGUI() {
 
+		if (LevelManager.optionsScreen)
+			return;
+
 		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
 
 		

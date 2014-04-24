@@ -204,16 +204,55 @@ if (levelStates[levelIndex].narrationText1.Count > 0)
 		restarting = true;
 	}
 
+	Rect oldViewport;
+	GameObject selection;
 	public void LoadOptionsMenu() {
-		Utils.Assert(previousScene == null);
-		previousScene = Application.loadedLevelName;
-		Application.LoadLevel("Options");
-	}
+		
+		Application.LoadLevelAdditive("Options");
 
+		GameObject ambientScene = GameObject.Find("LevelSelect");
+		GameObject camera;
+		if (ambientScene == null) {
+			ambientScene = GameObject.Find("Level");
+			camera = GameObject.Find("Camera");
+		} else
+			camera = GameObject.Find("Main Camera");
+
+		Vector3 pos = ambientScene.transform.position;
+		pos.x += 3000;
+		ambientScene.transform.position = pos;
+
+		oldViewport = camera.camera.rect;
+		camera.camera.rect = new Rect(0, 0, 0, 0);
+		
+		selection = GameObject.Find("SelectionGUI");
+		if (selection != null) {
+			selection.SetActive(false);
+		}
+	}
+	
+	
 	public void ReturnFromOptionsMenu() {
-		Utils.Assert(previousScene != null);
-		Application.LoadLevel(previousScene);
-		previousScene = null;
+		
+		GameObject oScreen = GameObject.Find("OptionsScreen");
+		GameObject.Destroy(oScreen);
+		
+		GameObject ambientScene = GameObject.Find("LevelSelect");
+		GameObject camera;
+		if (ambientScene == null) {
+			ambientScene = GameObject.Find("Level");
+			camera = GameObject.Find("Camera");
+		} else
+			camera = GameObject.Find("Main Camera");
+
+		Vector3 pos = ambientScene.transform.position;
+		pos.x -= 3000;
+		ambientScene.transform.position = pos;
+		
+		camera.camera.rect = oldViewport;
+
+		if (selection != null)
+			selection.SetActive(true);
 	}
 
 	public LevelState GetLevelState() {
