@@ -191,8 +191,11 @@ public class LevelManager : MonoBehaviour {
 	Rect oldViewport;
 	GameObject selection;
 	GameObject player;
+	string previousLevel;
 	public void LoadOptionsMenu() {
-		
+
+		previousLevel = Application.loadedLevelName;
+
 		Application.LoadLevelAdditive("Options");
 
 		GameObject ambientScene = GameObject.Find("LevelSelect");
@@ -220,8 +223,13 @@ public class LevelManager : MonoBehaviour {
 	}
 	
 	
-	public void ReturnFromOptionsMenu() {
-		
+	public void ReturnFromOptionsMenu(bool restart) {
+
+		if (restart) {
+			Application.LoadLevel(previousLevel);
+			return;
+		}
+
 		GameObject oScreen = GameObject.Find("OptionsScreen");
 		GameObject.Destroy(oScreen);
 		

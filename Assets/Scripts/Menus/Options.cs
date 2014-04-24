@@ -15,6 +15,8 @@ public class Options : MonoBehaviour {
 	float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
 	float virtualHeight = 600.0f;
 
+	bool initialCBMode;
+
 	private void Awake() {
 		LevelManager.optionsScreen = true;
 	}
@@ -25,6 +27,8 @@ public class Options : MonoBehaviour {
 
 		colorblindMode = lm.colorblindMode;
 		volume = music.GetVolume();
+
+		initialCBMode = colorblindMode;
 	}
 
 	private void OnGUI() {
@@ -48,18 +52,22 @@ public class Options : MonoBehaviour {
 		colorblindMode = GUI.Toggle(new Rect(virtualWidth*0.42f, virtualHeight*0.45f,
 		                                     virtualWidth*0.2f, virtualHeight*0.04f),
 		                            colorblindMode, "Enable colorblind mode", toggleStyle);
-		volume = GUI.HorizontalSlider(new Rect(virtualWidth*0.47f, virtualHeight*0.53f,
+		GUI.Label(new Rect(virtualWidth*0.42f, virtualHeight*0.5f,
+		                   virtualWidth*0.2f, virtualHeight*0.04f),
+		                   "Changing this setting will restart your level.", textStyle);
+		volume = GUI.HorizontalSlider(new Rect(virtualWidth*0.47f, virtualHeight*0.58f,
 		                                       virtualWidth*0.13f, virtualHeight*0.04f), volume, 0, 1);
-		GUI.Label(new Rect(virtualWidth*0.4f, virtualHeight*0.53f,
+		GUI.Label(new Rect(virtualWidth*0.4f, virtualHeight*0.58f,
 		                   virtualWidth*0.05f, virtualHeight*0.04f), "Volume", textStyle);
 
 		music.SetVolume(volume);
 		lm.colorblindMode = colorblindMode;
 
-		if (GUI.Button(new Rect(virtualWidth*0.47f, virtualHeight*0.6f,
+		if (GUI.Button(new Rect(virtualWidth*0.47f, virtualHeight*0.63f,
 		                        virtualWidth*0.06f, virtualHeight*0.06f), "Back")) {
 			LevelManager.optionsScreen = false;
-			lm.ReturnFromOptionsMenu();
+			lm.ReturnFromOptionsMenu(colorblindMode != initialCBMode);
+
 		}
 	}
 }
