@@ -24,11 +24,11 @@ public class MainMenuAnimation : MonoBehaviour {
 	
 	void OnGUI() {
 		
-		GUI.Label(new Rect(0.4f * Screen.width, 0.6f * Screen.height,
+		GUI.Label(new Rect(0.4f * Screen.width, 0.62f * Screen.height,
 		                   0.1f * Screen.width, 0.4f * Screen.height),
 		          		   "Press down to begin", textStyle);
 		
-		GUI.Label(new Rect(0.38f * Screen.width, 0.5f * Screen.height,
+		GUI.Label(new Rect(0.38f * Screen.width, 0.52f * Screen.height,
 		                   0.1f * Screen.width, 0.4f * Screen.height),
 		          		   "Press up for level select", textStyle);
 
