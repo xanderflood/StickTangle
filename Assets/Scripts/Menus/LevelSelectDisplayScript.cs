@@ -32,6 +32,9 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	Rect viewport;
 
+	float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
+	float virtualHeight = 600.0f;
+
 	void Start() {
 		viewport = new Rect(10, 10, 10, 10);
 		viewport.x = 0.278f;
@@ -44,12 +47,15 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	void OnGUI() {
 
-		GUI.Label (new Rect (Screen.width*0.38f, Screen.height*0.11f, 100, 50), text, centering);
+		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
+		        new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
+
+		GUI.Label (new Rect (370, 70, 100, 50), text, centering);
 
 		if (waitAFrame) {
 			waitAFrame = false;
 
-			GUI.Label (new Rect (Screen.width*0.38f, Screen.height*0.22f, 200, 200),
+			GUI.Label (new Rect (375, 130, 200, 200),
 			           "[ Down ] to play", smallCentering);
 			
 			StartCoroutine(loadScreencap());

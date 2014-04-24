@@ -2136,6 +2136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
+  isPLaying: 0
   done: 0
   inMotion: 0
 --- !u!23 &835979277
