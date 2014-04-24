@@ -34,10 +34,10 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	void Start() {
 		viewport = new Rect(10, 10, 10, 10);
-		viewport.x = 0.38f;
-		viewport.y = 0.1f;
-		viewport.width = 0.25f;
-		viewport.height = 0.25f;
+		viewport.x = 0.278f;
+		viewport.y = 0.22f;
+		viewport.width = 0.45f;
+		viewport.height = 0.45f;
 
 		outline.SetActive(false);
 	}
@@ -49,14 +49,7 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 		if (waitAFrame) {
 			waitAFrame = false;
 
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 90, 200, 200),
-			           "Bronze: " + level.bronzeMoves, centering);
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 50, 200, 200),
-			           "Silver: " + level.bronzeMoves, centering);
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 10, 200, 200),
-			           "Gold: " + level.bronzeMoves, centering);
-			
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 30, 200, 200),
+			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 110, 200, 200),
 			           "[ Down ] to play", smallCentering);
 			
 			StartCoroutine(loadScreencap());

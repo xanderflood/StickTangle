@@ -78,6 +78,7 @@ public class SelectionGUI : MonoBehaviour {
 			audio.PlayOneShot(move);
 			selection -= 1;
 		}
+
 		if (Input.GetKeyDown(KeyCode.DownArrow)) {
 		    audio.PlayOneShot(select);
 
