@@ -217,6 +217,7 @@ MonoBehaviour:
   MagnetGlowModel: {fileID: 0}
   activeGlow: {fileID: 0}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
+  CBMat: {fileID: 2100000, guid: 6fa9fc5adc0ecd6479fb594f0222883f, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
