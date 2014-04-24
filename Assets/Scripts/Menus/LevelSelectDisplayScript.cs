@@ -50,9 +50,9 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
 		        new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
 
-		GUI.Label (new Rect (370, 70, 100, 50), text, centering);
+		GUI.Label (new Rect (370, 80, 100, 50), text, centering);
 		
-		GUI.Label (new Rect (375, 130, 200, 200),
+		GUI.Label (new Rect (375, 140, 200, 200),
 		           "[ Down ] to  play", smallCentering);
 
 		if (waitAFrame) {
