@@ -61,7 +61,7 @@ You must cover up all goal squares to beat the level.</narration1>
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>You can have as many extra squares as you want as long as you cover up every goal square.</narration1>
+				<narration1>You can have as many extra squares attached to you as you want, as long as you cover up all of the goals.</narration1>
 			</level>
 			<level id="7">
 				<stars>
