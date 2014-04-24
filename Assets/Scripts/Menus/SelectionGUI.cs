@@ -28,6 +28,8 @@ public class SelectionGUI : MonoBehaviour {
 	private string[][] LevelTitles;
 	private LevelState[][] LevelStates;
 
+	private int[] previousSelections;
+
 	private int selection = 0;
 	private int savedStage;
 	
@@ -40,6 +42,10 @@ public class SelectionGUI : MonoBehaviour {
 		List<LevelState> ls = XmlLoader.LoadXml("levels").First;
 
 		music = Utils.FindComponent<MusicSelector> ("Music");
+
+		previousSelections = new int[XmlLoader.NumStages];
+		for (int i = 0; i < XmlLoader.NumStages; ++i)
+			previousSelections[i] = 0;
 
 		StageTitles = new string[XmlLoader.NumStages];
 		LevelTitles = new string[XmlLoader.NumStages][];
@@ -93,12 +99,13 @@ public class SelectionGUI : MonoBehaviour {
 				StageSelected = true;
 				disp.Current.SetActive(false);
 				savedStage = selection;
-				selection = 0;
+				selection = previousSelections[savedStage];
 			}
 		}
 		if ((Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.Joystick1Button5))) && StageSelected) {
 			audio.PlayOneShot(back);
 			StageSelected = false;
+			previousSelections[savedStage] = selection;
 			selection = savedStage;
 		}
 
