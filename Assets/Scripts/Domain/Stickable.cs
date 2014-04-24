@@ -46,7 +46,7 @@ public class Stickable : Piece {
 		else
 			StartCoroutine(ColorFade(temp));
 		
-		if (grid.IsNextToMagnet(row, col))
+		if (!LevelManager.modeling && grid.IsNextToMagnet(row, col))
 			StopMagnetGlow();
 	}
 
@@ -64,7 +64,7 @@ public class Stickable : Piece {
 		else
 			StartCoroutine(ColorFade(temp));
 
-		if (grid.IsNextToMagnet(row, col))
+		if (!LevelManager.modeling && grid.IsNextToMagnet(row, col))
 			StartMagnetGlow();
 	}
 

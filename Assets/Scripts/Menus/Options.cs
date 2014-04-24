@@ -56,8 +56,8 @@ public class Options : MonoBehaviour {
 		music.SetVolume(volume);
 		lm.colorblindMode = colorblindMode;
 
-		if (GUI.Button(new Rect(virtualWidth*0.48f, virtualHeight*0.6f,
-		                        virtualWidth*0.04f, virtualHeight*0.04f), "Back")) {
+		if (GUI.Button(new Rect(virtualWidth*0.47f, virtualHeight*0.6f,
+		                        virtualWidth*0.06f, virtualHeight*0.06f), "Back")) {
 			LevelManager.optionsScreen = false;
 			lm.ReturnFromOptionsMenu();
 		}

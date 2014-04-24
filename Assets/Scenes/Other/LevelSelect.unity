@@ -451,6 +451,7 @@ GameObject:
   - 92: {fileID: 170486516}
   - 124: {fileID: 170486515}
   - 81: {fileID: 170486514}
+  - 114: {fileID: 170486519}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -519,6 +520,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &170486519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 170486513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c9d5620e9e5e948a7babd1066b3264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &217114541
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +706,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f0f3146f8e0f4eedb6c52f5d6d3b666, type: 3}
   - {fileID: 8300000, guid: 6e8565af5abd84a52a1b111fbc47a840, type: 3}
   levelIndex: -1
+  colorblindMode: 0
 --- !u!4 &759755161
 Transform:
   m_ObjectHideFlags: 0
@@ -1568,7 +1581,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 11f7a287b6f5d48a29e0e6cea5a4ff1e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .300000012
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 0
   Mute: 0
