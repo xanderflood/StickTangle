@@ -4,6 +4,7 @@
 	<scenes>
 		<scene>MainMenu</scene>
 		<scene>Splash</scene>
+		<scene>Options</scene>
 		<scene>LevelSelect</scene>
 		<scene>PlayAgain</scene>
 	</scenes>
