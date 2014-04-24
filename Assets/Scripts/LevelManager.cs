@@ -175,7 +175,7 @@ public class LevelManager : MonoBehaviour {
 		levelIndex++;
 		if (levelIndex >= levelStates.Count) {
 			Application.LoadLevel("PlayAgain");
-			Destroy(this);
+			levelIndex = -1;
 		}
 		Application.LoadLevel(levelStates[levelIndex].name);
 	}
