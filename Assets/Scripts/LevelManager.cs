@@ -186,8 +186,11 @@ public class LevelManager : MonoBehaviour {
 		restarting = true;
 	}
 
+
+	// These variables should only be used by the following two functions
 	Rect oldViewport;
 	GameObject selection;
+	GameObject player;
 	public void LoadOptionsMenu() {
 		
 		Application.LoadLevelAdditive("Options");
@@ -208,9 +211,12 @@ public class LevelManager : MonoBehaviour {
 		camera.camera.rect = new Rect(0, 0, 0, 0);
 		
 		selection = GameObject.Find("SelectionGUI");
-		if (selection != null) {
+		if (selection != null)
 			selection.SetActive(false);
-		}
+
+		player = GameObject.Find("Player");
+		if (player != null)
+			player.SetActive(false);
 	}
 	
 	
@@ -232,9 +238,14 @@ public class LevelManager : MonoBehaviour {
 		ambientScene.transform.position = pos;
 		
 		camera.camera.rect = oldViewport;
-
+		
 		if (selection != null)
 			selection.SetActive(true);
+		if (player != null)
+			player.SetActive(true);
+
+		selection = null;
+		player = null;
 	}
 
 	public LevelState GetLevelState() {
