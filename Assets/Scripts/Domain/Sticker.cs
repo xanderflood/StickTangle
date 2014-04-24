@@ -24,7 +24,7 @@ public class Sticker : MonoBehaviour {
 
 	public Dictionary<Position, Stickable> stickableMap = new Dictionary<Position, Stickable>();
 
-	//public GameObject stickableModel;
+	public GameObject stickableHolder;
 
 	public bool isPLaying = false;
 	private float moveDelay = 0.05f;
