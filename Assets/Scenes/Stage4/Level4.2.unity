@@ -120,7 +120,7 @@ TextMesh:
   m_FontSize: 50
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4282861383
@@ -137,7 +137,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -687,6 +687,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
@@ -895,6 +897,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
@@ -1219,10 +1223,10 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 50
+  m_FontSize: 40
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4282861383
@@ -1239,7 +1243,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1456,7 +1460,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .702000022
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1518,6 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
+  isPLaying: 0
   done: 0
   inMotion: 0
 --- !u!4 &841702555
@@ -1530,7 +1535,7 @@ Transform:
   m_LocalPosition: {x: -968.550049, y: -982.203247, z: 49.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2133774492}
+  - {fileID: 1650085927}
   m_Father: {fileID: 1809522984}
 --- !u!1 &890086543
 GameObject:
@@ -1634,6 +1639,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
@@ -1824,6 +1831,7 @@ GameObject:
   - 23: {fileID: 959857053}
   - 33: {fileID: 959857052}
   - 114: {fileID: 959857051}
+  - 82: {fileID: 959857055}
   m_Layer: 0
   m_Name: Magnet
   m_TagString: Untagged
@@ -1854,10 +1862,13 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
   activeGlow: {fileID: 0}
+  magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
 --- !u!33 &959857052
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1897,8 +1908,68 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1239640735}
   m_Father: {fileID: 768680138}
+--- !u!82 &959857055
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: fd5ffe82e6ebfc44d96451bdb7c6e882,
+    type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  m_GameObject: {fileID: 959857050}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .699999988
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &982539992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,8 +2015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JulieFont: {fileID: 12800000, guid: 50b69bd798a2ba14baf82ccff68456b8, type: 3}
-  DamienFont: {fileID: 12800000, guid: 95bcf8f91c1cb424bbc37d78bf5ffbe3, type: 3}
+  JulieFont: {fileID: 12800000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
+  DamienFont: {fileID: 12800000, guid: 969748e00aec547db810049a05b4f6e1, type: 3}
   restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
   sounds:
   - {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
@@ -2256,6 +2327,96 @@ Prefab:
   m_RootGameObject: {fileID: 1702447264}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1239640734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: fd5ffe82e6ebfc44d96451bdb7c6e882, type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1239640735}
+  - 33: {fileID: 1239640739}
+  - 64: {fileID: 1239640738}
+  - 23: {fileID: 1239640737}
+  - 114: {fileID: 1239640736}
+  m_Layer: 0
+  m_Name: MagnetGlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1239640735
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: fd5ffe82e6ebfc44d96451bdb7c6e882, type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  m_GameObject: {fileID: 1239640734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 959857054}
+--- !u!114 &1239640736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: fd5ffe82e6ebfc44d96451bdb7c6e882,
+    type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  m_GameObject: {fileID: 1239640734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492ef55a3ef6249d0986537907019464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rate: 1
+  maxInt: .699999988
+  minInt: .300000012
+  target: {fileID: 1239640737}
+--- !u!23 &1239640737
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300002, guid: fd5ffe82e6ebfc44d96451bdb7c6e882,
+    type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  m_GameObject: {fileID: 1239640734}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ce164bc112633714a8af6cf17f170e52, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!64 &1239640738
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: fd5ffe82e6ebfc44d96451bdb7c6e882,
+    type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  m_GameObject: {fileID: 1239640734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &1239640739
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300002, guid: fd5ffe82e6ebfc44d96451bdb7c6e882,
+    type: 2}
+  m_PrefabInternal: {fileID: 1702520179}
+  m_GameObject: {fileID: 1239640734}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1257775891
 Prefab:
   m_ObjectHideFlags: 0
@@ -3119,7 +3280,7 @@ GameObject:
   m_PrefabInternal: {fileID: 485011664}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1650085927}
+  - 4: {fileID: 2133774492}
   - 33: {fileID: 1650085930}
   - 64: {fileID: 1650085929}
   - 23: {fileID: 1650085928}
@@ -3135,12 +3296,13 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_PrefabInternal: {fileID: 485011664}
-  m_GameObject: {fileID: 1650085926}
+  m_GameObject: {fileID: 2133774491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .100000024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2133774492}
+  m_Children:
+  - {fileID: 2133774492}
+  m_Father: {fileID: 841702555}
 --- !u!23 &1650085928
 Renderer:
   m_ObjectHideFlags: 0
@@ -4002,12 +4164,12 @@ GameObject:
   m_PrefabInternal: {fileID: 485011664}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 2133774492}
+  - 4: {fileID: 1650085927}
   - 33: {fileID: 2133774497}
   - 23: {fileID: 2133774496}
   - 114: {fileID: 2133774495}
-  - 82: {fileID: 2133774494}
   - 82: {fileID: 2133774493}
+  - 82: {fileID: 2133774494}
   m_Layer: 0
   m_Name: BaseStickable
   m_TagString: Untagged
@@ -4020,13 +4182,12 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400004, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_PrefabInternal: {fileID: 485011664}
-  m_GameObject: {fileID: 2133774491}
+  m_GameObject: {fileID: 1650085926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: .100000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1650085927}
-  m_Father: {fileID: 841702555}
+  m_Children: []
+  m_Father: {fileID: 1650085927}
 --- !u!82 &2133774493
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4036,9 +4197,9 @@ AudioSource:
   m_GameObject: {fileID: 2133774491}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .300000012
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4095,9 +4256,9 @@ AudioSource:
   m_GameObject: {fileID: 2133774491}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4168,11 +4329,13 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   activeGlow: {fileID: 0}
-  original: 0
+  original: 1
 --- !u!23 &2133774496
 Renderer:
   m_ObjectHideFlags: 0

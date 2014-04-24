@@ -45,6 +45,9 @@ public class Stickable : Piece {
 			renderer.material.color = temp;
 		else
 			StartCoroutine(ColorFade(temp));
+		
+		if (grid.IsNextToMagnet(row, col))
+			StopMagnetGlow();
 	}
 
 	public void Stick(bool now) {
@@ -60,6 +63,9 @@ public class Stickable : Piece {
 			renderer.material.color = temp;
 		else
 			StartCoroutine(ColorFade(temp));
+
+		if (grid.IsNextToMagnet(row, col))
+			StartMagnetGlow();
 	}
 
 	IEnumerator ColorFade(Color dest) {
