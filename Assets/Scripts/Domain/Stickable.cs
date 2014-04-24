@@ -25,15 +25,7 @@ public class Stickable : Piece {
 		}
     }
 
-	void Update() {
-
-		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode)
-			bg.SetActive(false);
-		else
-			bg.SetActive(true);
-	}
-
-	// TODO: This is duplicated across all subclasses of Piece
+    // TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
 		if (stuck) {
 			renderer.material = CBMatStuck;
