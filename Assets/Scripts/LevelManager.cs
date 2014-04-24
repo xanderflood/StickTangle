@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour {
          foreach (string s in levelStates[levelIndex].narrationText1)
          {
              text[2 * offset] = s;
-
+			 
              offset++;
          }
          offset = 0;

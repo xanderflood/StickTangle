@@ -39,8 +39,10 @@ public class MainMenuAnimation : MonoBehaviour {
 		if (!gui)
 			return;
 		
-		if (Input.GetKey(KeyCode.DownArrow))
-			Application.LoadLevel("LevelSelect");
+		if (Input.GetKey(KeyCode.DownArrow)) {
+			LevelManager.modeling = false;
+			Application.LoadLevel("Level1.1");
+		}
 		if (Input.GetKey(KeyCode.UpArrow))
 			Application.LoadLevel("LevelSelect");
 	}
