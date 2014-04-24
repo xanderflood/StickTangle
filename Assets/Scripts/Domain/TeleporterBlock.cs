@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class TeleporterBlock : Piece {
 
+	public Material CBMat;
 
     protected override void Awake()
     {
@@ -15,6 +16,11 @@ public class TeleporterBlock : Piece {
         temp.a = 1;
         this.renderer.material.color = temp;
     }
+
+	// TODO: This is duplicated across all subclasses of Piece
+	protected override void SetColorBlindMaterial() {
+		renderer.material = CBMat;
+	}
 
 	// Use this for initialization
 	void Start () {

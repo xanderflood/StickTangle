@@ -184,6 +184,7 @@ MonoBehaviour:
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
   activeGlow: {fileID: 0}
+  CBMat: {fileID: 2100000, guid: b062ced8bade0c948a761fd19d2d8ccc, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
