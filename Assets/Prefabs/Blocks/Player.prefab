@@ -40,7 +40,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &100004
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -58,6 +58,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400006}
+  m_Layer: 0
+  m_Name: StickableHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -68,7 +83,7 @@ Transform:
   m_LocalPosition: {x: -964.550049, y: -981.203247, z: 49.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400002}
+  - {fileID: 400006}
   m_Father: {fileID: 0}
 --- !u!4 &400002
 Transform:
@@ -77,11 +92,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -956.750061, y: -975.503235, z: 49.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
-  m_Father: {fileID: 400000}
+  m_Father: {fileID: 400006}
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -93,6 +108,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
+--- !u!4 &400006
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 956.750061, y: 975.503235, z: -49.8728333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400002}
+  m_Father: {fileID: 400000}
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -581,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
+  stickableHolder: {fileID: 100006}
   isPLaying: 0
   done: 0
   inMotion: 0

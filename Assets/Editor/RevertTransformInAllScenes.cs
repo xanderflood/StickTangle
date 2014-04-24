@@ -21,13 +21,6 @@ public class RevertTransform : MonoBehaviour {
             foreach (EditorBuildSettingsScene s in EditorBuildSettings.scenes) {
                 if (s.enabled) {
                     EditorApplication.OpenScene(s.path);
-
-					GameObject level = GameObject.Find("Level");
-					if (level == null) {
-						Debug.Log("WOAH! No level: " + s.path.Substring(s.path.LastIndexOf('/') + 1));
-						continue;
-					}
-
                     foreach (string name in names) {
                         GameObject obj = GameObject.Find(name);
                         if (obj != null) {
@@ -35,7 +28,7 @@ public class RevertTransform : MonoBehaviour {
                             Debug.Log("Reverting transform for " + name + " in scene " + sceneName);
                        
 							foreach (Transform t in obj.transform) {
-								if (t.name == "StickableHolder") {
+								if (t.name == "LevelManager") {
 									t.parent = null;
 								}
 							}
