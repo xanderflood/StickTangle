@@ -171,9 +171,8 @@ Any block that occupies the same space as an acid block is dissolved.</narration
 				</stars>
 				<narration1>Red squares are magnets.
 				
-Magnets can pull pieces off of the player.
-
-You can slide pieces off of a magnet.</narration1>
+If you pull directly away from a magnet, a piece will get stuck to it.
+</narration1>
 			</level>
 			<level id="2">
 				<stars>
@@ -181,7 +180,8 @@ You can slide pieces off of a magnet.</narration1>
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1></narration1>
+				<narration1>
+By sliding pieces off of the magnet, you can get them back.</narration1>
 			</level>
 				<level id="3">
 				<stars>
