@@ -10,7 +10,7 @@ public class MagnetGlow : MonoBehaviour {
 
 	public MeshRenderer target;
 
-	//public Light light;
+	bool oscillating = true;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class MagnetGlow : MonoBehaviour {
 	}
 
 	public void BeginStop () {
-		GameObject.Destroy(gameObject);
+		oscillating = false;
 	}
 	
 	IEnumerator lightOscillate() {
@@ -32,7 +32,7 @@ public class MagnetGlow : MonoBehaviour {
 
 		// Oscillating
 		float t = .75f;
-		while (true) {
+		while (oscillating) {
 			if (t >= 1)
 				t = 0;
 				
@@ -43,6 +43,14 @@ public class MagnetGlow : MonoBehaviour {
 				
 			yield return true;
 		}
+
+		// Turning off
+		while (alpha > 0) {
+			setAlpha(alpha -= 4.0f*rate*Time.deltaTime);
+			yield return true;
+		}
+
+		GameObject.Destroy(gameObject);
 	}
 
 	void setAlpha(float alpha) {

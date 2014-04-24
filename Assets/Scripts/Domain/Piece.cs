@@ -32,7 +32,6 @@ public class Piece : MonoBehaviour {
 	
 	public const float speed = 0.1f;
 	protected const int layer = -2;
-//	protected bool hitAcid = false;
 	protected bool inMotion = false;
 	protected Grid grid;
 	protected MusicSelector music;
