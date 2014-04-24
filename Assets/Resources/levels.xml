@@ -15,7 +15,9 @@
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Cover up the green goal square to beat the level.</narration1>
+				<narration1>Use the arrow keys to move around.
+
+Cover up the green goal square to beat the level.</narration1>
 			</level>
 			<level id="2">
 				<stars>
