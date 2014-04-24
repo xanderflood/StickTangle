@@ -35,15 +35,15 @@ public class Magnet : Piece {
 
 		if (row == r) {
 			if (dr == 0) {
-				if (!audio.isPlaying)
-					audio.Play();
+//				if (!audio.isPlaying)
+//					audio.Play();
 				return true;
 			}
 		} else {
 			Utils.Assert(col == c);
 			if (dc == 0) {
-				if (!audio.isPlaying)
-					audio.Play();
+//				if (!audio.isPlaying)
+//					audio.Play();
 				return true;
 			}
 		}

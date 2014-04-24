@@ -14,6 +14,7 @@ public class Sticker : MonoBehaviour {
 
 	//public GameObject stickableModel;
 
+	public bool isPLaying = false;
 	private float moveDelay = 0.05f;
 	private float lastMoveTime = 0;
 
@@ -131,8 +132,10 @@ public class Sticker : MonoBehaviour {
 		}
 
 		// Only play the magnet sound if the move is valid!
-		if (notLeftBehind.Count < tempStbles.Count)
-			audio.PlayOneShot(magnet);
+		if (notLeftBehind.Count < tempStbles.Count){
+			if (isPLaying == false)
+				StartCoroutine(playMagnet());
+		}
 		foreach (Stickable s in leftBehind)
 			s.Unstick(false);
 
@@ -368,6 +371,13 @@ public class Sticker : MonoBehaviour {
 		gameObject.transform.localScale = scale;
 		foreach (Stickable st in stickables)
 			st.transform.localScale = scale;
+	}
+
+	private IEnumerator playMagnet() {
+		isPLaying = true;
+		audio.PlayOneShot (magnet);
+		yield return new WaitForSeconds(1.00f);
+		isPLaying = false;
 	}
 }
   
