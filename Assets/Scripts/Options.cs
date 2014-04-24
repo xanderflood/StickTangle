@@ -6,8 +6,8 @@ public class Options : MonoBehaviour {
 	public GUIStyle textStyle;
 	private GUIStyle toggleStyle;
 
-	private bool colorblindMode = false;
-	private float volume = 0.2f;
+	private bool colorblindMode;
+	private float volume;
 
 	private LevelManager lm;
 	private MusicSelector music;
@@ -15,6 +15,9 @@ public class Options : MonoBehaviour {
 	private void Start() {
 		lm = Utils.FindComponent<LevelManager>("LevelManager");
 		music = Utils.FindComponent<MusicSelector>("Music");
+
+		colorblindMode = lm.colorblindMode;
+		volume = music.GetVolume();
 	}
 
 	private void OnGUI() {

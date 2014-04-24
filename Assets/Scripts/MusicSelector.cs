@@ -83,4 +83,8 @@ public class MusicSelector : MonoBehaviour {
 	public void SetVolume(float volume) {
 		audio.volume = volume;
 	}
+
+	public float GetVolume() {
+		return audio.volume;
+	}
 }
