@@ -25,13 +25,13 @@ public class MagnetGlow : MonoBehaviour {
 
 		// Warming up
 		float alpha = 0f;
-		while (alpha < maxInt) {
-			setAlpha(alpha += rate*Time.deltaTime);
+		while (alpha < 0.5f*(maxInt + minInt)) {
+			setAlpha(alpha += 0.7f*rate*Time.deltaTime);
 			yield return true;
 		}
 
 		// Oscillating
-		float t = 0;
+		float t = 0.5f;
 		while (true) {
 			if (t >= 1)
 				t = 0;

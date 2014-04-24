@@ -47,7 +47,7 @@ public class DissolveAnimation : MonoBehaviour {
 		//owner.renderer.enabled = false;
 		owner.transform.FindChild("Quad").renderer.enabled = false;
 
-		StartCoroutine (fadeObject (target.gameObject, 1f));
+		StartCoroutine (fadeObject (target.gameObject, 3f));
 		StartCoroutine (fadeObject (owner.gameObject, 3f));
 
 		for (int i = 0; i < 4; ++i) {
