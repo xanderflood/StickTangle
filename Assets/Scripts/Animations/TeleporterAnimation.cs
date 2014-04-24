@@ -16,7 +16,7 @@ public class TeleporterAnimation : MonoBehaviour {
 	IEnumerator Animate () {
 
 		while (true) {
-			yield return new WaitForSeconds(UnityEngine.Random.Range(70, 150)/100f);
+			yield return new WaitForSeconds(0.7f);//UnityEngine.Random.Range(70, 150)/100f);
 
 			StartCoroutine(AnimateOneRipple());
 		}
