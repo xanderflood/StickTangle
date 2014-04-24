@@ -8,7 +8,7 @@ using System.Collections.Generic;
 // TODO: Find a better way to get the prefab 
 public class MoveStickableHolder : MonoBehaviour {
 	[MenuItem("Tools/Move StickableHolder")]
-	public static void MoveStickableHolder() {
+	public static void Move() {
 
 		// Loop through all enabled scenes
 		foreach (EditorBuildSettingsScene s in EditorBuildSettings.scenes) {
