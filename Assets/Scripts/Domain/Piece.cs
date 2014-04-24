@@ -53,7 +53,7 @@ public class Piece : MonoBehaviour {
 		this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
         this.transform.Rotate(0,0,Random.Range(0, 3) * 90);
 
-		if (LevelManager.modeling)
+		if (LevelManager.modeling || LevelManager.optionsScreen)
 			return;
 		grid = Utils.FindComponent<Grid>("Board");
 		music = Utils.FindComponent<MusicSelector>("Music");
