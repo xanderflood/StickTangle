@@ -44,12 +44,12 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	void OnGUI() {
 
-		GUI.Label (new Rect (Screen.width/2-100, Screen.height/2-150, 100, 50), text, centering);
+		GUI.Label (new Rect (Screen.width*0.38f, Screen.height*0.11f, 100, 50), text, centering);
 
 		if (waitAFrame) {
 			waitAFrame = false;
 
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 110, 200, 200),
+			GUI.Label (new Rect (Screen.width*0.38f, Screen.height*0.22f, 200, 200),
 			           "[ Down ] to play", smallCentering);
 			
 			StartCoroutine(loadScreencap());
