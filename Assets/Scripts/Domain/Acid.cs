@@ -50,7 +50,7 @@ public class Acid : MonoBehaviour {
 		while (true) {
 
 			// Select a random wait interval between 1 and 4
-			float time = (Random.value % 3f) + 1f;
+			float time = (Random.value % 1f) + 0.5f;
 
 			// Wait
 			yield return new WaitForSeconds(time);
