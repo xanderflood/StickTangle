@@ -42,13 +42,13 @@ public class MainMenuAnimation : MonoBehaviour {
 		if (!gui)
 			return;
 		
-		if (Input.GetKey(KeyCode.DownArrow)) {
+		if ((Input.GetKey(KeyCode.DownArrow))|| Input.GetKeyDown(KeyCode.Joystick1Button6)) {
 			music.playSchoolBell();
 			LevelManager.modeling = false;
 			Utils.FindComponent<LevelManager>("LevelManager").SetIndex("Level1.1");
 			Application.LoadLevel("Level1.1");
 		}
-		if (Input.GetKey (KeyCode.UpArrow)){
+		if ((Input.GetKey (KeyCode.UpArrow)) || Input.GetKeyDown(KeyCode.Joystick1Button5)){
 			music.playSelect ();
 			Application.LoadLevel("LevelSelect");
 		}
