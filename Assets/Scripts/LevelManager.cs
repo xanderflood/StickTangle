@@ -23,10 +23,9 @@ public class LevelManager : MonoBehaviour {
     float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
     float virtualHeight = 600.0f;
 
-	private bool InScene() {
+	public bool InScene() {
 		return scenes.Contains(Application.loadedLevelName);
 	}
-
 
 	private void Awake() {
 		Pair<List<LevelState>, List<string>> result = XmlLoader.LoadXml("levels");
@@ -88,7 +87,9 @@ public class LevelManager : MonoBehaviour {
      */
     void OnGUI()
     {
-        
+		if (levelIndex == -1) {
+			return;
+		}
 		if (LevelManager.modeling)
 			return;
 
