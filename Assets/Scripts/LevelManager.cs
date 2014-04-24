@@ -95,7 +95,7 @@ public class LevelManager : MonoBehaviour {
 		if (levelIndex == -1) {
 			return;
 		}
-		if (LevelManager.modeling)
+		if (LevelManager.modeling || LevelManager.optionsScreen)
 			return;
 
          var textStyle = GUI.skin.GetStyle("Label");
@@ -159,24 +159,6 @@ public class LevelManager : MonoBehaviour {
     }
     
 	public void SetText() {
-        /* useing textmesh for narrator. Might look nicer, but cant word wrap by default
-TextMesh mesh = Utils.FindComponent<TextMesh>("Narrator");
-foreach (string s in levelStates[levelIndex].narrationText1) {
-    Debug.Log(s);
-    mesh.text += s;
-    mesh.text += "\n\n";
-}
-foreach (string s in levelStates[levelIndex].narrationText2) {
-    mesh.text += s;
-    mesh.text += "\n\n";
-    Debug.Log(s);
-}
-
-if (levelStates[levelIndex].narrationText1.Count > 0)
-{
-    mesh.text = levelStates[levelIndex].narrationText1[1];
-}
-*/
 
         TextMesh mesh2 = Utils.FindComponent<TextMesh>("LevelText");
 		mesh2.text = "Level " + levelStates[levelIndex].stage + "." + levelStates[levelIndex].level;
