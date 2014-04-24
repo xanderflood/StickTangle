@@ -79,4 +79,8 @@ public class MusicSelector : MonoBehaviour {
 	public void playSelect(){
 		audio.PlayOneShot (button_select);
 	}
+
+	public void SetVolume(float volume) {
+		audio.volume = volume;
+	}
 }

@@ -20,6 +20,8 @@ public class LevelManager : MonoBehaviour {
 
 	private string previousScene;
 
+	public bool colorblindMode = false;
+
 	public static bool modeling = false;
 
     float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
