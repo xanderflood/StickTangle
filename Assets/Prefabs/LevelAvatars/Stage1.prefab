@@ -829,6 +829,7 @@ MonoBehaviour:
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   activeGlow: {fileID: 0}
+  bg: {fileID: 100004}
   original: 1
   CBMatStuck: {fileID: 2100000, guid: ae8a8c72fe598cf4fb531369e4a29bca, type: 2}
   CBMatUnstuck: {fileID: 2100000, guid: 324324b89b6882845ac9af86ec8e08a7, type: 2}
@@ -860,6 +861,7 @@ MonoBehaviour:
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   activeGlow: {fileID: 0}
+  bg: {fileID: 100010}
   original: 0
   CBMatStuck: {fileID: 2100000, guid: ae8a8c72fe598cf4fb531369e4a29bca, type: 2}
   CBMatUnstuck: {fileID: 2100000, guid: 324324b89b6882845ac9af86ec8e08a7, type: 2}
