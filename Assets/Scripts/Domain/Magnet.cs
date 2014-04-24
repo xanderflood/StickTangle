@@ -7,7 +7,7 @@ using Square = Grid.Square;
 public class Magnet : Piece {
 
 	public AudioClip magnet;
-
+	public Material CBMat;
 
     protected override void Awake()
     {
@@ -22,6 +22,10 @@ public class Magnet : Piece {
         this.renderer.material.color = temp;
     }
 
+	// TODO: This is duplicated across all subclasses of Piece
+	protected override void SetColorBlindMaterial() {
+		renderer.material = CBMat;
+	}
 
 	private void Start() {
 		if (LevelManager.modeling)

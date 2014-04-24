@@ -8,7 +8,6 @@ using SquareType = Grid.SquareType;
 public class Piece : MonoBehaviour {
 	public Position pos = new Position(-1, -1);
     public List<Material> CrayonMats;
-	public Material CBMat;
 
 	public int R;
 	public int row {
@@ -53,7 +52,7 @@ public class Piece : MonoBehaviour {
 
 	protected virtual void Awake() {
 		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
-			renderer.material = CBMat;
+			SetColorBlindMaterial();
 		} else {
 			renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
 	        transform.Rotate(0,0,Random.Range(0, 3) * 90);
@@ -67,6 +66,10 @@ public class Piece : MonoBehaviour {
 		row = pos.Row;
 		col = pos.Col;
 
+	}
+
+	protected virtual void SetColorBlindMaterial() {
+		// Implemented in subclasses
 	}
 
 	public void ChangePosition(int newRow, int newCol) {
