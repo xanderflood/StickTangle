@@ -69,16 +69,16 @@ public class SelectionGUI : MonoBehaviour {
 		}
 
 		// Here are all the other inputs
-		if (Input.GetKeyDown(KeyCode.RightArrow) && selection != length - 1) {
+		if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Joystick1Button8)) && selection != length - 1) {
 			audio.PlayOneShot(move);
 			selection += 1;
 		}
-		if (Input.GetKeyDown(KeyCode.LeftArrow) && selection != 0) {
+		if ((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.Joystick1Button7)) && selection != 0) {
 			audio.PlayOneShot(move);
 			selection -= 1;
 		}
 
-		if (Input.GetKeyDown(KeyCode.DownArrow)) {
+		if ((Input.GetKeyDown(KeyCode.DownArrow)) || (Input.GetKeyDown(KeyCode.Joystick1Button6))) {
 		    audio.PlayOneShot(select);
 
 			if (StageSelected) {
@@ -96,7 +96,7 @@ public class SelectionGUI : MonoBehaviour {
 				selection = 0;
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.UpArrow) && StageSelected) {
+		if ((Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.Joystick1Button5))) && StageSelected) {
 			audio.PlayOneShot(back);
 			StageSelected = false;
 			selection = savedStage;

@@ -51,6 +51,9 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 		        new Vector3(Screen.width / virtualWidth, Screen.height / virtualHeight, 1.0f));
 
 		GUI.Label (new Rect (370, 70, 100, 50), text, centering);
+		
+		GUI.Label (new Rect (375, 130, 200, 200),
+		           "[ Down ] to  play", smallCentering);
 
 		if (waitAFrame) {
 			waitAFrame = false;
@@ -60,9 +63,6 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 
 		if (!mode) {
-			
-			GUI.Label (new Rect (375, 130, 200, 200),
-			           "[ Down ] to  play", smallCentering);
 
 			if (img != last) {
 				GameObject.Destroy(current);
