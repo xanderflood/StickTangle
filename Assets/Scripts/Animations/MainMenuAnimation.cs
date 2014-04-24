@@ -12,6 +12,8 @@ public class MainMenuAnimation : MonoBehaviour {
 
 	public GUIStyle textStyle;
 
+	private MusicSelector music;
+
 	bool gui = false;
 
 	void Awake () {
@@ -19,6 +21,7 @@ public class MainMenuAnimation : MonoBehaviour {
 	}
 
 	void Start () {
+		music = Utils.FindComponent<MusicSelector> ("Music");
 		StartCoroutine(InitialWait());
 	}
 	
@@ -40,6 +43,7 @@ public class MainMenuAnimation : MonoBehaviour {
 			return;
 		
 		if (Input.GetKey(KeyCode.DownArrow)) {
+			music.playSchoolBell();
 			LevelManager.modeling = false;
 			Utils.FindComponent<LevelManager>("LevelManager").SetIndex("Level1.1");
 			Application.LoadLevel("Level1.1");
