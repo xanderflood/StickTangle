@@ -102,19 +102,20 @@ public class Sticker : MonoBehaviour {
 	public bool movePieces() {
 		int dr = 0;
 		int dc = 0;
-		if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.Joystick1Button5)) || ((Input.touchCount >0) && top.Contains(Input.GetTouch(0).position))) {
+        if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.Joystick1Button5)) || ((Input.touchCount > 0) && top.Contains(Input.GetTouch(0).position)))
+        {
 			dr = 1;
         }
-        else if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.Joystick1Button6)) || ((Input.touchCount > 0) && bottom.Contains(Input.GetTouch(0).position)))
+        else if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.Joystick1Button6)) || ((Input.touchCount > 0) && bottom.Contains(Input.GetTouch(0).position)))
         {
 			dr = -1;
         }
 
-        else if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.Joystick1Button8)) || ((Input.touchCount > 0) && right.Contains(Input.GetTouch(0).position)))
+        else if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.Joystick1Button8)) || ((Input.touchCount > 0) && right.Contains(Input.GetTouch(0).position)))
         {
 			dc = 1;
         }
-        else if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.Joystick1Button7)) || ((Input.touchCount > 0) && left.Contains(Input.GetTouch(0).position)))
+        else if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.Joystick1Button7)) || ((Input.touchCount > 0) && left.Contains(Input.GetTouch(0).position)))
         {
 			dc = -1;
 		} else {
