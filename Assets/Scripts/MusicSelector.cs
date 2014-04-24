@@ -93,6 +93,8 @@ public class MusicSelector : MonoBehaviour {
 	}
 	public void SetVolume(float volume) {
 		audio.volume = volume;
+		magnet.volume = volume;
+		wallBump.volume = volume;
 	}
 
 	public void playBump(){
@@ -108,6 +110,4 @@ public class MusicSelector : MonoBehaviour {
 	public float GetVolume() {
 		return audio.volume;
 	}
-
-
 }
