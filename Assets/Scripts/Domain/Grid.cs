@@ -157,7 +157,7 @@ public class Grid : MonoBehaviour {
 		for (int i = 0; i < dr.Length; i++) {
 			int stepR = dr[(int) i]; 
 			int stepC = dc[(int) i];
-			
+
 			if (grid[row + stepR, col + stepC].type == SquareType.Magnet) {
 				return true;
 			}

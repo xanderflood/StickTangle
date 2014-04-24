@@ -37,7 +37,7 @@ public class LevelSelectDisplayScript : MonoBehaviour {
 
 	void Start() {
 		viewport = new Rect(10, 10, 10, 10);
-		viewport.x = 0.278f;
+		viewport.x = 0.28f;
 		viewport.y = 0.22f;
 		viewport.width = 0.45f;
 		viewport.height = 0.45f;
