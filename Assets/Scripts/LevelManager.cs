@@ -166,8 +166,8 @@ public class LevelManager : MonoBehaviour {
 
 	public void AdvanceLevel() {
 		if (Application.loadedLevelName == "PlayAgain") {
-			levelIndex = 0;
-			Application.LoadLevel(levelStates[levelIndex].name);
+			levelIndex = -1;
+			Application.LoadLevel("LevelSelect");
 			return;
 		}
 
