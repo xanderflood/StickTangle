@@ -61,7 +61,7 @@ You must cover up all goal squares to beat the level.</narration1>
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>You can have as many extra squares as you want, as long as you cover up every goal square.</narration1>
+				<narration1>You can have as many extra squares as you want as long as you cover up every goal square.</narration1>
 			</level>
 			<level id="7">
 				<stars>
@@ -82,7 +82,7 @@ You must cover up all goal squares to beat the level.</narration1>
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Dark green squares are Acid.
+				<narration1>Dark green squares are acid.
 
 Any block that occupies the same space as an acid block is dissolved.</narration1>
 			</level>
@@ -92,7 +92,7 @@ Any block that occupies the same space as an acid block is dissolved.</narration
 					<silver>10</silver>
 					<gold>5</gold>
 				</stars>
-				<narration1>Acid can cause the player to become disconnected</narration1>
+				<narration1>Acid can cause the player to become disconnected.</narration1>
 			</level>
 			<level id="3">
 				<stars>
