@@ -263,6 +263,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -532,12 +534,12 @@ Transform:
   m_PrefabInternal: {fileID: 530346389}
   m_GameObject: {fileID: 138991703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1236609557}
   - {fileID: 125944638}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &138991705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +685,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -784,6 +788,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -1064,10 +1070,10 @@ Transform:
   m_PrefabInternal: {fileID: 1142620262}
   m_GameObject: {fileID: 200880399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0649414062, y: -.032409668, z: -10}
+  m_LocalPosition: {x: -964.61499, y: -978.235657, z: 41.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!82 &200880406
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1658,6 +1664,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -1937,6 +1945,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -2038,6 +2048,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -2122,19 +2134,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2178,19 +2190,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2339,6 +2351,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -2396,12 +2410,12 @@ Transform:
   m_PrefabInternal: {fileID: 331332176}
   m_GameObject: {fileID: 379627595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 138385336}
   - {fileID: 1929718350}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &379627597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2550,6 +2564,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -2662,6 +2678,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -2868,19 +2886,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2986,6 +3004,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -3250,12 +3270,12 @@ Transform:
   m_PrefabInternal: {fileID: 1542988391}
   m_GameObject: {fileID: 614789747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1256004228}
   - {fileID: 326643409}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &614789749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3425,9 +3445,19 @@ Transform:
   - {fileID: 916454950}
   - {fileID: 900009971}
   - {fileID: 1808179107}
+  - {fileID: 200880405}
   - {fileID: 346210224}
   - {fileID: 1173291538}
   - {fileID: 157621692}
+  - {fileID: 379627596}
+  - {fileID: 614789748}
+  - {fileID: 1190808739}
+  - {fileID: 1219517740}
+  - {fileID: 1228842452}
+  - {fileID: 1316382932}
+  - {fileID: 138991704}
+  - {fileID: 1624892075}
+  - {fileID: 2129600127}
   m_Father: {fileID: 0}
 --- !u!1001 &680167868
 Prefab:
@@ -3623,10 +3653,10 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 50
+  m_FontSize: 40
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4282861383
@@ -3643,7 +3673,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3750,19 +3780,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4030,6 +4060,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -4877,6 +4909,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -5001,19 +5035,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.0649414062
+      value: -964.61499
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.032409668
+      value: -978.235657
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 41.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ccdd170c1cea0e41b4b53dac077cf95, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5193,7 +5227,7 @@ Transform:
   m_LocalPosition: {x: -967.549988, y: -981.203247, z: 49.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1190505504}
+  - {fileID: 2031393344}
   m_Father: {fileID: 674446625}
 --- !u!114 &1173291539
 MonoBehaviour:
@@ -5209,6 +5243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallBump: {fileID: 8300000, guid: dedf0a6e3ca86457187e38c72c12de04, type: 3}
   magnet: {fileID: 8300000, guid: f4bff02141b724df0950522b37cf1e27, type: 3}
+  isPLaying: 0
   done: 0
   inMotion: 0
 --- !u!82 &1173291540
@@ -5315,19 +5350,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5369,12 +5404,12 @@ GameObject:
   m_PrefabInternal: {fileID: 1786356710}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1190505504}
+  - 4: {fileID: 2031393344}
   - 33: {fileID: 2031393343}
   - 23: {fileID: 2031393341}
   - 114: {fileID: 1190505507}
-  - 82: {fileID: 1190505506}
   - 82: {fileID: 1190505505}
+  - 82: {fileID: 1190505506}
   m_Layer: 0
   m_Name: BaseStickable
   m_TagString: Untagged
@@ -5387,13 +5422,12 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400004, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_PrefabInternal: {fileID: 1786356710}
-  m_GameObject: {fileID: 1190505503}
+  m_GameObject: {fileID: 2031393340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: .100000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2031393344}
-  m_Father: {fileID: 1173291538}
+  m_Children: []
+  m_Father: {fileID: 2031393344}
 --- !u!82 &1190505505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5403,9 +5437,9 @@ AudioSource:
   m_GameObject: {fileID: 1190505503}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .300000012
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5462,9 +5496,9 @@ AudioSource:
   m_GameObject: {fileID: 1190505503}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 474ff5fcd331546739cb6c443207536f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0a1864205e538459b9409cc5abae32ba, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .300000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5535,6 +5569,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 100032, guid: 412ef0e208b9241beab9476352c95cf4, type: 2}
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
@@ -5563,12 +5599,12 @@ Transform:
   m_PrefabInternal: {fileID: 1978538953}
   m_GameObject: {fileID: 1190808738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 895088118}
   - {fileID: 1302006021}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &1190808740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5733,12 +5769,12 @@ Transform:
   m_PrefabInternal: {fileID: 1188482629}
   m_GameObject: {fileID: 1219517738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1138480417}
   - {fileID: 1193596478}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!1 &1226849833
 GameObject:
   m_ObjectHideFlags: 0
@@ -5844,12 +5880,12 @@ Transform:
   m_PrefabInternal: {fileID: 338120389}
   m_GameObject: {fileID: 1228842451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1741913703}
   - {fileID: 1819236611}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &1228842453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6309,12 +6345,12 @@ Transform:
   m_PrefabInternal: {fileID: 809198794}
   m_GameObject: {fileID: 1316382931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1892660513}
   - {fileID: 495353495}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &1316382933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6394,6 +6430,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -6639,19 +6677,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6797,6 +6835,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -6876,19 +6916,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7108,6 +7148,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -7209,6 +7251,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -7278,12 +7322,12 @@ Transform:
   m_PrefabInternal: {fileID: 1737550987}
   m_GameObject: {fileID: 1624892073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 619126307}
   - {fileID: 1421496210}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!1001 &1681747880
 Prefab:
   m_ObjectHideFlags: 0
@@ -7369,19 +7413,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7576,6 +7620,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -7710,8 +7756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37316771146e6e442bc56a76ab5f70b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JulieFont: {fileID: 12800000, guid: 50b69bd798a2ba14baf82ccff68456b8, type: 3}
-  DamienFont: {fileID: 12800000, guid: 95bcf8f91c1cb424bbc37d78bf5ffbe3, type: 3}
+  JulieFont: {fileID: 12800000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
+  DamienFont: {fileID: 12800000, guid: 969748e00aec547db810049a05b4f6e1, type: 3}
   restart: {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
   sounds:
   - {fileID: 8300000, guid: 1afb4b8d334e440c1b8c537967a4816b, type: 3}
@@ -8409,6 +8455,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 80de9949287f6ca43af02f02dad65612, type: 2}
   - {fileID: 2100000, guid: 5dbc463668a11354487e3304d0db447a, type: 2}
   - {fileID: 2100000, guid: be1a85fad2aff69488a5212ac6f7fa06, type: 2}
+  R: 0
+  C: 0
   glowing: 0
   AcidAnimation: {fileID: 0}
   MagnetGlowModel: {fileID: 0}
@@ -8462,19 +8510,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 674446625}
     m_Modifications:
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -964.550049
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -978.203247
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 51.8728333
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: d3ab20a1f9729b74fa993ed3e34b29a4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8560,7 +8608,7 @@ GameObject:
   m_PrefabInternal: {fileID: 1786356710}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 2031393344}
+  - 4: {fileID: 1190505504}
   - 33: {fileID: 1173291537}
   - 64: {fileID: 2031393342}
   - 23: {fileID: 1173291536}
@@ -8620,12 +8668,13 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400002, guid: 8d2779e3a36d740c6b6d3536587634f2, type: 2}
   m_PrefabInternal: {fileID: 1786356710}
-  m_GameObject: {fileID: 2031393340}
+  m_GameObject: {fileID: 1190505503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: .100000024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1190505504}
+  m_Children:
+  - {fileID: 1190505504}
+  m_Father: {fileID: 1173291538}
 --- !u!1001 &2032976390
 Prefab:
   m_ObjectHideFlags: 0
@@ -8689,12 +8738,12 @@ Transform:
   m_PrefabInternal: {fileID: 1457958566}
   m_GameObject: {fileID: 2129600126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -964.550049, y: -978.203247, z: 51.8728333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 607766639}
   - {fileID: 1233840705}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 674446625}
 --- !u!114 &2129600128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8742,7 +8791,7 @@ TextMesh:
   m_FontSize: 50
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4282861383
@@ -8759,7 +8808,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: b18e2f424ff8e478dbd2fe3fa99e447a, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
