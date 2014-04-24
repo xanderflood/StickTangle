@@ -88,7 +88,7 @@ public class MainMenuAnimation : MonoBehaviour {
 		RectWord.GetComponent<WordPiece>().SeverFirstLetter().transform.parent.parent = Holder.transform;
 		RectWord.GetComponent<WordPiece>().SeverFirstLetter().transform.parent.parent = Holder.transform;
 
-		StartCoroutine(fadeChildren(Holder, 1f));
+		StartCoroutine(fadeChildren(Holder, 3f));
 
 		// Change the letter 't' to a capital
 		RectWord.GetComponent<WordPiece>().Letters[0].letter = "T";
@@ -178,14 +178,20 @@ public class MainMenuAnimation : MonoBehaviour {
 			
 			GameObject cur = go.transform.GetChild(i).gameObject;
 
-			if (cur.name == "PieceWithLetter(Clone)")
-				StartCoroutine(FadeLetter(cur.transform.FindChild("Block").
-				                          GetComponent<LetterPiece>(),rate/3));
-			else
+			if (cur.name == "PieceWithLetter(Clone)") {
+
+				GameObject block = cur.transform.FindChild("Block").gameObject;
+				
+				block.GetComponent<LetterPiece>().StopMagnetGlow();
+				StartCoroutine(FadeLetter(block.GetComponent<LetterPiece>(),rate/3f));
+				StartCoroutine(DissolveAnimation.fadeObject(block, rate));
+			} else
 				StartCoroutine(DissolveAnimation.fadeObject(cur, rate));
 		}
 
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(1f);
+
+		total = go.transform.childCount;
 		for (int i = 0; i < total; ++i) {
 			
 			GameObject cur = go.transform.GetChild(i).gameObject;
