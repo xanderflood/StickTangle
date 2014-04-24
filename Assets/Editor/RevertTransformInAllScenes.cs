@@ -26,11 +26,11 @@ public class RevertTransform : MonoBehaviour {
                         if (obj != null) {
                             string sceneName = s.path.Substring(s.path.LastIndexOf('/') + 1);
                             Debug.Log("Reverting transform for " + name + " in scene " + sceneName);
-                       
+
+							Vector3 offset = obj.transform.position;
+							obj.transform.position = Vector3.zero;
 							foreach (Transform t in obj.transform) {
-								if (t.name == "LevelManager") {
-									t.parent = null;
-								}
+								t.position += offset;
 							}
 
 							EditorApplication.SaveScene();  
