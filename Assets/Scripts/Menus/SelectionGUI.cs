@@ -36,7 +36,6 @@ public class SelectionGUI : MonoBehaviour {
 	}
 	
 	private void Start () {
-
 		// Load stage data
 		List<LevelState> ls = XmlLoader.LoadXml("levels").First;
 

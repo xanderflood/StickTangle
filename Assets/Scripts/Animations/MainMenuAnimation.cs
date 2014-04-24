@@ -41,6 +41,7 @@ public class MainMenuAnimation : MonoBehaviour {
 		
 		if (Input.GetKey(KeyCode.DownArrow)) {
 			LevelManager.modeling = false;
+			Utils.FindComponent<LevelManager>("LevelManager").SetIndex("Level1.1");
 			Application.LoadLevel("Level1.1");
 		}
 		if (Input.GetKey(KeyCode.UpArrow))

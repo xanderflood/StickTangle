@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour {
 
          int offset = 0;
         // hcorner, vcorner, width, height
-         foreach (string s in levelStates[levelIndex].narrationText1)
+		foreach (string s in levelStates[levelIndex].narrationText1)
          {
              text[2 * offset] = s;
 			 
