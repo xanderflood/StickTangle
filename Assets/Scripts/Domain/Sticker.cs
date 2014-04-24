@@ -7,6 +7,18 @@ using Square = Grid.Square;
 
 public class Sticker : MonoBehaviour {
 	
+
+    // touch areas  
+    //yes these look flipped, but it works
+    Rect bottom = new Rect(Screen.width / 5f, 0, (Screen.width * 3f) / 5, Screen.height / 5);
+
+    Rect top = new Rect(Screen.width / 5f, (Screen.height * 4f) / 5, (Screen.width * 3f)/5, Screen.height / 5);
+
+    Rect left = new Rect(0, Screen.height / 5f, Screen.width / 5, (Screen.height *3f) / 5);
+
+    Rect right = new Rect((Screen.width * 4f) / 5, Screen.height / 5f, Screen.width / 5, (Screen.height * 3f) / 5);
+
+
 	public AudioClip wallBump;
 	public AudioClip magnet;
 
@@ -90,13 +102,20 @@ public class Sticker : MonoBehaviour {
 	public bool movePieces() {
 		int dr = 0;
 		int dc = 0;
-		if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.Joystick1Button5))) {
+		if ((Input.GetKey(KeyCode.UpArrow)) || (Input.GetKey(KeyCode.Joystick1Button5)) || ((Input.touchCount >0) && top.Contains(Input.GetTouch(0).position))) {
 			dr = 1;
-		} else if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.Joystick1Button6))) {
+        }
+        else if ((Input.GetKey(KeyCode.DownArrow)) || (Input.GetKey(KeyCode.Joystick1Button6)) || ((Input.touchCount > 0) && bottom.Contains(Input.GetTouch(0).position)))
+        {
 			dr = -1;
-		} else if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.Joystick1Button8))) {
+        }
+
+        else if ((Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.Joystick1Button8)) || ((Input.touchCount > 0) && right.Contains(Input.GetTouch(0).position)))
+        {
 			dc = 1;
-		} else if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.Joystick1Button7))){
+        }
+        else if ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.Joystick1Button7)) || ((Input.touchCount > 0) && left.Contains(Input.GetTouch(0).position)))
+        {
 			dc = -1;
 		} else {
 			return false;
