@@ -1963,6 +1963,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
+    - {fileID: 11400002, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: acf1814dfe1d0144dbce9b55c8b9a6bd, type: 2}
   m_RootGameObject: {fileID: 2110819367}
   m_IsPrefabParent: 0
@@ -2506,7 +2507,6 @@ GameObject:
   - 124: {fileID: 2110819373}
   - 81: {fileID: 2110819372}
   - 82: {fileID: 2110819370}
-  - 114: {fileID: 2110819369}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -2526,18 +2526,6 @@ Transform:
   m_Children:
   - {fileID: 1158703534}
   m_Father: {fileID: 0}
---- !u!114 &2110819369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: acf1814dfe1d0144dbce9b55c8b9a6bd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1711854669}
-  m_GameObject: {fileID: 2110819367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7bedb171323459dbb94398c6b45f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &2110819370
 AudioSource:
   m_ObjectHideFlags: 0
