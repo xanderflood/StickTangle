@@ -6,8 +6,6 @@ using SquareType = Grid.SquareType;
 using Square = Grid.Square;
 
 public class Sticker : MonoBehaviour {
-	
-
     // touch areas  
     //yes these look flipped, but it works
     Rect bottom = new Rect(Screen.width / 5f, 0, (Screen.width * 3f) / 5, Screen.height / 5);
@@ -139,17 +137,13 @@ public class Sticker : MonoBehaviour {
 			return false;
 
 		if (!isValidMoveForPieces(dr, dc, notLeftBehind, leftBehind)) {
-			audio.clip = wallBump;
-			
-			if (!audio.isPlaying)
-				audio.Play();
+			music.playBump();
 			return false;
 		}
 
 		// Only play the magnet sound if the move is valid!
 		if (notLeftBehind.Count < stickables.Count){
-			if (isPLaying == false)
-				StartCoroutine(playMagnet());
+			music.playMagnet();
 		}
 		foreach (Stickable s in leftBehind) {
 			bool willBeAddedBack = false;
@@ -396,13 +390,6 @@ public class Sticker : MonoBehaviour {
 		gameObject.transform.localScale = scale;
 		foreach (Stickable st in stickables)
 			st.transform.localScale = scale;
-	}
-
-	private IEnumerator playMagnet() {
-		isPLaying = true;
-		audio.PlayOneShot (magnet);
-		yield return new WaitForSeconds(1.00f);
-		isPLaying = false;
 	}
 }
   
