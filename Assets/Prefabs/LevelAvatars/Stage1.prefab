@@ -830,7 +830,8 @@ MonoBehaviour:
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   activeGlow: {fileID: 0}
   original: 1
-  CBMat: {fileID: 2100000, guid: 324324b89b6882845ac9af86ec8e08a7, type: 2}
+  CBMatStuck: {fileID: 2100000, guid: ae8a8c72fe598cf4fb531369e4a29bca, type: 2}
+  CBMatUnstuck: {fileID: 2100000, guid: 324324b89b6882845ac9af86ec8e08a7, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -860,7 +861,8 @@ MonoBehaviour:
   MagnetGlowModel: {fileID: 100000, guid: 9b8a5a3410c884cbfb5ce52a1d7914e3, type: 2}
   activeGlow: {fileID: 0}
   original: 0
-  CBMat: {fileID: 2100000, guid: 324324b89b6882845ac9af86ec8e08a7, type: 2}
+  CBMatStuck: {fileID: 2100000, guid: ae8a8c72fe598cf4fb531369e4a29bca, type: 2}
+  CBMatUnstuck: {fileID: 2100000, guid: 324324b89b6882845ac9af86ec8e08a7, type: 2}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

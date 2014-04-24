@@ -7,11 +7,15 @@ using SquareType = Grid.SquareType;
 public class Stickable : Piece {
 
 	public bool original;
-	public Material CBMat;
+	public Material CBMatStuck;
+	public Material CBMatUnstuck;
+
+	bool stuck;
 
     protected override void Awake() {
-		base.Awake();
 
+		base.Awake();
+		
 		if (original) {
 			Stick(true);
 		} else {
@@ -21,7 +25,10 @@ public class Stickable : Piece {
 
 	// TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
-		renderer.material = CBMat;
+		if (stuck) {
+			renderer.material = CBMatStuck;
+		} else
+			renderer.material = CBMatUnstuck;
 	}
 	
 	private void Start() {
@@ -39,6 +46,8 @@ public class Stickable : Piece {
 	}
 	
 	public void Unstick(bool now) {
+
+		stuck = false;
 		
 		Color temp = new Color();
 		
@@ -54,9 +63,14 @@ public class Stickable : Piece {
 		
 		if (!LevelManager.modeling && grid.IsNextToMagnet(row, col))
 			StopMagnetGlow();
+
+		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode)
+			SetColorBlindMaterial();
 	}
 
 	public void Stick(bool now) {
+
+		stuck = true;
 		
 		Color temp = new Color();
 		
@@ -72,6 +86,9 @@ public class Stickable : Piece {
 
 		if (!LevelManager.modeling && grid.IsNextToMagnet(row, col))
 			StartMagnetGlow();
+		
+		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode)
+			SetColorBlindMaterial();
 	}
 
 	IEnumerator ColorFade(Color dest) {
