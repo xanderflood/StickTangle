@@ -31,8 +31,8 @@ public class MoveStickableHolder : MonoBehaviour {
 			}
 
 			// Grab the holder and move it
-			GameObject shldr = player.transform.FindChild("StickableHolder");
-			shldr.transform.parent = level;
+			Transform shldr = player.transform.FindChild("StickableHolder");
+			shldr.transform.parent = level.transform;
 
 			EditorApplication.SaveScene();
 		}
