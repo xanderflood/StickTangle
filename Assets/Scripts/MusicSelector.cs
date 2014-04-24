@@ -9,12 +9,18 @@ public class MusicSelector : MonoBehaviour {
 	public AudioClip melody3;
 	public AudioClip melody4;
 	public AudioClip button_select;
+	public AudioClip button_move;
+	public AudioClip button_back;
 
 	public AudioClip blop;
 	public AudioClip clear;
 	public AudioClip teleport;
 	public AudioClip acid;
 	public AudioClip schoolBell;
+	public AudioSource wallBump;
+	public AudioSource magnet;
+
+	public bool isPlaying = false;
 
 	private LevelManager lm;
 
@@ -79,9 +85,26 @@ public class MusicSelector : MonoBehaviour {
 	public void playSelect(){
 		audio.PlayOneShot (button_select);
 	}
-
+	public void playMove(){
+		audio.PlayOneShot (button_move);
+	}
+	public void playBack(){
+		audio.PlayOneShot (button_back);
+	}
 	public void SetVolume(float volume) {
 		audio.volume = volume;
+		magnet.volume = volume;
+		wallBump.volume = volume;
+	}
+
+	public void playBump(){
+		if (!wallBump.isPlaying)
+			wallBump.Play();
+	}
+
+	public void playMagnet(){
+		if (!magnet.isPlaying)
+			magnet.Play();
 	}
 
 	public float GetVolume() {

@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using LevelState = XmlLoader.LevelState;
 
 public class SelectionGUI : MonoBehaviour {
-
-	public AudioClip move;
-	public AudioClip select;
-	public AudioClip back;
+	
 	public bool StageSelected;
 
 	public LevelSelectDisplayScript disp;
@@ -76,16 +73,16 @@ public class SelectionGUI : MonoBehaviour {
 
 		// Here are all the other inputs
 		if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Joystick1Button8)) && selection != length - 1) {
-			audio.PlayOneShot(move);
+			music.playMove();
 			selection += 1;
 		}
 		if ((Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.Joystick1Button7)) && selection != 0) {
-			audio.PlayOneShot(move);
+			music.playMove();
 			selection -= 1;
 		}
 
 		if ((Input.GetKeyDown(KeyCode.DownArrow)) || (Input.GetKeyDown(KeyCode.Joystick1Button6))) {
-		    audio.PlayOneShot(select);
+			music.playSelect();
 
 			if (StageSelected) {
 				music.playSchoolBell();
@@ -104,7 +101,7 @@ public class SelectionGUI : MonoBehaviour {
 			}
 		}
 		if ((Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.Joystick1Button5))) && StageSelected) {
-			audio.PlayOneShot(back);
+			music.playBack();
 			StageSelected = false;
 			previousSelections[savedStage] = selection;
 			selection = savedStage;
