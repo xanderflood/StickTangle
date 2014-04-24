@@ -52,9 +52,9 @@ public class Options : MonoBehaviour {
 		colorblindMode = GUI.Toggle(new Rect(virtualWidth*0.42f, virtualHeight*0.45f,
 		                                     virtualWidth*0.2f, virtualHeight*0.04f),
 		                            colorblindMode, "Enable colorblind mode", toggleStyle);
-		GUI.Label(new Rect(virtualWidth*0.42f, virtualHeight*0.5f,
+		GUI.Label(new Rect(virtualWidth*0.42f, virtualHeight*0.49f,
 		                   virtualWidth*0.2f, virtualHeight*0.04f),
-		                   "Changing this setting will restart your level.", textStyle);
+		                   "(Changing this setting will restart your level.)", textStyle);
 		volume = GUI.HorizontalSlider(new Rect(virtualWidth*0.47f, virtualHeight*0.58f,
 		                                       virtualWidth*0.13f, virtualHeight*0.04f), volume, 0, 1);
 		GUI.Label(new Rect(virtualWidth*0.4f, virtualHeight*0.58f,
