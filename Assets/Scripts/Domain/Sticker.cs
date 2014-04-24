@@ -101,19 +101,10 @@ public class Sticker : MonoBehaviour {
 		} else {
 			return false;
 		}
-
-		List<Stickable> tempStbles = new List<Stickable>();
-		tempStbles.AddRange(stickables);
-		//Stickable temp = ((GameObject)Instantiate(stickableModel, transform.position, transform.rotation))
-		//	.GetComponent<Stickable>();
-		//gameObject.GetComponent<MeshRenderer>().enabled = false;
-		//tempStbles.Add(temp);
-		//Debug.Log(temp.row);
-		//Debug.Log(temp.col);
 		
 		List<Stickable> notLeftBehind = new List<Stickable>();
 		List<Stickable> leftBehind = new List<Stickable>();
-		foreach (Stickable s in tempStbles) {
+		foreach (Stickable s in stickables) {
 			if (!s.IsStuckToManget(dr, dc))
 				notLeftBehind.Add(s);
 			else
@@ -132,7 +123,7 @@ public class Sticker : MonoBehaviour {
 		}
 
 		// Only play the magnet sound if the move is valid!
-		if (notLeftBehind.Count < tempStbles.Count){
+		if (notLeftBehind.Count < stickables.Count){
 			if (isPLaying == false)
 				StartCoroutine(playMagnet());
 		}
