@@ -45,6 +45,8 @@ public class Sticker : MonoBehaviour {
 	private bool teleporting;
 	private MusicSelector music;
 
+	private GameObject level;
+
 	private void Start() {
 		if (LevelManager.modeling)
 			return;
@@ -54,6 +56,8 @@ public class Sticker : MonoBehaviour {
 		grid = Utils.FindComponent<Grid>("Board");
 
 		music = Utils.FindComponent<MusicSelector>("Music");
+
+		level = Utils.FindObject("Level");
 	}
 
     protected void Awake() {
@@ -224,7 +228,7 @@ public class Sticker : MonoBehaviour {
 
 		// Remove them as children
 		foreach (Stickable s in toBeMoved)
-			s.transform.parent = null;
+			s.transform.parent = level.transform;
 
 		// New list!
 		stickables = notAcided;
