@@ -88,7 +88,7 @@ public class SelectionGUI : MonoBehaviour {
 				music.playSchoolBell();
 
 				GameObject.Destroy(Utils.FindObject("Level"));
-				Utils.FindObject("Border").renderer.enabled = false;
+				Utils.FindObject("Border").GetComponent<Renderer>().enabled = false;
 				LevelManager.modeling = false;
 				string levelName = LevelStates[savedStage][selection].name;
 				Utils.FindComponent<LevelManager>("LevelManager").SetIndex(levelName);

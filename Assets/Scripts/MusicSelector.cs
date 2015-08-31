@@ -32,67 +32,67 @@ public class MusicSelector : MonoBehaviour {
 		string name = Application.loadedLevelName;
 
 		if (name == "LevelSelect" || name == "MainMenu") {
-			if (!audio.isPlaying)
-				audio.clip = melody0;
-			if (!audio.isPlaying)
-				audio.Play(); 
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().clip = melody0;
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().Play(); 
 		}
 
 		if (lm.CurrentLevelInRange("1.1", "1.8")) {
-			if (!audio.isPlaying)
-				audio.clip = melody1;
-			if (!audio.isPlaying)
-				audio.Play(); 
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().clip = melody1;
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().Play(); 
 		}
 
 		if (lm.CurrentLevelInRange("2.1", "2.5")) {
-			if (!audio.isPlaying)
-				audio.clip = melody2;
-			if (!audio.isPlaying)
-				audio.Play(); 
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().clip = melody2;
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().Play(); 
 		}
 
 		if (lm.CurrentLevelInRange("3.1", "3.6")) {
-			if (!audio.isPlaying)
-				audio.clip = melody3;
-			if (!audio.isPlaying)
-				audio.Play(); 
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().clip = melody3;
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().Play(); 
 		}
 
 		if (lm.CurrentLevelInRange("4.1", "4.4")) {
-			if (!audio.isPlaying)
-				audio.clip = melody4;
-			if (!audio.isPlaying)
-				audio.Play();
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().clip = melody4;
+			if (!GetComponent<AudioSource>().isPlaying)
+				GetComponent<AudioSource>().Play();
 		}
 	}
 
 	public void playBlop(){
-		audio.PlayOneShot(blop);
+		GetComponent<AudioSource>().PlayOneShot(blop);
 	}
 	public void clearLevel(){
-		audio.PlayOneShot(clear);
+		GetComponent<AudioSource>().PlayOneShot(clear);
 	}
 	public void playTeleport(){
-		audio.PlayOneShot(teleport);
+		GetComponent<AudioSource>().PlayOneShot(teleport);
 	}
 	public void playAcid(){
-		audio.PlayOneShot(acid);
+		GetComponent<AudioSource>().PlayOneShot(acid);
 	}
 	public void playSchoolBell(){
-		audio.PlayOneShot (schoolBell);
+		GetComponent<AudioSource>().PlayOneShot (schoolBell);
 	}
 	public void playSelect(){
-		audio.PlayOneShot (button_select);
+		GetComponent<AudioSource>().PlayOneShot (button_select);
 	}
 	public void playMove(){
-		audio.PlayOneShot (button_move);
+		GetComponent<AudioSource>().PlayOneShot (button_move);
 	}
 	public void playBack(){
-		audio.PlayOneShot (button_back);
+		GetComponent<AudioSource>().PlayOneShot (button_back);
 	}
 	public void SetVolume(float volume) {
-		audio.volume = volume;
+		GetComponent<AudioSource>().volume = volume;
 		magnet.volume = volume;
 		wallBump.volume = volume;
 	}
@@ -108,6 +108,6 @@ public class MusicSelector : MonoBehaviour {
 	}
 
 	public float GetVolume() {
-		return audio.volume;
+		return GetComponent<AudioSource>().volume;
 	}
 }

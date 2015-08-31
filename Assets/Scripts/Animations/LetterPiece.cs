@@ -20,7 +20,7 @@ public class LetterPiece : Piece {
 	void Update() {
 
 		tm.text = letter;
-		gameObject.renderer.material.color = BGcolor;
+		gameObject.GetComponent<Renderer>().material.color = BGcolor;
 		tm.color = fontColor;
 	}
 }

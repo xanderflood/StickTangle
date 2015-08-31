@@ -13,9 +13,9 @@ public class Obstacle : MonoBehaviour {
     void Awake()
     {
 		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
-			renderer.material = CBMat;
+			GetComponent<Renderer>().material = CBMat;
 		} else {
-	        this.renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
+	        this.GetComponent<Renderer>().material = CrayonMats[Random.Range(0, CrayonMats.Count)];
 	        this.transform.Rotate(0, 0, Random.Range(0, 3) * 90);
 		}
         Color temp = new Color();
@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour {
         temp.g = .2f;
         temp.b = .8f;
         temp.a = 1;
-        this.renderer.material.color = temp;
+        this.GetComponent<Renderer>().material.color = temp;
 
     }
 

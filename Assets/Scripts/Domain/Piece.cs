@@ -54,7 +54,7 @@ public class Piece : MonoBehaviour {
 		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
 			SetColorBlindMaterial();
 		} else {
-			renderer.material = CrayonMats[Random.Range(0, CrayonMats.Count)];
+			GetComponent<Renderer>().material = CrayonMats[Random.Range(0, CrayonMats.Count)];
 	        transform.Rotate(0,0,Random.Range(0, 3) * 90);
 		}
 

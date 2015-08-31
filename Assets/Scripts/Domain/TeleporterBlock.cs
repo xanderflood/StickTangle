@@ -14,12 +14,12 @@ public class TeleporterBlock : Piece {
         temp.g = 230f/255;
         temp.b = 0f;
         temp.a = 1;
-        this.renderer.material.color = temp;
+        this.GetComponent<Renderer>().material.color = temp;
     }
 
 	// TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
-		renderer.material = CBMat;
+		GetComponent<Renderer>().material = CBMat;
 	}
 
 	// Use this for initialization

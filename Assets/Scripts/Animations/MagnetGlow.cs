@@ -37,7 +37,7 @@ public class MagnetGlow : MonoBehaviour {
 				t = 0;
 				
 			setAlpha((0.5f*(maxInt - minInt)*Mathf.Cos(2*Mathf.PI*t) + 0.5f*(maxInt + minInt))
-			         *gameObject.transform.parent.gameObject.renderer.material.color.a);
+			         *gameObject.transform.parent.gameObject.GetComponent<Renderer>().material.color.a);
 				
 			t += rate * Time.deltaTime;
 				

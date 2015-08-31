@@ -19,12 +19,12 @@ public class Magnet : Piece {
 		temp.g = 0f;
 		temp.b = 0f;
 		temp.a = 1f;
-        this.renderer.material.color = temp;
+        this.GetComponent<Renderer>().material.color = temp;
     }
 
 	// TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
-		renderer.material = CBMat;
+		GetComponent<Renderer>().material = CBMat;
 	}
 
 	private void Start() {
@@ -36,7 +36,7 @@ public class Magnet : Piece {
 	}
 
 	public bool IsMovingAway(int r, int c, int dr, int dc) {
-		audio.clip = magnet;
+		GetComponent<AudioSource>().clip = magnet;
 
 		if (row == r) {
 			if (dr == 0) {

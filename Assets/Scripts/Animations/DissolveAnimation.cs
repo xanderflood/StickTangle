@@ -42,10 +42,10 @@ public class DissolveAnimation : MonoBehaviour {
 
 		foreach (GameObject sq in squares)
 			if (sq != null)
-				sq.renderer.material.color = owner.renderer.material.color;
+				sq.GetComponent<Renderer>().material.color = owner.GetComponent<Renderer>().material.color;
 
 		//owner.renderer.enabled = false;
-		owner.transform.FindChild("Quad").renderer.enabled = false;
+		owner.transform.FindChild("Quad").GetComponent<Renderer>().enabled = false;
 
 		StartCoroutine (fadeObject (target.gameObject, 3f));
 		StartCoroutine (fadeObject (owner.gameObject, 3f));
@@ -55,9 +55,9 @@ public class DissolveAnimation : MonoBehaviour {
 
 			yield return new WaitForSeconds(0.0025f/Piece.speed);
 
-			Color c = target.renderer.material.color;
+			Color c = target.GetComponent<Renderer>().material.color;
 			c.a -= 0.25f;
-			target.renderer.material.color = c;
+			target.GetComponent<Renderer>().material.color = c;
 		}
 
 		yield return new WaitForSeconds(.3f);
@@ -71,10 +71,10 @@ public class DissolveAnimation : MonoBehaviour {
 
 	public static IEnumerator fadeObject(GameObject go, float rate) {
 
-		Color col = go.renderer.material.color;
+		Color col = go.GetComponent<Renderer>().material.color;
 		while (col.a > -1) {
 			col.a -= rate*Time.deltaTime;
-			go.renderer.material.color = col;
+			go.GetComponent<Renderer>().material.color = col;
 
 			yield return true;
 		}

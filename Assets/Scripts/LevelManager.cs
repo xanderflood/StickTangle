@@ -210,8 +210,8 @@ public class LevelManager : MonoBehaviour {
 		pos.x += 3000;
 		ambientScene.transform.position = pos;
 
-		oldViewport = camera.camera.rect;
-		camera.camera.rect = new Rect(0, 0, 0, 0);
+		oldViewport = camera.GetComponent<Camera>().rect;
+		camera.GetComponent<Camera>().rect = new Rect(0, 0, 0, 0);
 		
 		selection = GameObject.Find("SelectionGUI");
 		if (selection != null)
@@ -245,7 +245,7 @@ public class LevelManager : MonoBehaviour {
 		pos.x -= 3000;
 		ambientScene.transform.position = pos;
 		
-		camera.camera.rect = oldViewport;
+		camera.GetComponent<Camera>().rect = oldViewport;
 		
 		if (selection != null)
 			selection.SetActive(true);
@@ -272,8 +272,8 @@ public class LevelManager : MonoBehaviour {
 	private IEnumerator DelayRestart() {
 		// Disable movement during restart
 		Utils.FindComponent<Sticker>("Player").done = true;
-		audio.clip = sounds[UnityEngine.Random.Range(0,sounds.Length)];
-		audio.Play ();
+		GetComponent<AudioSource>().clip = sounds[UnityEngine.Random.Range(0,sounds.Length)];
+		GetComponent<AudioSource>().Play ();
 		//Camera.main.audio.PlayOneShot(restart);
 		yield return new WaitForSeconds(0.5f);
 		Restart();

@@ -28,9 +28,9 @@ public class Stickable : Piece {
     // TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
 		if (stuck) {
-			renderer.material = CBMatStuck;
+			GetComponent<Renderer>().material = CBMatStuck;
 		} else
-			renderer.material = CBMatUnstuck;
+			GetComponent<Renderer>().material = CBMatUnstuck;
 	}
 	
 	private void Start() {
@@ -59,7 +59,7 @@ public class Stickable : Piece {
 		temp.a = 1f;
 
 		if (now)
-			renderer.material.color = temp;
+			GetComponent<Renderer>().material.color = temp;
 		else
 			StartCoroutine(ColorFade(temp));
 		
@@ -82,7 +82,7 @@ public class Stickable : Piece {
 		temp.a = 1f;
 		
 		if (now)
-			renderer.material.color = temp;
+			GetComponent<Renderer>().material.color = temp;
 		else
 			StartCoroutine(ColorFade(temp));
 
@@ -96,16 +96,16 @@ public class Stickable : Piece {
 	IEnumerator ColorFade(Color dest) {
 
 		float t = 0f;
-		Color init = renderer.material.color;
+		Color init = GetComponent<Renderer>().material.color;
 		while (t < 1f) {
 
 			t += 3f*Time.deltaTime;
-			renderer.material.color = ColorInterp(dest, init, t);
+			GetComponent<Renderer>().material.color = ColorInterp(dest, init, t);
 
 			yield return true;
 		}
 
-		renderer.material.color = dest;
+		GetComponent<Renderer>().material.color = dest;
 	}
 
 	Color ColorInterp(Color a, Color b, float t) {
