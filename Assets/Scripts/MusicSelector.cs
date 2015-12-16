@@ -25,7 +25,7 @@ public class MusicSelector : MonoBehaviour {
 	private LevelManager lm;
 
 	private void Start() {
-		lm = Utils.FindComponent<LevelManager>("LevelManager");	
+		//lm = Utils.FindComponent<LevelManager>("LevelManager");	
 	}
 
 	private void Update() {
@@ -38,14 +38,14 @@ public class MusicSelector : MonoBehaviour {
 				GetComponent<AudioSource>().Play(); 
 		}
 
-		if (lm.CurrentLevelInRange("1.1", "1.8")) {
+		//if (lm.CurrentLevelInRange("1.1", "1.8")) {
 			if (!GetComponent<AudioSource>().isPlaying)
 				GetComponent<AudioSource>().clip = melody1;
 			if (!GetComponent<AudioSource>().isPlaying)
 				GetComponent<AudioSource>().Play(); 
-		}
+		//}
 
-		if (lm.CurrentLevelInRange("2.1", "2.5")) {
+		/*if (lm.CurrentLevelInRange("2.1", "2.5")) {
 			if (!GetComponent<AudioSource>().isPlaying)
 				GetComponent<AudioSource>().clip = melody2;
 			if (!GetComponent<AudioSource>().isPlaying)
@@ -64,7 +64,7 @@ public class MusicSelector : MonoBehaviour {
 				GetComponent<AudioSource>().clip = melody4;
 			if (!GetComponent<AudioSource>().isPlaying)
 				GetComponent<AudioSource>().Play();
-		}
+		}*/
 	}
 
 	public void playBlop(){

@@ -7,7 +7,7 @@ public class Goal : MonoBehaviour {
 	public Material CBMat;
 
     void Awake() {
-		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
+		/*if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
 			GetComponent<Renderer>().material = CBMat;
 		} else {
 	        this.GetComponent<Renderer>().material = CrayonMats[Random.Range(0, CrayonMats.Count)];
@@ -18,7 +18,7 @@ public class Goal : MonoBehaviour {
         temp.g = 1;
         temp.b = 0;
         temp.a = 1;
-        this.GetComponent<Renderer>().material.color = temp;
+        this.GetComponent<Renderer>().material.color = temp;*/ 
         
     }
 

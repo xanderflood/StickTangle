@@ -9,7 +9,7 @@ public class GUIButtons : MonoBehaviour {
     float virtualWidth = 960.0f; //create gui for this size, use matrix to automaticly scale it
     float virtualHeight = 600.0f;
 	private void Start() {
-		lm = Utils.FindComponent<LevelManager>("LevelManager");
+		//lm = Utils.FindComponent<LevelManager>("LevelManager");
 	}
 	
 	private void OnGUI() {

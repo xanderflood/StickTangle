@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class CreateGrid : MonoBehaviour {

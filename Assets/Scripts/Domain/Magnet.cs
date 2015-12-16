@@ -2,7 +2,6 @@
 using System.Collections;
 
 using SquareType = Grid.SquareType;
-using Square = Grid.Square;
 
 public class Magnet : Piece {
 
@@ -31,7 +30,7 @@ public class Magnet : Piece {
 		if (LevelManager.modeling)
 			return;
 
-		grid.SetSquare(row, col, new Square(SquareType.Magnet));
+		grid.SetSquare(row, col, SquareType.Magnet);
 		grid.magnetMap.Add(pos, this);
 	}
 

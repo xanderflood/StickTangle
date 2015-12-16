@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<level>
+	<obstacles>
+		<line>
+			<direction>v</direction>
+			<x>-5</x>
+			<y>-5</y>
+			<length>11</length>
+		</line>
+		<line>
+			<direction>v</direction>
+			<x>5</x>
+			<y>-5</y>
+			<length>11</length>
+		</line>
+		<line>
+			<direction>h</direction>
+			<x>-4</x>
+			<y>-5</y>
+			<length>9</length>
+		</line>
+		<line>
+			<direction>h</direction>
+			<x>-4</x>
+			<y>5</y>
+			<length>9</length>
+		</line>
+	</obstacles>
+	
+	<player>
+		<x>0</x>
+		<y>-2</y>
+	</player>
+	
+	<goals>
+		<point>
+			<x>0</x>
+			<y>3</y>
+		</point>
+	</goals>
+</level>

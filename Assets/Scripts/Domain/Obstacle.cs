@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Obstacle : MonoBehaviour {
@@ -12,7 +11,7 @@ public class Obstacle : MonoBehaviour {
 
     void Awake()
     {
-		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
+		/*if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
 			GetComponent<Renderer>().material = CBMat;
 		} else {
 	        this.GetComponent<Renderer>().material = CrayonMats[Random.Range(0, CrayonMats.Count)];
@@ -24,6 +23,7 @@ public class Obstacle : MonoBehaviour {
         temp.b = .8f;
         temp.a = 1;
         this.GetComponent<Renderer>().material.color = temp;
+        */
 
     }
 
@@ -34,6 +34,6 @@ public class Obstacle : MonoBehaviour {
 
 		Grid grid = Utils.FindComponent<Grid>("Board");
 		Position pos = grid.CoordToPos(transform.position, false);
-		grid.SetSquare(pos, new Square(SquareType.Block));	
+		grid.SetSquare(pos, SquareType.Block);	
 	}
 }

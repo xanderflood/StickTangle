@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour {
 				break;
 			}
 		}
-		Utils.Assert(levelIndex != -1);
+		//Utils.Assert(levelIndex != -1);
 	}
 
 	public bool CurrentLevelInRange(string l1, string l2) {
@@ -186,7 +186,6 @@ public class LevelManager : MonoBehaviour {
 		restarting = true;
 	}
 
-
 	// These variables should only be used by the following two functions
 	Rect oldViewport;
 	GameObject selection;
@@ -257,7 +256,11 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public LevelState GetLevelState() {
-		return levelStates[levelIndex];
+		try {
+			return levelStates[levelIndex];
+		} catch {
+			return  new LevelState();
+		}
 	}
 
 	private void Update() {

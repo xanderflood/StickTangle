@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Stickable : Piece {
@@ -12,6 +11,8 @@ public class Stickable : Piece {
 	public Material CBMatStuck;
 	public Material CBMatUnstuck;
 
+	public float stickingState; //between 0 and 1
+
 	bool stuck;
 
     protected override void Awake() {
@@ -20,10 +21,18 @@ public class Stickable : Piece {
 		
 		if (original) {
 			Stick(true);
-		} else {
+		} else { 
 			Unstick(true);
 		}
     }
+
+	public void Update() {
+		Color c = new Color (68f/255f,
+		                     (20f + stickingState*180f)/255f,
+		                     255f);
+
+		GetComponent<Renderer>().material.color = c;
+	}
 
     // TODO: This is duplicated across all subclasses of Piece
 	protected override void SetColorBlindMaterial() {
@@ -40,28 +49,28 @@ public class Stickable : Piece {
 		owner = Utils.FindComponent<Sticker>("Player");
 
 		if (!original) {
-			grid.SetSquare(row, col, new Square(SquareType.Stickable));
+			grid.SetSquare(row, col, SquareType.Stickable);
 			owner.stickableMap.Add(new Position(row, col), this);
 		} else
-			grid.SetSquare(row, col, new Square(SquareType.Player));
+			grid.SetSquare(row, col, SquareType.Player);
 
 	}
 	
 	public void Unstick(bool now) {
 
-		stuck = false;
+		/*stuck = false;
 		
 		Color temp = new Color();
 		
 		temp.r = 0.5f;
 		temp.g = 0.5f;
 		temp.b = 0.5f;
-		temp.a = 1f;
+		temp.a = 1f;*/
 
-		if (now)
+		/*if (now)
 			GetComponent<Renderer>().material.color = temp;
 		else
-			StartCoroutine(ColorFade(temp));
+			StartCoroutine(ColorFade(temp));*/
 		
 		if (!LevelManager.modeling && grid.IsNextToMagnet(row, col))
 			StopMagnetGlow();
@@ -72,19 +81,19 @@ public class Stickable : Piece {
 
 	public void Stick(bool now) {
 
-		stuck = true;
+		/*stuck = true;
 		
 		Color temp = new Color();
 		
 		temp.r = 0f;
 		temp.g = 0f;
 		temp.b = 0f;
-		temp.a = 1f;
+		temp.a = 1f;*/
 		
-		if (now)
+		/*if (now)
 			GetComponent<Renderer>().material.color = temp;
 		else
-			StartCoroutine(ColorFade(temp));
+			StartCoroutine(ColorFade(temp));*/
 
 		if (!LevelManager.modeling && grid.IsNextToMagnet(row, col))
 			StartMagnetGlow();

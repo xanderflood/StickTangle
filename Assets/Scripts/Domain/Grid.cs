@@ -14,17 +14,41 @@ public class Grid : MonoBehaviour {
     public Dictionary<Position, Goal> goalMap = new Dictionary<Position, Goal>();
 	public List<Teleporter> teleporters;
 	public Dictionary<Position, Magnet> magnetMap = new Dictionary<Position, Magnet>();
+
+	public class GridData {
+		Dictionary<Position,SquareType> data;
+
+		public GridData() {
+			data = new Dictionary<Position, SquareType>();
+		}
+		
+		public SquareType this[Position b] {
+			get {
+				if(data.ContainsKey(b))
+					return data[b];
+				else
+					return SquareType.Empty;
+			}
+			set {
+				data[b] = value;
+			}
+		}
+		
+		public SquareType this[int x, int y] {
+			get {
+				if(data.ContainsKey(new Position(x,y)))
+					return data[new Position(x,y)];
+				else
+					return SquareType.Empty;
+			}
+			set {
+				data[new Position(x,y)] = value;
+			}
+		}
+	}
 	
 	public enum SquareType {
 		Player, Stickable, Empty, Block, Acid, Magnet
-	}
-
-	public class Square {
-		public SquareType type; 
-
-		public Square(SquareType type) {
-			this.type = type;
-		}
 	}
 
 	public enum Direction {
@@ -35,16 +59,16 @@ public class Grid : MonoBehaviour {
 	private static int[] dr = {1, -1, 0, 0};
 	private static int[] dc = {0, 0, -1, 1};
 	
-	private Square[,] grid;
+	private GridData grid;
 
 	private MusicSelector music;
 
 	private void Awake() {
-		grid = new Square[Dim, Dim];
+		grid = new GridData ();
 		for (int i = 0; i < Dim; i++) {
 			for (int j = 0; j < Dim; j++) {
 				SquareType type = SquareType.Empty;
-				grid[i, j] = new Square(type);
+				grid[i, j] = type;
 			}
 		}
 	}
@@ -62,7 +86,7 @@ public class Grid : MonoBehaviour {
 		int stepR = dr[(int) dir];
 
 		int i;
-		for (i = 1; grid[row + stepR * i, col + stepC * i].type != type; i++) {}
+		for (i = 1; grid[row + stepR * i, col + stepC * i] != type; i++) {}
 
 		if (i == 1) {
 			return null;
@@ -83,7 +107,7 @@ public class Grid : MonoBehaviour {
 		StringBuilder sb = new StringBuilder();
 		for (int i = Dim - 1; i >= 0; i--) {
 			for (int j = 0; j < Dim; j++) {
-				switch(grid[i, j].type) {
+				switch(grid[i, j]) {
 				case SquareType.Empty:
 					sb.Append("E");
 					break;
@@ -107,17 +131,17 @@ public class Grid : MonoBehaviour {
 		Debug.Log(sb.ToString());
 	}
 
-	public void SetSquare(Position pos, Square square) {
+	public void SetSquare(Position pos, SquareType square) {
 		SetSquare(pos.Row, pos.Col, square);
 	}
 	
-	public void SetSquare(int row, int col, Square square) {
+	public void SetSquare(int row, int col, SquareType square) {
 		BoundsCheck(row, col);
 
 		grid[row, col] = square;
 	}
 
-	public Square GetSquare(int row, int col) {
+	public SquareType GetSquare(int row, int col) {
 		BoundsCheck(row, col);
 		
 		return grid[row, col];
@@ -134,7 +158,7 @@ public class Grid : MonoBehaviour {
 		int c = col + stepC;
 
 		Position pos = new Position(r, c);
-		return new Pair<SquareType, Position>(grid[r, c].type, pos);
+		return new Pair<SquareType, Position>(grid[r, c], pos);
 	}
 
 	public List<Position> GetStickables(int row, int col) {
@@ -143,7 +167,7 @@ public class Grid : MonoBehaviour {
 			int stepR = dr[(int) i]; 
 			int stepC = dc[(int) i];
 		
-			if (grid[row + stepR, col + stepC].type == SquareType.Stickable) {
+			if (grid[row + stepR, col + stepC] == SquareType.Stickable) {
 				music.playBlop();
 				result.Add(new Position(row + stepR, col + stepC));
 			}
@@ -158,8 +182,8 @@ public class Grid : MonoBehaviour {
 			int stepR = dr[(int) i]; 
 			int stepC = dc[(int) i];
 
-			if (grid[row + stepR, col + stepC].type == SquareType.Magnet) {
-				return true;
+			if (grid[row + stepR, col + stepC] == SquareType.Magnet) {
+				return true; 
 			}
 		}
 
@@ -172,7 +196,7 @@ public class Grid : MonoBehaviour {
 			int stepR = dr[(int) i]; 
 			int stepC = dc[(int) i];
 			
-			if (grid[row + stepR, col + stepC].type == SquareType.Magnet) {
+			if (grid[row + stepR, col + stepC] == SquareType.Magnet) {
 				result.Add(new Position(row + stepR, col + stepC));
 			}
 		}
@@ -210,7 +234,7 @@ public class Grid : MonoBehaviour {
 	public bool IsEmpty(int row, int col) {
 		BoundsCheck(row, col);
 
-		SquareType t = grid[row, col].type;
+		SquareType t = grid[row, col];
 		return t == SquareType.Empty;
 	}
 
@@ -249,7 +273,7 @@ public class Grid : MonoBehaviour {
 	}
 
 	public bool InBounds(int row, int col) {
-		return row < Dim - 1 && col < Dim - 1 && row > 0 && col > 0;
+		return true; //row < Dim - 1 && col < Dim - 1 && row > 0 && col > 0;
 	}
 
     public bool CheckAllGoals() {

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 using SquareType = Grid.SquareType;
-using Square = Grid.Square;
 
 public class Sticker : MonoBehaviour {
     // touch areas  
@@ -59,11 +58,11 @@ public class Sticker : MonoBehaviour {
 	}
 
     protected void Awake() {
-        Color temp = new Color();
+        /*Color temp = new Color();
         temp.r = 0;
         temp.g = 0;
         temp.b = 0;
-        temp.a = .7f;
+        temp.a = .7f;*/
 
 		if (LevelManager.modeling)
 			return;
@@ -77,7 +76,7 @@ public class Sticker : MonoBehaviour {
 			return false;
 		}
 
-		SquareType type = grid.GetSquare(newR, newC).type;
+		SquareType type = grid.GetSquare(newR, newC);
 
 		return type != SquareType.Block && type != SquareType.Magnet && type != SquareType.Stickable;
 	}
@@ -185,7 +184,7 @@ public class Sticker : MonoBehaviour {
 		// Disown other pieces
 		foreach (Stickable s in leftBehind) {
 			stickableMap.Add(s.pos, s);
-			grid.SetSquare(s.pos, new Square(SquareType.Stickable));
+			grid.SetSquare(s.pos, SquareType.Stickable);
 		}
 
 		return true;
@@ -240,7 +239,7 @@ public class Sticker : MonoBehaviour {
 	private void PutPlayersInGrid() {
 
 		foreach (Stickable s in stickables) {
-			grid.SetSquare(s.pos, new Square(SquareType.Player));
+			grid.SetSquare(s.pos, SquareType.Player);
 		}
 	}
 
@@ -319,7 +318,7 @@ public class Sticker : MonoBehaviour {
 
 			toAdd.Add(s);
 			stickableMap.Remove(positions[i]);
-			grid.SetSquare(s.row, s.col, new Square(SquareType.Player));
+			grid.SetSquare(s.row, s.col, SquareType.Player);
 		}
 
 		return toAdd;

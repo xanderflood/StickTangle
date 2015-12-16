@@ -6,6 +6,6 @@ public class LoadText : MonoBehaviour {
 		if (LevelManager.modeling)
 			return;
 
-		Utils.FindComponent<LevelManager>("LevelManager").SetText();
+		//Utils.FindComponent<LevelManager>("LevelManager").SetText();
 	}
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Piece : MonoBehaviour {
@@ -51,12 +50,12 @@ public class Piece : MonoBehaviour {
 	public GameObject activeGlow;
 
 	protected virtual void Awake() {
-		if (Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
+		/*if (false) {//Utils.FindComponent<LevelManager>("LevelManager").colorblindMode) {
 			SetColorBlindMaterial();
 		} else {
 			GetComponent<Renderer>().material = CrayonMats[Random.Range(0, CrayonMats.Count)];
 	        transform.Rotate(0,0,Random.Range(0, 3) * 90);
-		}
+		}*/
 
 		if (LevelManager.modeling || LevelManager.optionsScreen)
 			return;
@@ -73,10 +72,10 @@ public class Piece : MonoBehaviour {
 	}
 
 	public void ChangePosition(int newRow, int newCol) {
-		grid.SetSquare(row, col, new Square(SquareType.Empty));
+		grid.SetSquare(row, col, SquareType.Empty);
 		row = newRow;
 		col = newCol;
-		grid.SetSquare(row, col, new Square(SquareType.Player));
+		grid.SetSquare(row, col, SquareType.Player);
 	}
 
 	public bool IsStuckToManget(int dr, int dc) {

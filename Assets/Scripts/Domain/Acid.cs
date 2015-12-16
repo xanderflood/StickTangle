@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 using System.Security.Cryptography;
 
-using Square = Grid.Square;
 using SquareType = Grid.SquareType;
 
 public class Acid : MonoBehaviour {
@@ -38,7 +37,7 @@ public class Acid : MonoBehaviour {
 		if (!LevelManager.modeling) {
 			Grid grid = Utils.FindComponent<Grid>("Board");
 			Position pos = grid.CoordToPos(transform.position);
-			grid.SetSquare(pos, new Square(SquareType.Acid));
+			grid.SetSquare(pos, SquareType.Acid);
     		grid.acidBlocks.Add(this);
 			
 			row = pos.Row;
